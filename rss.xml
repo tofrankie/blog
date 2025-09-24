@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 18 Sep 2025 10:32:25 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 24 Sep 2025 02:56:47 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -863,10 +863,10 @@ point2 = { x: 1, y: 2 } // ✅
             <link>https://github.com/tofrankie/blog/issues/364</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/364</guid>
             <pubDate>Mon, 07 Jul 2025 13:29:52 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/7/1752379227556.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/7/1752379227556.jpg" alt="配图源自 Freepik"></p>
 <h2>前言</h2>
 <p>是的，我已经将 <a href="https://ww]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/7/1752379227556.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/7/1752379227556.jpg" alt="配图源自 Freepik"></p>
 <h2>前言</h2>
 <p>是的，我已经将 <a href="https://www.alfredapp.com/">Alfred</a> 换为 <a href="https://www.raycast.com/">Raycast</a> 了，后者的免费功能足够好用。</p>
 <p>但也没有完全丢掉 Alfred，还在用它的剪贴板历史功能。</p>
@@ -907,7 +907,7 @@ point2 = { x: 1, y: 2 } // ✅
 </blockquote>
 <h3>创建扩展</h3>
 <p>键入 Create Extension 回车输入必要信息，便创建好了。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/7/1751903805052.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/7/1751903805052.png" alt=""></p>
 <blockquote>
 <p>官方提供了多个模板，可以选择简单的 Show Detail 模板。</p>
 </blockquote>
@@ -926,7 +926,7 @@ $ npm run dev
 </ul>
 <p>这对开发体验尤为重要。一是开发过程中文件修改可以自动重载，二是使 Raycast 始终显示，以避免切换其他应用时窗口关闭。</p>
 <p>在开发模式下，使用 <code>console.log()</code> 可以在终端上显示打印信息。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/7/1752164474489.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/7/1752164474489.png" alt=""></p>
 <p>如果没有正确使用 API、组件或快捷键冲突，此处也会有 Warning 显示。</p>
 <h3>发布扩展</h3>
 <p>如果想要将你的扩展发布到 Store 上，是需要官方审核的。</p>
@@ -936,7 +936,7 @@ $ npm run dev
 <li>Fork 官方<a href="https://github.com/raycast/extensions">仓库</a>，将你的扩展放在仓库 <code>extensions</code> 目录下，提交 PR。</li>
 <li>创建独立仓库，然后通过 <code>ray publish</code> 提交。</li>
 </ul>
-<p>提交 PR 时，建议附上视频，或许可以更快地审核。我之前写了一个微信开发工具的<a href="https://github.com/toFrankie/raycast-wechat-devtool">扩展</a>，由于他们没有小程序项目，流程上它们跑不通，可能会要求附上视频辅助审核，例如<a href="https://github.com/raycast/extensions/pull/20222#pullrequestreview-3003917464">这个</a>。</p>
+<p>提交 PR 时，建议附上视频，或许可以更快地审核。我之前写了一个微信开发工具的<a href="https://github.com/tofrankie/raycast-wechat-devtool">扩展</a>，由于他们没有小程序项目，流程上它们跑不通，可能会要求附上视频辅助审核，例如<a href="https://github.com/raycast/extensions/pull/20222#pullrequestreview-3003917464">这个</a>。</p>
 <blockquote>
 <p>If you add a new extension or command, include a screencast (or screenshot for straightforward changes). A good screencast will make the review much faster - especially if your extension requires registration in other services.</p>
 </blockquote>
@@ -1240,7 +1240,7 @@ export default function Example() {
 <blockquote>
 <p><a href="https://developers.raycast.com/api-reference/user-interface/list#props">List Props</a></p>
 </blockquote>
-<p>已后者为例，可以将项目名称、项目路径、项目名称拼音（若有中文）添加到 keywords 字段，参考 <a href="https://github.com/toFrankie/raycast-wechat-devtool/blob/2be07dadbc747826def1a1c5373bb0040d4d004b/src/utils/pinyin.ts">pinyin.ts</a>。</p>
+<p>已后者为例，可以将项目名称、项目路径、项目名称拼音（若有中文）添加到 keywords 字段，参考 <a href="https://github.com/tofrankie/raycast-wechat-devtool/blob/2be07dadbc747826def1a1c5373bb0040d4d004b/src/utils/pinyin.ts">pinyin.ts</a>。</p>
 <h3>图片展示</h3>
 <p>若要展示一张图片，似乎只有 Detail + Markdown 的方式了。</p>
 <pre><code class="language-tsx">export default function ImageView({ url }: { url: string }) {
@@ -2728,17 +2728,17 @@ function genSvgBase64(svgSourceStr) {
             <link>https://github.com/tofrankie/blog/issues/349</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/349</guid>
             <pubDate>Mon, 12 Aug 2024 15:47:51 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/8/1723874278827.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/8/1723874278827.jpg" alt="配图源自 Freepik"></p>
 <h2>前言</h2>
 <p>去年二月，我将简书所有文章搬到 GitHub 上，终于]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/8/1723874278827.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/8/1723874278827.jpg" alt="配图源自 Freepik"></p>
 <h2>前言</h2>
 <p>去年二月，我将简书所有文章搬到 GitHub 上，终于不用被审核了！</p>
 <ul>
 <li>README 为主页</li>
 <li>Issues 为文章列表</li>
 </ul>
-<p>📢 这是我的<a href="https://github.com/toFrankie/blog">博客</a>，你也可以试试用 <a href="https://github.com/toFrankie/github-blogger">Github Blogger</a> 写一个属于自己的。</p>
+<p>📢 这是我的<a href="https://github.com/tofrankie/blog">博客</a>，你也可以试试用 <a href="https://github.com/tofrankie/github-blogger">Github Blogger</a> 写一个属于自己的。</p>
 <h2>入门速看</h2>
 <ul>
 <li><a href="https://docs.github.com/zh/actions/writing-workflows/quickstart">GitHub Action 快速入门</a></li>
@@ -2746,20 +2746,20 @@ function genSvgBase64(svgSourceStr) {
 </ul>
 <h2>备份</h2>
 <p>数据在手才最让人安心的。</p>
-<p>如果你是用 <a href="https://github.com/toFrankie/github-blogger">Github Blogger</a> 来管理文章（Issue），文章、配图会自动存档到 <code>archives</code>、<code>images</code> 目录。</p>
+<p>如果你是用 <a href="https://github.com/tofrankie/github-blogger">Github Blogger</a> 来管理文章（Issue），文章、配图会自动存档到 <code>archives</code>、<code>images</code> 目录。</p>
 <p>如果你未使用 GitHub Blogger 或在此之前有一些历史 Issue，可以在本地使用脚本调用 <a href="https://docs.github.com/zh/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues">GitHub API</a> 拉取所有 issue，然后重新推到远程仓库。</p>
 <blockquote>
-<p>可参考 <a href="https://github.com/toFrankie/blog/blob/main/scripts/fetch-all-issues.ts">fetch-all-issues.ts</a></p>
+<p>可参考 <a href="https://github.com/tofrankie/blog/blob/main/scripts/fetch-all-issues.ts">fetch-all-issues.ts</a></p>
 </blockquote>
 <p>此前试过用 <a href="https://github.com/Yikun/hub-mirror-action">hub-mirror-action</a> 进行同步到 Gitee，但遇到些<a href="https://github.com/Yikun/hub-mirror-action/issues/188">问题</a>没解决。后来发现官方就有提供，参考《<a href="https://gitee.com/help/articles/4336#article-header3">Gitee 仓库镜像管理</a>》。</p>
 <h2>访问统计</h2>
 <p>在仓库 Insights - Traffic 处可以看到近两周的数据。由于 GitHub 只提供近 14 天的数据，可以创建定时任务 Workflow 将数据保存到仓库，用于统计总量。</p>
 <blockquote>
-<p>可参考 <a href="https://github.com/toFrankie/blog/blob/main/scripts/update-traffic-data.ts">update-traffic-data.ts</a></p>
+<p>可参考 <a href="https://github.com/tofrankie/blog/blob/main/scripts/update-traffic-data.ts">update-traffic-data.ts</a></p>
 </blockquote>
 <p>如果想将访问量展示到 README，可以用这个数据生成一个 SVG 图片，并引用该图片即可。</p>
 <blockquote>
-<p>可参考 <a href="https://github.com/toFrankie/blog/blob/main/scripts/update-traffic-views.ts">update-traffic-views.ts</a></p>
+<p>可参考 <a href="https://github.com/tofrankie/blog/blob/main/scripts/update-traffic-views.ts">update-traffic-views.ts</a></p>
 </blockquote>
 <blockquote>
 <p>我还看过另一个方案 <a href="https://github.com/88250/hits">Hints</a>，当在 README 引入其图片后，每访问 README 一次（也就是 Get 一次图片），访问量 +1。缺点也明显，只有访问 README 才会被统计，访问 issue 等流量无法统计，也无法去重。</p>
@@ -2771,10 +2771,10 @@ function genSvgBase64(svgSourceStr) {
 <li>使用 GitHub Action 生成 RSS</li>
 </ul>
 <blockquote>
-<p>如果使用 Folo 订阅，都可以参考这篇<a href="https://github.com/toFrankie/blog/issues/360">文章</a>认领你的 RSS。</p>
+<p>如果使用 Folo 订阅，都可以参考这篇<a href="https://github.com/tofrankie/blog/issues/360">文章</a>认领你的 RSS。</p>
 </blockquote>
-<p>如果是第二种方式，可参考 <a href="https://github.com/toFrankie/blog/blob/main/scripts/generate-rss.ts">generate-rss.ts</a>，并在 README 中引入 Badge，比如：</p>
-<pre><code class="language-md">[![RSS](https://img.shields.io/badge/rss-subscribe-orange?logo=rss&amp;style=flat)](https://raw.githubusercontent.com/toFrankie/blog/refs/heads/main/rss.xml)
+<p>如果是第二种方式，可参考 <a href="https://github.com/tofrankie/blog/blob/main/scripts/generate-rss.ts">generate-rss.ts</a>，并在 README 中引入 Badge，比如：</p>
+<pre><code class="language-md">[![RSS](https://img.shields.io/badge/rss-subscribe-orange?logo=rss&amp;style=flat)](https://raw.githubusercontent.com/tofrankie/blog/refs/heads/main/rss.xml)
 </code></pre>
 <h2>文章统计</h2>
 <p>可以做些什么呢？</p>
@@ -2788,18 +2788,18 @@ function genSvgBase64(svgSourceStr) {
 <p>字数统计我暂时没做，思路很简单，获取所有 issues，统计 issue.body 渲染成 Markdown 格式后的字数，打算参考 <a href="https://github.com/bytedance/bytemd/blob/9f2212203c780f2d9775e3c2243171cdeea2e81d/packages/bytemd/src/status.svelte#L15">ByteMd</a>。</p>
 <p>每年文章数，遍历所有 issues，根据 issue.created_at 判断年份，可得出数据。我个人的话，更喜欢添加一个年份 Label，并利用 GitHub Issue 筛选功能，以便于快速查看每年所写文章，而且我有一些往年在简书写的文章，也是从去年从迁到 GitHub 上，所以创建时间也对不上。</p>
 <p>近期热门文章，其实跟上一章节 Traffic 是相关的，它可以获取近两周排名前 10 的内容，但不单指 issue 内容，还有其他的。只能根据返回的 path 过滤得到对应的 issue。</p>
-<p>近期创建/更新的文章，可以设置一个 Workflow，每当 issue 被创建或编辑时触发，然后也是通过 <a href="https://docs.github.com/zh/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues">List repository issues</a> 接口获取近 10 篇，加个排序 sort = updated 即可。可参考<a href="https://github.com/toFrankie/blog/blob/44c4a3e77a8bad26ecfd4b655fa7fe5ea1f997f8/scripts/common.ts#L74">我的</a>。</p>
+<p>近期创建/更新的文章，可以设置一个 Workflow，每当 issue 被创建或编辑时触发，然后也是通过 <a href="https://docs.github.com/zh/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues">List repository issues</a> 接口获取近 10 篇，加个排序 sort = updated 即可。可参考<a href="https://github.com/tofrankie/blog/blob/44c4a3e77a8bad26ecfd4b655fa7fe5ea1f997f8/scripts/common.ts#L74">我的</a>。</p>
 <h2>配置 issue 模板</h2>
 <p>对于博客型仓库，每个 Issue 表示一篇文章。</p>
 <p>通常不希望他人创建 Issue，可以对此作出一些限制，创建 <code>.github/ISSUE_TEMPLATE/config.yml</code> 文件，比如：</p>
 <pre><code class="language-yml">blank_issues_enabled: true
 contact_links:
   - name: ❗️ 请勿新开 Issue
-    url: https://github.com/toFrankie/blog/discussions/342
+    url: https://github.com/tofrankie/blog/discussions/342
     about: 阅读文章时，如有任何想法、建议，欢迎底下评论（或在 Discussions 发起讨论），而不是新开 Issue。
 </code></pre>
 <p>当他人 New Issue 时，会提示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/8/1723868949932.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/8/1723868949932.png" alt=""></p>
 <blockquote>
 <p>如果想要彻底关掉，可将 <code>blank_issues_enabled</code> 设为 <code>false</code>，更多请看<a href="https://docs.github.com/zh/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository#configuring-the-template-chooser">配置模板选择器</a>。</p>
 </blockquote>
@@ -3758,19 +3758,19 @@ l    # 右
             <link>https://github.com/tofrankie/blog/issues/340</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/340</guid>
             <pubDate>Sun, 16 Jun 2024 06:32:09 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/6/1718543919632.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/6/1718543919632.jpg" alt="配图源自 Freepik"></p>
 <blockquote>
 <p>在此作一个记录，第一次开发 Chrome Exten]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/6/1718543919632.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/6/1718543919632.jpg" alt="配图源自 Freepik"></p>
 <blockquote>
 <p>在此作一个记录，第一次开发 Chrome Extension 的同学也可以看看。</p>
 </blockquote>
 <h2>背景</h2>
-<p>我现在使用 <a href="https://github.com/toFrankie/github-blogger">GitHub Blogger</a> 作为个人博客工具，在翻阅文章时，有个体验痛点：无法快速定位到某个章节。</p>
-<p>比如，这篇<a href="https://github.com/toFrankie/blog/issues/317">文章</a>涉及的二级、三级标题多达 25+，篇幅也很长。</p>
+<p>我现在使用 <a href="https://github.com/tofrankie/github-blogger">GitHub Blogger</a> 作为个人博客工具，在翻阅文章时，有个体验痛点：无法快速定位到某个章节。</p>
+<p>比如，这篇<a href="https://github.com/tofrankie/blog/issues/317">文章</a>涉及的二级、三级标题多达 25+，篇幅也很长。</p>
 <p>目前 GitHub 只有仓库 Markdown 文件支持目录能力，但是 Issue 还不支持，所以开发一个 Chrome 扩展程序来解决。</p>
 <blockquote>
-<p><a href="https://github.com/toFrankie/github-issue-toc">github-issue-toc</a></p>
+<p><a href="https://github.com/tofrankie/github-issue-toc">github-issue-toc</a></p>
 </blockquote>
 <ul>
 <li>支持 h1 ~ h6 标题。</li>
@@ -3778,7 +3778,7 @@ l    # 右
 <li>支持粘性布局，滚动时始终在可视区域内。</li>
 <li>样式风格与 GitHub 契合，支持深色模式。</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/6/1718520988032.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/6/1718520988032.png" alt=""></p>
 <h2>开始之前</h2>
 <p>项目没必要一步一步去搭，选择社区流行方案即可，我选 <a href="https://www.plasmo.com/">Plasmo</a>，开发体验还不错。目录样式参考了 <a href="https://github.blog/changelog/2021-04-13-table-of-contents-support-in-markdown-files/">Github</a>、<a href="https://github.com/bytedance/bytemd">ByteMD</a>。</p>
 <p>可粗略看看，了解一些基础概念：</p>
@@ -3901,7 +3901,7 @@ export default function Toc() {
 <blockquote>
 <p>对于 <code>data-text:./toc.css</code> 的写法，详见 <a href="https://docs.plasmo.com/framework/import#data-text">Import Resolution</a>。</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/6/1718532184534.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/6/1718532184534.png" alt=""></p>
 <h4>自定义 Root Container</h4>
 <p>默认情况下，Plasmo 会创建 Shadow DOM，再挂载到页面，这样做的好处是与外部隔离，如上图所示。</p>
 <p>有时，我们希望可以用原网页的样式，比如 CSS 变量等。</p>
@@ -5592,15 +5592,15 @@ TODO:
             <link>https://github.com/tofrankie/blog/issues/335</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/335</guid>
             <pubDate>Sun, 14 Apr 2024 14:12:24 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/4/1713108869593.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/4/1713108869593.jpg" alt="配图源自 Freepik"></p>
 <p>我们知道，在 Github 主页左侧有个 Recent Activity 的栏]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/4/1713108869593.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/4/1713108869593.jpg" alt="配图源自 Freepik"></p>
 <p>我们知道，在 Github 主页左侧有个 Recent Activity 的栏目，但它最多显示过去两周内 4 次最近的更新，但要求状态是 <code>open</code> 的。</p>
 <p>有时候，我们需要查找自己创建的、评论过的 Issue 或 PR 记录，然而它可能已经 <code>closed</code> 了。</p>
 <blockquote>
 <p><a href="https://github.com/issues">https://github.com/issues</a></p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/4/1713103769217.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/4/1713103769217.png" alt=""></p>
 <p>个人主页的 Issues 入口默认的限定条件是：<code>is:open is:issue archived:false author:xxx</code>。</p>
 <p>翻查 Github 搜索文档可知：</p>
 <blockquote>
@@ -5609,8 +5609,8 @@ TODO:
 <p>可根据 <code>involves</code> 限定符查找以某种方式涉及特定用户的问题，该限定符是 <code>author</code>、<code>assignee</code>、<code>mentions</code> 和 <code>commenter</code> 的逻辑或关系。限定条件为 <code>involves@me</code> 或 <code>involves:&lt;your-username&gt;</code>（你的 Github 用户名）。</p>
 <p>也可组合更多的限定条件达到更精细的查询，比如</p>
 <ul>
-<li><code>is:issue involves:toFrankie alfred</code>：与我相关的、标题或正文包含 alfred 的 Issues。</li>
-<li><code>is:issue in:title involves:toFrankie alfred</code>：与我相关的、标题包含 alfred 的 Issues。</li>
+<li><code>is:issue involves:tofrankie alfred</code>：与我相关的、标题或正文包含 alfred 的 Issues。</li>
+<li><code>is:issue in:title involves:tofrankie alfred</code>：与我相关的、标题包含 alfred 的 Issues。</li>
 </ul>
 <p>为了方便，我会用 Alfred 定义一个 <a href="https://www.alfredapp.com/help/features/web-search/">Web Search</a> 指令。使用时只要「⌥ + Space」唤起 Alfred 并输入关键词就能快速搜索。比如：</p>
 <blockquote>
@@ -5906,13 +5906,13 @@ console.log(user._phone) // undefined
             <link>https://github.com/tofrankie/blog/issues/333</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/333</guid>
             <pubDate>Sat, 23 Mar 2024 12:23:06 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1711204488088.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1711204488088.jpg" alt="配图源自 Freepik"></p>
 <h2>写在前面</h2>
 <p>我们知道，无论是 Adobe 还是其他图形编辑器，]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1711204488088.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1711204488088.jpg" alt="配图源自 Freepik"></p>
 <h2>写在前面</h2>
 <p>我们知道，无论是 Adobe 还是其他图形编辑器，都会使用灰白相间的网格背景来表达透明。比如这样：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1711197709091.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1711197709091.png" alt=""></p>
 <p>用 CSS 如何实现呢？</p>
 <ul>
 <li>使用 <code>background-image</code> + <code>background-size</code> + <code>background-repeat</code> 组合，如果想要图片不失真，可使用四个网格 SVG 图片重复。</li>
@@ -5936,7 +5936,7 @@ console.log(user._phone) // undefined
 <blockquote>
 <p>为了让绿色部分占格子宽度一半。就是一个格子分成了三部分红色、绿色、红色，它们所占比例分别是 1:2:1。当旋转 45° 之后，在对角线看也是这个比例，也是为了后面的堆叠。</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1711201062546.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1711201062546.png" alt=""></p>
 <p>接着，再定义多一个相同的渐变，并移动第二个渐变的位置，移动距离为背景图片大小的一半。</p>
 <pre><code class="language-css">.grid {
   background-image: linear-gradient(
@@ -5961,9 +5961,9 @@ console.log(user._phone) // undefined
 <blockquote>
 <p>为方便查看堆叠效果，添加了透明度。</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1711201488863.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1711201488863.png" alt=""></p>
 <p>到这里，是不是可以想象得到正方形格子的形状了，接着我们改成 <code>background-repeat: repeat</code> 再看看 👇</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1711201624105.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1711201624105.png" alt=""></p>
 <p>观察上图，只要把绿色部分改成透明，红色部分改成灰色，就是灰白相间的网格效果。但改成透明的话，如果本身底部是含有背景的，显示就有问题了，因此背景颜色要改成白色。</p>
 <pre><code class="language-css">.grid {
   background-color: #fff;
@@ -5973,7 +5973,7 @@ console.log(user._phone) // undefined
   background-size: 50px 50px;
 }
 </code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1711202175343.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1711202175343.png" alt=""></p>
 <blockquote>
 <p>如格子大小、颜色可按需调整。其中白色格子调整 <code>background-color</code>、灰色格子调整 <code>background-image</code> 中的 <code>#eee</code> 颜色值。目前每个格子大小是 <code>25px</code>，如调整大小，需同时修改 <code>background-position</code>，它始终是 <code>background-size</code> 的一半。</p>
 </blockquote>
@@ -6083,10 +6083,10 @@ console.log(transformedHtml)
             <link>https://github.com/tofrankie/blog/issues/331</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/331</guid>
             <pubDate>Fri, 15 Mar 2024 17:14:07 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1710604007675.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1710604007675.jpg" alt="配图源自 Freepik"></p>
 <h2>背景</h2>
 <p>最近在做 Taro 项目，有微信小程序和 H5 两端，]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1710604007675.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1710604007675.jpg" alt="配图源自 Freepik"></p>
 <h2>背景</h2>
 <p>最近在做 Taro 项目，有微信小程序和 H5 两端，因导航栏样式无法满足要求，需实现自定义 TabBar。</p>
 <p>目前 Taro for H5 未默认支持自定义 TabBar，详见 <a href="https://github.com/NervJS/taro/issues/10049">#10049</a>。</p>
@@ -6307,7 +6307,7 @@ export default function Index() {
 }
 </code></pre>
 <h2>最后</h2>
-<p>完整示例 👉 <a href="https://github.com/toFrankie/taro-custom-tab-bar">taro-custom-tab-bar</a>。</p>
+<p>完整示例 👉 <a href="https://github.com/tofrankie/taro-custom-tab-bar">taro-custom-tab-bar</a>。</p>
 <p>有个体验上的问题，自定义 TabBar 在各个 TabBar 页面初始化时都会创建一个新的组件实例导致，导致切换 Tab 时图片闪烁，可以关注 <a href="https://github.com/NervJS/taro/issues/7302">#7302</a>。</p>
 <p>The end.</p>
 ]]></content:encoded>
@@ -6627,11 +6627,11 @@ echo &quot;处理完成！&quot;
             <link>https://github.com/tofrankie/blog/issues/327</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/327</guid>
             <pubDate>Sat, 03 Feb 2024 08:26:03 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/2/1706956091868.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/2/1706956091868.jpg" alt="配图源自 Freepik"></p>
 <h2>相关话题</h2>
 <ul>
 <li><a href="https://ww]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/2/1706956091868.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/2/1706956091868.jpg" alt="配图源自 Freepik"></p>
 <h2>相关话题</h2>
 <ul>
 <li><a href="https://www.zhihu.com/question/624259381">为什么程序员必须坚持写技术博客？</a></li>
@@ -6687,22 +6687,22 @@ echo &quot;处理完成！&quot;
 <p><strong>总之，各有利弊，选择一个合适自己的就行。</strong></p>
 <h2>我的选择</h2>
 <blockquote>
-<p>我的博客：<a href="https://github.com/toFrankie/blog">种一棵树，最好的时间是十年前。其次，是现在。</a></p>
+<p>我的博客：<a href="https://github.com/tofrankie/blog">种一棵树，最好的时间是十年前。其次，是现在。</a></p>
 </blockquote>
 <ul>
-<li>使用 <a href="https://marketplace.visualstudio.com/items?itemName=Frankie.github-blogger">GitHub Blogger</a> 作为编辑器，可以快速编辑、发布（VS Code WebView Extension）</li>
+<li>使用 <a href="https://marketplace.visualstudio.com/items?itemName=frankie.github-blogger">GitHub Blogger</a> 作为编辑器，可以快速编辑、发布（VS Code WebView Extension）</li>
 <li>使用 <a href="https://www.jsdelivr.com/?docs=gh">GitHub + jsDelivr</a> 作为图床，支持 CDN 加速</li>
-<li>使用 <a href="https://github.com/toFrankie/blog">GitHub Repository</a> 进行文章存档，每次编辑都会被记录</li>
-<li>使用 <a href="https://github.com/toFrankie/blog/issues">GitHub Issues</a> 作为博文列表</li>
-<li>使用 <a href="https://github.com/toFrankie/blog/labels">GitHub Labels</a> 对博文进行标签、分类</li>
-<li>使用 <a href="https://www.raycast.com/core-features/quicklinks">Raycast Quicklinks</a> 快速搜索文章，比如按标题搜索 <code>https://github.com/toFrankie/blog/issues?q=in%3Atitle+{Query}+</code></li>
+<li>使用 <a href="https://github.com/tofrankie/blog">GitHub Repository</a> 进行文章存档，每次编辑都会被记录</li>
+<li>使用 <a href="https://github.com/tofrankie/blog/issues">GitHub Issues</a> 作为博文列表</li>
+<li>使用 <a href="https://github.com/tofrankie/blog/labels">GitHub Labels</a> 对博文进行标签、分类</li>
+<li>使用 <a href="https://www.raycast.com/core-features/quicklinks">Raycast Quicklinks</a> 快速搜索文章，比如按标题搜索 <code>https://github.com/tofrankie/blog/issues?q=in%3Atitle+{Query}+</code></li>
 </ul>
 <h2>GitHub Blogger</h2>
 <blockquote>
 <p>Inspired by Aaronphy/Blogger.</p>
 </blockquote>
 <p>此前离开简书，考虑过到掘金上续写，但现在掘金的整体质量不如以前，而且充斥着各种标题党，贩卖焦虑的味太浓了。后来遇到了 <a href="https://github.com/Aaronphy/Blogger">Aaronphy/Blogger</a> 可以静静地写了。</p>
-<p>用了一段时间，发现有些地方不太顺手、有一些 Bug，作者也很久没更新了。然后就二次开发了，修了一些 Bug，加了一些新功能，于是 <a href="https://github.com/toFrankie/github-blogger">GitHub Blogger</a> 诞生了。</p>
+<p>用了一段时间，发现有些地方不太顺手、有一些 Bug，作者也很久没更新了。然后就二次开发了，修了一些 Bug，加了一些新功能，于是 <a href="https://github.com/tofrankie/github-blogger">GitHub Blogger</a> 诞生了。</p>
 <blockquote>
 <p>原作者的设计思路可看《<a href="https://zhuanlan.zhihu.com/p/358347337">在 VSCODE 中写博客吧</a>》</p>
 </blockquote>
@@ -6720,10 +6720,10 @@ echo &quot;处理完成！&quot;
 <li>修复 Labels 只能显示前 20 个的问题</li>
 </ul>
 <p>2025 年中，完全重构了，交互体验跟原生 GitHub 一致。现在长这样 👇</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/7/1752828389666.png" alt=""></p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/7/1752828391479.png" alt=""></p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/7/1752828393398.png" alt=""></p>
-<p>如果刚好你也喜欢，欢迎来<a href="https://github.com/toFrankie/github-blogger">试试</a>~ 👋</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/7/1752828389666.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/7/1752828391479.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/7/1752828393398.png" alt=""></p>
+<p>如果刚好你也喜欢，欢迎来<a href="https://github.com/tofrankie/github-blogger">试试</a>~ 👋</p>
 <h2>如何使用 GitHub Blogger？</h2>
 <blockquote>
 <p>由于 GitHub Blogger 内部使用 <a href="https://www.jsdelivr.com/?docs=gh">jsDelivr</a> 的图床方案，后者不支持私有仓库（<a href="https://github.com/jsdelivr/jsdelivr/issues/18243#issuecomment-857512289">更多</a>），因此<strong>你的博客仓库必须是公开的</strong>，否则图片无法显示。</p>
@@ -6732,7 +6732,7 @@ echo &quot;处理完成！&quot;
 <ol>
 <li>你需要注册一个 GitHub 账号（已有忽略）</li>
 <li>你需要安装 VS Code、Cursor 等编辑器（理论上基于 VSCodium 的编辑器都支持）</li>
-<li>在编辑器上安装 <a href="https://marketplace.visualstudio.com/items?itemName=Frankie.github-blogger">GitHub Blogger</a> 扩展，也可在编辑器内搜索 <code>Frankie.github-blogger</code> 扩展</li>
+<li>在编辑器上安装 <a href="https://marketplace.visualstudio.com/items?itemName=frankie.github-blogger">GitHub Blogger</a> 扩展，也可在编辑器内搜索 <code>frankie.github-blogger</code> 扩展</li>
 <li>准备好你的 <a href="https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">GitHub Personal Access Token</a>（调用 GitHub API 需要用到）</li>
 <li>使用 Command + Shift + P 或 Ctrl + Shift + P 快捷键唤起命令面板：
 <ol>
@@ -6751,7 +6751,7 @@ echo &quot;处理完成！&quot;
 </code></pre>
 <p>其中 <code>branch</code> 默认是 <code>main</code> 分支，它决定图片、文章存档提交到哪个分支。通常博客仓库不像实际项目有多个分支，一般无需特别设置，是仓库主分支就行。</p>
 <blockquote>
-<p>可配合 <a href="https://github.com/toFrankie/github-issue-toc">github-issue-toc</a> 食用，它可以在 GitHub Issue 页面右侧生成目录。</p>
+<p>可配合 <a href="https://github.com/tofrankie/github-issue-toc">github-issue-toc</a> 食用，它可以在 GitHub Issue 页面右侧生成目录。</p>
 </blockquote>
 <blockquote>
 <p>GitHub Flavored Markdown（GFM）除了支持标准的 CommonMarkdown 语法之外，还更多特有格式，详见<a href="https://docs.github.com/zh/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/about-writing-and-formatting-on-github">这里</a>。</p>
@@ -6989,12 +6989,12 @@ Total xfer: 1.00x
             <link>https://github.com/tofrankie/blog/issues/323</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/323</guid>
             <pubDate>Sun, 03 Dec 2023 13:42:13 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/12/1701619319197.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/12/1701619319197.jpg" alt="配图源自 Freepik"></p>
 <h2>背景</h2>
 <p>前不久做 <a href="https://gith]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/12/1701619319197.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/12/1701619319197.jpg" alt="配图源自 Freepik"></p>
 <h2>背景</h2>
-<p>前不久做 <a href="https://github.com/toFrankie/github-blogger">Github Blogger</a> 插件开发时，遇到分页查询的场景，是用于查询 Issue 的。</p>
+<p>前不久做 <a href="https://github.com/tofrankie/github-blogger">Github Blogger</a> 插件开发时，遇到分页查询的场景，是用于查询 Issue 的。</p>
 <p>使用 Github REST API 的话，可以很方便地分页查询，比如：</p>
 <pre><code class="language-js">const {Octokit} = require('@octokit/core')
 
@@ -7020,7 +7020,7 @@ await octokit.request('GET /repos/{owner}/{repo}/issues', {
 <pre><code class="language-graphql">query Issues {
   search(
     type: ISSUE
-    query: &quot;user:toFrankie repo:blog state:open label:2023&quot;
+    query: &quot;user:tofrankie repo:blog state:open label:2023&quot;
     first: 5
     after: null
   ) {
@@ -7042,7 +7042,7 @@ await octokit.request('GET /repos/{owner}/{repo}/issues', {
 }
 </code></pre>
 <p>如果对 Github Graph API 不熟的话，可以借助 Github 提供的 <a href="https://docs.github.com/en/graphql/overview/explorer">Explorer</a> 进行验证，不懂可看 <a href="https://docs.github.com/en/graphql/guides/using-the-explorer">Using the Explorer</a>。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/12/1701614411624.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/12/1701614411624.png" alt=""></p>
 <p>其实从这里就看得出大概了，结果中的 <a href="https://docs.github.com/en/graphql/reference/objects#pageinfo">pageInfo</a> 结构如下</p>
 <ul>
 <li><strong>startCursor</strong> 当前分页的起始锚点</li>
@@ -7117,11 +7117,11 @@ await octokit.graphql(`
             <link>https://github.com/tofrankie/blog/issues/322</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/322</guid>
             <pubDate>Fri, 10 Nov 2023 08:24:41 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/11/1699607759532.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/11/1699607759532.jpg" alt="配图源自 Freepik"></p>
 <h2>常用工具</h2>
 <ul>
 <li><a href="https://f]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/11/1699607759532.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/11/1699607759532.jpg" alt="配图源自 Freepik"></p>
 <h2>常用工具</h2>
 <ul>
 <li><a href="https://ffmpeg.org/ffmpeg.html">FFmpeg</a></li>
@@ -7152,7 +7152,7 @@ $ gifsicle --cinfo source.gif
 <p>其中 <code>filename</code> 支持网络图片。</p>
 </blockquote>
 <h3>逐帧信息读取</h3>
-<p><a href="https://github.com/toFrankie/gif">https://github.com/toFrankie/gif</a></p>
+<p><a href="https://github.com/tofrankie/gif">https://github.com/tofrankie/gif</a></p>
 <h2>GIF 转换为 PNG</h2>
 <p>使用 ImageMagick</p>
 <pre><code class="language-shell"># 逐帧导出
@@ -7177,7 +7177,7 @@ $ convert tmp.gif target.png
 <h2>GIF 帧操作</h2>
 <h3>简单抽帧</h3>
 <p>使用 macOS 内置的「预览」应用，可以快速插入/删除帧。打开 GIF 并在「菜单栏 - 显示」切换为「缩略清单」。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/11/1699606830228.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/11/1699606830228.png" alt=""></p>
 <ul>
 <li>删除帧：选中帧后，使用「⌘ + delete」快捷键删除。</li>
 <li>添加帧：打开两组 GIF（必需都是 GIF），选中某帧，拖拽至另一个 GIF 对应帧的位置。比如，从 A 中拖拽一帧到 B，A 帧数不会发生变化，B 则会增加一帧。</li>
@@ -7218,11 +7218,11 @@ $ convert tmp.gif target.png
             <link>https://github.com/tofrankie/blog/issues/321</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/321</guid>
             <pubDate>Wed, 01 Nov 2023 09:31:53 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/11/1699607726108.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/11/1699607726108.jpg" alt="配图源自 Freepik"></p>
 <blockquote>
 <p>[!NOTE]
 由于微信手握“生杀大权”，一旦规则]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/11/1699607726108.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/11/1699607726108.jpg" alt="配图源自 Freepik"></p>
 <blockquote>
 <p>[!NOTE]
 由于微信手握“生杀大权”，一旦规则有变，本文内容也可能随之失效，仅供参考。</p>
@@ -7284,12 +7284,12 @@ $ convert tmp.gif target.png
             <link>https://github.com/tofrankie/blog/issues/320</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/320</guid>
             <pubDate>Sat, 23 Sep 2023 04:49:44 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/9/1695444781383.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/9/1695444781383.jpg" alt="配图源自 Freepik"></p>
 <p>相信不少人遇到过 Mac App Store 有更新提示，但进入应用商店的「更]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/9/1695444781383.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/9/1695444781383.jpg" alt="配图源自 Freepik"></p>
 <p>相信不少人遇到过 Mac App Store 有更新提示，但进入应用商店的「更新」一栏不会显示可用更新的软件列表。只有进入对应软件详情页才会显示可更新。</p>
 <p>解决方法是使用快捷键「⌘ + R」来刷新页面。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/9/1695444299144.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/9/1695444299144.png" alt=""></p>
 <p>Related Link: <a href="https://culturedcode.com/things/support/articles/4522602/">Troubleshooting App Store Issues</a></p>
 ]]></content:encoded>
         </item>
@@ -7411,13 +7411,13 @@ Map.prototype.entries()
             <link>https://github.com/tofrankie/blog/issues/318</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/318</guid>
             <pubDate>Sat, 22 Jul 2023 05:45:38 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/7/1690014631503.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/7/1690014631503.jpg" alt="配图源自 Freepik"></p>
 <h2>开始</h2>
 <p>某天看到这样一个<a href="https://tw]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/7/1690014631503.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/7/1690014631503.jpg" alt="配图源自 Freepik"></p>
 <h2>开始</h2>
 <p>某天看到这样一个<a href="https://twitter.com/WickyNilliams/status/798497274653503488">老帖子</a>调侃道：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/7/1690013919412.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/7/1690013919412.png" alt=""></p>
 <pre><code class="language-js">// let inputClass = manager.options.inputClass
 let { options: { inputClass } } = manager
 </code></pre>
@@ -7560,10 +7560,10 @@ const startAt = store?.activity?.today?.start_at
             <link>https://github.com/tofrankie/blog/issues/317</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/317</guid>
             <pubDate>Wed, 12 Jul 2023 06:37:01 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/7/1689503231616.jpeg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/7/1689503231616.jpeg" alt="配图源自 Freepik"></p>
 <p>工欲善其事必先利其器，用好快捷键一定程度上可提高编码效率。</p>
 <blo]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/7/1689503231616.jpeg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/7/1689503231616.jpeg" alt="配图源自 Freepik"></p>
 <p>工欲善其事必先利其器，用好快捷键一定程度上可提高编码效率。</p>
 <blockquote>
 <p>本文以 macOS 为例，部分快捷键组合方式与 Windows、Linux 平台可能略有<a href="https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference">差异</a>。</p>
@@ -7617,7 +7617,7 @@ const startAt = store?.activity?.today?.start_at
 </details>
 <h2>开始之前</h2>
 <p>在此之前，先弄清楚快捷键的增删改查，从左下角的「管理 - 键盘快捷方式」打开面板。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/7/1689501877849.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/7/1689501877849.png" alt=""></p>
 <p>将鼠标移至对应命令，然后右键可对增加、修改、删除、重置对应的键绑定。点击左侧 ICON 也可以增加或修改。查询则有以下方式任君选择：</p>
 <ul>
 <li><strong>按关键词</strong>：输入关键词可以搜索命令、键绑定、当的内容，比如 <code>查找</code>、<code>find</code>、<code>cmd f</code> 等（中文查找需安装中文语言包）。</li>
@@ -7693,7 +7693,7 @@ const startAt = store?.activity?.today?.start_at
 </tbody>
 </table>
 <blockquote>
-<p>对于在新窗口打开项目，也可以用 <code>code /path/to/project</code> 来替代「⌘ + ⇧ + N」和「⌘ + R」的组合操作。但还是有点麻烦，为此特地做了一个 Alfred 插件（<a href="https://github.com/toFrankie/alfred-open-with-vscode">alfred-open-with-vscode</a>），支持在指定目录范围内检索并打开项目，还能展示 VS Code 最近打开过的项目。</p>
+<p>对于在新窗口打开项目，也可以用 <code>code /path/to/project</code> 来替代「⌘ + ⇧ + N」和「⌘ + R」的组合操作。但还是有点麻烦，为此特地做了一个 Alfred 插件（<a href="https://github.com/tofrankie/alfred-open-with-vscode">alfred-open-with-vscode</a>），支持在指定目录范围内检索并打开项目，还能展示 VS Code 最近打开过的项目。</p>
 </blockquote>
 <blockquote>
 <p>对于重新加载窗口，可以先「⌘ + ⇧ + P」唤起命令面板，然后输入关键词「Reload Window」，再「Return」确认即可。类似插件更新、Lint 规则调整后没生效等场景，可通过重新加载解决。</p>
@@ -8435,9 +8435,9 @@ const startAt = store?.activity?.today?.start_at
 <td style="text-align:left"><a href="https://marketplace.visualstudio.com/items?itemName=wmaurer.change-case">change-case</a></td>
 </tr>
 <tr>
-<td style="text-align:left">Open/Config Github Blogger</td>
+<td style="text-align:left">Open/Configure Github Blogger</td>
 <td style="text-align:left">写博客</td>
-<td style="text-align:left"><a href="https://marketplace.visualstudio.com/items?itemName=Frankie.github-blogger">Github Blogger</a></td>
+<td style="text-align:left"><a href="https://marketplace.visualstudio.com/items?itemName=frankie.github-blogger">Github Blogger</a></td>
 </tr>
 <tr>
 <td style="text-align:left">Toggle Screencast Mode</td>
@@ -8468,10 +8468,10 @@ const startAt = store?.activity?.today?.start_at
 </table>
 <h4>配置命令</h4>
 <p>我们可以给这些命令添加、修改、移除或重置快捷键，方式如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/7/1689494575947.gif" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/7/1689494575947.gif" alt=""></p>
 <h4>查看插件命令</h4>
 <p>第三方插件所定义的插件，可在插件页面中查看。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/10/1700909866085.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/10/1700909866085.png" alt=""></p>
 <h2>高阶用法</h2>
 <p>我们从实际场景出发。</p>
 <h3>场景一</h3>
@@ -8870,13 +8870,13 @@ const CSSCOMB_PRESET_CUSTOM_FILE_PATH = path.resolve(__dirname, '../csscomb/pres
             <link>https://github.com/tofrankie/blog/issues/314</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/314</guid>
             <pubDate>Thu, 29 Jun 2023 01:22:07 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/6/1688005927517.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/6/1688005927517.jpg" alt="配图源自 Freepik"></p>
 <h2>背景</h2>
 <p>对于前端开发来说，图片压缩是很常见的场景。网上各类压缩]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/6/1688005927517.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/6/1688005927517.jpg" alt="配图源自 Freepik"></p>
 <h2>背景</h2>
 <p>对于前端开发来说，图片压缩是很常见的场景。网上各类压缩工具众多，如果对图片压缩没有很高、很精细的要求，那么 <a href="https://tinypng.com/">TinyPNG</a> 是一个不错的选择。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/6/1688005743813.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/6/1688005743813.png" alt=""></p>
 <p>最直接的使用方法就是：打开其<a href="https://tinypng.com/">官网</a>、上传本地图片、再下载到本地。</p>
 <p><strong>是的，我觉着有点麻烦</strong>。如果只是偶尔、一两张图片的话还好。</p>
 <p>本文推荐一个 CLI 工具：<a href="https://www.npmjs.com/package/tinypng-cli"><strong>tinypng-cli</strong></a>（npm package），可省去手动上传与下载的过程，且没有最大 5MB 限制。</p>
@@ -8886,11 +8886,11 @@ const CSSCOMB_PRESET_CUSTOM_FILE_PATH = path.resolve(__dirname, '../csscomb/pres
 </code></pre>
 <p>其 CLI 命令就是 <code>tinypng</code>。</p>
 <p>使用之前，需前往 <a href="https://tinypng.com/developers">TinyPNG Developer API</a> 申请一个 API key，在下方输入 Full name 和 Email 即可获取。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/6/1688003232369.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/6/1688003232369.png" alt=""></p>
 <blockquote>
 <p><strong>每月有 500 个「免费」的压缩次数</strong> 👍🏻（于我而言足矣）。若有需要，可以前往 <a href="https://tinify.com/dashboard/api">TinyPNG API Dashboard</a> 升级付费订阅。</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/6/1688003599768.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/6/1688003599768.png" alt=""></p>
 <p>获取到 API key 之后，我们将其写入到用户目录下的 <code>.tinypng</code> 文件中。</p>
 <pre><code class="language-shell">$ echo &lt;your-api-key&gt; &gt; ~/.tinypng
 </code></pre>
@@ -9894,9 +9894,9 @@ div {
             <link>https://github.com/tofrankie/blog/issues/312</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/312</guid>
             <pubDate>Tue, 25 Apr 2023 10:14:52 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/12/1733301507617.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/12/1733301507617.jpg" alt="配图源自 Freepik"></p>
 <p>实锤了，Safari 就是新时代的 IE 浏览器。原因是有些东西在 Safa]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/12/1733301507617.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/12/1733301507617.jpg" alt="配图源自 Freepik"></p>
 <p>实锤了，Safari 就是新时代的 IE 浏览器。原因是有些东西在 Safari 渲染表现与预期（标准）不一致，而且 Safari for Mac 跟 Safari for iOS 的表现还不一定是相同的。</p>
 <h2>背景</h2>
 <p>今天遇到了这样一个问题。举个例子，假设外层一个 max-width: 430px 的 section 元素，里面是一个 svg 元素，里面包含动画还有嵌套了一些元素。预期表现是：点击红色区域，绿色背景透明度匀速从 0 切换至 1。</p>
@@ -9917,14 +9917,14 @@ div {
   margin: 20px;
 }
 </code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/4/1682438823134.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/4/1682438823134.png" alt=""></p>
 <p>根据所设置的 <code>viewBox=&quot;0 0 350 350&quot;</code>、<code>preserveAspectRatio=&quot;xMidYMin meet&quot;</code> 以及 <code>width: 100%</code>，按道理的话，红色的 <code>&lt;svg&gt;</code> 及其内嵌套 <code>&lt;foreignObject&gt;</code> 和 <code>&lt;svg&gt;</code>，应该都是同等大小的正方形，而且取决于父元素 <code>&lt;section&gt;</code> 的宽度。</p>
 <p>是的，这个在 Chrome 表现没问题，<strong>但在 Safari for Mac 上就出现问题了，离奇的是 Safari for iOS 也是正常的</strong>。</p>
 <h2>案例一</h2>
 <p>如下图，此时 <code>&lt;body&gt;</code> 的宽度是大于 430px，因此 <code>&lt;section&gt;</code> 的宽度为 430px，自然 <code>&lt;svg&gt;</code> 的宽度就是 <code>430px</code>。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/4/1682439643757.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/4/1682439643757.png" alt=""></p>
 <p>但是，当我们点击蓝色框之外，红色区域（截图由于选中元素，该区域表现为橘色）以内的位置，你知道 Safari 定位到的元素是什么吗？</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/4/1682440118162.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/4/1682440118162.png" alt=""></p>
 <p>嗯......它定位到 <code>&lt;section&gt;</code> 元素了。意思就是说，内部的 <rect> 元素区域并未覆盖到点击区，但我宽高明明设置的都是 <code>100%</code>，就很离谱。</p>
 <p>但是，我在右侧 Elements 选项卡选中 <code>&lt;rect&gt;</code> 元素时，它表现的区域明明就是占满的啊，也就是 <code>430 * 430</code>。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/4/1682440419479.png" alt=""></p>
@@ -9963,7 +9963,7 @@ div {
 &lt;/svg&gt;
 </code></pre>
 <p>Safari 表现出「忽大忽小」的问题。如下图，灰色背景大小为 430 * 430，而红色背景处则是 350 * 350。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/4/1682480492277.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/4/1682480492277.png" alt=""></p>
 <p>由于录制 GIF 太麻烦了，你可以使用 Safari 打开链接体验一下：<a href="https://codepen.io/tofrankie/full/abRWpaE">https://codepen.io/tofrankie/full/abRWpaE</a>。</p>
 <h3>解决方法</h3>
 <p>由于 <code>&lt;foreignObject&gt;</code> 的坑，那就不要嵌套多层，所以可以这样处理，结构上也更清晰。</p>
@@ -9999,7 +9999,7 @@ div {
 </ul>
 <p>该问题早在 2009 年就提出了，至今仍然没有任何进展，隔壁 Chromium 的 Blink 已在 2020 年 9 月修复。其中一个可复现的示例：<a href="https://codesandbox.io/s/chrome-foreignobject-defect-wf91j">https://codesandbox.io/s/chrome-foreignobject-defect-wf91j</a>。在 Safari 打开使用 <code>⌘</code> + <code>+</code> 或 <code>⌘</code> + <code>-</code> 去缩放页面就能看到。</p>
 <p>我用 Chrome 62 亲测了一下，确实也有问题，而且区域更小了。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/4/1682491902277.png" alt="Chrome 62"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/4/1682491902277.png" alt="Chrome 62"></p>
 <p>简言之，根本原因就是 <strong>Safari/WebKit 无法正确渲染 <code>&lt;foreignObject&gt;</code> 中的 HTML 元素</strong>。</p>
 <p>实锤了，Safari 就是新时代的 IE 浏览器。</p>
 <h2>References</h2>
@@ -11219,7 +11219,7 @@ $ tsc --project /path/to/your_tsconfig.json
 <li>启用「ClashX → 允许局域网连接」选项。</li>
 <li>打开 Windows，找到「设置 → 网络和 Internet → 手动设置代理」，添加以下设置并保存。</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/3/1679731650752.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/3/1679731650752.png" alt=""></p>
 <p>代理 IP 地址修改为你的 IP 地址，<code>7890</code> 是 ClashX 的默认端口号。若有调整，自行更改。</p>
 <p>查看 Mac 的 IP 地址：</p>
 <pre><code class="language-shell">$ ifconfig | grep &quot;inet &quot; | grep -Fv 127.0.0.1 | awk '{print $2}'
@@ -55158,8 +55158,9 @@ export NVM_DIR=&quot;$HOME/.nvm&quot;
             <link>https://github.com/tofrankie/blog/issues/46</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/46</guid>
             <pubDate>Sat, 25 Feb 2023 11:14:25 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-17fc06c03b4ff836.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配图源自 Freepik">]]></description>
-            <content:encoded><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-17fc06c03b4ff836.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/9/1758681612781.jpg" alt="配图源自 Freepik"></p>
+<p>作为一个 JSer，可用于前端开发的工具实在是太多了，像 <a href="h]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/9/1758681612781.jpg" alt="配图源自 Freepik"></p>
 <p>作为一个 JSer，可用于前端开发的工具实在是太多了，像 <a href="https://atom.io/">Atom</a>、<a href="https://www.jetbrains.com/webstorm/">WebStorm</a>、<a href="https://www.dcloud.io/hbuilderx.html">HBuilder</a>、<a href="http://www.sublimetext.com/3">Sublime Text 3</a> 等等等......可独爱 <a href="https://code.visualstudio.com/">VS Code</a>。讲真的，除了刚开始接触前端时用过 Sublime Text 来写代码，后面发现 VS Code 之后，就没换过编辑器了...</p>
 <p>Anyway，哪个舒服用哪个，一搬砖工具而已，哈哈。</p>
 <blockquote>
@@ -55234,9 +55235,9 @@ export NVM_DIR=&quot;$HOME/.nvm&quot;
 </code></pre>
 <h2>其他</h2>
 <ul>
-<li><a href="https://github.com/toFrankie/blog/issues/44">推荐两款不错的 VS Code 的主题</a></li>
-<li><a href="https://github.com/toFrankie/blog/issues/327">使用 VS Code + Github 搭建个人博客</a></li>
-<li><a href="https://github.com/toFrankie/blog/issues/43">常用 VS Code 扩展推荐</a></li>
+<li><a href="https://github.com/tofrankie/blog/issues/44">推荐两款不错的 VS Code 的主题</a></li>
+<li><a href="https://github.com/tofrankie/blog/issues/327">使用 VS Code + Github 搭建个人博客</a></li>
+<li><a href="https://github.com/tofrankie/blog/issues/43">常用 VS Code 扩展推荐</a></li>
 </ul>
 <h2>References</h2>
 <ul>
@@ -55294,10 +55295,10 @@ export NVM_DIR=&quot;$HOME/.nvm&quot;
             <link>https://github.com/tofrankie/blog/issues/43</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/43</guid>
             <pubDate>Sat, 25 Feb 2023 11:12:31 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1711887781606.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1711887781606.jpg" alt="配图源自 Freepik"></p>
 <h2>写在前面</h2>
 <p>在此记录日常中 VS Code 用得较多的插件，会]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1711887781606.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1711887781606.jpg" alt="配图源自 Freepik"></p>
 <h2>写在前面</h2>
 <p>在此记录日常中 VS Code 用得较多的插件，会偏向 Web 前端多一些。</p>
 <h2>主题类</h2>
@@ -55305,7 +55306,7 @@ export NVM_DIR=&quot;$HOME/.nvm&quot;
 <blockquote>
 <p><a href="https://github.com/antfu/vscode-theme-vitesse">https://github.com/antfu/vscode-theme-vitesse</a></p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/3/1711863918221.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/3/1711863918221.png" alt=""></p>
 <p>目前在使用的插件：</p>
 <ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=antfu.theme-vitesse">Vitesse Theme</a></li>
@@ -55380,7 +55381,7 @@ export NVM_DIR=&quot;$HOME/.nvm&quot;
 <p>像 Prettier 如果本地找不到任意本地配置文件（比如 <code>.prettierrc</code>），则使用插件本身的默认配置，可手动配置。</p>
 </blockquote>
 <blockquote>
-<p>其中 CSScomb 是一个相对小众的插件吧，目前已不再维护，我主要用来对 CSS 属性进行排序（保存时）。感兴趣可看这篇<a href="https://github.com/toFrankie/blog/issues/315">文章</a>。</p>
+<p>其中 CSScomb 是一个相对小众的插件吧，目前已不再维护，我主要用来对 CSS 属性进行排序（保存时）。感兴趣可看这篇<a href="https://github.com/tofrankie/blog/issues/315">文章</a>。</p>
 </blockquote>
 <p>我的配置 👇</p>
 <pre><code class="language-json">{
@@ -55455,7 +55456,7 @@ export NVM_DIR=&quot;$HOME/.nvm&quot;
 <h2>其他</h2>
 <ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> - 可以实时 Reload 的本地开发服务器。</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=Frankie.github-blogger">Github Blogger</a> - 非常便捷的 Github Issue 博客编辑工具。</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=frankie.github-blogger">Github Blogger</a> - 非常便捷的 Github Issue 博客编辑工具。</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a> - 用于运行代码片段。</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced">Markdown Preview Enhanced</a> - Markdown 语录增强扩展。</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=aminer.codegeex">CodeGeeX: AI Code AutoComplete, Chat, Auto Comment</a> - “免费版 Github Copilot”？如果没有付费使用 Github Copilot，它或许是个不错的选择。</li>
