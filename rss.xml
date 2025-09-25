@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 24 Sep 2025 02:56:47 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 25 Sep 2025 03:41:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -2319,7 +2319,7 @@ OR
 <h2>自定义组件选项配置</h2>
 <p>诸如 styleIsolation、virtualHost 等自定义组件<a href="https://uniapp.dcloud.net.cn/tutorial/vue3-api.html#%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE">配置</a>，声明方式如下：</p>
 <p>▼ Composition API</p>
-<p>若是 Vue3.3+，可使用 <a href="https://vuejs.org/api/sfc-script-setup.html#defineoptions">defineOptions()</a>。</p>
+<p>若是 Vue 3.3+，可使用 <a href="https://vuejs.org/api/sfc-script-setup.html#defineoptions">defineOptions()</a>。</p>
 <pre><code class="language-html">&lt;script setup&gt;
   defineOptions({
     options: {
@@ -2331,7 +2331,7 @@ OR
   // your code...
 &lt;/script&gt;
 </code></pre>
-<p>若是 Vue3.3 以下，需要独立的 <code>&lt;script&gt;</code> 块。</p>
+<p>若是 Vue 3.3 以下，需要独立的 <code>&lt;script&gt;</code> 块。</p>
 <pre><code class="language-html">&lt;script setup&gt;
   // your code...
 &lt;/script&gt;
@@ -2374,7 +2374,7 @@ OR
 <p>我们要知道，应用平台对 App 提供热更新服务其实是持排斥态度的，送审期间最好不要弹出热更新弹窗。</p>
 <p>前端部分：</p>
 <ol>
-<li>通过 <code>plus.runtime.getProperty()</code> 获取当前 wgt 包的版本名称和版本号</li>
+<li>通过 <code>plus.runtime.getProperty()</code> 获取当前 wgt 包的版本名称 versionName 和版本号 versionCode</li>
 <li>请求服务端检查是有更新的 wgt 包</li>
 <li>通过 <code>uni.downloadFile()</code> 下载 wgt 包</li>
 <li>通过 <code>plus.runtime.install()</code> 安装 wgt 包</li>
@@ -2411,7 +2411,7 @@ OR
 <li>拿到子组件实例，然后再父组件内使用 <code>uni.createSelectorQuery.in(subComponentInstance).select('.descendant')</code> 获取元素。</li>
 <li>使用 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/wxml/SelectorQuery.select.html#selector-%E8%AF%AD%E6%B3%95">&gt;&gt;&gt;</a>（跨自定义组件的后代选择器），在父元素内使用 <code>uni.createSelectorQuery().select('.ancestor &gt;&gt;&gt; .descendant')</code> 获取其子（子子...）组件内的元素。</li>
 </ol>
-<p>而 App 端，编译后的 HTML 结构跟小程序不一样，小程序带有一个 ShadowRoot 节点隔离，而 App 端不会。因此使用 <code>uni.createSelectorQuery().select('.ancestor .descendant')</code> 直接查询到后代的元素。而且 <a href="https://uniapp.dcloud.net.cn/api/ui/nodes-info.html#selectorquery-select">App 端不支持 &gt;&gt;&gt; 语法</a>，它是小程序特有的。</p>
+<p>在 App 端，编译后的 HTML 结构跟小程序不一样，小程序带有一个 ShadowRoot 节点隔离，而 App 端则没有，因此 App 端使用 <code>uni.createSelectorQuery().select('.ancestor .descendant')</code> 可以直接查询到后代的元素。注意 App 端不支持 <a href="https://uniapp.dcloud.net.cn/api/ui/nodes-info.html#selectorquery-select">&gt;&gt;&gt;</a> 语法，它是小程序特有的。</p>
 <h3>布尔 dataset</h3>
 <p>在 HTML 中有一种<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute">布尔类型的属性</a>。</p>
 <pre><code class="language-html">&lt;!-- attr is true --&gt;
