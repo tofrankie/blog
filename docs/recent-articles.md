@@ -1,5 +1,6 @@
 # 近期更新
 
+- [uni-app 开发记录](https://github.com/tofrankie/blog/issues/353)
 - [在 Parallels Desktop 中使用宿主机代理](https://github.com/tofrankie/blog/issues/306)
 - [图片操作记录](https://github.com/tofrankie/blog/issues/322)
 - [简单易用的图片压缩小工具](https://github.com/tofrankie/blog/issues/314)
@@ -9,4 +10,3 @@
 - [微信公众号图片上传压缩规则](https://github.com/tofrankie/blog/issues/321)
 - [CSS 透明网格背景](https://github.com/tofrankie/blog/issues/333)
 - [开发一个简单的 Chrome Extension](https://github.com/tofrankie/blog/issues/340)
-- [如何开发一个 Raycast 扩展？](https://github.com/tofrankie/blog/issues/364)
