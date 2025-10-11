@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 25 Sep 2025 03:41:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 11 Oct 2025 08:47:26 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -35319,29 +35319,30 @@ thousandsReplace(10000) // &quot;10,000&quot;
             <link>https://github.com/tofrankie/blog/issues/177</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/177</guid>
             <pubDate>Sun, 26 Feb 2023 07:54:53 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-e62e9178132ac886.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配图源自 Freepik">]]></description>
-            <content:encoded><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-e62e9178132ac886.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配图源自 Freepik"></p>
-<p>记得当年第一次接触 CSS，老师一上来就说用这个抹平浏览器的样式差异。</p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/10/1760172269242.jpg" alt="配图源自 Freepik"></p>
+<p>记得当时第一次接触 CSS，老师一上来就说用这个抹平浏览器的样式差异。</p]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/10/1760172269242.jpg" alt="配图源自 Freepik"></p>
+<p>记得当时第一次接触 CSS，老师一上来就说用这个抹平浏览器的样式差异。</p>
 <pre><code class="language-css">* {
   margin: 0;
   padding: 0;
 }
 </code></pre>
-<p>以上是最典型的例子。当然，实际项目里可能并不会如此简单的重置。</p>
-<p>但你有没细想过，<strong>这是必要的吗？这是合理的吗？</strong></p>
-<p>不妨看下以下几篇文章。</p>
+<p><strong>但，这合理吗？</strong></p>
+<p>相关文章：</p>
 <ul>
 <li><a href="https://www.cnblogs.com/coco1s/p/6249038.html">reset.css 知多少？</a></li>
 <li><a href="https://www.zhangxinxu.com/wordpress/2010/04/css-reset%E7%9A%84%E9%87%8D%E6%96%B0%E5%AE%A1%E8%A7%86-%E9%81%BF%E5%85%8D%E6%A0%B7%E5%BC%8F%E9%87%8D%E7%BD%AE/">CSS reset 的重新审视 – 避免样式重置</a></li>
 <li><a href="http://meyerweb.com/eric/thoughts/2007/04/18/reset-reasoning/">Reset Reasoning</a></li>
 <li><a href="https://nicolasgallagher.com/about-normalize-css/">About normalize.css</a></li>
 </ul>
-<p>在实际项目中，用得较多的有：</p>
+<p>可选项：</p>
 <ul>
 <li><a href="https://github.com/necolas/normalize.css/">normalize.css</a></li>
 <li><a href="https://github.com/sindresorhus/modern-normalize">modern-normalize</a></li>
 <li><a href="https://github.com/csstools/postcss-normalize">postcss-normalize</a></li>
 <li><a href="https://meyerweb.com/eric/tools/css/reset/">CSS Tools: Reset CSS</a>（文中示例并非最新版本）</li>
+<li><a href="https://github.com/jensimmons/cssremedy">CSS Remedy</a></li>
 </ul>
 ]]></content:encoded>
         </item>
