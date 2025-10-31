@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 16 Oct 2025 09:01:17 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 31 Oct 2025 09:07:45 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -868,7 +868,7 @@ point2 = { x: 1, y: 2 } // ✅
 <p>是的，我已经将 <a href="https://ww]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/7/1752379227556.jpg" alt="配图源自 Freepik"></p>
 <h2>前言</h2>
-<p>是的，我已经将 <a href="https://www.alfredapp.com/">Alfred</a> 换为 <a href="https://www.raycast.com/">Raycast</a> 了，后者的免费功能足够好用。</p>
+<p>是的，我已经将 <a href="https://www.alfredapp.com/">Alfred</a> 换为 <a href="https://raycast.com/?via=73820f">Raycast</a> 了，后者的免费功能足够好用。</p>
 <p>但也没有完全丢掉 Alfred，还在用它的剪贴板历史功能。</p>
 <p>此前看到一个帖子说：Alfred 用户一定要试试 Raycast。当时我不以为意。</p>
 <p>用了七、八年的 Alfred 几乎没怎么“变过”，有种不思进取的感觉。特别是近几年 AI 的发展，它好像还没反应过来一样。</p>
