@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Fri, 31 Oct 2025 09:07:45 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 01 Nov 2025 16:04:42 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -1261,7 +1261,7 @@ export default function Example() {
 </ul>
 <h3>环境信息</h3>
 <p>可以在 <a href="https://developers.raycast.com/api-reference/environment">environment</a> 获取：</p>
-<pre><code class="language-js">import { useNavigation, showToast, Toast, showHUD, environment } from &quot;@raycast/api&quot;;
+<pre><code class="language-js">import { environment } from &quot;@raycast/api&quot;;
 
 environment.raycastVersion // 1.102.5
 environment.ownerOrAuthorName // tofrankie
@@ -1270,6 +1270,21 @@ environment.commandName // open-project
 environment.commandMode // view
 environment.assetsPath // /Users/frankie/.config/raycast/extensions/wechat-devtool/assets
 environment.supportPath // /Users/frankie/Library/Application Support/com.raycast.macos/extensions/wechat-devtool
+environment.isDevelopment // true
+environment.appearance // light
+environment.textSize // medium
+environment.launchType // userInitiated
+</code></pre>
+<p>▼ Raycast for Windows 如下</p>
+<pre><code class="language-js">import { environment } from &quot;@raycast/api&quot;;
+
+environment.raycastVersion // 0.34.0.0
+environment.ownerOrAuthorName // tofrankie
+environment.extensionName // wechat-devtool
+environment.commandName // open-project
+environment.commandMode // view
+environment.assetsPath // C:\Users\frankie\.config\raycast-x\extensions\wechat-devtool\assets
+environment.supportPath // C:\Users\frankie\AppData\Local\Raycast\extensions\wechat-devtool
 environment.isDevelopment // true
 environment.appearance // light
 environment.textSize // medium
