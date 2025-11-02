@@ -1,5 +1,6 @@
 # 近期更新
 
+- [记十月：珠海 - 澳门三日](https://github.com/tofrankie/blog/issues/372)
 - [如何开发一个 Raycast 扩展？](https://github.com/tofrankie/blog/issues/364)
 - [Taro 自定义 TabBar for H5 示例](https://github.com/tofrankie/blog/issues/331)
 - [关于 CSS Reset 的思考](https://github.com/tofrankie/blog/issues/177)
@@ -9,4 +10,3 @@
 - [简单易用的图片压缩小工具](https://github.com/tofrankie/blog/issues/314)
 - [Safari/WebKit 无法正确渲染 <foreignObject> 中的 HTML 元素](https://github.com/tofrankie/blog/issues/312)
 - [解构赋值被滥用？](https://github.com/tofrankie/blog/issues/318)
-- [解决 Mac App Store 不显示可用更新的问题](https://github.com/tofrankie/blog/issues/320)
