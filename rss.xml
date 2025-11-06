@@ -4,11 +4,145 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Tue, 04 Nov 2025 06:04:47 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 06 Nov 2025 08:07:09 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[在 Parallels Desktop 中通过 ISO 镜像文件升级 Windows]]></title>
+            <link>https://github.com/tofrankie/blog/issues/374</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/374</guid>
+            <pubDate>Thu, 06 Nov 2025 04:17:33 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1762416410668.jpg" alt="配图源自 Freepik"></p>
+<h2>背景</h2>
+<p>此前在设置中进行 Windows 系统更新，总是失败]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1762416410668.jpg" alt="配图源自 Freepik"></p>
+<h2>背景</h2>
+<p>此前在设置中进行 Windows 系统更新，总是失败，提示安装错误 - 0xc1900101。💢</p>
+<h2>方法</h2>
+<p>现通过本地镜像文件方式进行升级：</p>
+<ol>
+<li>前往 <a href="https://www.microsoft.com/en-us/software-download/">https://www.microsoft.com/en-us/software-download/</a> 下载 Windows 镜像（按需下载）</li>
+<li>在 Parallels Desktop 控制中心，打开镜像配置窗口</li>
+<li>切换至硬件选项卡，在「CD/DVD - 源」处选择你的 ISO 镜像文件</li>
+<li>启动 Windows 虚拟机，会自动挂载一个虚拟光驱（例如 D:）</li>
+<li>在文件管理器打开该光驱，点击 setup.exe 进行升级</li>
+</ol>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[解决 Windows 启动错误代码 0x0000605]]></title>
+            <link>https://github.com/tofrankie/blog/issues/373</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/373</guid>
+            <pubDate>Thu, 06 Nov 2025 02:38:19 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1762399828290.jpg" alt="配图源自 Freepik"></p>
+<h2>前情提要</h2>
+<ul>
+<li>系统：macOS (Apple Si]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1762399828290.jpg" alt="配图源自 Freepik"></p>
+<h2>前情提要</h2>
+<ul>
+<li>系统：macOS (Apple Silicon)</li>
+<li>虚拟机：Parallels Desktop (Windows 11 ARM)</li>
+</ul>
+<p>Windows 的版本还是 2023 年安装的 22H2 Beta 版本（2324.1000 ni_prerelease），很久没有在电脑上启动过虚拟机了。</p>
+<p>近期打开发现启动不了，报错如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1762395137407.png" alt=""></p>
+<p>搜了一下，错误代码 0x0000605 表示系统的安全验证失败（Secure Boot 验证无法通过），最常见原因是系统时间错误或 Secure Boot 数据损坏。在 Windows ARM 或 EFI 环境中，如果系统时间落在证书签发时间之外（例如时间太早），启动加载的签名校验会失败，于是报 0x0000605。</p>
+<h2>失败的尝试</h2>
+<p>根据 ChatGPT，可以在这样处理：</p>
+<ol>
+<li>按下 Win 键，进入 UEFI 主界面</li>
+<li>进入 Boot Maintenance Manager</li>
+<li>选择 Advanced Boot Options 或 Change System Date and Time（不同版本略有不同）</li>
+<li>设定为当前正确的日期和时间</li>
+<li>返回主界面，选择 Continue 启动 Windows</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1762395876764.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1762395956383.png" alt=""></p>
+<p><strong>遗憾的是，我这里并没有时间选项，所以此方案失败告终！</strong></p>
+<p>它还提到在 Boot Maintenance Manager 界面，选择 Boot From File，找到 \EFI\BOOT\BOOTAA64.EFI 文件（标准的 EFI Shell 文件），按 Enter 启动它。</p>
+<p>先后输入以下命令，看看是不是很早的日期，如果是说明时间错误。</p>
+<pre><code class="language-shell">$ date
+$ time
+</code></pre>
+<p>接着，移除执行以下命令设置当前时间，设置后再次使用 date、time 命令确认是否设置成功。</p>
+<pre><code class="language-shell">$ date 11/06/2025
+$ time 09:00:00
+</code></pre>
+<p>格式：</p>
+<ul>
+<li>日期：MM/DD/YYYY</li>
+<li>时间：HH:MM:SS（24 小时制）</li>
+</ul>
+<p>退出：</p>
+<pre><code class="language-shell">$ exit
+</code></pre>
+<p>返回主界面，选择 Continue 启动 Windows</p>
+<p><strong>但我选择 \EFI\BOOT\BOOTAA64.EFI 回车，并没有进入命令行界面，而是回到文章开头的蓝屏状态，所以这个方案对我也不适用。</strong></p>
+<h2>成功解决</h2>
+<p>继续请教 ChatGPT，它提到「关闭 Secure Boot 绕过签名检查」。</p>
+<ol>
+<li>按下 Win 键，进入 UEFI 主界面</li>
+<li>进入 Device Manager</li>
+<li>选择 Secure Boot Configuration</li>
+<li>将 Attempt Secure Boot 或 Enable Secure Boot 改为 Disabled（界面上 [X] 表示 Enable，[] 表示 Disabled）</li>
+<li>保存退出，回到主界面，选择 Continue 启动 Windows</li>
+</ol>
+<p>接着，我出现了新的报错：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1762397186053.png" alt=""></p>
+<p>说明 Secure Boot 的确已经被你成功关闭了。</p>
+<p>但新的蓝屏（BitLocker 恢复界面）说明——Windows 系统磁盘启用了 BitLocker 加密，而 Secure Boot 的关闭让 TPM（可信平台模块）状态变化，Windows 因此认为“系统被篡改”，所以要求恢复密钥。</p>
+<ol>
+<li>前往 <a href="https://account.microsoft.com/devices/recoverykey">https://account.microsoft.com/devices/recoverykey</a></li>
+<li>登录与虚拟机中 Windows 相同的 Microsoft 帐号。</li>
+<li>找到这台设备对应的恢复密钥。</li>
+<li>在蓝屏界面输入该密钥后，即可继续启动。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1762397344286.png" alt=""></p>
+<p>在前面的蓝屏界面，按回车（还是 Win 键来着）进入 Windows 恢复环境界面：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1762397693801.png" alt=""></p>
+<p>选择「Troubleshoot - Advanced Options - Command Prompt」进入 cmd.exe 命令行窗口。</p>
+<ol>
+<li>查看加密卷：</li>
+</ol>
+<pre><code class="language-shell">$ manage-bde -status
+</code></pre>
+<p>这会列出系统上所有磁盘的加密状态（C:、D:、E: 等）。</p>
+<ol start="2">
+<li>解锁目标盘</li>
+</ol>
+<pre><code class="language-shell">$ manage-bde -unlock C: -RecoveryPassword &lt;your-key&gt;
+</code></pre>
+<p>我要解锁的是 C 盘，key 是前面提到的恢复密钥（一串 48 位数字）</p>
+<ol start="3">
+<li>关闭 BitLocker</li>
+</ol>
+<pre><code class="language-shell">$ manage-bde -off C:
+</code></pre>
+<ol start="4">
+<li>确认界面是否完成</li>
+</ol>
+<pre><code class="language-shell">$ manage-bde -status
+</code></pre>
+<p>如果输出结果包含以下两行，表示解密已完成。</p>
+<pre><code class="language-shell">Percentage Encrypted: 0.0%
+Conversion Status: Fully Decrypted
+</code></pre>
+<p>如果显示如下内容，说明仍在后台解密中，不要强制中断或关机，耐心等待完成。</p>
+<pre><code class="language-shell">Conversion Status: Decrypting
+Percentage Encrypted: XX%
+</code></pre>
+<ol start="5">
+<li>退出命令行</li>
+</ol>
+<pre><code class="language-shell">$ exit
+</code></pre>
+<p>回到主界面，选择 Continue，启动系统。</p>
+<p>至此，我的 Windows 恢复了。</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[记十月：珠海 - 澳门三日]]></title>
             <link>https://github.com/tofrankie/blog/issues/372</link>
