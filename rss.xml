@@ -4,11 +4,97 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 06 Nov 2025 08:07:09 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 14 Nov 2025 06:02:39 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[在 Parallels Desktop 中使用 Node.js 遇到的问题]]></title>
+            <link>https://github.com/tofrankie/blog/issues/375</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/375</guid>
+            <pubDate>Fri, 14 Nov 2025 02:13:57 GMT</pubDate>
+            <description><![CDATA[<p>作个记录。</p>
+<h2>访问 macOS 文件</h2>
+<p>参考 <a href="https://docs.parallels.com/pdfm-ug-26/pdfm-26-ug-zh_cn/parallels-desktop-for-mac-26-yong-hu-zhi-nan/zai-mac-sha]]></description>
+            <content:encoded><![CDATA[<p>作个记录。</p>
+<h2>访问 macOS 文件</h2>
+<p>参考 <a href="https://docs.parallels.com/pdfm-ug-26/pdfm-26-ug-zh_cn/parallels-desktop-for-mac-26-yong-hu-zhi-nan/zai-mac-shang-shi-yong-windows/she-ding-windows-ru-he-yu-macos-xie-tong-gong-zuo/zai-macos-yu-windows-zhi-jian-gong-xiang-xiang-mu/gong-xiang-wen-jian-he-wen-jian-jia">从 Windows 应用程序访问 macOS 文件夹或文件</a></p>
+<h2>corepack enable 没有操作权限</h2>
+<p>在安装 Node.js 后，在 PowerShell 执行 <code>corepack enable</code> 报错：</p>
+<pre><code class="language-shell">$ corepack enable
+Internal Error: EPERM: operation not permitted, open 'C:\Program Files\nodejs\pnpx'
+Error: EPERM: operation not permitted, open 'C:\Program Files\nodejs\pnpx'
+</code></pre>
+<p><code>corepack enable</code> 会尝试在 <code>C:\Program Files\nodejs\</code> 目录下创建 pnpm、yarn、yarnpkg 可执行文件。但该目录属于系统目录，普通 PowerShell 没有写入权限，所以报错了。</p>
+<p>以管理员身份启动 PowerShell 运行执行便可解决。</p>
+<h2>问题二</h2>
+<pre><code class="language-shell">$ npm install
+npm : 无法加载文件 C:\Program Files\nodejs\npm.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.microsof
+t.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
+所在位置 行:1 字符: 1
++ npm install
++ ~~~
+    + CategoryInfo          : SecurityError: (:) []，PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+</code></pre>
+<p>前往 Node.js 安装目录 C:\Program Files\nodejs，右键「属性 - 安全 - 高级 - 权限」，选择 Users 并更改权限设为「完全控制」，并确认退出。</p>
+<h2>问题三</h2>
+<pre><code class="language-shell">$ npm install
+npm warn cleanup Failed to remove some directories [
+npm warn cleanup   [
+npm warn cleanup     '\\\\?\\UNC\\psf\\Home\\Web\\Git\\raycast-wechat-devtool\\node_modules\\@typescript-eslint',
+npm warn cleanup     [Error: EPERM: operation not permitted, rmdir '\\psf\Home\Web\Git\raycast-wechat-devtool\node_modules\@typescript-eslint\eslint-plugin\dist'] {
+npm warn cleanup       errno: -4048,
+npm warn cleanup       code: 'EPERM',
+npm warn cleanup       syscall: 'rmdir',
+npm warn cleanup       path: '\\\\psf\\Home\\Web\\Git\\raycast-wechat-devtool\\node_modules\\@typescript-eslint\\eslint-plugin\\dist'
+npm warn cleanup     }
+npm warn cleanup   ]
+npm warn cleanup ]
+npm error code 1
+npm error path \\psf\Home\Web\Git\raycast-wechat-devtool\node_modules\esbuild
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c node install.js
+npm error '\\psf\Home\Web\Git\raycast-wechat-devtool\node_modules\esbuild'
+npm error ����Ϊ��ǰĿ¼������·�������� CMD.EXE��
+npm error UNC ·������֧�֡�Ĭ��ֵ��Ϊ Windows Ŀ¼��
+npm error node:internal/modules/cjs/loader:1424
+npm error   throw err;
+npm error   ^
+npm error
+npm error Error: Cannot find module 'C:\Windows\install.js'
+npm error     at Module._resolveFilename (node:internal/modules/cjs/loader:1421:15)
+npm error     at defaultResolveImpl (node:internal/modules/cjs/loader:1059:19)
+npm error     at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1064:22)
+npm error     at Module._load (node:internal/modules/cjs/loader:1227:37)
+npm error     at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+npm error     at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+npm error     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+npm error     at node:internal/main/run_main_module:33:47 {
+npm error   code: 'MODULE_NOT_FOUND',
+npm error   requireStack: []
+npm error }
+npm error
+npm error Node.js v24.11.1
+npm error A complete log of this run can be found in: C:\Users\frankie\AppData\Local\npm-cache\_logs\2025-11-14T01_57_43_855Z-debug-0.log
+</code></pre>
+<ol>
+<li>由于 macOS 的目录是只读的，需要手动对具体目录移除「只读」属性。</li>
+<li>项目位于 Parallels Desktop 的共享目录（UNC 路径），Parallels 的 psf 文件系统不完全兼容 Windows 的权限系统。使用 PS Z:\Web\Git\raycast-wechat-devtool&gt; 替代 \psf\Home\Web\Git\raycast-wechat-devtool。</li>
+</ol>
+<h2>问题四</h2>
+<p>在 VS Code 中使用源代码管理无法查看 Changes 内容，提示：The editor could not be opened due to an unexpected error. Please consult the log for more details.</p>
+<pre><code class="language-shell">Error: Unable to read file '\\Mac\Home\Web\Git\raycast-wechat-devtool\src\utils\command.ts' (Unknown (FileSystemError): UNC host 'mac' access is not allowed. Please update the 'security.allowedUNCHosts' setting if you want to allow this host.)
+</code></pre>
+<p>参考 <a href="https://code.visualstudio.com/docs/setup/windows#_working-with-unc-paths">Working with UNC paths</a>，在 VS Code 配置：</p>
+<pre><code class="language-json">{
+  &quot;security.allowedUNCHosts&quot;: [&quot;mac&quot;]
+}
+
+</code></pre>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[在 Parallels Desktop 中通过 ISO 镜像文件升级 Windows]]></title>
             <link>https://github.com/tofrankie/blog/issues/374</link>
