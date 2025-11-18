@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Mon, 17 Nov 2025 09:50:40 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 18 Nov 2025 04:55:28 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -1236,6 +1236,9 @@ point2 = { x: 1, y: 2 } // ✅
 <li>Workflow - 工作流，比如翻译、打开项目等，写过一两个插件，开发体验不好，能做的有限。</li>
 </ul>
 <p>这些在 Raycast 都有替代方案，甚至更好。除此之外，Raycast 的界面更现代一些，跟最新的 macOS 风格更加契合。并且可以完全通过键盘完成一系列操作。</p>
+<blockquote>
+<p>Raycast 官方一篇博文：<a href="https://www.raycast.com/raycast-vs-alfred">Raycast vs Alfred</a></p>
+</blockquote>
 <p>最重要的是，Raycast Extension 的开发体验比 Alfred 好太多了。官方有提供很多了 API，统一的 UI 风格，有统一的分发 <a href="https://www.raycast.com/store">Store</a>，不用网上到处搜索。<a href="https://github.com/raycast/extensions/pulse">活跃度</a>很高，目前扩展数量 <a href="https://github.com/raycast/extensions/blob/cffac925444c27172ccf9538a15bad35a97a0adf/.github/CODEOWNERS">2200+</a>。</p>
 <p>比较麻烦的是，在 Raycast 发布扩展，需要经过官方审核，通过后才会上传到 Store，审核周期较慢！</p>
 <h2>开始之前</h2>
