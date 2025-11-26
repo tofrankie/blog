@@ -4,21 +4,209 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Tue, 25 Nov 2025 07:18:04 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 26 Nov 2025 04:12:49 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
         <item>
+            <title><![CDATA[浅谈 CSS 3D Transform 与 Perspective]]></title>
+            <link>https://github.com/tofrankie/blog/issues/379</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/379</guid>
+            <pubDate>Wed, 26 Nov 2025 04:11:33 GMT</pubDate>
+            <description><![CDATA[<h2>前言</h2>
+<p>前不久，在一个项目（<a href="https://mp.weixin.qq.com/s/pIHh6aWz8V9KPcBYxiKqZA">打开，出发</a>）中应用了一种新的交互方式「视差滚动」。</p>
+<p>恰好设计同学也说可以总结下经验，以便后续的运用，那浅谈一下。</p>
+<p>]]></description>
+            <content:encoded><![CDATA[<h2>前言</h2>
+<p>前不久，在一个项目（<a href="https://mp.weixin.qq.com/s/pIHh6aWz8V9KPcBYxiKqZA">打开，出发</a>）中应用了一种新的交互方式「视差滚动」。</p>
+<p>恰好设计同学也说可以总结下经验，以便后续的运用，那浅谈一下。</p>
+<p>若有错处，欢迎指正。</p>
+<h2>从数学开始</h2>
+<h3>坐标系</h3>
+<p>中学时期，我们学习过笛卡尔坐标系，常见的有「平面直角坐标系」和「空间直角坐标系」两种。</p>
+<p>同样地，在 CSS 世界里也有一个「坐标系」，但其 X、Y、Z 三轴及其正负方向，与书本中的坐标系稍有不同。我们将屏幕想象成一个「空间直角坐标系」：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764128816398.png" alt=""></p>
+<ul>
+<li>原点：即屏幕的左上角。</li>
+<li>X 轴：处于水平方向，原点右侧为 X 轴正方向、原点左侧为 X 轴负方向。</li>
+<li>Y 轴：处于垂直方向，原点以下为 Y 轴正方向、原点以上为 Y 轴负方向。</li>
+<li>Z 轴：与屏幕平面垂直，屏幕正前方为 Z 轴正方向，屏幕正后方为 Z 轴负方向。</li>
+</ul>
+<p>如果页面元素是以 2D 形态渲染，就相当于没有 Z 轴，此时是一个「平面直角坐标系」。</p>
+<h3>投影</h3>
+<p>我们也学习过「投影」知识。物体在灯光或日光的照射下，就会在墙壁或地面上产生影子，这是一种自然现象。投影就是由这类自然现象抽象出来的。阳光在地面上留下各种影子，便是最直白的例子。</p>
+<blockquote>
+<p>一般地，用光线照射物体，在某个平面上形成的影子，叫做物体的「投影」。发出照射的光源处叫做「投影中心」，照射的光线叫做「投影线」，投影所在的平面叫做「投影面」。</p>
+</blockquote>
+<p>投影可以分为「平行投影」和「中心投影」两类，它们还能细分。</p>
+<ul>
+<li>如果投射线是一组互相平行的射线（如手电筒的光线），此时形成的投影叫做「平行投影」。若投射线与投射平面垂直，则称为「正投影」，否则称为「斜投影」。</li>
+<li>如果由同一点光源发出的光线（即投射线相交于一点）形成的投影叫做「中心投影」。所有投射线相交的点，称为「消失点/灭点」。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764128890477.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764128899002.png" alt=""></p>
+<p>若投影中心与投影面之间的距离足够远，趋向于无穷大，此时的中心投影可认为就是一个平行投影。比如太阳光。</p>
+<p>当我们从某一个方向观察物体时，所看到的平面图形叫做物体的一个视图。</p>
+<h2>CSS 中 2D 与 3D 的区别</h2>
+<p>示例：<a href="https://codepen.io/tofrankie/pen/jOxxrzX">https://codepen.io/tofrankie/pen/jOxxrzX</a></p>
+<h2>perspective 与 translateZ</h2>
+<ul>
+<li>perspective 的取值范围是正数，如果小于等于 0 则没有 3D 视觉效果。</li>
+<li>translateZ 可正可负。</li>
+</ul>
+<p>图中 d 表示视点与屏幕之间的距离，在 CSS 中通过 perspective 属性来设置。
+图中 Z 表示元素在 Z 轴的位置，在 CSS 中通过 translateZ 属性来设置。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764129305805.png" alt=""></p>
+<blockquote>
+<p>场景可以理解为：人坐在屏幕前，人的眼睛即为视点，d 就是人与屏幕的距离。（注意，perspective 不设置时，不代表人与屏幕之间的距离为 0，CSS 中 px 等单位取了一个人类坐在屏幕前观看屏幕较为舒服的距离而设定的长度单位）</p>
+</blockquote>
+<p>从图片可以看到，当 d 相同时，当 Z 越靠近视点时，投射在屏幕上的点越大（蓝色部分）。简单来说就是「近大远小」。</p>
+<!-- 
+更多：https://www.jianshu.com/writer#/notebooks/53055034/notes/106182224/preview
+-->
+<p>未完待续...</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[TS Check 与 JSDoc]]></title>
+            <link>https://github.com/tofrankie/blog/issues/378</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/378</guid>
+            <pubDate>Wed, 26 Nov 2025 03:02:14 GMT</pubDate>
+            <description><![CDATA[<h2>参考链接</h2>
+<ul>
+<li><a href="https://jsdoc.app/">@use JSDoc</a></li>
+<li><a href="https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-che]]></description>
+            <content:encoded><![CDATA[<h2>参考链接</h2>
+<ul>
+<li><a href="https://jsdoc.app/">@use JSDoc</a></li>
+<li><a href="https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript">Working with JavaScript</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/intro-to-js-ts.html">JS Projects Utilizing TypeScript</a></li>
+</ul>
+<p>VS Code 中 JavaScript 文件的代码提示是基于 TypeScript 实现的。</p>
+<p>TypeScript 不完全支持所有的 JSDoc 标签，具体请看：<a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html">JSDoc Reference</a>。</p>
+<p>JavaScript 中的类型检查可使用 JSDoc 注释来增强。</p>
+<h2>JS 类型检查</h2>
+<p>在项目根目录下添加 tsconfig.json 或 jsconfig.json 配置文件，以启动对项目中 JavaScript 文件的类型检查。</p>
+<p>如果只是想要 TS 静态类型检查的能力，可能还需要指定 onEmit 等编译选项，更多请看：<a href="https://www.typescriptlang.org/tsconfig">TSConfig Reference</a>。</p>
+<p>这样的话，安装好 <a href="https://www.npmjs.com/package/typescript">typescript</a> 依赖，执行 tsc 便可对项目进行检查。</p>
+<p>tsconfig.json</p>
+<pre><code class="language-json">{
+  &quot;compilerOptions&quot;: {
+    &quot;allowJs&quot;: true,
+    &quot;checkJs&quot;: true
+  },
+  &quot;include&quot;: [&quot;xxx&quot;],
+  &quot;exclude&quot;: [&quot;xxx&quot;]
+}
+</code></pre>
+<h2>JSDoc</h2>
+<p>目前 TS 可识别以下这些 JSDoc 注释。对应示例可看 JSDoc Reference。</p>
+<p>Types</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#type">@type</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#param-and-returns">@param</a> (or <a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#param-and-returns">@arg</a> or <a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#param-and-returns">@argument</a>)</li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#param-and-returns">@returns</a> (or <a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#param-and-returns">@return</a>)</li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#typedef-callback-and-param">@typedef</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#typedef-callback-and-param">@callback</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#template">@template</a></li>
+</ul>
+<p>Classes</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#property-modifiers">Property Modifiers</a> @public, @private, @protected, @readonly</li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#override">@override</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#extends">@extends</a> (or <a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#extends">@augments</a>)</li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#implements">@implements</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#constructor">@class</a> (or <a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#constructor">@constructor</a>)</li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#this">@this</a></li>
+</ul>
+<p>Documentation</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#deprecated">@deprecated</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#see">@see</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#link">@link</a></li>
+</ul>
+<p>Other</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#enum">@enum</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#author">@author</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#other-supported-patterns">Other supported patterns</a>（特别留意下）</li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#unsupported-patterns">Unsupported patterns</a>（特别留意下）</li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#unsupported-tags">Unsupported tags</a>（特别留意下）</li>
+</ul>
+<h2>示例</h2>
+<h3>断言</h3>
+<p>形式：<code>/** @type {!MyType} */ (valueExpression)</code></p>
+<blockquote>
+<p>必须要有圆括号，否则断言无效！</p>
+</blockquote>
+<p>常量断言</p>
+<pre><code class="language-js">const STATUS = /** @type {const} */ ({
+  PENDING: 'pending'
+})
+</code></pre>
+<h3>导入</h3>
+<p>定义可复用的类型：</p>
+<pre><code class="language-js">/**
+ * @typedef {import(&quot;react&quot;).CSSProperties} CSSProperties
+ * @typedef {import(&quot;react&quot;).HTMLAttributes} HTMLAttributes
+ */
+
+/**
+ * @param {CSSProperties} styles
+ */
+function getStyle(styles) {}
+
+/**
+ * @param {HTMLAttributes} attrs
+ */
+function getAttrs(attrs) {}
+</code></pre>
+<p>从 TypeScript 5.5 起，可以直接在 JSDoc 中导入一组类型，不再需要使用 @typedef 定义一系列的类型：</p>
+<pre><code class="language-js">/** @import { CSSProperties, HTMLAttributes } from &quot;react&quot; */
+
+/**
+ * @param {CSSProperties} styles
+ */
+function getStyle(styles) {}
+
+/**
+ * @param {HTMLAttributes} attrs
+ */
+function getAttrs(attrs) {}
+</code></pre>
+<p>更多：<a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-5.html#the-jsdoc-import-tag">The JSDoc @import Tag</a></p>
+<h3>函数</h3>
+<p>函数表达式</p>
+<pre><code class="language-js">/**
+ * @type {function (number, number): number} 
+ */
+const sum = (x, y) =&gt; x + y
+</code></pre>
+<p>函数声明</p>
+<pre><code class="language-js">/** 
+ * @name fn 
+ * @param {string} str 
+ * @param {boolean} flag 
+ * @returns {*[]} 
+ */
+function fn(str, flag) {
+  return []
+}
+</code></pre>
+<p>未完待续...</p>
+]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[GIF 图片优化]]></title>
             <link>https://github.com/tofrankie/blog/issues/377</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/377</guid>
             <pubDate>Mon, 24 Nov 2025 10:32:41 GMT</pubDate>
-            <description><![CDATA[<h2>背景</h2>
-<p>在微信交互图文中，除了 JPG、PNG 图片之外，更多的是 GIF 动图，且所占比例比较高。本文就 GIF 图片优化作相关调研。</p>
-<h2>GIF 文件</h2>
-<p><a href="https://www.wikiwand.com/en/gif">GIF</a>（Graphic]]></description>
-            <content:encoded><![CDATA[<h2>背景</h2>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764119901038.jpg" alt="配图源自 Freepik"></p>
+<h2>背景</h2>
+<p>在微信交互图文中，除了 JPG、PNG 图片之外，更]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764119901038.jpg" alt="配图源自 Freepik"></p>
+<h2>背景</h2>
 <p>在微信交互图文中，除了 JPG、PNG 图片之外，更多的是 GIF 动图，且所占比例比较高。本文就 GIF 图片优化作相关调研。</p>
 <h2>GIF 文件</h2>
 <p><a href="https://www.wikiwand.com/en/gif">GIF</a>（Graphics Interchange Format）是 1987 年创建的一种位图图形交互文件格式，目前有 87a 和 89a 两种版本。其颜色深度只有 8bit，可最多支持 256 种颜色。</p>
@@ -38052,11 +38240,13 @@ https://objcer.com/2017/09/21/Understanding-the-WebView-Viewport-in-iOS-11-iPhon
             <link>https://github.com/tofrankie/blog/issues/169</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/169</guid>
             <pubDate>Sun, 26 Feb 2023 07:46:15 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-957cd24d4ff33bb3.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配图源自 Freepik"]]></description>
-            <content:encoded><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-957cd24d4ff33bb3.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配图源自 Freepik"></p>
-<h3>一、背景</h3>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764123434713.jpeg" alt="配图源自 Freepik"></p>
+<h2>一、背景</h2>
+<p>最近在做一个移动端的 H5 项目，遇到了一个「]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764123434713.jpeg" alt="配图源自 Freepik"></p>
+<h2>一、背景</h2>
 <p>最近在做一个移动端的 H5 项目，遇到了一个「有趣」的问题。假设有一页面布局如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5128488-44e5d7fc2b9f44dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764123497556.png" alt=""></p>
 <p>下方 50px 悬浮于底部，采用 fixed 布局，示例如下：</p>
 <pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
   &lt;!-- height: 100vh - 50px --&gt;
@@ -38083,21 +38273,21 @@ https://objcer.com/2017/09/21/Understanding-the-WebView-Viewport-in-iOS-11-iPhon
 </code></pre>
 <p>完整示例请看  <a href="https://codesandbox.io/s/safari-100vh-demo-cmh34y">CodeSandbox</a>。</p>
 <p>测试下来看似乎没问题，可当你使用 iPhone 的 Safari 浏览器打开此页面时，就会出现如下情况：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5128488-cd4c2e666432ab21.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764123527820.png" alt=""></p>
 <p>截图中已滑动至页面最底部，然而 100 被 TabBar 部分挡住了（其他浏览器均能正常展示出来）。</p>
-<h3>二、原因</h3>
+<h2>二、原因</h2>
 <p>我们知道，<code>vh</code>、<code>vw</code> 都是 CSS 中的一种相对长度单位，<code>1vh</code> 表示 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Viewport_concepts#mobile_viewports">viewport</a> 高度的 1%（<code>vm</code> 同理）。简单来讲，viewport 基本上是指当前文档的可见部分，因此 <code>100vh</code> 表示可见文档的最大高度。</p>
 <p><strong>可事实真是如此吗？</strong></p>
 <p>在 Safari 浏览器中，<code>100vh</code> 如下图所示（<a href="https://github.com/postcss/postcss-100vh-fix">出自</a>）：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5128488-b1854fe9be4944dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764123594320.png" alt=""></p>
 <p>按上面所说，<code>100vh</code> 不应该是 viewport 可视区域的全部高度，为什么右图的高度会超出的呢？</p>
 <p>做个简图区分一下吧：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5128488-e264185efee55497.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764123633018.png" alt=""></p>
 <p>所以，这就是为什么在 Safari 会被挡住一部分的原因。</p>
 <blockquote>
 <p>吐槽一下，Safari 会是现代化的 IE 浏览器？</p>
 </blockquote>
-<h3>三、寻根问底</h3>
+<h2>三、寻根问底</h2>
 <p>是 bug 还是故意为之？</p>
 <p>可以详细地看下这篇文章：<a href="https://nicolas-hoizey.com/articles/2015/02/18/viewport-height-is-taller-than-the-visible-part-of-the-document-in-some-mobile-browsers/">Viewport height is taller than the visible part of the document in some mobile browsers</a>，然后文章作者给 WebKit 提了个 <a href="https://bugs.webkit.org/show_bug.cgi?id=141832">bug</a>，其中 Apple 工程师 Benjamin Poulain 的<a href="https://bugs.webkit.org/show_bug.cgi?id=141832#c5">回答</a>如下：</p>
 <blockquote>
@@ -38105,9 +38295,9 @@ https://objcer.com/2017/09/21/Understanding-the-WebView-Viewport-in-iOS-11-iPhon
 </blockquote>
 <p><strong>So, it's a feature, not a bug.</strong></p>
 <p>然而，并不是只有 Safari 是这样做的，比如 iOS 端 Chrome 浏览器表现与 iOS 端 Safari 一致... (⊙ˍ⊙)</p>
-<h3>四、解决方法</h3>
+<h2>四、解决方法</h2>
 <p>尽管这并不是大多数开发者想要的，但很无奈，我们只能想办法去「修复」它，使得我们的网站在各浏览器表现一致。</p>
-<p><strong>方案一：使用 -webkit-fill-available</strong></p>
+<h3>方案一：使用 -webkit-fill-available</h3>
 <p>简单来说，-webkit-fill-available 就是自动填满剩余空间（<a href="https://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/">详见</a>）。这里使用另一个示例，来说明 <code>-webkit-fill-available</code> 的一些问题，如下：</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -38146,7 +38336,7 @@ https://objcer.com/2017/09/21/Understanding-the-WebView-Viewport-in-iOS-11-iPhon
 }
 </code></pre>
 <p>iOS 上的 Safari 中的表现是正常了，但是你会发现 Chrome 下红色区域没了，原因是 Chrome 84 起已不再支持 <code>-webkit-fill-available</code>，所以实际渲染如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5128488-23be078b1ebc0e4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764123662918.png" alt=""></p>
 <p>那么解决方法就是，针对 Safari 浏览器才设置 <code>-webkit-fill-available</code> 即可，这里利用到 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@supports">@support</a> 和 <a href="https://caniuse.com/?search=-webkit-touch-callout">-webkit-touch-callout</a>，如下：</p>
 <pre><code class="language-css">body {
   min-height: 100vh;
@@ -38162,7 +38352,7 @@ https://objcer.com/2017/09/21/Understanding-the-WebView-Viewport-in-iOS-11-iPhon
 </code></pre>
 <p>这样就 OK 了，Safari 和 Chrome 表现均如预期一致。这也是 <a href="https://github.com/postcss/postcss-100vh-fix">postcss-100vh-fix</a> 插件的解决方案。</p>
 <p>然而，以上方案并不适用于这些情况，比如：<code>height: 90vh</code>、<code>height: calc(100vh - 50px)</code>，因此才有了方案二。</p>
-<p><strong>方案二：通过 CSS 变量计算 1vh 所表示的实际高度</strong></p>
+<h3>方案二：通过 CSS 变量计算 1vh 所表示的实际高度</h3>
 <p>思路：</p>
 <blockquote>
 <p>设置一个 CSS 变量（比如 <code>--vh</code>），然后通过 JavaScript 脚本动态设置 <code>--vh</code> 的值，然后使用时需兼容处理即可（比如，<code>height: 100vh; height: calc(var(--vh) * 100)</code>）。</p>
@@ -38194,7 +38384,16 @@ https://objcer.com/2017/09/21/Understanding-the-WebView-Viewport-in-iOS-11-iPhon
 </code></pre>
 <p>有一个 <a href="https://github.com/mvasin/react-div-100vh">react-div-100vh</a> 库就是获取 <code>window.innerHeight</code>，然后将其值设置为容器高度实现的，然而这也是仅可处理 <code>100vh</code> 的情况。</p>
 <p>至于使用哪一种解决方案，视乎实际情况而定吧！</p>
-<h3>五、References</h3>
+<h2>五、新解法</h2>
+<p>现在 CSS 支持新特性：</p>
+<ul>
+<li><strong>svh</strong>（Small Viewport Height）：视窗最小高度（地址栏、工具栏展示时的高度）</li>
+<li><strong>lvh</strong>（Large Viewport Height）：视窗最大高度（地址栏、工具栏隐藏时的高度）</li>
+<li><strong>dvh</strong>（Dynamic Viewport Height）：视窗动态高度（根据地址栏、工具栏展示与隐藏动态调整的高度，也就是我们“想要”的 100vh 效果）</li>
+</ul>
+<p>看看<a href="https://caniuse.com/viewport-unit-variants">兼容性</a>，还是有点“新”的，生产环境还是再观望观望。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1764123193451.png" alt=""></p>
+<h2>六、References</h2>
 <ul>
 <li><a href="https://nicolas-hoizey.com/articles/2015/02/18/viewport-height-is-taller-than-the-visible-part-of-the-document-in-some-mobile-browsers/">Viewport height is taller than the visible part of the document in some mobile browsers</a></li>
 <li><a href="https://stackoverflow.com/questions/23223157/how-to-fix-vhviewport-unit-css-in-mobile-safari">How to fix vh(viewport unit) css in mobile Safari?</a></li>
