@@ -4,11 +4,125 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 26 Nov 2025 04:12:49 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 28 Nov 2025 15:19:34 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[看，有架飞机 ✈️]]></title>
+            <link>https://github.com/tofrankie/blog/issues/381</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/381</guid>
+            <pubDate>Fri, 28 Nov 2025 14:51:08 GMT</pubDate>
+            <description><![CDATA[<p>未完待续...</p>
+]]></description>
+            <content:encoded><![CDATA[<p>未完待续...</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[使用 Raycast 搜索 Confluence 或 Jira]]></title>
+            <link>https://github.com/tofrankie/blog/issues/380</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/380</guid>
+            <pubDate>Fri, 28 Nov 2025 10:09:16 GMT</pubDate>
+            <description><![CDATA[<h2>前言</h2>
+<p>如果你用过 Alfred，还没有用过 <a href="https://raycast.com/?via=73820f">Raycast</a>，不妨试试，其免费订阅也足够好用（<a href="https://www.raycast.com/raycast-vs-alfred?via=7]]></description>
+            <content:encoded><![CDATA[<h2>前言</h2>
+<p>如果你用过 Alfred，还没有用过 <a href="https://raycast.com/?via=73820f">Raycast</a>，不妨试试，其免费订阅也足够好用（<a href="https://www.raycast.com/raycast-vs-alfred?via=73820f">Raycast vs Alfred</a>）。</p>
+<p>若有多设备同步需要，利用 Raycast 内置的 Export/Import Settings &amp; Data + iCloud Drive 便可。</p>
+<h2>背景</h2>
+<p>我们公司使用 Atlassian 旗下的 Confluence、Jira 做知识库、项目管理。</p>
+<p>我们要经常打开 wiki 和 jira 页面查看相关内容，找到一篇目标文章或 Issue，往往需要几个动作才能完成：打开网页、聚焦输入框搜索、筛选...</p>
+<p>稍快一点可能是将常用链接添加到书签或者创建 Raycast Quicklink + Alias 方便快速访问。</p>
+<p>其中 Quicklink 有些场景很好用，比如检索文档：<code>https://developer.mozilla.org/zh-CN/search?q={Query}</code>，其中 <code>{Query}</code> 表示动态参数，也就是你要搜索的内容。</p>
+<p>只要是支持链接带参搜索的网站，都可以用这种方式，比如爱范儿的 <code>https://www.ifanr.com/search?query={Query}</code>。</p>
+<p>但这种搜索方式在公司内部的 wiki、jira 中行不通。</p>
+<p>另外，通过创建 Quicklink 的方式其实“不太适合”公司内的文档检索。试想，随着时间积累，要访问、收藏的链接只会越来越多，无论是浏览器书签或 Quicklink 只会越来越多。</p>
+<p>于是产生了开发一个 Raycast 扩展的想法，以支持 Confluence 和 Jira 的快速搜索以及部分简单的管理操作。</p>
+<p>恰好公司部署的 Data Center 版本也支持以 Personal Access Token 的方式进行身份认证（这是一种安全的认证方式以便于与外部程序集成 <a href="https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html">Learn more</a>）。</p>
+<h2>开始之前</h2>
+<p>安装 Raycast 后，前往 <a href="https://raycast.com/tofrankie/atlassian-data-center?via=73820f"><strong>Atlassian Data Center</strong></a> 安装扩展</p>
+<p>使用该扩展的命令时，会引导完成一些初始配置，准备好以下信息：</p>
+<ul>
+<li>Confluence Base URL：如 <a href="https://wiki.example.com">https://wiki.example.com</a></li>
+<li>Confluence PAT：前往公司 wiki 网页，在 Profile（头像处） → Personal Access Tokens → Create token（<strong>请妥善保管访问令牌，如有泄露，及时撤销</strong>）</li>
+<li>Jira Base URL：<a href="https://jira.example.com">https://jira.example.com</a></li>
+<li>Jira PAT：创建方式跟 wiki 同理</li>
+</ul>
+<p>PS：由于以上配置做成必填的，如果你只用到 wiki，对于 Jira 部分可以随便填个值，非空便可。</p>
+<h2>使用指南</h2>
+<p>目前 Atlassian Data Center 提供的命令有（PS：还可以根据个人习惯为命令设置 Alias 更方便直达命令）：</p>
+<ul>
+<li>Confluence
+<ul>
+<li>Search Contents - 搜索页面（文章）、博文、附件、评论，支持收藏功能</li>
+<li>Search Spaces - 搜索空间</li>
+<li>Search Users - 搜索用户</li>
+</ul>
+</li>
+<li>Jira
+<ul>
+<li>Search Issues - 搜索 Issue，并支持一些简单的操作，比如扭转 Issue 状态、创建 Worklog</li>
+<li>Board View - 看板，比如当前 Active Sprint</li>
+<li>Worklog View - 你的工作记录</li>
+<li>Notification View - 通知列表（若有“未读”消息，在 Search Issues 列表也会提示）</li>
+<li>Manage Fields - 该命令的作用是辅助 Search Issues 以在搜索结果展示更多内容</li>
+</ul>
+</li>
+</ul>
+<p>每个搜索面板都内置了很多常用的筛选项（日常应该管够了）：</p>
+<ul>
+<li>Search Contents
+<ul>
+<li>All Contents</li>
+<li>Full Text Search - 搜索范围从 title ~ &quot;xxx&quot; 放宽到 text ~ &quot;xxx&quot;，而不仅仅搜索标题</li>
+<li>Viewed Recently</li>
+<li>Updated Recently</li>
+<li>Created by Me</li>
+<li>Contributed by Me</li>
+<li>Mention Me</li>
+<li>My Favourites</li>
+<li>Watched by Me</li>
+</ul>
+</li>
+<li>Search Issues
+<ul>
+<li>All Issues</li>
+<li>Full Text Search - 搜索范围从 summary ~ &quot;xxx&quot; 放宽到 text ~ &quot;xxx&quot;</li>
+<li>Open Issues</li>
+<li>My Open Issues</li>
+<li>Assigned to Me</li>
+<li>Reported by Me</li>
+<li>Created Recently</li>
+<li>Updated Recently</li>
+<li>Resolved Recently</li>
+<li>Viewed Recently</li>
+<li>Watched by Me</li>
+</ul>
+</li>
+</ul>
+<p>前面提到时间越长 Quicklink 越多的情况，我认为将文章进行收藏是一个不错的方案（在 Action Panel 提供了快速收藏和取消收藏），检索时切换至 My Favourites 选项便可。</p>
+<p>除此之外，还支持键入完整的 CQL 或 JQL 进行定制化的高级查询：</p>
+<ul>
+<li><a href="https://developer.atlassian.com/server/confluence/rest/v1020/intro/#advanced-searching-using-cql">Confluence Query Language</a></li>
+<li><a href="https://confluence.atlassian.com/jiracoreserver/advanced-searching-939937709.html">Jira Query Language</a></li>
+</ul>
+<p>再提一句：</p>
+<p>由于 Jira 允许自定义字段，字段类型繁多，加之各家 Jira 实例大不相同，因此添加了 Manage Fields 命令来辅助 Search Issue 以显示更多信息。</p>
+<p>比如在 Manage Fields 界面下搜索 Test Engineer 并通过「Add to Search」添加成功，那么 Search Issues 列表下就可以显示该字段信息。</p>
+<p><img src="./images/image-2025-10-16_15-12-13.png" alt=""></p>
+<h2>截图</h2>
+<p><strong>由于 Raycast List 显示的内容有限，很多附加信息只能隐藏在 tooltip 里，可以通过移动光标至图标、标题、副标题、时间、头像等处显示。</strong></p>
+<p><a href="https://www.raycast.com/tofrankie/atlassian-data-center?via=73820f">看这里</a></p>
+<h2>其他</h2>
+<p>个人常用的一些 Raycast 扩展，但不一定适合你，按需食用：</p>
+<ul>
+<li><a href="https://www.raycast.com/tmk/lark?via=73820f">Lark Documents</a> - 搜索飞书文档</li>
+<li><a href="https://www.raycast.com/degouville/cursor-recent-projects?via=73820f">Cursor</a> - 常用 Search Recent Projects</li>
+<li><a href="https://www.raycast.com/tofrankie/wechat-devtool?via=73820f">WeChat DevTool</a> - 启动小程序</li>
+<li><a href="https://www.raycast.com/vivek/deepwiki?via=73820f">DeepWiki</a> - 了解一些库内部实现问答可能更快</li>
+</ul>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[浅谈 CSS 3D Transform 与 Perspective]]></title>
             <link>https://github.com/tofrankie/blog/issues/379</link>
@@ -1776,9 +1890,9 @@ point2 = { x: 1, y: 2 } // ✅
 </ul>
 <p>这些在 Raycast 都有替代方案，甚至更好。除此之外，Raycast 的界面更现代一些，跟最新的 macOS 风格更加契合。并且可以完全通过键盘完成一系列操作。</p>
 <blockquote>
-<p>Raycast 官方一篇博文：<a href="https://www.raycast.com/raycast-vs-alfred">Raycast vs Alfred</a></p>
+<p>Raycast 官方一篇博文：<a href="https://www.raycast.com/raycast-vs-alfred?via=73820f">Raycast vs Alfred</a></p>
 </blockquote>
-<p>最重要的是，Raycast Extension 的开发体验比 Alfred 好太多了。官方有提供很多了 API，统一的 UI 风格，有统一的分发 <a href="https://www.raycast.com/store">Store</a>，不用网上到处搜索。<a href="https://github.com/raycast/extensions/pulse">活跃度</a>很高，目前扩展数量 <a href="https://github.com/raycast/extensions/blob/cffac925444c27172ccf9538a15bad35a97a0adf/.github/CODEOWNERS">2200+</a>。</p>
+<p>最重要的是，Raycast Extension 的开发体验比 Alfred 好太多了。官方有提供很多了 API，统一的 UI 风格，有统一的分发 <a href="https://www.raycast.com/store?via=73820f">Store</a>，不用网上到处搜索。<a href="https://github.com/raycast/extensions/pulse">活跃度</a>很高，目前扩展数量 <a href="https://github.com/raycast/extensions/blob/cffac925444c27172ccf9538a15bad35a97a0adf/.github/CODEOWNERS">2200+</a>。</p>
 <p>比较麻烦的是，在 Raycast 发布扩展，需要经过官方审核，通过后才会上传到 Store，审核周期较慢！</p>
 <h2>开始之前</h2>
 <h3>技术栈</h3>
@@ -2139,7 +2253,7 @@ export default function Example() {
 <blockquote>
 <p><a href="https://developers.raycast.com/api-reference/user-interface/list#props">List Props</a></p>
 </blockquote>
-<p>已后者为例，可以将项目名称、项目路径、项目名称拼音（若有中文）添加到 keywords 字段，参考 <a href="https://github.com/tofrankie/raycast-wechat-devtool/blob/2be07dadbc747826def1a1c5373bb0040d4d004b/src/utils/pinyin.ts">pinyin.ts</a>。</p>
+<p>以后者为例，可以将项目名称、项目路径、项目名称拼音（若有中文）添加到 keywords 字段，参考 <a href="https://github.com/tofrankie/raycast-wechat-devtool/blob/2be07dadbc747826def1a1c5373bb0040d4d004b/src/utils/pinyin.ts">pinyin.ts</a>。</p>
 <h3>图片展示</h3>
 <p>若要展示一张图片，似乎只有 Detail + Markdown 的方式了。</p>
 <pre><code class="language-tsx">export default function ImageView({ url }: { url: string }) {
@@ -2270,7 +2384,7 @@ function joinHomebrewPath() {
 </code></pre>
 <h3>截图</h3>
 <p>存放在 <code>metadata</code> 目录下，可提供 1 ~ 6 张截图。</p>
-<p>Raycast 内置提供了截屏功能，在 Raycast Settings - Advanced - Window Capture 中设置快捷键（如 ⌥ + ⇧ + ⌘ + M）。</p>
+<p>Raycast 内置了截屏功能，在 Raycast Settings - Advanced - Window Capture 中设置快捷键（如 ⌥ + ⇧ + ⌘ + M）。</p>
 <p>在 <code>npm run dev</code> 模式下启动扩展，按下快捷键，便可调出截屏窗口，并勾选上「Save to Metadata」，就会自动保存到扩展的 <code>metadata</code> 目录，更多请看<a href="https://developers.raycast.com/basics/prepare-an-extension-for-store#screenshots">这里</a>。</p>
 <blockquote>
 <p>Raycast 提供了一些高清壁纸，请看<a href="https://www.raycast.com/wallpapers">这里</a>。</p>
