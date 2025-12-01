@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Fri, 28 Nov 2025 15:19:34 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 30 Nov 2025 18:02:02 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -14,9 +14,27 @@
             <link>https://github.com/tofrankie/blog/issues/381</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/381</guid>
             <pubDate>Fri, 28 Nov 2025 14:51:08 GMT</pubDate>
-            <description><![CDATA[<p>未完待续...</p>
-]]></description>
-            <content:encoded><![CDATA[<p>未完待续...</p>
+            <description><![CDATA[<ul>
+<li>📍 广州 TIT 创意园（天台）</li>
+<li>🌅 天气晴</li>
+<li>⏳ 时间 2021 ~ 2025</li>
+</ul>
+<p><img src="https://github.com/user-attachments/assets/ea1f0211-894e-454a-972e-]]></description>
+            <content:encoded><![CDATA[<ul>
+<li>📍 广州 TIT 创意园（天台）</li>
+<li>🌅 天气晴</li>
+<li>⏳ 时间 2021 ~ 2025</li>
+</ul>
+<p><img src="https://github.com/user-attachments/assets/ea1f0211-894e-454a-972e-8b1c5dc7a118" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/ca8f56fa-1b7a-40e8-8770-85a51bf91642" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/048e3986-7b55-4afc-af10-ebfd7b6901b8" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/b3b57b58-ca36-4d9e-b23c-b21b311505e0" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/d1ecf0d5-05ef-4132-bacc-93d0fb2910a4" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/71fbc5aa-1f9b-4e07-b804-8bf5116fe926" alt="">
+▲ 飞机在这 😄</p>
+<p><img src="https://github.com/user-attachments/assets/35600ab6-f19c-4a0a-b5fc-c48d2a6c6dbd" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/e24cbb9d-0cfe-4e36-bc2a-8e2a185d6586" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/f73bdb49-83cb-4d7d-8187-e7f99fba31c3" alt=""></p>
 ]]></content:encoded>
         </item>
         <item>
@@ -48,7 +66,7 @@
 <li>Jira Base URL：<a href="https://jira.example.com">https://jira.example.com</a></li>
 <li>Jira PAT：创建方式跟 wiki 同理</li>
 </ul>
-<p>PS：由于以上配置做成必填的，如果你只用到 wiki，对于 Jira 部分可以随便填个值，非空便可。</p>
+<p>PS：由于以上配置做成必填的，如果只用到其一，另一个可以随便填个值，非空便可。</p>
 <h2>使用指南</h2>
 <p>目前 Atlassian Data Center 提供的命令有（PS：还可以根据个人习惯为命令设置 Alias 更方便直达命令）：</p>
 <ul>
