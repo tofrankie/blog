@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 30 Nov 2025 18:02:02 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 03 Dec 2025 09:52:51 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -3253,7 +3253,7 @@ OR
 <li>clean</li>
 <li>clear</li>
 </ul>
-<h1>性别</h1>
+<h2>性别</h2>
 <p>参赛选手：</p>
 <ul>
 <li><strong>gender</strong> - 指社会建构的、由女孩、女人、男孩、男人以及性别多元化人群的角色、行为、表达和身份。它影响着人们如何看待自己和他人，如何行动和互动，以及社会中权力和资源的分配。性别认同并非局限于二元对立（女孩/女人，男孩/男人），也并非一成不变；它是一个连续体，会随着时间而变化。个人和群体对性别的理解、体验和表达方式存在着相当大的多样性，这体现在他们所承担的角色、对他们的期望、与他人的关系以及性别在社会中制度化的复杂方式上。</li>
@@ -3262,6 +3262,12 @@ OR
 <blockquote>
 <p><a href="https://cihr-irsc.gc.ca/e/48642.html">What is gender? What is sex?</a></p>
 </blockquote>
+<h2>黑/白名单</h2>
+<ul>
+<li>blacklist vs blocklist</li>
+<li>whitelist vs allowlist</li>
+</ul>
+<p>因为众所周知的原因，Git 的 master/main 也是同理。</p>
 ]]></content:encoded>
         </item>
         <item>
@@ -47466,6 +47472,9 @@ git config user.email &lt;your-email&gt;
 <p>自 2020 年 10 月起，在 GitHub 平台新创建的仓库，其默认分支名称正式调整为  <code>main</code>（<a href="https://github.com/github/renaming">详见</a>）。可通过命令调整默认分支：</p>
 <pre><code class="language-shell">$ git config --global init.defaultBranch main
 </code></pre>
+<blockquote>
+<p>Git 3.0 默认分支将会从 master 改为 main，<a href="https://git-scm.com/docs/git-init#Documentation/git-init.txt---initial-branchbranch-name">详见</a>。</p>
+</blockquote>
 <h2>初始化</h2>
 <pre><code class="language-shell"># 初始化
 $ git init
