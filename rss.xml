@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 03 Dec 2025 09:52:51 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 05 Dec 2025 15:40:54 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -60283,9 +60283,6 @@ $ git remote set-url origin https://github.com/Homebrew/homebrew-core.git
 <pre><code class="language-shell">$ brew install qlcolorcode --cask
 </code></pre>
 <h3><s>qlImageSize</s></h3>
-<p>支持预览图片，显示图像大小和分辨率</p>
-<pre><code class="language-shell">$ brew install qlimagesize
-</code></pre>
 <blockquote>
 <p>该项目已停止维护，详见 <a href="https://github.com/Nyx0uf/qlImageSize/issues/45#issuecomment-540063003">#45</a>。</p>
 </blockquote>
@@ -60295,6 +60292,9 @@ $ git remote set-url origin https://github.com/Homebrew/homebrew-core.git
 <blockquote>
 <p>macOS Catalina 后彻底不可用。</p>
 </blockquote>
+<p>支持预览图片，显示图像大小和分辨率</p>
+<pre><code class="language-shell">$ brew install qlimagesize
+</code></pre>
 <h3>QLMarkdown</h3>
 <p>预览 Markdown 文件</p>
 <pre><code class="language-shell">$ brew install qlmarkdown --cask
@@ -60328,26 +60328,26 @@ $ git remote set-url origin https://github.com/Homebrew/homebrew-core.git
 <pre><code class="language-shell">$ brew install provisionql --cask
 </code></pre>
 <h3>QuickLookAPK</h3>
+<blockquote>
+<p>已停止维护，但仍可用</p>
+</blockquote>
 <p>预览 Android 的 <code>.apk</code> 安装包</p>
 <pre><code class="language-shell">$ brew install quicklookapk --cask
 </code></pre>
-<blockquote>
-<p>已停止维护，但仍可用。</p>
-</blockquote>
 <h3>quicklook-pat</h3>
+<blockquote>
+<p>年久失修</p>
+</blockquote>
 <p>预览 PS Pattern 素材</p>
 <pre><code class="language-shell">$ brew install quicklook-pat --cask
 </code></pre>
-<blockquote>
-<p>年久失修。</p>
-</blockquote>
 <h3>QuickLookASE</h3>
+<blockquote>
+<p>年久失修</p>
+</blockquote>
 <p>预览由 PS、AI 等生成的 Adobe ASE 色板</p>
 <pre><code class="language-shell">$ brew install quicklookase --cask
 </code></pre>
-<blockquote>
-<p>年久失修。</p>
-</blockquote>
 <h2>更多</h2>
 <p>收集了一些常用的 QuickLook 插件，可从<a href="https://pan.baidu.com/s/1Wyl_OYLCjRvE459d5cqznw">百度网盘</a>获取。</p>
 <p>下载后放置于 <code>~/Library/QuickLook</code> 文件夹内即可（前往文件夹快捷键 ⌘ + ⇧ + G）。</p>
