@@ -1,5 +1,6 @@
 # 近期更新
 
+- [macOS QuickLook 常用插件](https://github.com/tofrankie/blog/issues/11)
 - [Git 常用命令介绍](https://github.com/tofrankie/blog/issues/103)
 - [那些纠结过的英文词汇](https://github.com/tofrankie/blog/issues/355)
 - [使用 Raycast 搜索 Confluence 或 Jira](https://github.com/tofrankie/blog/issues/380)
@@ -9,4 +10,3 @@
 - [TS Check 与 JSDoc](https://github.com/tofrankie/blog/issues/378)
 - [关于 Safari 100vh 的问题与解决方案](https://github.com/tofrankie/blog/issues/169)
 - [GIF 图片优化](https://github.com/tofrankie/blog/issues/377)
-- [Safari/WebKit 无法正确渲染 <foreignObject> 中的 HTML 元素](https://github.com/tofrankie/blog/issues/312)
