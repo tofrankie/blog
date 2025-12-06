@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Fri, 05 Dec 2025 15:40:54 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 06 Dec 2025 16:23:06 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -3936,7 +3936,7 @@ contact_links:
 <p>To coordinate events, user interaction, scripts, rendering, networking, and so forth.
 协调事件、用户交互、脚本、渲染、网络等。</p>
 </blockquote>
-<p>个人理解：它是让各种任务有序可控的一种机制。</p>
+<p>个人理解：它是让各种任务执行变得有序可控的一种机制。</p>
 <p>用伪代码表示：</p>
 <pre><code class="language-js">while (true) {
   task = taskQueue.pop()
@@ -3946,7 +3946,7 @@ contact_links:
 <blockquote>
 <p>当然，实际没有这么简单，只是从简单说起，请继续往下。</p>
 </blockquote>
-<p>它是无限循环的，7 × 24h 随时待命，直至浏览器 Tab 被关闭。</p>
+<p>它是无限循环的，7 × 24h 随时待命（比 996 还惨 😭），直至浏览器 Tab 被关闭。</p>
 <p>只要有任务，它就会不停地从队列中取出任务，执行任务。</p>
 <blockquote>
 <p>在浏览器中，Event Loop 有 Window Event Loop、Worker Event Loop、Worklet Event Loop 三种，第一种是本文主要讨论的对象。当然 Node.js 也有 Event Loop 机制，但不太一样。</p>
@@ -5279,7 +5279,7 @@ export default function Popup() {
 <li>准确性高</li>
 <li>性能好</li>
 </ul>
-<p>如果你将要实现的计时要体现在 DOM 上，它永远不可能百分百准确。</p>
+<p>如果你将要实现的计时要体现在 DOM 上，它<strong>永远不可能百分百准确</strong>。</p>
 <p>JavaScript 是单线程的（指主线程），注定了无法一边执行 JS 代码、一边更新 DOM。即便是 HTML5 提出的 Web Worker，它是可以在主动创建一些后台执行的线程，可它不能直接操作 DOM，它传递信息给主线程，也会受到 Event Loop 的影响，该排队还是得排队。</p>
 <p>但就人眼来说，几毫秒、几十毫米的误差基本是无感的，这就可以算是一个准确、合格的倒计时。</p>
 <p>通常要考虑的问题有：</p>
@@ -35870,13 +35870,190 @@ for (const key in arr) {
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Canvas 生成图片模糊的解决方案]]></title>
+            <title><![CDATA[Canvas 绘图不清晰的原因及解决方法]]></title>
             <link>https://github.com/tofrankie/blog/issues/186</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/186</guid>
             <pubDate>Sun, 26 Feb 2023 08:18:16 GMT</pubDate>
-            <description><![CDATA[<p>说明：本文省略部分非关键代码，麻烦自己补全。</p>
-<p>一般情况，在高清屏的设备下，任何绘制 canvas 中的图像、文字、线条、形状都可能会出现模糊的问题。可通过引入 GitHub 中的 <a href="https://github.com/jondavidjohn/hidpi-canvas-polyfi]]></description>
-            <content:encoded><![CDATA[<p>说明：本文省略部分非关键代码，麻烦自己补全。</p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765036083449.jpg" alt="配图源自 Freepik"></p>
+<h2>为什么图片展示不清晰？</h2>
+<p>我们知道，图片是有尺寸的，在生成时]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765036083449.jpg" alt="配图源自 Freepik"></p>
+<h2>为什么图片展示不清晰？</h2>
+<p>我们知道，图片是有尺寸的，在生成时就确定了。在 CSS 中我们叫做图片的原始尺寸。</p>
+<p>试想一下，把一张 100 * 100 的图片（位图）放大 10 倍，图片会模糊，对吧。</p>
+<p>什么时候图片最清晰呢？答案是：<strong>图片渲染尺寸 = 图片原始尺寸</strong></p>
+<p>换句话说，如果希望图片放大 10 倍仍然足够清晰，应该使用尺寸为 1000 * 1000 图片作展示。</p>
+<blockquote>
+<p>本文讨论的前提，图片在原始尺寸下是清晰的。</p>
+</blockquote>
+<h2>解决 img 不清晰问题</h2>
+<p>在 <code>&lt;img&gt;</code> 通过这样的方式获取图片的渲染尺寸和原始尺寸。</p>
+<ul>
+<li>width/height 渲染宽高</li>
+<li>naturalWidth/naturalHeight 原始宽高。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765005432179.png" alt=""></p>
+<p>当 width &gt; naturalWidth 的时候，就会有不同程度的模糊。</p>
+<p>下面提供一些供参考解决方案（注意考虑兼容性）。</p>
+<h3>图片渲染尺寸是固定的</h3>
+<p>图片渲染尺寸固定，可以通过 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/img#srcset">srcset</a> 属性进行设置，浏览器会根据设备 DPR 自动选择最高清晰可用的版本。</p>
+<pre><code class="language-html">&lt;img 
+  src=&quot;pic@1x.png&quot;
+  srcset=&quot;
+    pic@1x.png 1x,
+    pic@2x.png 2x,
+    pic@3x.png 3x
+  &quot;
+/&gt;
+</code></pre>
+<h3>图片渲染尺寸是动态的</h3>
+<p>图片渲染尺寸不固定，可以结合 srcset + <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/img#sizes">sizes</a> 进行设置：</p>
+<pre><code class="language-html">&lt;img 
+  src=&quot;pic-800.jpg&quot;
+  srcset=&quot;
+    pic-400.jpg 400w,
+    pic-800.jpg 800w,
+    pic-1200.jpg 1200w,
+    pic-1600.jpg 1600w
+  &quot;
+  sizes=&quot;
+    (max-width: 600px) 100vw,
+    (max-width: 1024px) 50vw,
+    33vw
+  &quot;
+/&gt;
+</code></pre>
+<h3>background-image 图片</h3>
+<p>如果是 background-image 图片，可以使用 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/image/image-set">image-set()</a> 进行设置。</p>
+<pre><code class="language-css">.container {
+  background-image: image-set(
+    &quot;pic@1x.jpg&quot; 1x,
+    &quot;pic@2x.jpg&quot; 2x,
+    &quot;pic@3x.jpg&quot; 3x
+  );
+}
+</code></pre>
+<h2>解决 Canvas 图片不清晰的问题</h2>
+<h3>了解像素</h3>
+<p>以 iPhone 7 为例：</p>
+<ul>
+<li>屏幕 CSS 像素：375 * 667</li>
+<li>屏幕物理像素：750 * 1334（也就是手机分辨率）</li>
+<li>DPR：2（物理像素与 CSS 像素之比）</li>
+</ul>
+<p>也就是说，一个 CSS 像素，使用 2 个物理像素进行绘制，因此呈现效果要比同期其他手机好。</p>
+<p>如果用一张 375 * 667 尺寸的图片放到 iPhone 7 上显示，其实是“不够清晰”的，此时应该使用 2x 图（也就是 750 * 1334）的图片进行展示，这样才会更清晰。</p>
+<p>前面提到，当「图片原始尺寸 = 图片渲染尺寸」时图片显示最清晰，这里的「图片渲染尺寸」其实是指「CSS 尺寸 * DPR」，因此可以转换下公式：</p>
+<blockquote>
+<p><strong>图片原始图片 = CSS 尺寸 * DPR</strong></p>
+</blockquote>
+<p>套入 iPhone 7 的例子：图片原始尺寸宽度 = 375 * 2，所以确保图片清晰的最佳尺寸应该是 750 宽，高度同理。</p>
+<h3>了解可替换元素</h3>
+<blockquote>
+<p>关于<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Guides/Images/Replaced_element_properties">可替换元素</a>更多细节可以自行查阅。</p>
+</blockquote>
+<p><code>&lt;img /&gt;</code> 是一个可替换元素。</p>
+<p>从一个简单的例子开始：</p>
+<pre><code class="language-html">&lt;img src=&quot;example.jpg&quot; /&gt;
+</code></pre>
+<p>▲ 我们没给 img 元素添加任何样式，此时它在文档流中占据的空间取决于图片原始尺寸。</p>
+<pre><code class="language-html">&lt;img src=&quot;https://placehold.co/750x1334/png&quot; /&gt;
+</code></pre>
+<p>▲ 这是一张 750 * 1334 尺寸的图片，此时在文档流中占据的空间是 750 * 1334（CSS 尺寸）。尽管文档流中占据的空间（CSS 像素）和图片实际尺寸是一致的，但由于 DPR 为 2，此时图片显示其实是不清晰的（想象成一张图片放大了 2 倍查看）。</p>
+<pre><code class="language-html">&lt;img src=&quot;https://placehold.co/750x1334/png&quot; style=&quot;width: 375px; height: 667px&quot; /&gt;
+</code></pre>
+<p>▲ 接着，给 img 添加样式限制其宽高，这里改变的其实是「渲染尺寸」，此时图片占据文档流的空间是 375 * 667（CSS 尺寸）。注意，这样修改样式并未修改图片的原始尺寸，也改不了，因为图片原始尺寸在生成时就固定了。此时图片显示是清晰的。</p>
+<p>我们可以将 img 这个可替换元素类比成这样的结构：</p>
+<pre><code class="language-html">&lt;div style=&quot;375px; height: 667px&quot;&gt;
+  &lt;div style=&quot;width: 750px; height: 1334px&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>我们调整 img 的宽高其实修改的是外层的 div，影响不到内层的 div 宽高。当然可以使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Properties/object-fit">object-fit</a> 等 CSS 属性影响可替换元素的外层与内存的关系。</p>
+<h3>了解 Canvas</h3>
+<p>Canvas 也是一个可替换元素。</p>
+<p>但它跟 img 有点不一样，我们知道图片原始尺寸在生成时就确定了，无法修改，而 Canvas 的原始宽高是可以控制修改的。</p>
+<pre><code class="language-html">&lt;canvas&gt;&lt;/canvas&gt;
+</code></pre>
+<p>首先，Canvas 是有个默认宽高的，300 * 150（Canvas 原始尺寸），我们不作任何样式修改的情况下，它占据文档流 300 * 150 空间（取决于 Canvas 的原始尺寸）。</p>
+<p>举个例子，我们使用 Canvas 进行绘图时，通常会进行类似的初始化处理：</p>
+<pre><code class="language-html">&lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;
+</code></pre>
+<pre><code class="language-css">#canvas {
+  width: 375px;
+  height: 667px;
+}
+</code></pre>
+<pre><code class="language-js">const canvas = document.getElementById('canvas')
+const ctx = canvas.getContext('2d')
+
+const elementWidth = canvas.clientWidth
+const elementHeight = canvas.clientHeight
+
+const dpr = window.devicePixelRatio ?? 1
+ctx.canvas.width = elementWidth * dpr // 可以使用 canvas.width = elementWidth * dpr
+ctx.canvas.height = elementHeight * dpr // 可以使用 canvas.height = elementHeight * dpr
+
+ctx.scale(dpr, dpr)
+
+// 各种绘制...
+</code></pre>
+<p>这里做了几件事：</p>
+<ol>
+<li>通过 CSS 修改了 Canvas 元素在文档流占据的空间，设为 375 * 667</li>
+<li>通过 <code>ctx.canvas.width = elementWidth * dpr</code> 和 <code>ctx.canvas.height = canvas.clientHeight</code> 修改了 Canvas 的原始尺寸，确保文档流占据的空间与 Canvas 原始尺寸保持正比，以避免显示变形。（如果没有理解，想象一下在 100 * 100 的 img 元素中放了一张 100 * 200 的图片的场景，此时图片显示会变形）</li>
+<li>使用 <code>CanvasRenderingContext2D.scale()</code> 对 Canvas 的坐标系进行放大，放大了 N 倍（取决于设备 DPR），以确保后续绘制按相同的比例进行下去</li>
+</ol>
+<p>为什么要这样做？</p>
+<p>回顾这条公式：<strong>图片原始图片 = CSS 尺寸 * DPR</strong></p>
+<blockquote>
+<p>我们在内心把 Canvas 绘制出来的图形当作一张图片。</p>
+</blockquote>
+<p>前面，如果要在不同 DPR 设备下使得 img 的图片清晰显示，我们的解决方法是使用不同尺寸的图片。</p>
+<p>我们把 Canvas 本身当作一张图片。针对不同 DPR 的设备，不需要换图解决，使用 Canvas 提供的 API 就能轻松修改其（原始）尺寸。也就是 <code>ctx.canvas.width = elementWidth * dpr</code> 和 <code>ctx.canvas.height = canvas.clientHeight</code> 所做的事情。</p>
+<p>以 iPhone 7 为例，图片原始宽度（ctx.canvas.width）= 375 * 2 = 750，高度同理。</p>
+<p>类比成 div：</p>
+<pre><code class="language-html">&lt;div style=&quot;375px; height: 667px&quot;&gt;
+  &lt;!-- 750 = 375 * DPR --&gt;
+  &lt;!-- 1134 = 667 * DPR --&gt;
+  &lt;div style=&quot;width: 750px; height: 1334px&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>接着，如果我们初始化过程如下：</p>
+<pre><code class="language-js">// 不用
+// ctx.canvas.width = elementWidth * dpr
+// ctx.canvas.height = elementHeight * dpr
+
+// 改用
+canvas.style.width = elementWidth * dpr + 'px'
+canvas.style.height = elementHeight * dpr + 'px'
+</code></pre>
+<p>它相当于修改了：</p>
+<pre><code class="language-css">#canvas {
+  width: 750px;
+  height: 1334px;
+}
+</code></pre>
+<p>使用 div 两层结构类比，它修改的是外层 div 的尺寸，此时效果相当于：把一张 300 * 150 尺寸的图片放到了一个 750 * 1334 尺寸的 img 容器中，图片显示会变形，且在高清屏下显示不清晰。</p>
+<h3>Canvas 绘制不清晰的原因</h3>
+<p>理解了上一节的内容，就很好理解并知道为什么要这样处理。</p>
+<p>如果在高清屏下 Canvas 绘制模糊，原因大概率是没有进行以下两部处理（多数可能是没有乘以 DPR）：</p>
+<pre><code class="language-js">// 1. 仅确保了 Canvas 的实际尺寸跟文档流占据的空间一致，以避免变形
+ctx.canvas.width = elementWidth * dpr
+ctx.canvas.height = elementHeight * dpr
+// 2. 确保后续绘制以相同的比例进行
+ctx.scale(dpr, dpr)
+</code></pre>
+<p>如果在 Canvas 上绘制一张图片，还要检查图片本身是否清晰。</p>
+<h2>总结</h2>
+<p>记住这两个结论：</p>
+<ul>
+<li><strong>当图片原始尺寸 = 图片渲染尺寸时，图片在屏幕上显示最清晰</strong></li>
+<li><strong>图片原始尺寸 = CSS 尺寸 * DPR</strong></li>
+</ul>
+<h2>旧内容废弃</h2>
+<details>
+<summary>Deprecated</summary>
+<p>说明：本文省略部分非关键代码，麻烦自己补全。</p>
 <p>一般情况，在高清屏的设备下，任何绘制 canvas 中的图像、文字、线条、形状都可能会出现模糊的问题。可通过引入 GitHub 中的 <a href="https://github.com/jondavidjohn/hidpi-canvas-polyfill">hidpi-canvas</a> 有效地解决。</p>
 <ol>
 <li>首先去 GitHub 下载 <a href="https://github.com/jondavidjohn/hidpi-canvas-polyfill">hidpi-canvas.js</a> 文件；</li>
@@ -35954,6 +36131,7 @@ function getPixelRatio(context) {
 </code></pre>
 <p>效果如图：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/5128488-8cbfb0ff01ad2e09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</details>
 ]]></content:encoded>
         </item>
         <item>
