@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sat, 06 Dec 2025 16:23:06 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 07 Dec 2025 16:45:28 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -4099,7 +4099,7 @@ contact_links:
   task = queue.getFirstRunnableTask()
   execute(task)
   
-  while (microtaskQueue.hasTask() {
+  while (microtaskQueue.hasTask()) {
     microtask = microtaskQueue.pop()
     excute(microtask)
   }
@@ -4133,7 +4133,7 @@ contact_links:
   task = queue.getFirstRunnableTask()
   execute(task)
   
-  while (microtaskQueue.hasTask() {
+  while (microtaskQueue.hasTask()) {
     microtask = microtaskQueue.pop()
     excute(microtask)
   }
@@ -4206,7 +4206,7 @@ contact_links:
       excute(callback)
     }
     
-    while (promiseQueue.hasTask() {
+    while (promiseQueue.hasTask()) {
       promise = promiseQueue.pop()
       excute(promise)
     }
@@ -4229,7 +4229,7 @@ contact_links:
   task = taskQueue.pop()
   execute(task)
   
-  while (microtaskQueue.hasTask() {
+  while (microtaskQueue.hasTask()) {
     microtask = microtaskQueue.pop()
     excute(microtask)
   }
