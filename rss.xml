@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 07 Dec 2025 16:45:28 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 08 Dec 2025 17:11:28 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -7747,7 +7747,7 @@ echo &quot;处理完成！&quot;
 <li>使用 <a href="https://github.com/tofrankie/blog">GitHub Repository</a> 进行文章存档，每次编辑都会被记录</li>
 <li>使用 <a href="https://github.com/tofrankie/blog/issues">GitHub Issues</a> 作为博文列表</li>
 <li>使用 <a href="https://github.com/tofrankie/blog/labels">GitHub Labels</a> 对博文进行标签、分类</li>
-<li>使用 <a href="https://www.raycast.com/core-features/quicklinks">Raycast Quicklinks</a> 快速搜索文章，比如按标题搜索 <code>https://github.com/tofrankie/blog/issues?q=in%3Atitle+{Query}+</code></li>
+<li>使用 <a href="https://www.raycast.com/core-features/quicklinks?via=73820f">Raycast Quicklinks</a> 快速搜索文章，比如按标题搜索 <code>https://github.com/tofrankie/blog/issues?q=in%3Atitle+{Query}+</code></li>
 </ul>
 <h2>GitHub Blogger</h2>
 <blockquote>
@@ -7782,10 +7782,10 @@ echo &quot;处理完成！&quot;
 </blockquote>
 <p>很简单：</p>
 <ol>
-<li>你需要注册一个 GitHub 账号（已有忽略）</li>
+<li>你需要注册一个 GitHub 账号（已有跳过）</li>
 <li>你需要安装 VS Code、Cursor 等编辑器（理论上基于 VSCodium 的编辑器都支持）</li>
-<li>在编辑器上安装 <a href="https://marketplace.visualstudio.com/items?itemName=frankie.github-blogger">GitHub Blogger</a> 扩展，也可在编辑器内搜索 <code>frankie.github-blogger</code> 扩展</li>
-<li>准备好你的 <a href="https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">GitHub Personal Access Token</a>（调用 GitHub API 需要用到）</li>
+<li>从 <a href="https://marketplace.visualstudio.com/items?itemName=Frankie.github-blogger">VS Code Marketplace</a> 或 <a href="https://open-vsx.org/extension/frankie/github-blogger">Open VSX</a> 安装扩展，也可在编辑器内搜索 <code>GitHub Blogger</code> 扩展</li>
+<li>准备好你的 <a href="https://github.com/settings/tokens">GitHub Personal Access Token (classic)</a>（调用 GitHub API 需要用到）</li>
 <li>使用 Command + Shift + P 或 Ctrl + Shift + P 快捷键唤起命令面板：
 <ol>
 <li>键入 Configure GitHub Blogger 完成初始配置（仓库可以选择已有的公开仓库）</li>
