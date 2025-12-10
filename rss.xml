@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Mon, 08 Dec 2025 17:11:28 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 10 Dec 2025 15:52:21 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -42,9 +42,11 @@
             <link>https://github.com/tofrankie/blog/issues/380</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/380</guid>
             <pubDate>Fri, 28 Nov 2025 10:09:16 GMT</pubDate>
-            <description><![CDATA[<h2>前言</h2>
-<p>如果你用过 Alfred，还没有用过 <a href="https://raycast.com/?via=73820f">Raycast</a>，不妨试试，其免费订阅也足够好用（<a href="https://www.raycast.com/raycast-vs-alfred?via=7]]></description>
-            <content:encoded><![CDATA[<h2>前言</h2>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765380946755.jpg" alt="配图源自 Freepik"></p>
+<h2>前言</h2>
+<p>如果你用过 Alfred，还没有用过 <a href]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765380946755.jpg" alt="配图源自 Freepik"></p>
+<h2>前言</h2>
 <p>如果你用过 Alfred，还没有用过 <a href="https://raycast.com/?via=73820f">Raycast</a>，不妨试试，其免费订阅也足够好用（<a href="https://www.raycast.com/raycast-vs-alfred?via=73820f">Raycast vs Alfred</a>）。</p>
 <p>若有多设备同步需要，利用 Raycast 内置的 Export/Import Settings &amp; Data + iCloud Drive 便可。</p>
 <h2>背景</h2>
@@ -127,7 +129,7 @@
 <p>再提一句：</p>
 <p>由于 Jira 允许自定义字段，字段类型繁多，加之各家 Jira 实例大不相同，因此添加了 Manage Fields 命令来辅助 Search Issue 以显示更多信息。</p>
 <p>比如在 Manage Fields 界面下搜索 Test Engineer 并通过「Add to Search」添加成功，那么 Search Issues 列表下就可以显示该字段信息。</p>
-<p><img src="./images/image-2025-10-16_15-12-13.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765381884979.png" alt=""></p>
 <h2>截图</h2>
 <p><strong>由于 Raycast List 显示的内容有限，很多附加信息只能隐藏在 tooltip 里，可以通过移动光标至图标、标题、副标题、时间、头像等处显示。</strong></p>
 <p><a href="https://www.raycast.com/tofrankie/atlassian-data-center?via=73820f">看这里</a></p>
@@ -31961,35 +31963,68 @@ console.log(this.b);    // undefined
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[JavaScript 判断对象为空]]></title>
+            <title><![CDATA[如何判断 JS 对象为空]]></title>
             <link>https://github.com/tofrankie/blog/issues/219</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/219</guid>
             <pubDate>Sun, 26 Feb 2023 10:38:50 GMT</pubDate>
-            <description><![CDATA[<h3>一、支持 Object.keys 情况下</h3>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765380632562.jpg" alt="配图源自 Freepik"></p>
+<p>对象属性有这几种情况下：</p>
+<ol>
+<li>自身属性还是原型上的属性]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765380632562.jpg" alt="配图源自 Freepik"></p>
+<p>对象属性有这几种情况下：</p>
+<ol>
+<li>自身属性还是原型上的属性</li>
+<li>是否为可枚举属性</li>
+<li>是否包含 Symbol 属性</li>
+</ol>
+<p>不同的遍历方式：</p>
 <ul>
-<li>排除 <code>undefined</code>、<code>null</code> 等报错</li>
-<li>判断是否含 <code>key</code></li>
-<li>通过构造函数排除包装类，如 <code>new String()]]></description>
-            <content:encoded><![CDATA[<h3>一、支持 Object.keys 情况下</h3>
-<ul>
-<li>排除 <code>undefined</code>、<code>null</code> 等报错</li>
-<li>判断是否含 <code>key</code></li>
-<li>通过构造函数排除包装类，如 <code>new String()</code>、<code>new Boolean()</code> 等情况</li>
+<li><a href=""><strong>for...in</strong></a>：遍历<strong>自身</strong>和<strong>继承过来</strong>的<strong>可枚举</strong>属性（不包括 Symbol 属性）。</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/keys"><strong>Object.keys</strong></a>：返回一个数组，包含<strong>对象自身</strong>所有<strong>可枚举</strong>属性（不包括不可枚举属性和 Symbol 属性）</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames"><strong>Object.getOwnPropertyNames</strong></a>：返回一个数组，包含<strong>对象自身</strong>的属性（包括不可枚举属性，但不包括 Symbol 属性）</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols"><strong>Object.getOwnPropertySymbols</strong></a>：返回一个数组，包含<strong>对象自身</strong>的所有 Symbol 属性（包括可枚举和不可枚举属性）</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/ownKeys"><strong>Reflect.ownKeys</strong></a>：返回一个数组，包含<strong>自身所有</strong>的属性（包括 Symbol 属性，不可枚举属性以及可枚举属性）</li>
 </ul>
-<blockquote>
-<p>这种方法有个不足的是，倘若通过 <code>let emptyObj = Object.create(null)</code> 创建空对象，那么 <code>emptyObj.constructor === Object</code> 就不成立了。</p>
-</blockquote>
-<pre><code class="language-js">function isEmptyObject(val) {
-  return val &amp;&amp; Object.keys(val).length === 0 &amp;&amp; val.constructor === Object
-}
+<p>一般的业务场景，没有那么复杂，使用 <code>Object.keys</code>：</p>
+<pre><code class="language-js">const obj = {}
+Object.keys(obj).length === 0 // true
 </code></pre>
-<h3>二、不支持 Object.keys 时</h3>
-<pre><code class="language-js">function isEmptyObject(val) {
-  return Object.prototype.toString.call(val) === '[object Object]' &amp;&amp; JSON.stringify(val) === '{}'
-}
+<p>若要考虑不可枚举属性、Symbol 属性，使用 <code>Reflect.ownKeys</code>：</p>
+<pre><code class="language-js">const obj = {}
+Reflect.ownKeys(obj).length === 0 // true
 </code></pre>
-<h3>三、使用第三方 JS 库</h3>
-<pre><code class="language-js">// Lodash 
+<p>一句话：按需使用。</p>
+<!--
+
+旧内容：
+
+### 一、支持 Object.keys 情况下
+
+* 排除 `undefined`、`null` 等报错
+* 判断是否含 `key`
+* 通过构造函数排除包装类，如 `new String()`、`new Boolean()` 等情况
+
+> 这种方法有个不足的是，倘若通过 `let emptyObj = Object.create(null)` 创建空对象，那么 `emptyObj.constructor === Object` 就不成立了。
+
+```js
+function isEmptyObject(val) {
+  return val && Object.keys(val).length === 0 && val.constructor === Object
+}
+```
+
+### 二、不支持 Object.keys 时
+
+```js
+function isEmptyObject(val) {
+  return Object.prototype.toString.call(val) === '[object Object]' && JSON.stringify(val) === '{}'
+}
+```
+
+### 三、使用第三方 JS 库
+
+```js
+// Lodash 
 _.isEmpty(val)
 
 // Underscore
@@ -31997,8 +32032,9 @@ _.isEmpty(val)
 
 // jQuery
 $.isEmptyObject(val)
-</code></pre>
-]]></content:encoded>
+```
+
+-->]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[module.exports 属性与 exports 变量的区别]]></title>
