@@ -4,11 +4,42 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 10 Dec 2025 15:52:21 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 11 Dec 2025 15:32:08 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[Google Antigravity 登录成功无法跳转的解决方法]]></title>
+            <link>https://github.com/tofrankie/blog/issues/382</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/382</guid>
+            <pubDate>Thu, 11 Dec 2025 12:47:35 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765457222541.jpg" alt="配图源自 Freepik"></p>
+<p>由于 <a href="https://antigravity.google]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765457222541.jpg" alt="配图源自 Freepik"></p>
+<p>由于 <a href="https://antigravity.google/download">Antigravity</a> 仅限部分国家地区可用，因此登录过程可能会出现类似的提示：</p>
+<pre><code>Your current account is not eligible for Antigravity.
+</code></pre>
+<p>第一步，前往<a href="https://policies.google.com/country-association-form">这里</a>修改你的 Google 帐号关联地区，建议<strong>中国台湾、美国</strong>。提交后，通常约 30 分钟后会有修改结果的邮件，留意邮箱。</p>
+<p>第二步，科学上网：</p>
+<ol>
+<li>选择与 Google 帐号关联地区相同的节点，比如台湾。</li>
+<li>开启 TUN 模式（虚拟网卡模式）</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765456520697.png" alt=""></p>
+<blockquote>
+<p>我发现 <a href="https://clashx.org/clashx-download/">ClashX</a> 似乎没有开启 TUN 模式的选项，后来装了 <a href="https://www.clashverge.dev/install.html#__tabbed_1_3">Clash Verge</a>，通过上面开启。</p>
+</blockquote>
+<p>第三步，安装 Antigravity，按引导操作便可：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765456681648.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765456703885.png" alt="iShot_2025-12-11_18.55.57.png"></p>
+<p>如果可以正常跳转，控制台会有类似提示：</p>
+<pre><code>Launched external handler for 'antigravity://oauth-success'.
+</code></pre>
+<hr>
+<p>突然有个想法，macOS 内置的 <code>open</code> 命令是可以直接打开 URL Scheme 的。当网页端登录成功后，前往终端执行 <code>open antigravity://oauth-success</code> 命令是不是让 Antigravity 完成最后一步操作呢？</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[看，有架飞机 ✈️]]></title>
             <link>https://github.com/tofrankie/blog/issues/381</link>
