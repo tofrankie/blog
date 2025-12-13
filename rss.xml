@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 11 Dec 2025 15:32:08 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 13 Dec 2025 08:26:53 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -30699,92 +30699,88 @@ str.replace(/\s/g, '')
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[JavaScript 判断是否为数组]]></title>
+            <title><![CDATA[如何判断 JS 数组]]></title>
             <link>https://github.com/tofrankie/blog/issues/230</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/230</guid>
             <pubDate>Sun, 26 Feb 2023 10:55:21 GMT</pubDate>
-            <description><![CDATA[<p>JavaScript 判断数组的几种方法及其利弊。</p>
-<h3>1. typeof</h3>
-<p>对于 Function、String、Number、Undefined 等几种类型的对象来说，他完全可以胜任。但是为 Array 时：</p>
-<pre><code class="language-js">va]]></description>
-            <content:encoded><![CDATA[<p>JavaScript 判断数组的几种方法及其利弊。</p>
-<h3>1. typeof</h3>
-<p>对于 Function、String、Number、Undefined 等几种类型的对象来说，他完全可以胜任。但是为 Array 时：</p>
-<pre><code class="language-js">var arr = [1, 2, 3]
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765612533564.jpg" alt="配图源自 Freepik"></p>
+<h2>先说结论</h2>
+<p><strong>一律</strong>使用 ES]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765612533564.jpg" alt="配图源自 Freepik"></p>
+<h2>先说结论</h2>
+<p><strong>一律</strong>使用 ES5 提供的方法：</p>
+<pre><code class="language-js">Array.isArray()
+</code></pre>
+<p>非要降级考虑，那就：</p>
+<pre><code class="language-js">function isArray(val) {
+  return Object.prototype.toString.call(val) === '[object Array]'
+}
+</code></pre>
+<blockquote>
+<p>其原理是通过 <code>Object.prototype.toString()</code> 判断对象的内部属性 <code>[[Class]]</code> 是否为 <code>&quot;Array&quot;</code>。</p>
+</blockquote>
+<h2>其他方法的缺陷</h2>
+<h3>typeof</h3>
+<p>要是 Function、String、Number、Undefined 等类型来说，它完全可以胜任。</p>
+<p>但判断 Array 类型不行的，因此不能用它来判断一个值是否为数组。</p>
+<pre><code class="language-js">const arr = []
 console.log(typeof arr) // &quot;object&quot;
 
-// 同样的
+// 同样地
 console.log(typeof null) // &quot;object&quot;
 console.log(typeof {}) // &quot;object&quot;
 </code></pre>
-<p>所以不能使用 <code>typeof</code> 来判断。</p>
-<h3>2. instanceof</h3>
-<p><code>instanceof</code> 运算符用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链上。</p>
-<pre><code class="language-js">var arr = [1, 2 ,3]
+<h3>instanceof 和 constructor</h3>
+<p><code>instanceof</code> 用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链上，比如：</p>
+<pre><code class="language-js">const arr = []
 console.log(arr instanceof Array) // true
 </code></pre>
-<h3>3. 原型链（constructor）</h3>
-<p>一般情况下，除了 <code>undefined</code> 和 <code>null</code>，其它都能使用 <code>constructor</code> 判断类型。</p>
-<pre><code class="language-js">var arr = [1, 2, 3]
-console.log(arr.__proto__.constructor === Array) // true
+<p>使用 <code>constructor</code> 判断类型，比如：</p>
+<pre><code class="language-js">const arr = []
 console.log(arr.constructor === Array) // true
 
-// 注意：arr.__proto__ === Array.prototype 为 true。
+// 其他
+// arr.__proto__.constructor === Array // true
+// arr.__proto__ === Array.prototype // true
 </code></pre>
-<p>但是某些情况下，判断是不准确的，比如：</p>
-<pre><code class="language-js">// 构造函数
-function Fn() {}
-// 修改原型对象
+<p>在某些情况下是不准确的，比如：</p>
+<pre><code class="language-js">function Fn() {}
 Fn.prototype = new Array()
-// 实例化对象
-var fn = new Fn()
 
-console.log(fn.constructor === Fn) // false
-console.log(fn.constructor === Array) // true
-// 此时的 fn 应该是一个普通对象，而非数组，所以此时使用 constructor 判断是不合适的。
+const instance = new Fn()
+
+console.log(instance.constructor === Fn) // false
+console.log(instance.constructor === Array) // true
+// 此时 instance 应该是一个普通对象，而非数组，使用 constructor 判断是不合适的
 </code></pre>
-<h5>使用 instanceof 和 constructor 的局限性：</h5>
+<p>使用 instanceof 和 constructor 的局限性：</p>
 <blockquote>
 <p>使用和声明都必须是在当前页面，比如父页面引用了子页面，在子页面中声明了一个 <code>Array</code>，将其赋值给父页面的一个变量，那么此时做原型链的判断：<code>Array === object.constructor</code> 得到的是 <code>false</code>，原因如下：</p>
 <ol>
 <li><code>Array</code> 属于引用型数据，在传递过程中，仅仅是引用地址的传递。</li>
 <li>每个页面的 <code>Array</code> 原生对象所引用的地址是不一样的，在子页面声明的<code>Array</code> 所对应的构造函数是子页面的 <code>Array</code> 对象；父页面来进行判断，使用的 <code>Array</code> 并不等于子页面的 <code>Array</code>。</li>
 </ol>
-<p>附上 <a href="https://2ality.com/2013/01/categorizing-values.html">Categorizing values in JavaScript</a> 的一段原话：
+</blockquote>
+<blockquote>
+<p>附 <a href="https://2ality.com/2013/01/categorizing-values.html">Categorizing values in JavaScript</a> 一段原话：
 <code>Array.isArray()</code> exists because of one particular problem in browsers: each frame has its own global environment. An example: Given a frame A and a frame B (where either one can be the document). Code in frame A can pass a value to code in frame B. Then B code cannot use <code>instanceof Array</code> to check whether the value is an array, because its B <code>Array</code> is different from the A <code>Array</code> (of which the value could be an instance).</p>
 </blockquote>
-<p>看代码：</p>
-<pre><code class="language-js">var iframe = document.createElement('iframe')
+<p>示例：</p>
+<pre><code class="language-js">const iframe = document.createElement('iframe')
 document.body.appendChild(iframe)
-var xArray = window.frames[window.frames.length - 1].Array
-var xarr = new xArray()
-var arr = new Array()
 
-// 不同页面，结果并非我们所预期的 true，而是 false 哦！
+const xArray = window.frames[window.frames.length - 1].Array
+const xarr = new xArray()
+const arr = new Array()
+
+// 不同页面，结果并非我们所预期的 true，而是 false
 console.log(xarr instanceof Array) // false
 console.log(xarr.constructor === Array) // false
 
-// 同页面才是 true 哦！
+// 同页面才是 true
 console.log(arr instanceof Array) // true
 console.log(arr.constructor === Array) // true
 </code></pre>
-<h3>4. Array.isArray</h3>
-<p>鉴于以上原因，ES5 标准提供的一个判断数组方法 <code>isArray()</code>，其原理也是通过 <code>Object.prototype.toString()</code> 判断对象的内部属性 <code>[[Class]]</code> 是否为 <code>&quot;Array&quot;</code>，以达到判断数组的目的。</p>
-<pre><code class="language-js">function isArray(arr) {
-  return Array.isArray(arr)
-}
-</code></pre>
-<h3>5. Object.prototype.toString</h3>
-<p>所以，终极方法就是以下这个 👇</p>
-<pre><code class="language-js">function isArray(arr) {
-  return Object.prototype.toString.call(arr) === '[object Array]'
-}
-</code></pre>
-<h3>参考</h3>
-<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray">Array.isArray() MDN</a></li>
-<li><a href="http://www.nowamagic.net/librarys/veda/detail/1250">js 如何判断一个对象是不是 Array？</a></li>
-</ul>
 ]]></content:encoded>
         </item>
         <item>
