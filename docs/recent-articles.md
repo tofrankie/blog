@@ -1,5 +1,6 @@
 # 近期更新
 
+- [如何判断 JS 数组](https://github.com/tofrankie/blog/issues/230)
 - [Google Antigravity 登录成功无法跳转的解决方法](https://github.com/tofrankie/blog/issues/382)
 - [使用 Raycast 搜索 Confluence 或 Jira](https://github.com/tofrankie/blog/issues/380)
 - [如何判断 JS 对象为空](https://github.com/tofrankie/blog/issues/219)
@@ -9,4 +10,3 @@
 - [如何实现一个准确的倒计时功能](https://github.com/tofrankie/blog/issues/339)
 - [macOS QuickLook 常用插件](https://github.com/tofrankie/blog/issues/11)
 - [Git 常用命令介绍](https://github.com/tofrankie/blog/issues/103)
-- [那些纠结过的英文词汇](https://github.com/tofrankie/blog/issues/355)
