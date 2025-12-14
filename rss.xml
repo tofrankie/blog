@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sat, 13 Dec 2025 08:26:53 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 14 Dec 2025 10:50:01 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -2947,7 +2947,81 @@ function joinHomebrewPath() {
 <li><a href="https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-message-management/subscribe-message/sendMessage.html">发送订阅消息</a></li>
 <li><a href="https://doc.minapp.com/cloud-function/node-sdk/subscribe-message/wechat/subscribe-message.html">知晓云发送微信订阅消息</a></li>
 </ul>
-]]></content:encoded>
+<h2>页面底部 margin-bottom 失效</h2>
+<p>这个现象开发过小程序的同学应该都遇到过，它仅发生在 iOS 下，Android 和开发工具是符合预期的。</p>
+<pre><code class="language-css">page {
+  margin-bottom: 30rpx;
+}
+</code></pre>
+<p>在 iOS 下，实际表现是底部下外边距“相当于”未设置，会被吞掉。</p>
+<p>解决方法很多，也很简单。比如，页面底部整体设置一个下内边距，然后再内层通过 view 等设置下外边距撑开。</p>
+<pre><code class="language-css">page {
+  padding-bottom: 1px;
+}
+</code></pre>
+<details>
+    <summary>原因分析（⚠️ 源自 ChatGPT，不一定准确）</summary>
+<p>根本原因是 iOS WebView (WKWebView) 在计算可滚动内容高度时，对“文档末尾由 margin 产生的空白”进行了裁剪。</p>
+<ol>
+<li>WebView 的滚动本质</li>
+</ol>
+<pre><code>WKWebView
+ └─ UIScrollView
+     └─ Web content layer
+</code></pre>
+<p>最终能不能滚到某个位置，取决于 UIScrollView.contentSize.height</p>
+<ol start="2">
+<li>contentSize 是怎么来的？</li>
+</ol>
+<p>WKWebView 在内部会：</p>
+<pre><code>1. WebKit 计算文档布局
+
+2. 将“内容高度”同步给 UIScrollView
+
+3. UIKit 再决定是否裁剪末尾空白
+</code></pre>
+<blockquote>
+<p>问题就出在第 3 步</p>
+</blockquote>
+<ol start="3">
+<li>iOS WebView 的特殊策略（核心）</li>
+</ol>
+<p>iOS WebView 对“文档末尾空白”有一个长期存在的策略：</p>
+<p>如果页面底部是“非内容性的空白”，尤其是由 margin-bottom 产生的，UIKit 可能会将其视为“可裁剪区域”，不计入 scroll height。</p>
+<p>而以下情况不会被裁剪：</p>
+<ul>
+<li>padding-bottom</li>
+<li>实际存在的元素高度</li>
+<li>占位 div</li>
+<li>可交互内容</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>是否生效</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>margin-bottom</td>
+<td>❌ 易被裁剪</td>
+</tr>
+<tr>
+<td>padding-bottom</td>
+<td>✅ 稳定</td>
+</tr>
+<tr>
+<td>空 div 高度</td>
+<td>✅ 稳定</td>
+</tr>
+<tr>
+<td>body 末尾内容</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+</details>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[记五月：汕头 - 潮州两日]]></title>
@@ -3389,7 +3463,18 @@ OR
 <p>十六进制转八进制，可以先转为二进制，再转为八进制。</p>
 <h2>位运算</h2>
 <p>未完待续...</p>
-]]></content:encoded>
+<!--
+
+- [前端开发中的二进制数据](https://juejin.cn/post/7025818772531314724)
+- [二、八、十、十六进制转换（图解篇）](https://www.cnblogs.com/gaizai/p/4233780.html)
+- [一次搞懂 ArrayBuffer 和 Unit8Array(TypedArray) 和 Array！](https://blog.csdn.net/Aays2790/article/details/131580612)
+- [理解有符号数和无符号数](https://www.cnblogs.com/123ing/p/4135229.html)
+- [抛硬币与计算机中的“数据”](https://zgq.me/posts/coins-and-data/)
+- [字节序 & 大端 & 小端](https://hanleylee.com/articles/byte-order-big-little-endian/)
+- [程序员需要了解的硬核知识之二进制](https://www.cnblogs.com/cxuanBlog/p/13055284.html)
+- [inolen/bit-buffer](https://github.com/inolen/bit-buffer)
+
+-->]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[uni-app 开发记录]]></title>
