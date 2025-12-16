@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 14 Dec 2025 10:50:01 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 16 Dec 2025 06:38:05 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -673,7 +673,7 @@ Input #0, gif, from 'F3-按钮触发后-2.13s.gif':
 <p>利用 macOS 内置的「预览 App」可快速进行抽帧或添加帧等操作。</p>
 <p>用预览打开图片，在「选取边栏显示」处切换至「缩略图」或「缩略清单」模式（如图 👇）。</p>
 <p>删除帧：选中帧后，按下「⌘ + delete」组合键，可删除该帧。
-添加帧：打开两组图片，选择上述模式之一，然后两组图片之间进行拖拽即可。比如，从 A 中拖拽一帧到 B，A 帧数不会发生变化，B 则会增加一帧。</p>
+添加帧：打开两组图片，选择上述模式之一，然后两组图片之间进行拖拽即可。比如，从 A.gif 中拖拽一帧到 B.gif，A.gif 帧数不会发生变化，B.gif 则会增加一帧。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1763980105871.png" alt=""></p>
 <p>进行以上操作之前，建议先将原图备份。</p>
 <h3>优化脚本</h3>
@@ -688,7 +688,7 @@ Input #0, gif, from 'F3-按钮触发后-2.13s.gif':
 <p>抽帧形式，想法如下：</p>
 <ol>
 <li>随机抽帧：按比例抽取对应帧数。随机抽取的帧数，不能是第一帧，也不应该抽取连续帧。</li>
-<li>抽取指定帧：传入指定帧数，形如如 #3 #9。但这种方式不适用于批量处理。</li>
+<li>抽取指定帧：传入指定帧数，形如 <code>#3</code> <code>#9</code>。但这种方式不适用于批量处理。</li>
 </ol>
 <p>以上操作，将会使用 Shell 脚本实现。</p>
 <p>由于绝大多数场景可能不适合抽帧，暂不实现抽帧处理。</p>
@@ -1204,7 +1204,7 @@ if (isStr(value)) {
 </code></pre>
 <blockquote>
 <p>[!NOTE]
-注意，自 <a href="https://devblogs.microsoft.com/typescript/announcing-typescript-5-5/#inferred-type-predicates">TypeScript 5.5</a> 起支持推断类型谓词，无需显示指定。</p>
+注意，自 <a href="https://devblogs.microsoft.com/typescript/announcing-typescript-5-5/#inferred-type-predicates">TypeScript 5.5</a> 起支持推断类型谓词，无需显式指定。</p>
 </blockquote>
 <p>类型谓词用于描述函数的返回值类型。这里 <code>value is string</code> 并不是返回类型，而是告诉 TS 如果函数返回 <code>true</code>，那么参数 <code>value</code> 一定是 <code>string</code> 类型。换句话说，当函数返回 <code>true</code> 时，告诉 TS 编译器参数 <code>value</code> 的类型应该被收窄为 <code>string</code>。</p>
 <p>为什么函数返回布尔类型不会触发类型收窄？</p>
