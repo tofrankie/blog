@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Tue, 16 Dec 2025 06:38:05 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 23 Dec 2025 19:19:46 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -37772,8 +37772,11 @@ switch (options.platform) {
             <link>https://github.com/tofrankie/blog/issues/170</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/170</guid>
             <pubDate>Sun, 26 Feb 2023 07:47:19 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-ec3461bf9c25d6c4.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配图源自 Freepik"]]></description>
-            <content:encoded><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-ec3461bf9c25d6c4.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1766517557933.png" alt="配图源自 Freepik"></p>
+<p>这篇文章你将学到以下内容：</p>
+<ul>
+<li>CSS 变量</li>]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1766517557933.png" alt="配图源自 Freepik"></p>
 <p>这篇文章你将学到以下内容：</p>
 <ul>
 <li>CSS 变量</li>
@@ -37787,7 +37790,7 @@ switch (options.platform) {
 <blockquote>
 <p>至于为什么采用 <code>--</code>，大概是因为 <code>@</code> 被 <a href="https://lesscss.org/">Less</a> 占用了，<code>$</code> 被 <a href="https://sass-lang.com/">Sass</a> 占用了吧。</p>
 </blockquote>
-<h4>1.1 语法</h4>
+<h3>1.1 语法</h3>
 <p>定义 CSS 变量的语法非常简单，在变量名称之前添加两个短横线 <code>--</code>：</p>
 <pre><code class="language-css">--&lt;custom-property-name&gt;: &lt;declaration-value&gt;
 </code></pre>
@@ -37812,7 +37815,7 @@ body {
 <blockquote>
 <p>请注意，CSS 变量名称是大小写敏感的，<code>--foo</code> 和 <code>--Foo</code> 是两个不同的变量。这一点与 CSS 属性大小写不敏感是有区别的。</p>
 </blockquote>
-<h4>1.2 作用域</h4>
+<h3>1.2 作用域</h3>
 <p>同一个 CSS 变量，可以在多个选择器内声明，读取顺序与 CSS 匹配规则一致，优先级最高的生效。请注意，CSS 变量并没有 <code>!important</code> 用法，变量的覆盖规则由 CSS 选择器权重决定。</p>
 <p>一般情况下，全局性变量放在 <code>:root</code> 内声明，也可以在任意元素中声明 CSS 变量，视实际情况而定即可。如果是小程序，则在全局样式 <code>app.wxss</code> 的 <code>page</code> 内声明。</p>
 <blockquote>
@@ -37845,7 +37848,7 @@ div {
 </code></pre>
 <p>总的来讲，CSS 变量是有作用域概念的，它只能作用于自身或后代元素，而兄弟元素、祖先元素都是不用享用的。</p>
 <p>可以试下这个示例：<a href="https://codesandbox.io/s/css-variable-scope-demo-7p5rio">css-variable-scope-demo</a>。</p>
-<h4>1.3 兼容性</h4>
+<h3>1.3 兼容性</h3>
 <p>兼容性如下，还是挺不错的（如果忽略 IE 的话），更多请看 <a href="https://caniuse.com/css-variables">Can I use</a>。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/5128488-bc4e198b24a69ca4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>很棒 🙄，IE 全系不支持，骂骂咧咧地说：还是用 SCSS 或 LESS 吧。可以参考下这个项目：<a href="https://github.com/jhildenbiddle/css-vars-ponyfill">css-vars-ponyfill</a>。</p>
@@ -37890,8 +37893,8 @@ element.style.removeProperty('--color')
 }
 </code></pre>
 <p>尽管这个属性值是「无用」的，不会使得任意 CSS 属性产生实际效果，但是这个 CSS 变量定义是「有效」的。它可以被 JavaScript 读取，至于有什么用，我也不知道。</p>
-<h2>二、CSS 函数</h2>
-<h4>2.1 var 函数</h4>
+<h2>三、CSS 函数</h2>
+<h3>3.1 var 函数</h3>
 <p><code>var()</code> 函数用于读取 CSS 变量，它可以替代元素中「任何属性」中的「值的任何部分」，不能作为属性名、选择器或其他处理属性值之外的值。</p>
 <p>语法如下：</p>
 <pre><code class="language-css">var(&lt;custom-property-name&gt;[, &lt;declaration-value&gt;])
@@ -37900,7 +37903,7 @@ element.style.removeProperty('--color')
 <li><code>&lt;custom-property-name&gt;</code> 表示自定义属性名</li>
 <li><code>&lt;declaration-value&gt;</code>（可选）表示声明值（后备值），<strong>仅自定义属性没有定义时，它才会有效</strong>（类似 ES6 中的函数参数设定默认值）。</li>
 </ul>
-<p><strong>2.1.1 CSS 变量不合法的缺省特性</strong></p>
+<h4>3.1.1 CSS 变量不合法的缺省特性</h4>
 <p>看看以下示例，变量 <code>--color</code> 的值为 <code>20px</code>，显然它作为 <code>background-color</code> 值的话是无效的，那么 <code>&lt;body&gt;</code> 会显示什么背景颜色呢？红色？绿色？还是...</p>
 <pre><code class="language-css">body {
   --color: 20px;
@@ -37956,7 +37959,7 @@ element.style.removeProperty('--color')
 <blockquote>
 <p>因此，比较严谨的说法是：当 CSS 变量值不合法时，生效的是 CSS 属性的继承值或初始值。</p>
 </blockquote>
-<p><strong>2.1.2 var 函数的尾随空格</strong></p>
+<h4>3.1.2 var 函数的尾随空格</h4>
 <pre><code class="language-html">&lt;style&gt;
   body {
     --size: 20;
@@ -37993,7 +37996,7 @@ element.style.removeProperty('--color')
 }
 </code></pre>
 <p>相当于 <code>font-size: '20px';</code> 语法错误，规则会被丢弃，因此取其继承值或默认值。</p>
-<p><strong>2.1.3 CSS 变量的相互传递性</strong></p>
+<h4>3.1.3 CSS 变量的相互传递性</h4>
 <p>我们在某个选择器中定义了一个 CSS 变量，它除了在子元素中被复用，它本身作用域内也可以复用，而且与编写顺序无关。比如：</p>
 <pre><code class="language-css">body {
   --size: 20px;
@@ -38006,7 +38009,7 @@ element.style.removeProperty('--color')
 }
 </code></pre>
 <p>以上两个示例，均是有效的。后者并不会因为 <code>--size: 20px;</code> 定义在后，就不会生效。这样规则，对于我们通过 JavaScript 动态设置 CSS 变量有着非常重要的意义。</p>
-<h4>2.2 calc 函数</h4>
+<h3>3.2 calc 函数</h3>
 <p><code>calc()</code> 语法非常地简单，如下：</p>
 <pre><code>property: calc(expression)
 </code></pre>
@@ -38037,7 +38040,7 @@ element.style.removeProperty('--color')
 <p>Web 前端总是绕不开兼容性，那么看下 <code>calc()</code> 函数的兼容性如何：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/5128488-f64dd288d7edc1b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>绿悠悠的一片，甚好！可以看到 IE9 以上都支持，可 IE 浏览器不支持嵌套写法，由于 IE 浏览器都不支持 CSS 变量，因此这个无伤大雅。</p>
-<h4>2.3 env 和 constant 函数</h4>
+<h3>3.3 env 和 constant 函数</h3>
 <!--
 
 往下之前，了解两个概念（[更多请看](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Viewport_concepts)）：
@@ -38053,7 +38056,7 @@ element.style.removeProperty('--color')
 <blockquote>
 <p>A safe area defines the area within a view that isn’t covered by a navigation bar, tab bar, toolbar, or other views a view controller might provide.</p>
 </blockquote>
-<p>简单来讲，以 iPhone X 为例，其安全区是指不受刘海（Sensor Housing）、底部小横条（Home Indicator）、设备圆角（Corners）影响的区域，如下图的浅蓝色区域所示，其中粉色部分是指浏览器默认的 Margin 值，通常为了抹平各浏览器不同的外边距，都会设置 <code>* { margin: 0 }</code>。</p>
+<p>简单来讲，以 iPhone X 为例，其安全区是指不受刘海（Sensor Housing）、底部小横条（Home Indicator）、设备圆角（Corners）影响的区域，如下图的浅蓝色区域所示，其中粉色部分是指浏览器默认的 Margin 值，通常为了抹平各浏览器不同的外边距，都会设置 <code>body { margin: 0 }</code>。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/5128488-d59d12b5798c6372.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>我们知道，Viewport 是规则的矩形，如果显示设备的屏幕是不规则（比如圆形）的话，页面中的某些部分就会被裁剪。那么 <code>viewport-fit</code> 可以通过设置可视 Viewport 大小来控制裁剪区域。</p>
 <p>其中 <code>viewport-fit</code> 提供了 <code>auto</code>（默认）、<code>contain</code>、<code>cover</code> 三种属性值（<a href="https://www.w3.org/TR/css-round-display-1/#extending-viewport-rule">详见</a>）：</p>
@@ -38195,7 +38198,7 @@ element.style.removeProperty('--color')
   }
 }
 </code></pre>
-<h4>2.4 max 和 min 函数</h4>
+<h3>3.4 max 和 min 函数</h3>
 <p>从文章排版来看，这是极不美观的，我们希望在左右两边再加点内边距。PS：上述图片为了更方便对比，采用了外边距（Margin），接下来会将其修改为内边距（Padding）。</p>
 <pre><code class="language-css">.container {
   /* 这里将原先的 margin 修改为 padding */
@@ -38234,7 +38237,7 @@ element.style.removeProperty('--color')
 <blockquote>
 <p>至此，相信你对 iPhone X 等机型的适配有更深刻的了解，适配起来就完全没有压力了。</p>
 </blockquote>
-<h2>三、CSS At-rules</h2>
+<h2>四、CSS At-rules</h2>
 <p>一个 at-rule 是一个 CSS 语句，它以 <code>@</code> 符号开头，后接一个标识符，并包括直到下一个分号 <code>;</code> 的所有内容或下一个 CSS 块，以先到者为准。</p>
 <p>主要可分为不可嵌套、可嵌套两类：</p>
 <p><strong>不可嵌套 at-rule：</strong></p>
@@ -38257,7 +38260,7 @@ element.style.removeProperty('--color')
 <p>这些规则组所指的条件总等效于 <code>true</code> 或 <code>false</code>，如果为 <code>true</code> 那么它里面的 CSS 语句生效。</p>
 </blockquote>
 <p>本文仅介绍 <code>@supports</code> 和 <code>@media</code>，其他规则请看 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/At-rule">CSS At-rules</a>。</p>
-<h4>3.1 @supports</h4>
+<h3>4.1 @supports</h3>
 <p><code>@supports</code> 常用于 CSS 兼容性判断。</p>
 <p>它由一组支持条件和一组样式声明组成。支持条件可以是一个或多个条件使用逻辑与 <code>and</code>、逻辑或 <code>or</code>、逻辑非 <code>not</code> 组合而成。</p>
 <ul>
@@ -38292,7 +38295,7 @@ element.style.removeProperty('--color')
 <p>还有一个实验性的语法：<code>selector()</code>，有兴趣请看<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports#function_syntax">这里</a>。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/5128488-98c0f9a484a65ee0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>兼容性仍然是 IE 全系不支持，呵呵~</p>
-<h4>3.2 @media 介绍</h4>
+<h3>4.2 @media 介绍</h3>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Media_Queries/Using_media_queries">媒体查询</a>（Media Queries），在网页开发中是非常常用的。浏览器给 Web 提供了一些媒体特性（Media Features），它描述了 <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/User_agent">User Agent</a>、输出设备、浏览器环境的具体特征。网页开发者可根据这些特性，来提供更好的用户体验。</p>
 <p>比如：</p>
 <pre><code class="language-css">@import 'common.css' screen, projection;
@@ -38319,10 +38322,10 @@ if (window.matchMedia('(max-width: 480px)').matches) {
 </ul>
 </blockquote>
 <p>需要注意的是，当媒体查询作用于 <code>&lt;link&gt;</code> 元素时，即使媒体查询结果为 <code>false</code>，该样式表仍会被下载，只是样式内容不被作用而已。</p>
-<p><strong>3.2.1 媒体查询语法</strong></p>
+<h4>4.2.1 媒体查询语法</h4>
 <p>每条媒体查询语句（不区分大小写），由一个可选的「媒体类型」和任意数量的「媒体特征」表达式构成。同时可使用多种「逻辑操作符」合并多条媒体查询语句。</p>
 <p>当媒体查询语句中指定的媒体类型与设备匹配时，这条媒体查询结果返回 <code>true</code>。若是多条媒体查询语句组合，需每个条件均为 <code>true</code>，那么媒体查询结果才为 <code>true</code>。</p>
-<p><strong>3.2.2 媒体类型（Media Types）</strong></p>
+<h4>4.2.2 媒体类型（Media Types）</h4>
 <p>在媒体查询中，媒体类型（Media Types）是可选的，默认是 <code>all</code> 类型。一般是使用了 <code>not</code> 或 <code>only</code> 逻辑操作符，才需要显式指定。有以下这些：</p>
 <table>
 <thead>
@@ -38360,7 +38363,7 @@ if (window.matchMedia('(max-width: 480px)').matches) {
   /* 针对多种设备 */
 }
 </code></pre>
-<p><strong>3.2.3 媒体特性（Media Features）</strong></p>
+<h4>4.2.3 媒体特性（Media Features）</h4>
 <p>媒体特性描述了 User Agent、输出设备，或是浏览环境的具体特征，更多请看 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media#media_features">MDN</a>。</p>
 <blockquote>
 <p>建议：使用前先弄清楚<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media#browser_compatibility">兼容情况</a>。</p>
@@ -38530,13 +38533,13 @@ if (window.matchMedia('(max-width: 480px)').matches) {
 /* 等价于 */
 @media ( 720px &lt;= width &lt;= 960px) {}
 </code></pre>
-<p><strong>3.2.4 device-width 与 width 的区别</strong></p>
+<h4>4.2.4 device-width 与 width 的区别</h4>
 <p>其中 <code>device-width</code> 表示设备的宽度，<code>width</code> 表示视口 Viewport 宽度。举个例子，在 PC 中打开了一个「非全屏」的浏览器窗口，那么 <code>device-with</code> 是显示器的宽度，是不可变的。而 <code>width</code> 则是浏览器内页面的 Viewport 宽度（注意，不能单纯地认为浏览器窗口的宽度），通过拖拽浏览器窗口等行为是可使其发生变化的。</p>
 <p>但请注意，在移动端中，横屏与竖屏的切换，<code>device-width</code> 会相应跟着改变的。应对这种行为，可结合 <code>orientation</code> 这个媒体特性使用。</p>
 <blockquote>
 <p><code>device-height</code> 与 <code>height</code> 同理。</p>
 </blockquote>
-<p><strong>3.2.5 逻辑操作符（Logical Operators）</strong></p>
+<h4>4.2.5 逻辑操作符（Logical Operators）</h4>
 <p>通过逻辑操作符（<code>and</code>、<code>not</code>、<code>only</code>），可以创建复杂、多条件的媒体查询。其中 <code>and</code>、<code>not</code>、<code>only</code> 分别表示与、非、唯一的意思。</p>
 <p>此外，还可以使用 <code>,</code>（逗号）将多个媒体查询合并，只要任一查询结果为 <code>true</code>，整个查询语句就返回 <code>true</code>（跟逻辑或 <code>or</code> 行为类似）。</p>
 <p>需要注意的是：</p>
@@ -38583,7 +38586,7 @@ if (window.matchMedia('(max-width: 480px)').matches) {
 /* 在现代浏览器，相当于这样 */
 @media screen and (color) {}
 </code></pre>
-<h4>3.3 @media 应用场景</h4>
+<h3>4.3 @media 应用场景</h3>
 <ol>
 <li>浅色模式与深色模式</li>
 </ol>
@@ -38667,7 +38670,7 @@ body {
   background: var(--theme-bg);
 }
 </code></pre>
-<p>以上示例会自适应系统主题色，如果你想交由用户决定，去掉示例中的媒体查询，然后通过 JavaScript 去动态设置 CSS 变量即可。另外，可以看下张鑫旭大佬这篇文章：<a href="https://www.zhangxinxu.com/wordpress/2020/11/css-mix-blend-mode-filter-dark-theme/">几行CSS让整站支持深色模式的探索与拓展</a>。</p>
+<p>以上示例会自适应系统主题色，如果你想交由用户决定，去掉示例中的媒体查询，然后通过 JavaScript 去动态设置 CSS 变量即可。另外，可以看下张鑫旭大佬这篇文章：<a href="https://www.zhangxinxu.com/wordpress/2020/11/css-mix-blend-mode-filter-dark-theme/">几行 CSS 让整站支持深色模式的探索与拓展</a>。</p>
 <p><a href="https://caniuse.com/prefers-color-scheme">兼容性</a>如下，看着还不错：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/5128488-526f05195a8c2b18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>私认为深色模式的适配难点并不在实现上，通过本文的学习，可以说是没有难度对吧，难点应该在于设计师要考虑全站的交互样式，并制定出深浅模式下的各级色调等。</p>
@@ -38676,8 +38679,6 @@ body {
 </blockquote>
 <p>未完待续...</p>
 <!--
-
-
 
 https://webkit.org/blog/7929/designing-websites-for-iphone-x/
 https://objcer.com/2017/09/21/Understanding-the-WebView-Viewport-in-iOS-11-iPhone-X/
