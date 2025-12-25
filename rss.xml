@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Tue, 23 Dec 2025 19:19:46 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 25 Dec 2025 13:09:27 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -3370,11 +3370,18 @@ OR
 <p><a href="https://cihr-irsc.gc.ca/e/48642.html">What is gender? What is sex?</a></p>
 </blockquote>
 <h2>黑/白名单</h2>
+<p>参赛选手：</p>
 <ul>
 <li>blacklist vs blocklist</li>
 <li>whitelist vs allowlist</li>
 </ul>
 <p>因为众所周知的原因，Git 的 master/main 也是同理。</p>
+<h2>状态</h2>
+<p>参赛选手：</p>
+<ul>
+<li>state</li>
+<li>status</li>
+</ul>
 ]]></content:encoded>
         </item>
         <item>
@@ -16318,8 +16325,10 @@ window.addEventListener('storage', listener)
             <link>https://github.com/tofrankie/blog/issues/273</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/273</guid>
             <pubDate>Sun, 26 Feb 2023 12:36:17 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-95034fbc69e1d1af.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配图源自 Freepik">]]></description>
-            <content:encoded><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-95034fbc69e1d1af.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1766655615285.jpg" alt="配图源自 Freepik"></p>
+<h2>一、前言</h2>
+<p>理论上说，每个有效的 URL 都指向一个唯一的资]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1766655615285.jpg" alt="配图源自 Freepik"></p>
 <h2>一、前言</h2>
 <p>理论上说，每个有效的 URL 都指向一个唯一的资源。这个资源可以是一个 HTML 页面，一个 CSS 文档，一幅图像等。在地址栏键入完整的 URL 地址，浏览器就会将对应资源展示出来。</p>
 <p>为了在多个 URL 之间往返，浏览器厂商定义了一种可存储浏览器会话历史（下称“历史记录”）的机制，每访问新的 URL 就会在历史记录中增加一个新的历史记录条目。当前“历史条目”可通过 History 对象（即 <code>window.history</code>）获取，该对象包括了 <code>back()</code>、<code>forward()</code>、<code>go()</code> 等方法。</p>
@@ -16330,11 +16339,10 @@ window.addEventListener('storage', listener)
 <p><code>#</code> 号表示网页的一个位置，跟在 <code>#</code> 号后面的字符串称为“锚”。当锚发生变化，若页面中存在这样一个位置（可通过锚点或标签元素 <code>id</code> 属性设置），浏览器会使页面自动滚动至对应位置。这种机制的好处是，仅用于指导浏览器的动作，而对服务器是完全无用的。例如，请求上述网址，HTTP 请求的服务器地址是：<code>http://www.example.com/index.html</code>（不会包含 <code>#user</code>）。</p>
 <p>相比 <code>http://www.example.com/index.html/user</code> 这种形式，URL 上带 <code>#</code> 号除了看着不顺眼之外，对于分享 URL 或 SEO 来说也是一个问题（对此 Google 还提出了一种优化 SEO 的方案，即 URL 中带上 <code>&quot;#!&quot;</code>，<a href="http://www.ruanyifeng.com/blog/2011/03/url_hash.html">详见</a>）。后来 HTML5 中提供了另外一种解决方案。它同样是可以修改 URL 且不触发页面重载，而且可以修改 URL 中 <code>Origin</code> 后面的任意路径（即 <code>/index.html/user</code>），这点 <code>#</code> 模式是做不到的。他们将这种能力内置在 History 对象下，包含 <code>history.pushState()</code>、<code>history.replaceState()</code> 方法。</p>
 <p>上面提到了一些词语，有必要说明一下：</p>
-<blockquote>
 <ul>
 <li>
-<p><strong>历史记录</strong>
-是指在浏览器中<strong>每个标签</strong>（窗口）的会话历史（下称“<strong>历史记录</strong>”）。它由浏览器某个线程维护着，而且标签之间的历史记录是相互独立的，且无法通过 JavaScript 脚本读取。</p>
+<p><strong>历史记录</strong></p>
+<p>是指在浏览器中<strong>每个标签</strong>（窗口）的会话历史（下称“<strong>历史记录</strong>”）。它由浏览器某个线程维护着，而且标签之间的历史记录是相互独立的，且无法通过 JavaScript 脚本读取。</p>
 <p>当标签关闭或者退出浏览器，会话结束，历史记录也随之被销毁（没错，这里的“历史记录”，并不是指浏览器应用的“历史记录”功能）。</p>
 </li>
 <li>
@@ -16348,23 +16356,22 @@ window.addEventListener('storage', listener)
 <p>假设在 <code>A</code> 页面跳转到 <code>B</code> 页面，这个 <code>B</code> 就是“新的 URL”。若在 <code>B</code> 中也有一个链接指向 <code>A</code> 页面，点击的时候，这个 <code>A</code> 也是“新的 URL”，因为它是相较于当前页面 URL 所得出来的结论。因此，这个过程会产生 3 条记录，所以历史记录将会是 <code>[A, B, A]</code>。</p>
 </li>
 </ul>
-</blockquote>
 <p>下面将按历史顺序一一介绍...</p>
 <h2>二、URL 的 # 号</h2>
 <p>其实前面刚提到，<code>#</code> 表示页面中的一个位置。比如：</p>
-<pre><code class="language-text">https://github.com/toFrankie/csscomb-mini#usage
+<pre><code class="language-text">https://github.com/tofrankie/csscomb-mini#usage
 </code></pre>
-<p>上述 URL 中，<code>#usage</code> 表示 <a href="https://github.com/toFrankie/csscomb-mini"><code>https://github.com/toFrankie/csscomb-mini</code></a> 页面的 <code>usage</code> 位置。</p>
+<p>上述 URL 中，<code>#usage</code> 表示 <a href="https://github.com/tofrankie/csscomb-mini"><code>https://github.com/tofrankie/csscomb-mini</code></a> 页面的 <code>usage</code> 位置。</p>
 <p>URL 上跟在 <code>#</code> 后面的所有字符串，被称为 <strong>Fragment</strong>（<strong>锚</strong>，或<strong>片段标识符</strong>），所以此 URL 的锚为 <code>usage</code>。</p>
-<h4>1. location.hash 属性</h4>
+<h3>1. location.hash 属性</h3>
 <p>打印 <code>window.location</code> 结果如下：</p>
 <pre><code class="language-js">{
   hash: '#usage'
   host: 'github.com'
   hostname: 'github.com'
-  href: 'https://github.com/toFrankie/csscomb-mini#usage'
+  href: 'https://github.com/tofrankie/csscomb-mini#usage'
   origin: 'https://github.com'
-  pathname: '/toFrankie/csscomb-mini'
+  pathname: '/tofrankie/csscomb-mini'
   port: ''
   protocol: 'https:'
   search: ''
@@ -16374,19 +16381,19 @@ window.addEventListener('storage', listener)
 <blockquote>
 <p>如果 URL 中不存在 Fragment，<code>location.hash</code> 会返回一个空字符串（<code>''</code>）。</p>
 </blockquote>
-<pre><code class="language-js">// 1. https://github.com/toFrankie/csscomb-mini
+<pre><code class="language-js">// 1. https://github.com/tofrankie/csscomb-mini
 window.location.hash // &quot;&quot;
 
-// 2. https://github.com/toFrankie/csscomb-mini#
+// 2. https://github.com/tofrankie/csscomb-mini#
 window.location.hash // &quot;&quot;
 
-// 3. https://github.com/toFrankie/csscomb-mini#/
+// 3. https://github.com/tofrankie/csscomb-mini#/
 window.location.hash // &quot;#/&quot;
 
-// 4. https://github.com/toFrankie/csscomb-mini#usage
+// 4. https://github.com/tofrankie/csscomb-mini#usage
 window.location.hash // &quot;#usage&quot;
 </code></pre>
-<h4>2. 修改 URL hash 值</h4>
+<h3>2. 修改 URL hash 值</h3>
 <p>修改 <code>hash</code> 值就会直接体现在地址栏上，并且在历史记录中会产生一条新记录。比如，执行 <code>history.length</code> 可以看到 <code>length</code> 的变化。<code>history.length</code> 表示历史记录中的记录个数。</p>
 <p>可以通过以下几种方式去修改：</p>
 <pre><code class="language-js">// 1. 直接给该属性赋值
@@ -16397,7 +16404,7 @@ window.location = '#usage'
 window.location.href = '#usage'
 
 // 3. 请注意，只修改 Fragment 部分，否则会重新加载页面。类似 history.replaceState 作用
-window.location.replace('https://github.com/toFrankie/csscomb-mini#/usage')
+window.location.replace('https://github.com/tofrankie/csscomb-mini#/usage')
 
 // 4. 通过 &lt;a&gt; 标签设置 href 属性，且不能省略 # 号
 &lt;a href=&quot;#usage&quot;&gt;&lt;/a&gt;
@@ -16405,11 +16412,10 @@ window.location.replace('https://github.com/toFrankie/csscomb-mini#/usage')
 <blockquote>
 <p>请注意，多次设置同一个 Fragment 时，仅首次有效，重复的部分可以理解为是无效的。</p>
 </blockquote>
-<h4>3. location.hash、location.href 与 location.replace()</h4>
+<h3>3. location.hash、location.href 与 location.replace()</h3>
 <p>前面两个方法都<strong>可读可写</strong>，其中 <code>location.hash</code> 绝对不会重载页面。这跟它的设计初衷有关，前面提过了，不再赘述。而 <code>location.href</code> 和 <code>location.replace()</code> 若只是 URL 的 Fragment 部分发生，也不会重载页面，而其他情况总会重载页面。</p>
 <p>通过 <code>location.href</code>、<code>location.hash</code> 方式去“修改” URL，历史记录都会新增一条新记录。由于 <code>history.length</code> 是历史记录数量的体现，因此也会随之改变。而 <code>location.replace()</code> 则是用新记录覆盖当前记录，因此 <code>history.length</code> 不会发生变化。</p>
 <p>注意点：</p>
-<blockquote>
 <ul>
 <li>
 <p>以上三种方式（包括 <code>&lt;a&gt;</code> 标签形式）去修改 URL，<strong>只有</strong>在新旧 URL 不相同的情况下，才会新增一条记录。</p>
@@ -16430,18 +16436,15 @@ window.location.replace('https://github.com/toFrankie/csscomb-mini#/usage')
 <p>上面是指写操作，并不是读操作哈。</p>
 </li>
 </ul>
-</blockquote>
 <p>一句话总结：<strong>若新旧 URL 之间仅仅 Fragment 部分发生改变，以上几种方法都会在历史记录新增一条记录，且不会重载页面。</strong></p>
-<h4>4. Fragment 的位置</h4>
+<h3>4. Fragment 的位置</h3>
 <p>前面提到，<code># + Fragment</code> 表示网页的一个位置，用于指导浏览器的行为。当 Fragment 的值发生改变，页面会滚动至对应位置。当然，前提是这个位置存在于页面中，否则也是不会发生滚动的。</p>
 <p><strong>那么这个“位置”，如何设置呢？</strong></p>
 <p>讲真的，天天用框架写页面，最原始的反而忘了。有两种方式：</p>
-<blockquote>
 <ul>
 <li>使用锚点，即利用 <code>&lt;a&gt;</code> 标签的 <code>name</code> 属性（不推荐）</li>
 <li>使用标签 <code>id</code> 属性（推荐）</li>
 </ul>
-</blockquote>
 <p><strong>请注意，<code>&lt;a&gt;</code> 标签的 <code>name</code> 属性在 HTML5 中<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#attr-name">已废弃</a>，请使用 HTML 全局属性 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes"><code>id</code></a> 来代替</strong>。后者在整个 DOM 中必须是唯一的。常用于查询节点、样式选择器、作为页面 Fragment 的位置。</p>
 <pre><code class="language-html">&lt;!-- 1. 锚点 --&gt;
 &lt;a name=&quot;usage&quot;&gt;&lt;/a&gt;
@@ -16461,23 +16464,20 @@ window.location.replace('https://github.com/toFrankie/csscomb-mini#/usage')
 &lt;a id=&quot;usage&quot; href=&quot;#usage&quot;&gt;&lt;/a&gt;
 </code></pre>
 <p>上述示例，作者本人会经常混淆（希望你们不会），顺道提一下。简单来说，<code>href=&quot;usage&quot;</code> 是为了修改 URL，当 URL 的 <code>hash</code> 变成 <code>#usage</code>，浏览器就会滚动至对应位置（即锚点为 <code>usage</code> 或 <code>id</code> 属性为 <code>usage</code> 的元素所在位置）。</p>
-<h4>5. hashchange 事件</h4>
+<h3>5. hashchange 事件</h3>
 <p>若在全局注册了 <code>hashchange</code> 事件监听器，只要 URL 的 Fragment 发生变化，将会被事件处理程序捕获到，事件对象包含了 <code>newURL</code> 和 <code>oldURL</code> 等该事件特有的属性。其余的，在下文对比 <code>popstate</code> 事件时再详细介绍。</p>
 <h2>三、History 对象</h2>
 <p>前面提到，每个标签都有一个独立的历史记录，里面维护着一条或多条记录。每条记录保存了对应 URL 的一些状态，仅能在当前页面的 <code>window.history</code> 对象读取到。（这里不再赘述，若概念有混淆的，请回到开头再看一遍）</p>
 <p>在 HTML5 之前，History 对象主要包含以下属性和方法：</p>
-<blockquote>
 <ul>
 <li><code>history.length</code></li>
 <li><code>history.back()</code></li>
 <li><code>history.forward()</code></li>
 <li><code>history.go()</code></li>
 </ul>
-</blockquote>
-<h4>1. history.length</h4>
+<h3>1. history.length</h3>
 <p><strong>只读</strong>，该属性返回当前会话的历史记录个数。由于 <code>history.length</code> 是历史记录数量的体现，那么当历史记录发生变化时，它才会随之改变。</p>
 <p>注意以下几点：</p>
-<blockquote>
 <ul>
 <li>
 <p>若“主动”打开浏览器的新标签，就会产生一条记录，尽管它可能是一个空标签页，即 <code>history.length</code> 为 <code>1</code>。当键入新 URL 并回车，此时 <code>history.length</code> 就会变为 <code>2</code>。</p>
@@ -16498,20 +16498,19 @@ window.location.replace('https://github.com/toFrankie/csscomb-mini#/usage')
 <p>点击浏览器前进/后退/刷新按钮，或者调用 <code>history.back()</code>、<code>history.forward()</code>、<code>history.go()</code> 方法，不会使历史记录和 <code>history.length</code> 值发生变化。这些操作只会退回/前往历史记录中某个具体的页面。但会触发 <code>popstate</code> 或 <code>hashchange</code> 事件（若有注册的话）。</p>
 </li>
 </ul>
-</blockquote>
 <p>这里描述的场景很多，原因是此前对某些场景没有完全弄清楚（如果你没有这个困扰，简单略过即可）。</p>
 <p>既然 <code>history.length</code> 是只读的，换句话说，就是我们无法“直接”操作历史记录（比如删除某个历史记录），事实上我们也访问不到。</p>
-<h4>2. history.back()</h4>
+<h3>2. history.back()</h3>
 <p>它的作用同浏览器的<strong>后退</strong>按钮，通俗地讲就是后退至上一页。等价于 <code>history.go(-1)</code>。</p>
 <blockquote>
 <p>若当前页面是历史记录的第一个页时，调用此方法不执行任何操作。此时浏览器后退按钮也是置灰的，是不可操作的。换句话说，此方法仅在 <code>history.length &gt; 1</code> 时有效。</p>
 </blockquote>
-<h4>3. history.forward()</h4>
+<h3>3. history.forward()</h3>
 <p>它的作用同浏览器的<strong>前进</strong>按钮，通俗地讲就是前往下一页。等价于 <code>history.go(1)</code>。</p>
 <blockquote>
 <p>若当前页面是历史记录里最顶端的页面时，调用此方法不执行任何操作。此时浏览器前进按钮也是置灰的，是不可操作的。</p>
 </blockquote>
-<h4>4. history.go()</h4>
+<h3>4. history.go()</h3>
 <p>该方法接受一个 <code>delta</code> 参数（可选），通过当前页面的相对位置加载某个页面。</p>
 <pre><code class="language-js">window.history.go(delta)
 </code></pre>
@@ -16533,9 +16532,8 @@ window.location.replace('https://github.com/toFrankie/csscomb-mini#/usage')
 <p>若 <code>delta</code> 不是 <code>Number</code> 类型，内部先进行隐式类型转换成对应的 <code>Number</code> 值，再执行 <code>go()</code> 方法。比如，<code>history.go(true)</code> 相当于 <code>history.go(1)</code>，<code>history.go(NaN)</code> 相当于 <code>history.go(0)</code>。</p>
 </li>
 </ul>
-<h4>5. 小结</h4>
+<h3>5. 小结</h3>
 <p>就 <code>back()</code>、<code>forward()</code>、<code>go()</code> 三个方法，简单总结一下：</p>
-<blockquote>
 <ul>
 <li>
 <p>仅调用以上三个方法，不会使得历史记录或 <code>history.length</code> 发生改变。</p>
@@ -16550,18 +16548,15 @@ window.location.replace('https://github.com/toFrankie/csscomb-mini#/usage')
 <p>请注意，若后退/前进时，只是锚点发生变化，是不会重新加载页面。</p>
 </li>
 </ul>
-</blockquote>
 <h2>四、HTML5 History API</h2>
 <p>History API 作为 HTML5 的新特性之一，解决了 Fragment 的一些痛点，包括 URL 分享，SEO 优化等都得到了很好的解决。这些新特性都内置于 History 对象之中：</p>
-<blockquote>
 <ul>
 <li><code>history.state</code></li>
 <li><code>history.scrollRestoration</code></li>
 <li><code>history.pushState()</code></li>
 <li><code>history.replaceState()</code></li>
 </ul>
-</blockquote>
-<h4>1. history.state</h4>
+<h3>1. history.state</h3>
 <p><strong>只读</strong>，该属性返回当前页面的状态值。</p>
 <pre><code class="language-js">const currentState = history.state
 </code></pre>
@@ -16569,9 +16564,9 @@ window.location.replace('https://github.com/toFrankie/csscomb-mini#/usage')
 <blockquote>
 <p>请注意，<code>history.state</code> 的返回值是一份<strong>拷贝值</strong>。</p>
 </blockquote>
-<h4>2. history.scrollRestoration</h4>
+<h3>2. history.scrollRestoration</h3>
 <p><strong>可读写</strong>，该属性允许 Web 应用程序在历史导航上显式地设置默认滚动恢复行为。此属性可以是自动的（<code>auto</code>）或者手动的（<code>manual</code>）。</p>
-<h4>3. history.pushState()</h4>
+<h3>3. history.pushState()</h3>
 <p>在当前位置，<strong>总会</strong>产生一条新的记录，并保存在历史记录里面，而且 <code>history.length</code> 也会增加。若新旧 URL 不相同的情况下，也伴随着 URL 的变化。</p>
 <blockquote>
 <p>请注意，它并不会重载页面。同样的还有 <code>history.pushState()</code> 方法。</p>
@@ -16640,7 +16635,7 @@ history.pushState({}, '', '../History/go')
 history.pushState({}, '', 'hhh')
 </code></pre>
 <p>另外，使用 <code>history.pushState()</code> 可以改变 <code>referrer</code>。</p>
-<h4>4. history.replaceState()</h4>
+<h3>4. history.replaceState()</h3>
 <p>参数约定与 <code>pushState()</code> 完全一致，语法如下：</p>
 <pre><code class="language-js">history.replaceState(stateObj, title[, url])
 </code></pre>
@@ -16654,7 +16649,7 @@ history.replaceState({}, '', 'new-url') // 创建一个新记录，假设称为 
 histories // 历史记录，将会变为 [1, 2, 3, 4, 6]
 history.length // 5，未发生变化
 </code></pre>
-<h4>5. pushState 与 replaceState 区别</h4>
+<h3>5. pushState 与 replaceState 区别</h3>
 <p>还是伪代码哈：</p>
 <pre><code class="language-js">// 假设历史记录里，有 5 条记录，并处于历史记录的顶端，即第五个位置
 const histories = [1, 2, 3, 4, 5]
@@ -16693,19 +16688,17 @@ arr.splice(curIndex, 1, newItem)
 // newItem 表示新记录
 </code></pre>
 <p>简单来说，<code>pushState()</code> 和 <code>replaceState()</code> 区别如下：</p>
-<blockquote>
 <ul>
 <li>两者都会产生新的记录。</li>
 <li>前者会先移除当前记录后面的所有记录，并将新记录追加到历史记录顶端。而后者仅会用新记录替换当前记录，后面的记录并不受影响（若有）。</li>
 <li>两者都会使得历史记录发生变化。后者不会使得 <code>history.length</code> 发生改变。</li>
 </ul>
-</blockquote>
 <p>另外，对于历史记录及其数量，<code>history.replaceState()</code> 与 <code>location.replace()</code> 表现是一致的，只是后者有可能会重载页面。</p>
-<h4>6. popstate 事件</h4>
+<h3>6. popstate 事件</h3>
 <p>调用 <code>pushState()</code>、<code>replaceState()</code> 方法的话，既不会触发 <code>popstate</code> 事件监听器，也不会触发 <code>hashchange</code> 事件监听器（即使新旧 URL 只是 Fragment 部分不同）。这个也是 History API 的优点之一。</p>
 <p>其余的下一节介绍...</p>
 <h2>五、hashchange 和 popstate 事件</h2>
-<h4>1. hashchange 事件</h4>
+<h3>1. hashchange 事件</h3>
 <p>IE8 及以上浏览器都支持 <code>hashchange</code> 事件。注册事件监听器，如下：</p>
 <pre><code class="language-js">function listener(e) {
   // 可通过 e.newURL 和 e.oldURL 获取完整的新旧 URL 值（只读）
@@ -16719,13 +16712,13 @@ window.addEventListener('hashchange', listener)
 window.onhashchange = listener
 </code></pre>
 <blockquote>
-<p>对于事件监听器的兼容性，可看：<a href="https://www.jianshu.com/p/16aa6b6f934f">细读 JavaScript 事件详解</a>。</p>
+<p>对于事件监听器的兼容性，可看 <a href="https://github.com/tofrankie/blog/issues/264">JavaScript 事件详解</a>。</p>
 </blockquote>
 <p>除了通过调用 <code>pushState()</code>、<code>replaceState()</code> 使 URL 的 Fragment 部分发生变化，不会触发 <code>hashchange</code> 事件之外，其他任何方式致使 Fragment 发生改变，都会触发该事件，包括 <code>history.forward()</code>、<code>history.back()</code>、<code>location.hash</code>、<code>&lt;a href=&quot;#anchor&quot;&gt;</code>、操作浏览器后退/前进按钮、修改地址栏 Fragment 值等方式。</p>
 <blockquote>
 <p>本文提到的 Fragment 均指 URL 上跟在 <code>#</code> 后面的所有字符串。</p>
 </blockquote>
-<h4>2. popstate 事件</h4>
+<h3>2. popstate 事件</h3>
 <blockquote>
 <p>需要注意的是，调用 <code>history.pushState()</code> 或 <code>history.replaceState()</code> 不会触发 <code>popstate</code> 事件。</p>
 </blockquote>
@@ -16742,9 +16735,8 @@ window.addEventListener('popstate', listener)
 window.onpopstate = listener
 </code></pre>
 <p>另外，不同浏览器在加载页面时处理 <code>popstate</code> 事件的形式可能存在差异。</p>
-<h4>3. 小结</h4>
+<h3>3. 小结</h3>
 <p>下面总结了很多条，很大可能会记不住，没关系：</p>
-<blockquote>
 <ul>
 <li>
 <p>通过 <code>back()</code>、<code>forward()</code>、<code>go()</code> 或浏览器后退/前进按钮切换的过程，一定会触发 <code>popstate</code> 事件。若伴随着 Fragment 的变化，也会触发 <code>hashchange</code> 事件。（与记录产生的方式无关）</p>
@@ -16762,15 +16754,12 @@ window.onpopstate = listener
 <p>而通过 <code>window.location = '#foo'</code> 或 <code>&lt;a href=&quot;#foo&quot;&gt;</code> 形式致使 Fragment 发生改变，同时触发 <code>hashchange</code> 和 <code>popstate</code> 事件。</p>
 </li>
 </ul>
-</blockquote>
 <p><strong>简化记忆：</strong></p>
 <p>其实常用的方法只有三个：<code>history.pushState()</code>、<code>history.replaceState()</code>、<code>location.hash</code>。最重要的是，通常一个项目不会两者混用，不然得多乱啊。例如 React 、Vue 提供的路由系统只能二选一：</p>
-<blockquote>
 <ul>
 <li><strong>History 模式</strong>：使用 HTML5 History API，更符合未来发展的方向</li>
 <li><strong>Hash 模式</strong>：利用 <code>location.hash</code> 和 <code>hashchange</code> 事件实现，兼容性较好，且服务端无需额外的配置。</li>
 </ul>
-</blockquote>
 <p>所以，就简化成两条：</p>
 <ul>
 <li>调用 <code>pushState()</code>、<code>replaceState()</code> 时，不会触发 <code>popstate</code> 事件。其他 URL 的变化都会触发此事件。</li>
@@ -16795,36 +16784,25 @@ window.onpopstate = listener
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/History/pushState#%E6%8F%8F%E8%BF%B0" title="Permalink to 描述">更多...</a></p>
 </blockquote>
 <h2>七、React Router</h2>
-<p>在 React 的路由系统中，修改路由、监听路由实际上是由 <a href="https://github.com/ReactTraining/react-history">history</a> 库中 <code>createBrowserHistory()</code> 或 <code>createHashHistory()</code> 方法所构造的 <code>history</code> 对象（有别于 <code>window.history</code> 对象）去操作的。</p>
+<p>在 React 的路由系统中，修改路由、监听路由实际上是由 <a href="https://github.com/ReactTraining/react-history">ReactTraining/react-history</a> 库中 <code>createBrowserHistory()</code> 或 <code>createHashHistory()</code> 方法所构造的 <code>history</code> 对象（有别于 <code>window.history</code> 对象）去操作的。</p>
 <p>在 React 中，路由操作有这几种方法。</p>
-<blockquote>
 <ul>
-<li>
-<p><code>props.history.push()</code> - 新增一条历史记录</p>
-</li>
-<li>
-<p><code>props.history.replace()</code> - 新增一条记录，并替换当前记录</p>
-</li>
-<li>
-<p><code>props.history.go()</code> - 后退/前进</p>
-</li>
-<li>
-<p><code>props.history.goBack()</code> - 即 <code>props.history.go(-1)</code></p>
-</li>
-<li>
-<p><code>props.history.goForward()</code> - 即 <code>props.history.go(1)</code></p>
-</li>
+<li><code>props.history.push()</code> - 新增一条历史记录</li>
+<li><code>props.history.replace()</code> - 新增一条记录，并替换当前记录</li>
+<li><code>props.history.go()</code> - 后退/前进</li>
+<li><code>props.history.goBack()</code> - 即 <code>props.history.go(-1)</code></li>
+<li><code>props.history.goForward()</code> - 即 <code>props.history.go(1)</code></li>
 </ul>
-</blockquote>
 <p>其中，<code>props.history.go()</code> 实际上就是调用了 <code>window.history.go()</code> 方法。前面两个方法，在不同路由模式下，调用的能力是不一样的。</p>
 <blockquote>
 <p>在 <code>BrowserRouter</code> 模式下，对应 <code>window.history.pushState()</code> 和 <code>window.history.replaceState()</code> 方法。</p>
+</blockquote>
+<blockquote>
 <p>在 <code>HashRouter</code> 模式下，对应 <code>window.location.hash</code> 和 <code>window.location.replace()</code> 方法。</p>
 </blockquote>
 <p>在 React Router 中，路由更新以加载不同的组件，是通过 React <code>Context</code> 实现的，即 <code>Provider/Consumer</code> 的模式。当路由更新时，<code>Provider</code> 的 <code>value</code> 属性会发生变化，使得对应消费 <code>Consumer</code> 的组件得以更新。</p>
 <p>前面我们提到过，调用 <code>history.pushState()</code> 或 <code>history.replaceState()</code> 并不会触发 popstate 事件监听函数。那么 React Router 是怎么知道 URL 发生变化的呢？</p>
 <p>首先在选择使用 <code>&lt;BrowserRouter&gt;</code> 或 <code>&lt;HashHistory&gt;</code> 组件时，它内部设置了一个监听器，这个监听器的回调函数里面有一个 <code>setState()</code> 方法。当我们在 React 组件中使用 <code>props.history.push()</code> 方法去跳转页面时，它除了会执行 <code>window.history.pushState()</code> 使得 URL 发生改变之外，还会执行前面提到的监听器，那么监听器的回调函数也会被执行，既然里面有 <code>setState()</code> 操作，就会使得 <code>&lt;BrowserRouter&gt;</code> 或 <code>&lt;HashHistory&gt;</code> 组件执行一次更新，那么该组件的 <code>Provider</code> 就会更新，React Router 的 <code>Consumer</code> 们根据 URL 来匹配对应的路由，以加载相应的组件。因此，我们就能在浏览器中看到 URL 的变化以及页面的跳转。</p>
-<p>未完待续...</p>
 ]]></content:encoded>
         </item>
         <item>
@@ -43787,10 +43765,11 @@ export default function App() {
             <link>https://github.com/tofrankie/blog/issues/119</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/119</guid>
             <pubDate>Sat, 25 Feb 2023 13:09:32 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-acc03dd12a89d602.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2022 北京冬奥会开幕式]]></description>
-            <content:encoded><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/5128488-acc03dd12a89d602.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2022 北京冬奥会开幕式"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1766652888203.jpeg" alt="2022 北京冬奥会开幕式"></p>
+<p>此前一直在疑惑，明明 <code>pushState()</code>、]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1766652888203.jpeg" alt="2022 北京冬奥会开幕式"></p>
 <p>此前一直在疑惑，明明 <code>pushState()</code>、<code>replaceState()</code> 不触发 <code>popstate</code> 事件，可为什么 React Router 还能挂载对应路由的组件呢？</p>
-<p>翻了一下 <a href="https://github.com/remix-run/history">history.js</a> 源码，终于知道原因了。</p>
+<p>翻了一下 <a href="https://github.com/remix-run/history">remix-run/history</a> 源码，终于知道原因了。</p>
 <h2>源码</h2>
 <p>假设项目路由设计如下：</p>
 <pre><code class="language-jsx">import { render } from 'react-dom'
@@ -43891,15 +43870,15 @@ export default Router
 </code></pre>
 <h2>原因剖析</h2>
 <blockquote>
-<p>往下之前，如果对 History API 或者 URL Fragment 不了解的，可以看下这篇文章：<a href="https://github.com/toFrankie/blog/issues/273">History 对象及事件监听详解</a>。</p>
+<p>往下之前，如果对 History API 或者 URL Fragment 不了解的，可以看下这篇文章：<a href="https://github.com/tofrankie/blog/issues/273">History 对象及事件监听详解</a>。</p>
 </blockquote>
-<p><code>react-router-dom</code> 引用了 <a href="https://github.com/remix-run/history">history.js</a> 库 ，它主要提供了三种方法：<code>createBrowserHistory</code>、<code>createHashHistory</code>、<code>createMemoryHistory</code>。</p>
+<p><code>react-router-dom</code> 引用了 <a href="https://github.com/remix-run/history">remix-run/history</a> 库 ，它主要提供了三种方法：<code>createBrowserHistory</code>、<code>createHashHistory</code>、<code>createMemoryHistory</code>。</p>
 <p>它们用于构建对应模式的 <code>history</code> 对象（请注意，它有别于 <code>window.history</code> 对象），该对象的属性和方法可在 Devtools 中清晰地看到（如下图），也可查阅文档。这个太简单了，你们都懂，不说了。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5128488-3dd30aefeec495b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1766652953747.png" alt=""></p>
 <p>本文讨论的是 History 模式，因而对应 <code>createBrowserHistory</code> 方法。</p>
 <p>在构建项目路由时，选择 <code>&lt;BrowserRouter /&gt;</code> 组件，它内部是将通过 <code>createBrowserHistory()</code> 方法构造的 <code>history</code> 对象传递给 <code>&lt;Router /&gt;</code> 组件。</p>
 <p>我们知道，在 React 应用中切换路由，它会加载对应的组件。我们知道 <code>createBrowserHistory()</code> 利用了 HTML5 History API 特性，但是主动调用 <code>window.history.pushState()</code> 和 <code>window.history.replaceState()</code> 方法都不会触发 <code>popstate</code> 事件，因此，如果仅通过监听 <code>popstate</code> 事件是不能完全实现路由切换的。</p>
-<p><strong>那么 React Router 是如何解决问题的呢？</strong></p>
+<h3>那么 React Router 是如何解决问题的呢？</h3>
 <p>在前面的源码部分，其实已经添加了一些注解，<code>&lt;Router /&gt;</code> 组件它内部依赖于 Context 的 Provider/Comsumer 模式。因此，它只要做到 URL 发生变化时更新 <code>Context.Provider</code> 的 <code>value</code> 值即可，至于后续如何加载组件就交给 React 了（当然里面还包括 React Router 的路由匹配，但非本文讨论内容，不展开讲述）。</p>
 <p>一般情况下，<code>&lt;BrowserRouter /&gt;</code> 都会作为整个项目的根路由，它包裹了一层 <code>&lt;Router /&gt;</code> 组件，<code>&lt;Router /&gt;</code> 组件在实例化时，设置了一个监听函数：</p>
 <pre><code class="language-js">// props.history 就是通过 createBrowserHistory(props) 生成的对象
@@ -43910,9 +43889,9 @@ this.unlisten = props.history.listen(location =&gt; {
 })
 // this.unlisten 是一个函数，执行它内部会移除 popstate 事件监听器
 </code></pre>
-<p><strong>Q：history.js 是如何做到每当 URL 发生变化，会触发这个回调函数的？</strong></p>
+<h3>history.js 是如何做到每当 URL 发生变化，会触发这个回调函数的？</h3>
 <p>在 React 中是通过调用组件的 <code>props.history.push()</code> 和 <code>props.history.replace()</code> 方法实现路由切换的。</p>
-<p>我们来看一下 <a href="https://github.com/remix-run/history">history.js</a> 的源码（<code>history/esm/history.js</code>）：</p>
+<p>我们来看一下 <a href="https://github.com/remix-run/history">remix-run/history</a> 的源码（<code>history/esm/history.js</code>）：</p>
 <blockquote>
 <p>里面省略了一部分代码，然后分析顺序已经按顺序标注出来。</p>
 </blockquote>
@@ -44147,9 +44126,8 @@ function createBrowserHistory(props) {
 }
 </code></pre>
 <p>以下是 history.js 中创建的 <code>history</code>、<code>location</code> 对象的一些属性和方法：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5128488-8b181f6fb08a4a2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1766652988105.png" alt=""></p>
 <p>先回到 <code>&lt;Router /&gt;</code> 组件中的 <code>history.listen(fn)</code>，它主要做几件事：</p>
-<blockquote>
 <ul>
 <li>将 <code>fn</code> 保存在负责存储监听器的 <code>listeners</code> 数组中，未来它将会被 <code>notifyListeners()</code> 方法调用。</li>
 <li>注册 <code>popstate</code> 事件监听器，触发之后，会执行 <code>notifyListeners()</code> 方法</li>
@@ -44157,7 +44135,6 @@ function createBrowserHistory(props) {
 <li>执行 <code>notifyListeners()</code> 方法，会执行 <code>listeners</code> 中所有的 <code>listener</code>，因此 <code>fn</code> 将会被触发。</li>
 <li>执行 <code>fn()</code> 触发 Component 中的 <code>setState()</code> 方法更新 <code>&lt;Router /&gt;</code> 组件，即 <code>Router.Provider</code> 的 <code>value</code> 发生改变，那么 <code>Router.Consumer</code> 就会跟着更新</li>
 </ul>
-</blockquote>
 <p>所以，React Router 是利用了 Context 的 Provider/Custom 特性，解决了 pushState/replaceState 不触发 <code>popstate</code> 事件时实现了路由切换的问题。</p>
 <p>The end.</p>
 ]]></content:encoded>
