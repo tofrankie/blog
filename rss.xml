@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 25 Dec 2025 13:09:27 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 25 Dec 2025 17:54:14 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -41636,11 +41636,11 @@ c. 累计缴存时间在 48 个月（含）以上的，可贷额度不超过公�
             <link>https://github.com/tofrankie/blog/issues/134</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/134</guid>
             <pubDate>Sat, 25 Feb 2023 13:44:31 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/6/1717740131675.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/6/1717740131675.jpg" alt="配图源自 Freepik"></p>
 <p>记录一些正则表达式。</p>
 <blockquote>
 <p>以下示例号码为随]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/6/1717740131675.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/6/1717740131675.jpg" alt="配图源自 Freepik"></p>
 <p>记录一些正则表达式。</p>
 <blockquote>
 <p>以下示例号码为随意输入，如有相同，纯属巧合！</p>
@@ -41735,6 +41735,13 @@ newRegex.test('䶮') // true
 <p>判断移动设备</p>
 <pre><code class="language-js">const isMobile = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|IEMobile)/i.test(navigator.userAgent)
 </code></pre>
+<h2>HTML 相关</h2>
+<p>匹配 HTML 字符串的 <code>px</code> 单位数值，如 <code>&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;/div&gt;</code> 中的 <code>10</code></p>
+<pre><code class="language-js">const pxReg = /\b(\d+(\.\d+)?)px\b/g
+</code></pre>
+<p>匹配 HTML 字符串的 <code>style</code> 属性值，如 <code>&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;/div&gt;</code> 中的 <code>font-size: 10px</code></p>
+<pre><code class="language-js">const styleReg = /(\s+style=&quot;[^&quot;]*&quot;)/gi
+</code></pre>
 <h2>其他</h2>
 <h3>语义化版本号</h3>
 <pre><code class="language-js">// https://regex101.com/r/vkijKf/1/
@@ -41745,9 +41752,9 @@ regex.test('v1.0.0') // false
 regex.test('1.0') // false
 </code></pre>
 <p>若要支持更多特性（如 <code>1.0.0-alpha</code> 等）、版本比较等，可以使用 <a href="https://www.npmjs.com/package/semver">semver</a> 这个库。</p>
-<h2>References</h2>
+<h2>参考资料</h2>
 <ul>
-<li><a href="https://github.com/toFrankie/blog/issues/231">JavaScript 正则表达式</a></li>
+<li><a href="https://github.com/tofrankie/blog/issues/231">JavaScript 正则表达式</a></li>
 <li><a href="https://www.cnblogs.com/hyunbar/p/10083532.html">小数点后保留 2 位小数的正则表达式</a></li>
 </ul>
 ]]></content:encoded>
