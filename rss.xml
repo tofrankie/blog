@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 25 Dec 2025 17:54:14 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 28 Dec 2025 14:30:27 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -608,7 +608,7 @@ $ convert B2-origin.gif ./output/b-origin.png
 <p>请注意，采用透明度存储的方式，显示效果或许会受到 Disposal Method（定义帧之间的叠加效果）的影响，但一般情况下无需特别设置。若有需要 Gifsicle 也提供了 <code>--disposal</code> 参数供处理。</p>
 <h3>5. 有损压缩</h3>
 <p>GIF 的图像数据使用了 LZW 无损压缩算法。</p>
-<p>也可以尝试 Gifsicle 提供的 --lossy 有损压缩选项，具体细节其文档中未体现（有兴趣可看 <a href="https://github.com/kohler/gifsicle/pull/16">PR #16</a>），因此实际效果不可预测。</p>
+<p>也可以尝试 Gifsicle 提供的 --lossy 有损压缩选项，具体细节其文档中未体现（有兴趣可看 <a href="https://github.com/kohler/gifsicle/pull/16">kohler/gifsicle #16</a>），因此实际效果不可预测。</p>
 <pre><code class="language-shell">$ gifsicle --lossy=num source.gif &gt; target.gif
 </code></pre>
 <p>其中 num 取值范围是 20 ~ 200，默认为 20。贡献 --lossy 的作者 Kornel Lesiński 在 <a href="https://kornel.ski/lossygif">Loosy GIF compressor</a> 指出：80 应该是一个比较合适的值。</p>
@@ -672,8 +672,10 @@ Input #0, gif, from 'F3-按钮触发后-2.13s.gif':
 <h2>快速抽帧技巧</h2>
 <p>利用 macOS 内置的「预览 App」可快速进行抽帧或添加帧等操作。</p>
 <p>用预览打开图片，在「选取边栏显示」处切换至「缩略图」或「缩略清单」模式（如图 👇）。</p>
-<p>删除帧：选中帧后，按下「⌘ + delete」组合键，可删除该帧。
-添加帧：打开两组图片，选择上述模式之一，然后两组图片之间进行拖拽即可。比如，从 A.gif 中拖拽一帧到 B.gif，A.gif 帧数不会发生变化，B.gif 则会增加一帧。</p>
+<ul>
+<li>删除帧：选中帧后，按下「⌘ + delete」组合键，可删除该帧。</li>
+<li>添加帧：打开两组图片，选择上述模式之一，然后两组图片之间进行拖拽即可。比如，从 A.gif 中拖拽一帧到 B.gif，A.gif 帧数不会发生变化，B.gif 则会增加一帧。</li>
+</ul>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/11/1763980105871.png" alt=""></p>
 <p>进行以上操作之前，建议先将原图备份。</p>
 <h3>优化脚本</h3>
