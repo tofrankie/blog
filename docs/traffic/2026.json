@@ -1,0 +1,19 @@
+{
+  "count": 148,
+  "uniques": 12,
+  "year": "2026",
+  "list": [
+    {
+      "month": "2026-01",
+      "count": 148,
+      "uniques": 12,
+      "list": [
+        {
+          "day": "2026-01-01",
+          "count": 148,
+          "uniques": 12
+        }
+      ]
+    }
+  ]
+}
