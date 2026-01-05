@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 04 Jan 2026 09:00:01 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 05 Jan 2026 05:40:33 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -79,29 +79,30 @@
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765380946755.jpg" alt="配图源自 Freepik"></p>
 <h2>前言</h2>
 <p>如果你用过 Alfred，还没有用过 <a href="https://raycast.com/?via=73820f">Raycast</a>，不妨试试，其免费订阅也足够好用（<a href="https://www.raycast.com/raycast-vs-alfred?via=73820f">Raycast vs Alfred</a>）。</p>
-<p>若有多设备同步需要，利用 Raycast 内置的 Export/Import Settings &amp; Data + iCloud Drive 便可。</p>
+<p>免费订阅用户无法享用 Raycast 内置的数据同步功能，可借助 Raycast 的 Export/Import Settings &amp; Data + iCloud Drive 进行同步。</p>
 <h2>背景</h2>
 <p>我们公司使用 Atlassian 旗下的 Confluence、Jira 做知识库、项目管理。</p>
-<p>我们要经常打开 wiki 和 jira 页面查看相关内容，找到一篇目标文章或 Issue，往往需要几个动作才能完成：打开网页、聚焦输入框搜索、筛选...</p>
-<p>稍快一点可能是将常用链接添加到书签或者创建 Raycast Quicklink + Alias 方便快速访问。</p>
-<p>其中 Quicklink 有些场景很好用，比如检索文档：<code>https://developer.mozilla.org/zh-CN/search?q={Query}</code>，其中 <code>{Query}</code> 表示动态参数，也就是你要搜索的内容。</p>
-<p>只要是支持链接带参搜索的网站，都可以用这种方式，比如爱范儿的 <code>https://www.ifanr.com/search?query={Query}</code>。</p>
-<p>但这种搜索方式在公司内部的 wiki、jira 中行不通。</p>
-<p>另外，通过创建 Quicklink 的方式其实“不太适合”公司内的文档检索。试想，随着时间积累，要访问、收藏的链接只会越来越多，无论是浏览器书签或 Quicklink 只会越来越多。</p>
-<p>于是产生了开发一个 Raycast 扩展的想法，以支持 Confluence 和 Jira 的快速搜索以及部分简单的管理操作。</p>
-<p>恰好公司部署的 Data Center 版本也支持以 Personal Access Token 的方式进行身份认证（这是一种安全的认证方式以便于与外部程序集成 <a href="https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html">Learn more</a>）。</p>
+<p>我们要经常打开 wiki 和 jira 页面查看相关内容，找到一篇目标文章或 Issue，往往需要几个动作才能完成：打开网页、聚焦输入框搜索、筛选...。稍快一点可能是将常用链接添加到书签或者创建 Raycast Quicklink + Alias 方便快速访问。</p>
+<p>其中 Quicklink 有些场景很好用，比如检索文档：<code>https://developer.mozilla.org/zh-CN/search?q={Query}</code>，其中 <code>{Query}</code> 表示动态参数，也就是你要搜索的内容。只要是支持链接带参搜索的网站，都可以用这种方式，比如爱范儿的 <code>https://www.ifanr.com/search?query={Query}</code>。</p>
+<p>但这种搜索方式在公司内部的 wiki、jira 中行不通。另外，通过创建 Quicklink 的方式其实“不太适合”公司内的文档检索。试想，随着时间积累，要访问、收藏的链接只会越来越多，无论是浏览器书签或 Quicklink 只会越来越多。</p>
+<p>于是产生了开发一个 Raycast 扩展的想法，以支持 Confluence 和 Jira 的快速搜索以及部分简单操作。恰好公司私有部署版本（Data Center）也支持以 Personal Access Token 的方式进行身份认证，这是一种安全的认证方式以便于与外部程序集成。<a href="https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html">了解更多</a></p>
 <h2>开始之前</h2>
-<p>安装 Raycast 后，前往 <a href="https://raycast.com/tofrankie/atlassian-data-center?via=73820f"><strong>Atlassian Data Center</strong></a> 安装扩展</p>
+<p>安装 Raycast 后，前往 Raycast Store 安装 <a href="https://raycast.com/tofrankie/atlassian-data-center?via=73820f"><strong>Atlassian Data Center (Self-Hosted)</strong></a> 扩展。</p>
 <p>使用该扩展的命令时，会引导完成一些初始配置，准备好以下信息：</p>
 <ul>
-<li>Confluence Base URL：如 <a href="https://wiki.example.com">https://wiki.example.com</a></li>
-<li>Confluence PAT：前往公司 wiki 网页，在 Profile（头像处） → Personal Access Tokens → Create token（<strong>请妥善保管访问令牌，如有泄露，及时撤销</strong>）</li>
+<li>Confluence Base URL：如 <a href="https://confluence.example.com">https://confluence.example.com</a></li>
+<li>Confluence PAT：前往公司 Confluence 网站，在 Profile（头像处） → Personal Access Tokens → Create token（<strong>请妥善保管访问令牌，如有泄露，及时撤销</strong>）</li>
 <li>Jira Base URL：<a href="https://jira.example.com">https://jira.example.com</a></li>
-<li>Jira PAT：创建方式跟 wiki 同理</li>
+<li>Jira PAT：创建方式跟 Confluence 同理</li>
 </ul>
+<blockquote>
 <p>PS：由于以上配置做成必填的，如果只用到其一，另一个可以随便填个值，非空便可。</p>
+</blockquote>
 <h2>使用指南</h2>
-<p>目前 Atlassian Data Center 提供的命令有（PS：还可以根据个人习惯为命令设置 Alias 更方便直达命令）：</p>
+<blockquote>
+<p>PS：还可以根据个人习惯为命令设置 Alias 更方便直达命令</p>
+</blockquote>
+<p>目前 Atlassian Data Center 提供的命令有：</p>
 <ul>
 <li>Confluence
 <ul>
@@ -163,7 +164,11 @@
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765381884979.png" alt=""></p>
 <h2>截图</h2>
 <p><strong>由于 Raycast List 显示的内容有限，很多附加信息只能隐藏在 tooltip 里，可以通过移动光标至图标、标题、副标题、时间、头像等处显示。</strong></p>
-<p><a href="https://www.raycast.com/tofrankie/atlassian-data-center?via=73820f">看这里</a></p>
+<p>▼ Confluence
+<img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767590966514.png" alt=""></p>
+<p>▼ Jira
+<img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767591000857.png" alt=""></p>
+<p><a href="https://www.raycast.com/tofrankie/atlassian-data-center?via=73820f">更多截图</a></p>
 <h2>其他</h2>
 <p>个人常用的一些 Raycast 扩展，但不一定适合你，按需食用：</p>
 <ul>
