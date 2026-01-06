@@ -4,11 +4,25 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Mon, 05 Jan 2026 05:40:33 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 06 Jan 2026 07:14:59 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[将剪贴板的图片保存至本地]]></title>
+            <link>https://github.com/tofrankie/blog/issues/383</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/383</guid>
+            <pubDate>Tue, 06 Jan 2026 07:14:59 GMT</pubDate>
+            <description><![CDATA[<p>打开 macOS 内置的预览 App，使用快捷键 ⌘ + N（从剪贴板新建）打开，然后 ⌘ + S 保存便可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767683506824.png" alt]]></description>
+            <content:encoded><![CDATA[<p>打开 macOS 内置的预览 App，使用快捷键 ⌘ + N（从剪贴板新建）打开，然后 ⌘ + S 保存便可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767683506824.png" alt=""></p>
+<blockquote>
+<p>看起来可以用 Raycast Script Command 写一个 AppleScript 处理，有空再搞一下...</p>
+</blockquote>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Google Antigravity 登录成功无法跳转的解决方法]]></title>
             <link>https://github.com/tofrankie/blog/issues/382</link>
