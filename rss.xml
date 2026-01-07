@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Tue, 06 Jan 2026 07:14:59 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 06 Jan 2026 17:06:18 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -3606,6 +3606,26 @@ OR
 <li><a href="https://www.html5plus.org/doc/zh_cn/runtime.html#plus.runtime.getProperty">plus.runtime.getProperty</a></li>
 <li><a href="https://www.html5plus.org/doc/zh_cn/runtime.html#plus.runtime.install">plus.runtime.install</a></li>
 <li><a href="https://www.html5plus.org/doc/zh_cn/runtime.html#plus.runtime.restart">plus.runtime.restart</a></li>
+</ul>
+<h2>获取 getApp().globalData</h2>
+<p>在原生小程序 + uni-app 小程序混合的场景下，当二者需要通信的时候，需要借助 getApp() 获取全局唯一的应用实例，在实例上注册相关属性或方法（比如 globalData）。</p>
+<p>在 uni-app 中获取 globalData 的方式：</p>
+<pre><code class="language-html">&lt;script setup&gt;
+import { getCurrentInstance } from 'vue'
+import { onLaunch } from '@dcloudio/uni-app'
+
+const instance = getCurrentInstance()
+
+onLaunch(() =&gt; {
+  const globalData = instance.ctx.globalData
+  // do something...
+})
+&lt;/script&gt;
+</code></pre>
+<p>相关链接：</p>
+<ul>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/getApp.html">getApp()</a></li>
+<li><a href="https://github.com/dcloudio/uni-app/blob/f37178ec9b4719eaf11e53507f6d175a1e57eadf/packages/uni-mp-core/src/runtime/app.ts#L79">dcloudio/uni-app/packages/uni-mp-core/src/runtime/app.ts</a></li>
 </ul>
 <h2>各端差异</h2>
 <blockquote>
