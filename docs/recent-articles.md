@@ -1,5 +1,7 @@
 # 近期更新
 
+- [Thunk 函数与 Generator 函数](https://github.com/tofrankie/blog/issues/261)
+- [啊，似乎没有真正理解 try...catch...finally！](https://github.com/tofrankie/blog/issues/286)
 - [uni-app 开发记录](https://github.com/tofrankie/blog/issues/353)
 - [将剪贴板的图片保存至本地](https://github.com/tofrankie/blog/issues/383)
 - [使用 Raycast 搜索 Confluence 或 Jira](https://github.com/tofrankie/blog/issues/380)
@@ -8,5 +10,3 @@
 - [macOS 配置指南](https://github.com/tofrankie/blog/issues/31)
 - [从零到一搭建 react 项目系列之（二）](https://github.com/tofrankie/blog/issues/55)
 - [从零到一搭建 react 项目系列之（五）](https://github.com/tofrankie/blog/issues/58)
-- [从零到一搭建 react 项目系列之（七）](https://github.com/tofrankie/blog/issues/60)
-- [从零到一搭建 react 项目系列之（十一）](https://github.com/tofrankie/blog/issues/64)
