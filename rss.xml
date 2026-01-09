@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Tue, 06 Jan 2026 17:06:18 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 09 Jan 2026 16:17:36 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -14307,7 +14307,7 @@ Error.prototype.toString = function () {
 <p>前面提到，当错误被抛出时就会成为异常。</p>
 <p>假设我们编写的代码存在语法错误，那么在编译阶段的语法分析过程就会被聪明的 JS 引擎发现，因而在编译阶段便会抛出 SyntaxError。</p>
 <p>假设我们代码没有语法错误，但错误地引用了一个不存在的变量，那么在执行阶段的执行上下文过程（代码执行之前的一个过程），聪明的 JS 引擎发现在其作用域链上找不到该变量，那么就会抛出 ReferenceError。</p>
-<p>假设即不存在语法错误，也没有引用错误，但我们对一个变量做了“不合法”的操作，比如 <code>null.name</code>、<code>'str'.push('ing')</code>，那么 JS 引擎就会抛出 TypeError。</p>
+<p>假设既不存在语法错误，也没有引用错误，但我们对一个变量做了“不合法”的操作，比如 <code>null.name</code>、<code>'str'.push('ing')</code>，那么 JS 引擎就会抛出 TypeError。</p>
 <p>还有很多很多，就不举例了。</p>
 <p>前面都是 JS 引擎主动抛出的错误，那么，我们开发者则可通过 <code>throw</code> 关键字来抛出错误，语法很简单：</p>
 <pre><code class="language-js">// throw expression
@@ -14347,13 +14347,11 @@ try {
 </blockquote>
 <h2>二、try...catch</h2>
 <p>对于可能存在异常的代码，我们通常会使用 <code>try...catch...finally</code> 去处理一些可预见或不可预见的错误。语法有以下三种形式：</p>
-<blockquote>
 <ul>
 <li><code>try...catch</code></li>
 <li><code>try...finally</code></li>
 <li><code>try...catch...finally</code></li>
 </ul>
-</blockquote>
 <p><strong>且必须至少存在一个 <code>catch</code> 块或 <code>finally</code> 块。</strong></p>
 <pre><code class="language-js">try {
   throw new Error('oops')
@@ -14403,7 +14401,7 @@ try {
 </code></pre>
 <p>其中 <code>exception_var</code> 表示异常标识符（如 <code>catch(e)</code> 中的 <code>e</code>），它是「可选」的，因此可以这样编写 <code>try { ... } catch { ... }</code>。通过该标识符我们可以获取关于被抛出异常的信息。</p>
 <blockquote>
-<p>**请注意，该标识符的「作用域」仅在 <code>catch</code> 块中有效。**当进入 <code>catch</code> 子句时，它被创建，当 <code>catch</code> 子句执行完毕，此标识符将不可再用。也可以理解为（在 ES6 以前）异常标识符是 JavaScript 中含有“块级作用域”的变量。</p>
+<p><strong>请注意，该标识符的「作用域」仅在 <code>catch</code> 块中有效</strong>。当进入 <code>catch</code> 子句时，它被创建，当 <code>catch</code> 子句执行完毕，此标识符将不可再用。也可以理解为（在 ES6 以前）异常标识符是 JavaScript 中含有“块级作用域”的变量。</p>
 </blockquote>
 <h3>2.2 finally 子句</h3>
 <p>而 <code>finally</code> 子句在 <code>try</code> 块和 <code>catch</code> 块之后执行，但在下一个 <code>try</code> 声明之前执行。无论是否异常抛出，<code>finally</code> 子句总是会执行。</p>
@@ -14573,8 +14571,7 @@ foo()
 * [no-throw-literal](https://eslint.org/docs/rules/no-throw-literal)
 * [深入前端错误/异常](https://juejin.cn/post/6844904138334011406)
 
--->
-]]></content:encoded>
+-->]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[细读 ES6 | 模板字符串进阶用法]]></title>
@@ -20199,7 +20196,7 @@ const age = parseInt(params.get('age'), 10) // is the number 18
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767454116616.jpg" alt="配图源自 Freepik"></p>
 <p>关于 Thunk 这个词，其实第一次看到是 <a href="https://github.com/reduxjs/redux-thunk">redux-thunk</a> 库。还长时间内都没有理解 “Thunk” 是什么意思，当初想可能只是类似 Foo、Bar 等，就一个名称罢了。</p>
 <h2>一、Thunk</h2>
-<p>早在上世纪 60 年代 Thunk 函数就诞生了。那时候，编程语言刚起步，计算机学家还在研究，编译器怎么写比较好。其中一个争论的焦点是**“求值策略”**，即函数的参数到底应何时求值？</p>
+<p>早在上世纪 60 年代 Thunk 函数就诞生了。那时候，编程语言刚起步，计算机学家还在研究，编译器怎么写比较好。其中一个争论的焦点是“<strong>求值策略</strong>”，即函数的参数到底应何时求值？</p>
 <p>存在两派意见：</p>
 <ul>
 <li><strong>传值调用</strong>（call by value）</li>
@@ -20214,8 +20211,8 @@ function fn(m) {
 
 fn(x + 4)
 </code></pre>
-<p>对于**“传值调用”**的话，在进入函数体之前，计算 <code>x + 4</code> 的值（等于 <code>5</code>），再将这个值传入函数 <code>fn</code>。JavaScript、C 语言就是采用这种策略。</p>
-<p>若对于**“传名调用”**的话，直接将表达式 <code>x + 4</code> 传入函数体，只在用到它的时候求值。Haskell 语言采用这种策略。</p>
+<p>对于传值调用的话，在进入函数体之前，计算 <code>x + 4</code> 的值（等于 <code>5</code>），再将这个值传入函数 <code>fn</code>。JavaScript、C 语言就是采用这种策略。</p>
+<p>若对于传名调用的话，直接将表达式 <code>x + 4</code> 传入函数体，只在用到它的时候求值。Haskell 语言采用这种策略。</p>
 <p><strong>至于“传值调用”和“传名调用”，哪一种比较好？</strong></p>
 <p>回答是各有利弊。传值调用比较简单，但是对参数求值的时候，实际上没用到这个参数，有可能造成性能损失。</p>
 <pre><code class="language-js">var x = 5
