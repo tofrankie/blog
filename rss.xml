@@ -4,11 +4,41 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Fri, 09 Jan 2026 16:17:36 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 12 Jan 2026 09:55:04 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[Cursor: Model not available]]></title>
+            <link>https://github.com/tofrankie/blog/issues/384</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/384</guid>
+            <pubDate>Mon, 12 Jan 2026 09:05:18 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1768209024582.jpg" alt="配图源自 Freepik"></p>
+<h2>背景</h2>
+<p>今天使用 Claude Sonnet 4.5 模型的时]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1768209024582.jpg" alt="配图源自 Freepik"></p>
+<h2>背景</h2>
+<p>今天使用 Claude Sonnet 4.5 模型的时候，提示：</p>
+<pre><code>Model not available
+This model provider doesn't serve your region.Visit https://docs.cursor.com/account/regions for more information
+</code></pre>
+<p>根据 Cursor 官网说明：<strong>部分模型提供商有基于位置的限制，这意味着某些模型可能在你所在地区不可用。</strong> <a href="https://cursor.com/cn/docs/account/regions">更多</a></p>
+<blockquote>
+<p>兜底选择：可以继续使用 <a href="https://cursor.com/cn/docs/models#auto">Auto</a> 模式，Cursor 会为每次请求自动选择可用模型。</p>
+</blockquote>
+<h2>解决方法</h2>
+<blockquote>
+<p>参考 <a href="https://github.com/cursor/cursor/issues/3372">cursor #3372</a></p>
+</blockquote>
+<ol>
+<li>梯子开启 TUN 模式（<a href="https://github.com/tofrankie/blog/issues/382">参考</a>）</li>
+<li>在 Cursor Settings - Network 处，将 HTTP Compatibility Mode 选项改为 HTTP/1.0</li>
+<li>重启 Cursor</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1768208408853.png" alt=""></p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[将剪贴板的图片保存至本地]]></title>
             <link>https://github.com/tofrankie/blog/issues/383</link>
@@ -46,7 +76,7 @@
 </blockquote>
 <p>第三步，安装 Antigravity，按引导操作便可：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765456681648.png" alt=""></p>
-<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765456703885.png" alt="iShot_2025-12-11_18.55.57.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765456703885.png" alt=""></p>
 <p>如果可以正常跳转，控制台会有类似提示：</p>
 <pre><code>Launched external handler for 'antigravity://oauth-success'.
 </code></pre>
@@ -20518,10 +20548,13 @@ new Promise(resolve =&gt; {
 <img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767454277149.png" alt=""></p>
 <p><strong>对比发现，不同浏览器下运行结果竟然不一样，Why?</strong></p>
 <ul>
-<li>最新版 Chrome 浏览器打印结果为：<code>a、c、d、b、e</code>。</li>
-<li>最新版 Safari 浏览器打印结果为：<code>a、c、d、e、b</code>。</li>
-<li>在 Node 14.16.0 环境下，运行结果同 Chrome 浏览器。</li>
+<li>当下最新版 Chrome 92 浏览器打印结果为 <code>a、c、d、b、e</code></li>
+<li>当下最新版 Safari 14.1.2 浏览器打印结果为 <code>a、c、d、e、b</code></li>
+<li>在 Node 14.16.0 环境下，运行结果同 Chrome 浏览器</li>
 </ul>
+<blockquote>
+<p>2026.01.12 使用 Safari 26.1 测试，运行结果同 Chrome 浏览器</p>
+</blockquote>
 <p>造成以上差异的根本原因是，ECMAScript 就 Await 标准有所调整，最新规定是 <code>await</code> 将直接使用 <code>Promise.resolve()</code> 相同的语义。正是因为此次调整，导致了不同 JS 引擎或者同一 JS 引擎的不同版本，在解析同一脚本会出现结果的差异。</p>
 <p>上面示例中 <code>await bar()</code> 的计算结果（指 <code>bar()</code> 返回值）就是一个 <code>Promise</code> 对象。根据 <code>Promise.resolve()</code> 的语法，若参数是一个 <code>Promise</code> 实例对象，将会不做任何修改、原封不动地返回该实例。</p>
 <pre><code class="language-js">const p1 = new Promise(resolve =&gt; resolve(1))
@@ -23192,7 +23225,7 @@ main(arr)
    因此，它会执行 `sumFn(0, 1)`，那么该函数 `return 1`，
    由于 async 函数始终会返回一个 Promise 对象，即 `return Promise.resolve(1)`。
 
-2. 由于 await 的原因，它其实相当于执行 `Promise.resolve(3).then()` 方法，
+2. 由于 await 的原因，它其实相当于执行 `Promise.resolve(1).then()` 方法，
    它属于微任务，会暂时 Hold 住，被放入微任务的队列，待本次同步任务执行完之后，
    才会被执行，因此并不会立即赋值给 sum（所以 sum 仍为 0）。
 
