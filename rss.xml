@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Mon, 12 Jan 2026 09:55:04 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 13 Jan 2026 07:21:59 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -12242,20 +12242,19 @@ $ tsc index.ts
 $ tsc --project /path/to/your_tsconfig.json
 </code></pre>
 <p>以上三种方式，编译时的配置稍有不同：</p>
-<blockquote>
 <ul>
 <li>1️⃣ 无输入文件的情况下调用 <code>tsc</code>，编译器会从当前目录开始并逐级向上检索 <code>tsconfig.json</code> 文件作为其编译配置。若一直找不到，则使用默认配置。</li>
 <li>2️⃣ 有输入文件的情况下调用 <code>tsc</code>，编辑器将会使用默认配置。</li>
 <li>3️⃣ 指定 <code>--project</code> 或 <code>-p</code> 参数情况下调用 <code>tsc</code>，编译器将会使用该路径下的配置文件。</li>
 </ul>
-</blockquote>
 <p>如果你是刚接触，可参考 <a href="https://github.com/tsconfig/bases#centralized-recommendations-for-tsconfig-bases">TSConfig bases</a> 选择适合你所用框架的配置。</p>
 <h3>1.4 配置优先级</h3>
 <p>CLI Options &gt; 项目 tsconfig.json 配置 &gt; 默认配置</p>
-<h2>二、配置选项</h2>
-<p>tsconfig.json 里配置选项很多，超过 100 个。</p>
-<h3>2.1 顶级选项（Root Fields）</h3>
-<p>顶级选项有这几个：</p>
+<h2>二、顶层选项</h2>
+<blockquote>
+<p>tsconfig.json 配置选项非常多，超过 100 个。</p>
+</blockquote>
+<p>顶层选项有：</p>
 <pre><code class="language-json">{
   &quot;compileOnSave&quot;: true,
   &quot;vueCompilerOptions&quot;: {},
@@ -12272,32 +12271,30 @@ $ tsc --project /path/to/your_tsconfig.json
 }
 </code></pre>
 <p>还包括 Vue.js 中会用到的 vueCompilerOptions 选项等。</p>
-<h4>2.1.1 compileOnSave</h4>
+<h3>2.1 compileOnSave</h3>
 <p>启用该选项，可以让 IDE/Editor 在保存文件时自动编译。</p>
 <p><strong>请注意，它（目前）并没有得到 Visual Studio Code 的支持</strong>。仅在 Visual Studio 2015 和安装了 <a href="https://github.com/TypeStrong/atom-typescript#installation">atom-typescript</a> 插件的 <a href="https://atom.io/">Atom</a> 中得到了支持。而该插件和 Atom 均已停止维护。</p>
-<h4>2.1.2 compileerOptions</h4>
+<h3>2.2 compilerOptions</h3>
 <p>该选项是 TypeScript 配置的重头戏，下文再详细介绍。</p>
-<h4>2.1.3 files</h4>
+<h3>2.3 files</h3>
 <p>该选项用于指定待编译的文件，接受一个字符串数组，可以是相对路径或绝对路径，但不能是 Glob 模式。</p>
 <p>注意点：</p>
-<blockquote>
 <ul>
 <li>如果指定了 <code>files</code> 选项，则只有指定的文件才会被编译，其他文件会被忽略；</li>
 <li>如果 <code>files</code> 内指定的文件引用了其他模块，这些模块也会被编译。</li>
 <li>当使用了 <code>files</code> 选项，通常还会指定 <code>compilerOptions.outFile</code> 或 <code>compilerOptions.outDir</code> 选项以便编译器将编译结果输出到指定文件中。</li>
 <li>如果指定了 <code>files</code>，<code>include</code> 的默认值为 <code>[]</code>，否则为 <code>[&quot;**&quot;]</code>。</li>
 </ul>
-</blockquote>
-<h4>2.1.4 include</h4>
+<h3>2.4 include</h3>
 <p>该选项类似于 <code>files</code> 字段，同样用于指定编译器应该包含哪些文件进行编译，未指定时默认编译根目录下所有 TypeScript 文件。区别在于，<code>include</code> 支持 Glob 模式来指定文件路径。</p>
 <p><code>include</code> 和 <code>exclude</code> 支持 Glob 模式如下：</p>
-<blockquote>
-<p><code>*</code> 匹配零个或多个字符（除了路径分隔符 <code>/</code>）。
-<code>?</code> 匹配一个字符（除了路径分隔符 <code>/</code>）。
-<code>**/</code> 匹配零个或多个目录及其子目录。</p>
-</blockquote>
+<ul>
+<li><code>*</code> 匹配零个或多个字符（除了路径分隔符 <code>/</code>）。</li>
+<li><code>?</code> 匹配一个字符（除了路径分隔符 <code>/</code>）。</li>
+<li><code>**/</code> 匹配零个或多个目录及其子目录。</li>
+</ul>
 <p>若 Glob 模式未指定文件扩展名时，默认支持 <code>.ts</code>、<code>.tsx</code> 和 <code>.d.ts</code>。若 <code>allowJs</code> 为 <code>true</code>，还包括 <code>.js</code> 和 <code>.jsx</code>。</p>
-<h4>2.1.5 exclude</h4>
+<h3>2.5 exclude</h3>
 <p>该选项用于指定 <code>include</code> 里面需要忽略的文件。exclude 的默认值为 <code>[&quot;node_modules&quot;, &quot;bower_components&quot;, &quot;jspm_packages&quot;]</code>，但排除文件还包括 <code>outDir</code> 指定值。</p>
 <p>以下示例将会忽略的文件为 <code>[&quot;node_modules&quot;, &quot;bower_components&quot;, &quot;jspm_packages&quot;, &quot;dist&quot;]</code>。</p>
 <pre><code class="language-json">{
@@ -12310,9 +12307,111 @@ $ tsc --project /path/to/your_tsconfig.json
 <blockquote>
 <p>请注意，<code>exclude</code> 字段只影响由 <code>include</code> 字段指定的文件和目录中包含哪些文件，而不会完全排除在 <code>exclude</code> 中列出的文件。也就是说，如果一个文件在 <code>exclude</code> 中列出，但是它被代码中的 <code>import</code> 语句、<code>/// &lt;reference</code> 或者在 <code>files</code>、<code>types</code> 字段中的文件中引用，那么这个文件仍然会被编译。</p>
 </blockquote>
-<h4>2.1.6 files、include 和 exclude 的关系</h4>
+<h3>2.6 files、include 和 exclude 的关系</h3>
+<p>TS 到底是如何决定要编译哪些文件？</p>
+<ol>
+<li>收集候选文件</li>
+<li>应用排除规则</li>
+<li>形成最终编译文件夹</li>
+</ol>
+<p>不是简单的 <code>files + include - exclude</code>，而是：</p>
+<pre><code>1️⃣ 如果存在 files
+   → 直接使用 files 指定的文件
+   → include / exclude 不参与
+
+2️⃣ 如果不存在 files
+   → 使用 include（或默认 include）
+   → 再应用 exclude
+</code></pre>
+<ul>
+<li>files - 准确指定参与编译的文件路径，不支持 Glob 形式。一般不直接使用该选项。</li>
+<li>include - 指定参与编译的文件范围，通常是 Glob 形式。</li>
+<li>exclude - 排除 include 范围内的黑名单文件。如果 include 中白名单文件引用了黑名单文件，这个黑名单文件最终也会参与到编译。</li>
+</ul>
+<h3>2.7 references</h3>
+<p><code>references</code> 是 TS 3.0 的一项新功能，详见 <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-0.html#project-references">Project References</a>。</p>
+<p>它的优点是大幅提升构建时间，并以更好的方式组织代码。</p>
+<p>现在，一个现代工程化的 Web 项目，除了业务代码外，少不了各种构建脚本、测试文件等。它们运行运行环境不同，比如 Web 的宿主环境是浏览器，而构建工具、测试文件的宿主环境是 Node.js。不同的宿主环境，其 tsconfig.json 配置是不同的，比如浏览器环境需要 <code>lib: [&quot;ES2022&quot;, &quot;DOM&quot;]</code>，而 Node.js 环境则是 <code>lib: [&quot;ES2022&quot;]</code> + <code>types: [&quot;node&quot;]</code>。为了在一个项目既支持浏览器环境、Node.js 我们可能要做出这样的选择 <code>lib: [&quot;ES2022&quot;, &quot;DOM&quot;]</code> + <code>types: [&quot;node&quot;]</code>，但这样是有风险的，如果在业务代码中导入了 Node.js 的 API，由于 TS 配置的原因，编译时是 OK 的，但运行时就可能会运行错误。</p>
+<p>使用 <code>references</code> 可以使用新的组织方式来解决这个问题。</p>
+<p>以 Vite + <a href="https://vite.new/react-ts">react-ts</a> 模板为例，它包含了三个文件：</p>
+<ul>
+<li><code>tsconfig.ts</code> - 它只是调度器，不产出 JS 或类型声明文件</li>
+<li><code>tsconfig.app.ts</code> - 浏览器环境，通过 <code>include</code> 选项关联文件范围，比如 <code>src</code></li>
+<li><code>tsconfig.node.ts</code> - Node 环境，通过 <code>include</code> 选项关联文件范围，比如 <code>vite.config.ts</code></li>
+</ul>
+<blockquote>
+<p>假设引用的子配置是可以单独构建的，需在子配置中指定 <code>composite</code> 为 <code>true</code></p>
+</blockquote>
+<p>这样浏览器环境和 Node.js 环境就不会混淆了，TS 可以识别到，当在业务代码使用 Node.js 的 API 就可以看到编译错误了，反之亦然。</p>
+<p>▼ tsconfig.js</p>
+<pre><code class="language-ts">{
+  &quot;files&quot;: [],
+  &quot;references&quot;: [
+    { &quot;path&quot;: &quot;./tsconfig.app.json&quot; },
+    { &quot;path&quot;: &quot;./tsconfig.node.json&quot; }
+  ]
+}
+</code></pre>
+<p>▼ tsconfig.app.js</p>
+<pre><code class="language-ts">{
+  &quot;compilerOptions&quot;: {
+    &quot;tsBuildInfoFile&quot;: &quot;./node_modules/.tmp/tsconfig.app.tsbuildinfo&quot;,
+    &quot;target&quot;: &quot;ES2022&quot;,
+    &quot;useDefineForClassFields&quot;: true,
+    &quot;lib&quot;: [&quot;ES2022&quot;, &quot;DOM&quot;, &quot;DOM.Iterable&quot;],
+    &quot;module&quot;: &quot;ESNext&quot;,
+    &quot;types&quot;: [&quot;vite/client&quot;],
+    &quot;skipLibCheck&quot;: true,
+
+    /* Bundler mode */
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;allowImportingTsExtensions&quot;: true,
+    &quot;verbatimModuleSyntax&quot;: true,
+    &quot;moduleDetection&quot;: &quot;force&quot;,
+    &quot;noEmit&quot;: true,
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+
+    /* Linting */
+    &quot;strict&quot;: true,
+    &quot;noUnusedLocals&quot;: true,
+    &quot;noUnusedParameters&quot;: true,
+    &quot;erasableSyntaxOnly&quot;: true,
+    &quot;noFallthroughCasesInSwitch&quot;: true,
+    &quot;noUncheckedSideEffectImports&quot;: true
+  },
+  &quot;include&quot;: [&quot;src&quot;]
+}
+</code></pre>
+<p>▼ tsconfig.node.js</p>
+<pre><code class="language-ts">{
+  &quot;compilerOptions&quot;: {
+    &quot;tsBuildInfoFile&quot;: &quot;./node_modules/.tmp/tsconfig.node.tsbuildinfo&quot;,
+    &quot;target&quot;: &quot;ES2023&quot;,
+    &quot;lib&quot;: [&quot;ES2023&quot;],
+    &quot;module&quot;: &quot;ESNext&quot;,
+    &quot;types&quot;: [&quot;node&quot;],
+    &quot;skipLibCheck&quot;: true,
+
+    /* Bundler mode */
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;allowImportingTsExtensions&quot;: true,
+    &quot;verbatimModuleSyntax&quot;: true,
+    &quot;moduleDetection&quot;: &quot;force&quot;,
+    &quot;noEmit&quot;: true,
+
+    /* Linting */
+    &quot;strict&quot;: true,
+    &quot;noUnusedLocals&quot;: true,
+    &quot;noUnusedParameters&quot;: true,
+    &quot;erasableSyntaxOnly&quot;: true,
+    &quot;noFallthroughCasesInSwitch&quot;: true,
+    &quot;noUncheckedSideEffectImports&quot;: true
+  },
+  &quot;include&quot;: [&quot;vite.config.ts&quot;]
+}
+</code></pre>
 <p>未完待续...</p>
-<h2>Related Link</h2>
+<h2>三、参考链接</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/docs/languages/jsconfig">What is jsconfig.json?</a></li>
 <li><a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">What is a tsconfig.json?</a></li>
@@ -12625,60 +12724,53 @@ $ npm config set save-exact true --location project
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[扫普通链接二维码打开小程序的踩坑过程...]]></title>
+            <title><![CDATA[扫普通链接二维码打开小程序调研]]></title>
             <link>https://github.com/tofrankie/blog/issues/303</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/303</guid>
             <pubDate>Fri, 10 Mar 2023 02:22:16 GMT</pubDate>
-            <description><![CDATA[<h2>背景</h2>
-<p>近期，项目中有一个需求是扫普通链接二维码打开微信小程序的需求，所以整理了一下。</p>
-<p>首先，唤起微信小程序的几种方式：</p>
-<ul>
-<li>
-<p>扫小程序码</p>
-</li>
-<li>
-<p>扫小程序二维码，可满足不同需求和场景，例如业务中需要记录渠道参数等。该二维码可通]]></description>
-            <content:encoded><![CDATA[<h2>背景</h2>
-<p>近期，项目中有一个需求是扫普通链接二维码打开微信小程序的需求，所以整理了一下。</p>
-<p>首先，唤起微信小程序的几种方式：</p>
-<ul>
-<li>
-<p>扫小程序码</p>
-</li>
-<li>
-<p>扫小程序二维码，可满足不同需求和场景，例如业务中需要记录渠道参数等。该二维码可通过微信提供的接口生成，详情看<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/qr-code.html#%E8%8E%B7%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%8C%E7%BB%B4%E7%A0%81%EF%BC%88%E4%B8%8D%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%EF%BC%89">获取小程序二维码</a></p>
-</li>
-<li>
-<p>H5 项目唤起小程序，分为三种情况：</p>
-<ul>
-<li>在微信浏览器中，只能通过 <a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_Open_Tag.html">wx-open-launch-weapp</a> 标签唤起，可参考文章<a href="https://github.com/toFrankie/blog/issues/153">关于 React 中使用 wx-open-launch-weapp 唤起微信小程序</a>，适用于公众号网页或者活动等打开小程序的场景。</li>
-<li>普通浏览器（如Safari、UC、系统自带浏览器等），可通过 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/url-scheme.html">URL Scheme 打开小程序</a>方式唤起，需自行编写 H5 实现，使用于短信推送等场景。</li>
-<li>微信小程序存在竞争关系的的 App，以上方式均无法唤起，你懂的。</li>
-</ul>
-</li>
-<li>
-<p>扫普通链接二维码打开小程序（本文介绍的对象）。登录小程序后台，进入“<strong>设置 — 开发设置 — 扫普通链接二维码打开小程序</strong>”，开启功能后即可配置二维码规则。这种方式配置简单、灵活，且无需自行开发 H5 项目。</p>
-</li>
-</ul>
-<blockquote>
-<p>总的来说，<code>wx-open-launch-weapp</code> 需在微信客户端方可有效。<code>URL Scheme</code> 方式仅可在普通浏览器中唤起。这两种都需要自行实现 H5。<code>普通链接二维码</code> 支持使用微信扫一扫或微信内长按识别二维码跳转小程序。</p>
-</blockquote>
-<h2>扫普通链接二维码打开小程序</h2>
-<p>下面只会介绍或者强调，一些踩坑点、容易忽略的地方，更多看<a href="https://developers.weixin.qq.com/miniprogram/introduction/qrcode.html">官方文档</a>。</p>
-<blockquote>
-<p>注：规则可能随时发生改变，以官方为准。</p>
-</blockquote>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1768288900171.jpg" alt="配图源自 Freepik"></p>
+<h2>背景</h2>
+<p>近期有一个需求：扫普通链接二维码打开微信小程序。</p]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1768288900171.jpg" alt="配图源自 Freepik"></p>
+<h2>背景</h2>
+<p>近期有一个需求：扫普通链接二维码打开微信小程序。</p>
+<p>唤起微信小程序方式：</p>
 <ol>
 <li>
-<p>对于普通链接二维码，目前支持使用<strong>微信扫一扫</strong>或<strong>微信内长按识别二维码</strong>跳转小程序。</p>
+<p>扫小程序码</p>
 </li>
 <li>
-<p>该功能暂不支持<strong>个人类型小程序</strong>。</p>
+<p>扫小程序二维码，可满足不同需求和场景。例如业务中需要记录渠道参数等，详见《<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/qr-code.html#%E8%8E%B7%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%8C%E7%BB%B4%E7%A0%81%EF%BC%88%E4%B8%8D%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%EF%BC%89">获取小程序二维码</a>》</p>
 </li>
 <li>
-<p>二维码跳转规则其中一条需要注意的：如需支持子路径匹配，请确认后台配置的二维码规则以 <code>/</code> 结尾。</p>
+<p>浏览器网页唤起小程序：</p>
+<ol>
+<li>微信浏览器：<strong>只能</strong>通过 wx-open-launch-weapp 标签唤起，适用于公众号网页等打开小程序的场景。可参考《<a href="https://github.com/tofrankie/blog/issues/153">关于 React 中使用 wx-open-launch-weapp 唤起微信小程序</a>》</li>
+<li>非微信浏览器（如 Safari 等）：可通过 URL Scheme 方式打开小程序，适用于短信推送等场景。详见《<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/url-scheme.html">获取 URL Scheme</a>》</li>
+<li>竞品 App 内置浏览器（如支付宝内置浏览器等），无法唤起。原因你懂的 🙄</li>
+</ol>
+</li>
+<li>
+<p>扫普通链接二维码打开小程序。这种方式配置简单、灵活，且无需自行开发 H5 页面。缺点是只能用使用微信扫一扫或微信内长按识别二维码跳转小程序，其他 App 扫描无法打开小程序。</p>
 </li>
 </ol>
+<p>在浏览器网页唤起小程序均需要自行实现 H5，普通链接二维码则不需要，而且配置简单灵活。<strong>但缺点是只能用使用微信扫一扫或微信内长按识别二维码跳转小程序，其他 App 扫描无法打开小程序。</strong></p>
+<h2>开启能力</h2>
+<p>登录小程序后台，在「<strong>设置 — 开发设置 — 扫普通链接二维码打开小程序</strong>」处开启功能，开启后便可配置二维码规则。</p>
+<p>⚠️ 注意：</p>
+<ol>
+<li>对于普通链接二维码，目前支持使用<strong>微信扫一扫</strong>或<strong>微信内长按识别二维码</strong>打开小程序。</li>
+<li>该功能暂不支持<strong>个人类型小程序</strong>。</li>
+</ol>
+<h2>踩坑/注意点</h2>
+<blockquote>
+<p>主要介绍一些踩坑/注意点，更多请看<a href="https://developers.weixin.qq.com/miniprogram/introduction/qrcode.html">官方文档</a></p>
+</blockquote>
+<blockquote>
+<p>注：规则可能随时发生改变，以官方为准</p>
+</blockquote>
+<h3>二维码跳转规则</h3>
+<p>如需支持子路径匹配，请确认后台配置的二维码规则以 <code>/</code> 结尾。</p>
 <table>
 <thead>
 <tr>
@@ -12695,18 +12787,16 @@ $ npm config set save-exact true --location project
 </tr>
 </tbody>
 </table>
-<ol start="4">
-<li>带参取参的问题：</li>
-</ol>
-<p>假设我们所要打开小程序的路径为 <code>pages/index/index</code>，需要携带参数 <code>channel</code> 字段，若配置如下：</p>
+<h3>链接带参</h3>
+<p>假设通过 <code>https://www.qq.com/test</code> 链接打开小程序的 <code>pages/index/index</code> 页面，配置如下：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767208393487.png" alt=""></p>
-<p>图中二维码规则的域名是乱写的，自行改成名下服务器并校验即可。</p>
-<p>所以我们就可以拿到一个符合规则的链接：<code>https://www.qq.com/test?channel=123</code>，这也满足了我们携带 <code>channel</code> 参数的需求。然后我们可以利用其它工具将该链接生成二维码测试一下。</p>
+<p>▲ 图中二维码规则的域名是乱写的，自行修改并校验便可。</p>
+<p>配置完成后，便可以拿到一个符合规则的链接：<code>https://www.qq.com/test?channel=123</code>，满足携带参数的需求。</p>
 <blockquote>
 <p>如不确定自己编写的链接是否满足规则，可在配置项的<strong>测试链接</strong>中填写，若不符合规则，会有提示以及无法保存成功。</p>
 </blockquote>
-<p><strong>如何获取该参数呢？</strong></p>
-<p>我们二维码的链接内容会以参数 <code>q</code> 的形式带给页面。可在 <code>App.onLaunch</code>、<code>App.onShow</code>、<code>Page.onLoad</code> 中取出来，还需要自行 <code>decodeURIComponent</code> 一下，才是原二维码的完整内容。</p>
+<h3>获取参数</h3>
+<p>二维码的链接内容会以参数 <code>q</code> 的形式带给页面。可在 <code>App.onLaunch</code>、<code>App.onShow</code>、<code>Page.onLoad</code> 中获取。还需要自行 <code>decodeURIComponent</code> 一下，才是原二维码的完整内容。</p>
 <pre><code class="language-js">// app.js
 App({
   onLaunch(options) {
@@ -12737,19 +12827,14 @@ Page({
   }
 })
 </code></pre>
-<ol start="5">
-<li>
+<h3>发布二维码跳转规则</h3>
 <p>小程序必须先发布代码才可以发布二维码跳转规则。一个小程序帐号一个月可发布不多于 20 次二维码跳转规则。</p>
-</li>
-<li>
-<p><strong>如何在不提审的情况下进行测试？</strong></p>
-</li>
-</ol>
-<p>假设我们小程序已经上线，且相关规则发布之后，扫码该链接会打开线上版本的小程序。如果我们想要打开开发版，就要在<strong>测试链接</strong>中，将该链接配置并保存，然后重新扫码即可。</p>
+<h3>如何在不提审的情况下进行测试？</h3>
+<p>如果小程序已经上线，且相关规则发布之后，扫码该链接会打开线上版本的小程序。</p>
+<p>如果想要打开开发版小程序，测试范围选择开发部，同时在<strong>测试链接</strong>中配置链接，保存后重新扫码便可。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767208409075.png" alt=""></p>
-<ol start="7">
-<li>二维码配置规则必须发布后等待 5 分钟以后才可以使用。（这个坑我没踩，因为我写这篇文章的时候还处在调研阶段，哈哈）</li>
-</ol>
+<h3>规则生效时间</h3>
+<p>二维码配置规则必须发布后等待 5 分钟以后才可以使用（这个坑没踩，在写这篇文章的时候仍处于调研阶段）</p>
 <h2>参考链接</h2>
 <ul>
 <li><a href="https://developers.weixin.qq.com/miniprogram/introduction/qrcode.html">扫普通链接二维码打开小程序</a></li>
