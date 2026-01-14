@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Tue, 13 Jan 2026 07:21:59 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 14 Jan 2026 09:18:23 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -50692,70 +50692,83 @@ middlewares:
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[npm 常用命令]]></title>
+            <title><![CDATA[pnpm/yarn/npm 常用命令]]></title>
             <link>https://github.com/tofrankie/blog/issues/88</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/88</guid>
             <pubDate>Sat, 25 Feb 2023 12:19:23 GMT</pubDate>
-            <description><![CDATA[<ol>
-<li>升级单个包</li>
-</ol>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1768382216883.jpg" alt="配图源自 Freepik"></p>
+<p>作个记录。</p>
+<h2>pnpm</h2>
+<blockquote>
+<p]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1768382216883.jpg" alt="配图源自 Freepik"></p>
+<p>作个记录。</p>
+<h2>pnpm</h2>
+<blockquote>
+<p><a href="https://pnpm.io/">官网</a></p>
+</blockquote>
+<h3>1. 安装 workspace 下的子包</h3>
+<pre><code class="language-shell">$ pnpm add &lt;package&gt;@workspace:^
+</code></pre>
+<blockquote>
+<p>其中 <code>workspace:*</code> 表示该包的最新版本，也可以用 <code>workspace:^</code>（推荐）、<code>workspace:~</code></p>
+</blockquote>
+<blockquote>
+<p>除此之外，也可以在项目的 <code>.npmrc</code> 中指定 <code>link-workspace-packages=true</code>，这样就可以直接用 <code>pnpm add &lt;package&gt;</code> 形式，它会优先使用工作区内的包（若有）</p>
+</blockquote>
+<h3>2. 给子包安装依赖</h3>
+<p>在子包路径下，像平常那样用便可：</p>
+<pre><code class="language-shell">pnpm add &lt;package&gt;
+</code></pre>
+<p>在项目根目录，可以添加 <code>--filter</code> 参数以匹配子包：</p>
+<pre><code class="language-shell">$ pnpm add &lt;package&gt; --filter &lt;subpackage-name&gt;
+</code></pre>
+<blockquote>
+<p><code>--filter</code> 还支持模糊匹配，<a href="https://pnpm.io/filtering">了解更多</a></p>
+</blockquote>
+<h2>yarn classic</h2>
+<blockquote>
+<p><a href="https://classic.yarnpkg.com/en/docs">官网</a></p>
+</blockquote>
+<p>待补充...</p>
+<h3>1. 列举全局包</h3>
+<pre><code class="language-shell">$ yarn global list
+</code></pre>
+<h2>npm</h2>
+<blockquote>
+<p><a href="https://docs.npmjs.com/cli/v11/commands/npm">官网</a></p>
+</blockquote>
+<h3>1. 升级包</h3>
 <pre><code class="language-shell">$ npm update &lt;package&gt;
 </code></pre>
-<ol start="2">
-<li>检查包更新</li>
-</ol>
-<pre><code class="lan]]></description>
-            <content:encoded><![CDATA[<ol>
-<li>升级单个包</li>
-</ol>
-<pre><code class="language-shell">$ npm update &lt;package&gt;
+<h3>2. 检查包更新</h3>
+<pre><code class="language-shell">$ npm outdated   # 检查当前项目的包
 </code></pre>
-<ol start="2">
-<li>检查包更新</li>
-</ol>
-<pre><code class="language-shell">$ npm outdated        # 检查当前项目包
-$ npm outdated -g     # 检查全局包
-</code></pre>
-<ol start="3">
-<li>查看包版本</li>
-</ol>
+<h3>3. 查看包版本</h3>
 <pre><code class="language-shell">$ npm view &lt;package&gt; versions   # 查看全部版本
 $ npm view &lt;package&gt; version    # 查看最新版本
-$ npm info &lt;package&gt;            # 查看包信息
 </code></pre>
-<ol start="4">
-<li>更新指定版本</li>
-</ol>
-<pre><code class="language-shell">$ npm install &lt;package&gt;@&lt;version&gt;  # -g 表示全局包
-
-# npm install react-router@4.0.0
+<h3>4. 更新指定版本</h3>
+<pre><code class="language-shell">$ npm install &lt;package&gt;@&lt;version&gt;
 </code></pre>
-<ol start="5">
-<li>卸载包</li>
-</ol>
+<h3>5. 卸载包</h3>
 <pre><code class="language-shell">$ npm uninstall &lt;package&gt;               # 删除包，但不删除包在 package.json 中的依赖关系
 $ npm uninstall &lt;package&gt; --save        # 删除包，同时删除包在 package.json 中 dependencies 下的依赖关系
 $ npm uninstall &lt;package&gt; --save-dev    # 删除包，同时删除包在 package.json 中 devDependencies 下的依赖关系
 </code></pre>
-<ol start="6">
-<li>查看全局安装的 npm 包</li>
-</ol>
+<h3>6. 列举全局包</h3>
 <pre><code class="language-shell">$ npm list -g
-
-# yarn
-$ yarn global list
 </code></pre>
-<ol start="7">
-<li>其他</li>
-</ol>
-<pre><code class="language-shell">$ npm view &lt;package&gt; engines    # 查看当前包依赖的 Node 最低版本
-$ npm search &lt;package&gt;          # 搜索包
-$ npm root                      # 查看当前包的安装路径
-$ npm root -g                   # 查看全局包的安装路径
-$ npm repo &lt;package&gt;            # 打开包的仓库地址
-$ npm docs &lt;package&gt;            # 打开包的文档
-$ npm config get registry       # 获取当前镜像源
-$ npm config set &lt;registry url&gt; # 获取当前镜像源
+<h3>7. 其他</h3>
+<pre><code class="language-shell">$ npm info &lt;package&gt;                      # 查看包信息
+$ npm view &lt;package&gt; engines              # 查看当前包依赖的 Node 最低版本
+$ npm search &lt;package&gt;                    # 搜索包
+$ npm root                                # 查看当前包的安装路径
+$ npm root -g                             # 查看全局包的安装路径
+$ npm repo &lt;package&gt;                      # 打开包的仓库地址
+$ npm docs &lt;package&gt;                      # 打开包的文档
+$ npm config get registry                 # 获取当前镜像源
+$ npm config set registry &lt;registry-url&gt;  # 获取当前镜像源
 </code></pre>
 ]]></content:encoded>
         </item>
