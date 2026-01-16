@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 14 Jan 2026 09:18:23 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 16 Jan 2026 09:05:56 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -50708,17 +50708,17 @@ middlewares:
 <p><a href="https://pnpm.io/">官网</a></p>
 </blockquote>
 <h3>1. 安装 workspace 下的子包</h3>
-<pre><code class="language-shell">$ pnpm add &lt;package&gt;@workspace:^
+<pre><code class="language-bash">$ pnpm add &lt;package&gt;@workspace:*
 </code></pre>
 <blockquote>
-<p>其中 <code>workspace:*</code> 表示该包的最新版本，也可以用 <code>workspace:^</code>（推荐）、<code>workspace:~</code></p>
+<p>其中 <code>workspace:*</code> 表示该包的最新版本（推荐），也可以用 <code>workspace:^</code>、<code>workspace:~</code> 方式</p>
 </blockquote>
 <blockquote>
 <p>除此之外，也可以在项目的 <code>.npmrc</code> 中指定 <code>link-workspace-packages=true</code>，这样就可以直接用 <code>pnpm add &lt;package&gt;</code> 形式，它会优先使用工作区内的包（若有）</p>
 </blockquote>
 <h3>2. 给子包安装依赖</h3>
 <p>在子包路径下，像平常那样用便可：</p>
-<pre><code class="language-shell">pnpm add &lt;package&gt;
+<pre><code class="language-bash">$ pnpm add &lt;package&gt;
 </code></pre>
 <p>在项目根目录，可以添加 <code>--filter</code> 参数以匹配子包：</p>
 <pre><code class="language-shell">$ pnpm add &lt;package&gt; --filter &lt;subpackage-name&gt;
@@ -50726,41 +50726,45 @@ middlewares:
 <blockquote>
 <p><code>--filter</code> 还支持模糊匹配，<a href="https://pnpm.io/filtering">了解更多</a></p>
 </blockquote>
+<h3>3. 依赖排查</h3>
+<p>显示依赖于指定包的所有包（即指定包被谁所依赖）：</p>
+<pre><code class="language-bash">$ pnpm why &lt;package&gt;
+</code></pre>
 <h2>yarn classic</h2>
 <blockquote>
 <p><a href="https://classic.yarnpkg.com/en/docs">官网</a></p>
 </blockquote>
 <p>待补充...</p>
 <h3>1. 列举全局包</h3>
-<pre><code class="language-shell">$ yarn global list
+<pre><code class="language-bash">$ yarn global list
 </code></pre>
 <h2>npm</h2>
 <blockquote>
 <p><a href="https://docs.npmjs.com/cli/v11/commands/npm">官网</a></p>
 </blockquote>
 <h3>1. 升级包</h3>
-<pre><code class="language-shell">$ npm update &lt;package&gt;
+<pre><code class="language-bash">$ npm update &lt;package&gt;
 </code></pre>
 <h3>2. 检查包更新</h3>
-<pre><code class="language-shell">$ npm outdated   # 检查当前项目的包
+<pre><code class="language-bash">$ npm outdated   # 检查当前项目的包
 </code></pre>
 <h3>3. 查看包版本</h3>
-<pre><code class="language-shell">$ npm view &lt;package&gt; versions   # 查看全部版本
+<pre><code class="language-bash">$ npm view &lt;package&gt; versions   # 查看全部版本
 $ npm view &lt;package&gt; version    # 查看最新版本
 </code></pre>
 <h3>4. 更新指定版本</h3>
-<pre><code class="language-shell">$ npm install &lt;package&gt;@&lt;version&gt;
+<pre><code class="language-bash">$ npm install &lt;package&gt;@&lt;version&gt;
 </code></pre>
 <h3>5. 卸载包</h3>
-<pre><code class="language-shell">$ npm uninstall &lt;package&gt;               # 删除包，但不删除包在 package.json 中的依赖关系
+<pre><code class="language-bash">$ npm uninstall &lt;package&gt;               # 删除包，但不删除包在 package.json 中的依赖关系
 $ npm uninstall &lt;package&gt; --save        # 删除包，同时删除包在 package.json 中 dependencies 下的依赖关系
 $ npm uninstall &lt;package&gt; --save-dev    # 删除包，同时删除包在 package.json 中 devDependencies 下的依赖关系
 </code></pre>
 <h3>6. 列举全局包</h3>
-<pre><code class="language-shell">$ npm list -g
+<pre><code class="language-bash">$ npm list -g
 </code></pre>
 <h3>7. 其他</h3>
-<pre><code class="language-shell">$ npm info &lt;package&gt;                      # 查看包信息
+<pre><code class="language-bash">$ npm info &lt;package&gt;                      # 查看包信息
 $ npm view &lt;package&gt; engines              # 查看当前包依赖的 Node 最低版本
 $ npm search &lt;package&gt;                    # 搜索包
 $ npm root                                # 查看当前包的安装路径
@@ -58076,16 +58080,17 @@ drwxr-xr-x  2 frankie  staff   64  7 10 19:57 src
 <h2>一、前言</h2>
 <p>以 macOS 为例，在 Finder 中右键可以看到「复制」、「拷贝」、「制作替身」等操作。它们之间有什么区别呢？另外，还有本文重点讨论的「软链接」、「硬链接」又是什么呢？</p>
 <blockquote>
-<p>从操作结果看，它们都生成了一个「副本」，但有着本质上的区别。</p>
+<p>从操作结果表面看，似乎都生成了一个「副本」，但有着本质上的区别。</p>
 </blockquote>
-<p><strong>复制与拷贝</strong></p>
+<h3>1. 复制与拷贝</h3>
 <p>它们的共同点是都会生成一个文件的副本，而且副本与原始文件是两个独立的文件。也就是说，修改其一不会对另一个造成任何影响。二者区别在于，复制操作会立刻在当前目录下生成一个副本，而拷贝操作则会将副本放至剪贴板，等待被粘贴。</p>
-<p><strong>软链接与硬链接</strong></p>
+<h3>2. 软链接与硬链接</h3>
 <p>操作系统内置的文件管理器未直接提供相关功能，通常只能通过命令行操作。从操作结果看，它们都产生了一个“副本”（打个引号），但这个副本与原始文件是有关联的。</p>
-<p><strong>替身（Alias）</strong></p>
+<h3>3. 替身（Alias）</h3>
 <p>它是 macOS 操作系统独有的一个概念。它是结合了软链接和硬链接的优缺点的一种解决方案。</p>
-<p>可以提前观察一下，它们之间有哪些特点。</p>
-<pre><code class="language-shell">$ ls -il
+<h3>4. 提前看看</h3>
+<p>可以提前观察一下，它们之间有哪些特点？</p>
+<pre><code class="language-bash">$ ls -il
 total 40
 59499107 -rw-r--r--  1 frankie  staff   21  7 10 19:57 README.md
 59499302 -rw-r--r--  2 frankie  staff   13  7 10 20:00 a-hardlink.txt
@@ -58097,41 +58102,52 @@ total 40
 59499003 -rw-r--r--  1 frankie  staff   92  7 10 19:57 package.json
 59499138 drwxr-xr-x  2 frankie  staff   64  7 10 19:57 src
 </code></pre>
+<p>观察第二列（文件类型 + 文件权限）可知：</p>
+<ul>
+<li>以 <code>d</code> 开头的是目录</li>
+<li>以 <code>l</code> 开头的是软链接文件</li>
+<li>以 <code>-</code> 开头、以 <code>@</code> 结尾的是替身文件</li>
+<li>以 <code>-</code> 开头的可能是普通文件、硬链接文件、替身文件</li>
+</ul>
 <h2>二、基础概念</h2>
-<h3>链接</h3>
-<p>通常，人类所说的链接多指 URL，表示互联网上的网页、图像、音频、文件等资源。</p>
-<p>但是，本文所提之「链接」是 POSIX 标准中的一个概念，是一种文件共享的方式。这种文件称为「链接文件」，目前主流操作系统都支持链接文件。</p>
-<p><strong>链接文件可分为「符号链接 <a href="https://www.wikiwand.com/en/Symbolic_link">symbolic link</a>」和「硬链接 <a href="https://www.wikiwand.com/en/Hard_link">hard link</a>」两种</strong>。其中符号链接又称为「软链接 <a href="https://www.wikiwand.com/en/Symbolic_link">soft link, symlink</a>」。</p>
+<h3>1. 链接</h3>
+<p>通常人们常说的链接多指 URL，表示互联网上的网页、图像、音频、文件等资源。</p>
+<p>但本文所提之「链接」是 POSIX 标准中的一个概念，是一种文件共享的方式，这种文件称为「链接文件」。目前主流操作系统都支持链接文件。</p>
+<p>链接文件分为：</p>
+<ul>
+<li><strong>符号链接 <a href="https://www.wikiwand.com/en/Symbolic_link">symbolic link</a></strong>（又称为软链接 <a href="https://www.wikiwand.com/en/Symbolic_link">soft link, symlink</a>）</li>
+<li><strong>硬链接 <a href="https://www.wikiwand.com/en/Hard_link">hard link</a></strong></li>
+</ul>
 <blockquote>
-<p>从中文角度出发，为了对比更鲜明，下文将称为「软链接」和「硬链接」。</p>
+<p>下文将称为「软链接」和「硬链接」。</p>
 </blockquote>
-<h3>文件与目录</h3>
-<p>人类在管理文件时，通常会划分为「文件」和「目录」两种，后者是承载前者的一种容器，这种划分方式对人类是友好的，可便于归纳整理。但在操作系统看来，目录（directory）本身也是一种文件，下称为目录文件。</p>
+<h3>2. 文件与目录</h3>
+<p>人们在管理文件时，通常会划分为「文件」和「目录」两种，后者是承载前者的一种容器，这种划分方式对人类是友好的，可便于归纳整理。但在操作系统角度，目录（directory）本身也是一种文件，下称为目录文件。</p>
 <blockquote>
-<p>下文若无特殊说明，所提到的「文件」均从操作系统角度出发，因此它可能包含了文件和目录。</p>
+<p>若无特殊说明，下文所提到的「文件」均从操作系统角度出发，因此它可能包含了文件和目录。</p>
 </blockquote>
-<h3>文件存储</h3>
+<h3>3. 文件存储</h3>
 <p>我们的文件是存储在「硬盘」上的，硬盘上的最小存储单位是「扇区 Sector」。操作系统读写硬盘时，最小的存取单位是「块 Block」。一个扇区存储 512 个字节（0.5KB），而一个块大小最常见为 4KB，即连续的八个扇区组成了一个块。</p>
 <blockquote>
 <p>一个文件分为数据部分和元信息两部分，其中文件数据都存储在「Block」中，文件元信息存储在一个名为「inode」的区域。</p>
 </blockquote>
 <p>每一个文件都有对应的 inode，它包含了文件的元信息，比如创建者、创建日期、大小等信息。<strong>需要注意的是，文件名称并不包含在 inode 信息中（下文会介绍），而且 inode 也会占用硬盘空间</strong>。</p>
-<h3>文件区分</h3>
-<p>通常来说，人类是通过「文件名称」来区分不同文件的，更严谨一点应该是「文件路径」。</p>
+<h3>4. 文件区分</h3>
+<p>通常来说，人们是通过「文件名称」来区分不同文件的，更严谨一点应该是「文件路径」。</p>
 <p>但是，操作系统是通过一个称为「inode 号码」（一个 inode 对应一个 inode 号码）的东西来区分不同文件的。操作系统允许不同的文件名称可以具有同一个 inode 号码。inode 号码相同的文件，其文件数据是相同的，都指向了硬盘中存储的同一份数据（自然也就只占用了一份硬盘空间）。这才是本质意义上的同一文件。</p>
 <p>以祖国的公民身份证系统来比喻，身份证号码对应 inode 号码，姓名对应为文件名称。在全国范围内，身份证号码是唯一的，姓名则不是，因此若要确定具体的某个人，只能通过身份证去查找。姓名和文件名称一样允许重名，当然在操作系统中同一路径下文件不允许重名。</p>
 <p>细心的同学会发现，这里面其实是有界定范围的，身份证系统中的证件号码只能确保在国内是唯一的。假设某个国家也有一套类似的身份证系统，我国的小明与他国的小花证件号码是有可能重复的，那么在全世界范围内，就无法通过这个证件号码指向具体的某个人。在操作系统上同样存在这个问题，原因是多数操作系统都支持挂载「多个」文件系统，而 inode 号码则是由文件系统进行分配。尽管同一个文件系统中 inode 号码不会重复，但是多个文件系统之间是会出现相同的 inode 号码的。可以将操作系统比喻为全世界，文件系统比喻成国家，道理是一样的。</p>
 <blockquote>
-<p>下文若无特殊说明，所指 inode 号码均指同一文件系统内。</p>
+<p>若无特殊说明，下文所指 inode 号码均指同一文件系统内。</p>
 </blockquote>
-<h3>文件信息</h3>
+<h3>5. 文件信息</h3>
 <p>通过 <code>ls</code>（英文 list 的缩写）命令可以查看文件清单。本文用到参数有：</p>
 <ul>
 <li><code>-a</code> 表示列举全部文件，包括隐藏文件。</li>
 <li><code>-l</code> 表示列举文件细节，包括文件属性、权限、所有者、所在群组、大小、相关日期、文件名称、链接指向等。</li>
 <li><code>-i</code> 表示列举文件的 inode 号码。</li>
 </ul>
-<pre><code class="language-shell"># 列举所有文件名称
+<pre><code class="language-bash"># 列举所有文件名称
 $ ls
 README.md               a-symlink-relative.txt  a.txt的替身
 a-hardlink.txt          a-symlink.txt           package.json
@@ -58156,16 +58172,18 @@ total 40
 59499003 -rw-r--r--  1 frankie  staff   92  7 10 19:57 package.json
 59499138 drwxr-xr-x  2 frankie  staff   64  7 10 19:57 sr
 </code></pre>
-<p>以 macOS 为例，命令行中文件细节所表示如下。</p>
+<p>以 macOS 为例，a-symlink.txt 文件细节如下：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767273646055.png" alt=""></p>
 <p>不同操作系统或不同终端工具所展示内容或有不同。</p>
+<blockquote>
+<p>关于文件权限可看《<a href="https://github.com/tofrankie/blog/issues/35">Linux 文件权限详解</a>》</p>
+</blockquote>
 <h2>三、inode</h2>
 <blockquote>
-<p>本文一些内容摘自阮一峰老师文章：<a href="https://www.ruanyifeng.com/blog/2011/12/inode.html">理解 inode</a>。</p>
+<p>本文部分内容摘自阮一峰老师文章《<a href="https://www.ruanyifeng.com/blog/2011/12/inode.html">理解 inode</a>》</p>
 </blockquote>
 <p>往下之前，需要先了解 inode 是什么，干什么用的？</p>
 <p>inode 是 <a href="https://www.wikiwand.com/en/Inode">index node</a> 的简写，译为索引节点。每一个文件都有对应的 inode，它包含了以下这些文件元信息：</p>
-<blockquote>
 <ul>
 <li>文件字节数</li>
 <li>文件所有者的 User ID</li>
@@ -58175,11 +58193,10 @@ total 40
 <li>链接个数，即有多少个文件名称指向这个 inode</li>
 <li>文件数据 Block 的文件</li>
 </ul>
-</blockquote>
-<p>是的，inode 信息里没有存储文件名称。可以先思考下：它会被存放到哪里呢？</p>
+<p>是的，inode 信息里没有存储文件名称。可以思考下：它会被存放到哪里呢？</p>
 <h3>inode 信息</h3>
 <p>使用 <code>stat</code> 命令可以查看文件的 inode 信息：</p>
-<pre><code class="language-shell">$ stat -x README.md
+<pre><code class="language-bash">$ stat -x README.md
 
   File: &quot;README.md&quot;
   Size: 21           FileType: Regular File
@@ -58190,13 +58207,16 @@ Modify: Sun Jul 10 19:57:51 2022
 Change: Sun Jul 10 19:57:51 2022
  Birth: Sun Jul 10 19:57:26 2022
 </code></pre>
-<h3>inode 大小</h3>
+<h3>1. inode 大小</h3>
 <p>inode 本身也会占用硬盘空间。操作系统会将硬盘分为两个区域：一个是「数据区」，用于存储文件数据；一个是「inode 区」，用于存放 inode 所包含的信息。</p>
 <p>每个 inode 大小一般是 128 字节或 256 字节。通常是每 1KB 或每 2KB 就设置一个 inode。由于在硬盘格式化时，inode 总数量就已经给定。而且每个文件必须要有一个 inode，因此有可能发生 inode 已经用完，但硬盘未存满的情况，此时无法再从硬盘上创建新文件。</p>
-<h3>inode 号码</h3>
+<h3>2. inode 号码</h3>
 <p>每个文件都有 inode，而每个 inode 会对应一个号码，称为「inode 号码」。<strong>在 Unix/Linux 操作系统中是通过 inode 号码来识别不同文件的。文件名称只是 inode 号码的一个「别称」，但这个别称对人类是友好的、易于记忆与区分的。</strong></p>
-<p>还是用我国的公民身份证系统来比喻，身份证号码对应 inode 号码，而姓名则对应文件名称。平常问候朋友总不能说「那个 4413*****3425（乱写的）吃饭了没」，显然「小明你吃饭了没」更合适。</p>
-<h3>目录文件</h3>
+<p>还是用我国的公民身份证系统来比喻，身份证号码对应 inode 号码，而姓名则对应文件名称（文件路径）。平常问候朋友总不能说「4413*****3425 吃饭了没？」，显然「小明你吃饭了没？」更合适。</p>
+<blockquote>
+<p>身份证号是乱写的</p>
+</blockquote>
+<h3>3. 目录文件</h3>
 <p>目录文件的结构非常简单，就是一系列目录项（dirent）的列表。</p>
 <blockquote>
 <p>每个目录项由两部分组成：所包含文件的文件名称，以及该文件名称对应的 inode 号码。</p>
@@ -58219,16 +58239,14 @@ total 16
 59499138 drwxr-xr-x  2 frankie  staff  64  7 10 19:57 src
 </code></pre>
 <p>平常访问一个文件，可以分为几个步骤：</p>
-<blockquote>
 <ol>
 <li>在当前目录文件中，根据文件名称找到对应的文件 inode 号码；</li>
 <li>通过 inode 号码，获取到 inode 信息；</li>
 <li>根据 inode 信息，找到文件数据存储的 Block，然后读出数据。</li>
 </ol>
-</blockquote>
 <p>当操作系统得知 inode 号码之后，后续可以直接通过该号码对文件执行相关操作。</p>
 <h2>四、软链接与硬链接</h2>
-<h3>创建链接</h3>
+<h3>1. 创建链接</h3>
 <p>使用 <code>ln</code>（英文 link 的缩写）命令可以为文件创建软链接、硬链接。命令较为简单，如下：</p>
 <pre><code class="language-shell"># 创建硬链接
 $ ln &lt;source-file&gt; &lt;target-file&gt;
@@ -58239,7 +58257,7 @@ $ ln -s &lt;source-file&gt; &lt;target-file&gt;
 <blockquote>
 <p>创建软链接时，原始文件路径（即 <code>&lt;source-file&gt;</code>）建议使用「绝对路径」，以避免移动软链接后无法正常访问目标文件。</p>
 </blockquote>
-<h3>硬链接</h3>
+<h3>2. 硬链接</h3>
 <p>通常情况下，文件名称与 inode 号码是「一一对应」的关系，即一个 inode 对应一个文件名称。<strong>但是，主流操作系统都允许多个文件名称指向同一个 inode 号码</strong>。</p>
 <p>换句话说，通过不同的文件名称可以访问到同样的文件内容，对文件内容的修改自然会影响所有对应的文件名称。但是，删除其中一个，不会影响到另一个的访问，这种情况称为「硬链接」。</p>
 <pre><code class="language-shell">$ touch a.txt &amp;&amp; echo 'some text...' &gt;&gt; a.txt
@@ -58269,7 +58287,7 @@ total 24
 <blockquote>
 <p>因此，硬链接本质上只是新增一个文件名称到某个 inode 号码而已。</p>
 </blockquote>
-<h3>软链接</h3>
+<h3>3. 软链接</h3>
 <p>通过前面发现，硬链接与原始文件的 inode 号码是相同的。但是软链接的 inode 号码与原始文件是不一样的。</p>
 <p>假设有文件 A 和 B，它们的 inode 号码不同，但是 B 文件的内容是 A 文件的路径。当读取 B 文件时，系统将会自动导向 A 文件，读取的都是 A 文件的内容。此时，B 文件被称为 A 文件的「软链接」。</p>
 <pre><code class="language-shell">$ ln -s a.txt a-symlink.txt
@@ -58289,7 +58307,7 @@ total 32
 <blockquote>
 <p>因此，软链接本质上只是记录了某个文件路径。</p>
 </blockquote>
-<h3>注意点</h3>
+<h3>4. 注意点</h3>
 <ol>
 <li>创建软链接建议使用「绝对路径」，以避免所生成的软链接在移动至其他目录之后，无法访问到原始文件。</li>
 </ol>
@@ -58408,7 +58426,7 @@ bookmark88��$n�|=�A�lUsersfrankieDesktopWebTemp
 <p>比如照片分类。假设我们的硬盘里存储了 10GB 的照片，如果想要按拍摄时间、拍摄地点、图片类型等方式分类，我们可以利用硬链接的特点，在其他目录创建图片文件的硬链接进行分类，最重要的是它们只会占用一份硬盘空间。</p>
 <p>比如文件共享。假设多人对同一个文件进行维护的时候，每个人可以在私人目录下创建该文件的硬链接，它的所有修改都会同步到原始文件中。最重要的是，即使某人不慎误删了文件，也不会丢失文件。</p>
 <p>比如文件备份。最原始的方式应该是修改完目标文件后，然后拷贝一份至存档目录。这种方式除了麻烦，还会占用两份同等大小的硬盘空间。利用硬链接的特点就可以轻松解决，达到仅占用一份硬盘空间，同步修改的效果。</p>
-<h2>七、参考文章</h2>
+<h2>七、参考链接</h2>
 <ul>
 <li><a href="https://www.ruanyifeng.com/blog/2011/12/inode.html">理解 inode</a></li>
 <li><a href="https://www.cnblogs.com/bellkosmos/p/detail_of_linux_file_system.html">Linux 文件系统详解</a></li>
