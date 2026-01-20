@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Fri, 16 Jan 2026 09:05:56 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 19 Jan 2026 20:29:38 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -6071,6 +6071,9 @@ echo $baz    # 3
 <blockquote>
 <p><a href="https://github.com/kentcdodds/cross-env/issues/257">cross-env is &quot;finished&quot; (now in maintenance mode)</a></p>
 </blockquote>
+<blockquote>
+<p>pnpm 有类似的解决方案，详见 <a href="https://pnpm.io/cli/run#shellemulator">shellEmulator</a></p>
+</blockquote>
 <p>如果项目的环境变量很多，script 就会很长很长，不好看也不好维护，后来又使用 <a href="https://www.dotenv.org/">dotenv</a> 方案。</p>
 <p>比如，项目根目录有 <code>.env</code>、<code>.env.development</code> 文件：</p>
 <blockquote>
@@ -6196,7 +6199,7 @@ TODO:
 - npm script 中添加 -- --foo=bar 变量的作用？
 - node 22 原生支持 dotenv?
 
-## 参考资料
+## 参考链接
 
 - [Using dotenv .env config file correctly](https://github.com/facebook/create-react-app/issues/865#issuecomment-252199527)
 -->
@@ -58416,7 +58419,7 @@ bookmark88��$n�|=�A�lUsersfrankieDesktopWebTemp
 </ul>
 <p><strong>应用场景</strong></p>
 <p>在前端领域也广泛使用了软链接、硬链接，比如 npm CLI、npm link、pnpm 等工具。</p>
-<p>以 pnpm 为例，通过 <code>pnpm install</code> 命令安装的依赖包都将存储在 <code>~/Library/pnpm/store</code> 目录下 （7.x 版本之前全局目录是 <code>~/.pnpm_store</code>，详见 <a href="https://github.com/pnpm/pnpm/issues/2574">pnpm #2574</a>） 。假设项目中安装了 jest 依赖包，会产生这样两个目录：</p>
+<p>以 pnpm 为例，通过 <code>pnpm install</code> 命令安装的依赖包都将存储在 <code>~/Library/pnpm/store</code> 目录下 （7.x 版本之前全局目录是 <code>~/.pnpm_store</code>，详见 <a href="https://github.com/pnpm/pnpm/pull/4522">pnpm #4522</a>） 。假设项目中安装了 jest 依赖包，会产生这样两个目录：</p>
 <pre><code class="language-text">./node_modules/jest
 ./node_modules/.pnpm/jest@28.1.2/node_modules/jest
 </code></pre>
