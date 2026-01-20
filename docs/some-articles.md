@@ -16,7 +16,7 @@
 #### 手写系列
 
 - [手写 new](https://github.com/tofrankie/blog/issues/1)
-- [手写深拷贝](https://github.com/tofrankie/blog/issues/2)
+- [手写深拷贝](https://github.com/tofrankie/blog/issues/246)
 - [手写 call、apply、bind](https://github.com/tofrankie/blog/issues/3)
 - [手写 Object.create](https://github.com/tofrankie/blog/issues/4)
 - [手写 instanceof](https://github.com/tofrankie/blog/issues/5)
@@ -26,3 +26,4 @@
 - [macos-use](https://github.com/tofrankie/macos-use)
 - [github-blogger](https://github.com/tofrankie/github-blogger)
 - [terminal-dark-theme](https://github.com/tofrankie/terminal-dark-theme)
+- [url-scheme-collection](https://github.com/tofrankie/url-scheme-collection)
