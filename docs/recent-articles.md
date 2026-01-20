@@ -1,5 +1,6 @@
 # 近期更新
 
+- [Node.js 环境变量](https://github.com/tofrankie/blog/issues/338)
 - [Linux 链接文件详解](https://github.com/tofrankie/blog/issues/36)
 - [pnpm/yarn/npm 常用命令](https://github.com/tofrankie/blog/issues/88)
 - [扫普通链接二维码打开小程序调研](https://github.com/tofrankie/blog/issues/303)
@@ -9,4 +10,3 @@
 - [Cursor: Model not available](https://github.com/tofrankie/blog/issues/384)
 - [浅谈 CSS 3D Transform 与 Perspective](https://github.com/tofrankie/blog/issues/379)
 - [Google Antigravity 登录成功无法跳转的解决方法](https://github.com/tofrankie/blog/issues/382)
-- [Thunk 函数与 Generator 函数](https://github.com/tofrankie/blog/issues/261)
