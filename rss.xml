@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 21 Jan 2026 13:37:42 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 21 Jan 2026 20:17:27 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -15167,7 +15167,7 @@ console.log(config)
 <h2>一、前世今生</h2>
 <p>在 ES6 之前，JavaScript 一直没有官方的模块（Module）体系，对于开发大型、复杂的项目形成了巨大的障碍。幸好社区上有一些模块加载方案，最主要的有 CommonJS（CommonJS Modules）和 AMD（Asynchronous Module Definition）两种模块规范，前者用于服务器，后者用于浏览器。</p>
 <p>随着 ES6 的正式发布，全新的模块将逐步取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。</p>
-<p>ES6 模块的设计思想尽量的静态化，是的编译时就能确定模块的依赖关系，以及输入和输出的变量。</p>
+<p>ES6 模块的设计思想尽量地静态化，编译时就能确定模块的依赖关系，以及输入和输出的变量。</p>
 <blockquote>
 <p>在 <a href="https://rollupjs.org/guide/en/#tree-shaking">rollup</a>、 <a href="https://webpack.docschina.org/guides/tree-shaking/#root">webpack</a> 等构建工具中常见的 <strong>Tree Shaking</strong> 能力，就是依赖于 ES6 模块的<a href="https://exploringjs.com/es6/ch_modules.html#static-module-structure">静态特性</a>实现的。</p>
 </blockquote>
@@ -15212,7 +15212,7 @@ console.log(person.name) // 将会打印什么呢？
 <p>我们可以轻而易举就知道 <code>module-b.js</code> 里将会打印出 <code>Frankie</code>，原因很简单，它们都是处于全局作用域下，因此 <code>module-b.js</code> 中的 <code>person.name</code> 就能读取到在 <code>module-a.js</code> 中定义的 person 变量。</p>
 <p>如果将 <code>module-a.js</code> 和 <code>module-b.js</code> 在 HTML 中的顺序换过来，就会抛出错误。原因是<code>&lt;script&gt;</code> 是按块加载的，包括下载、（预）编译和执行。唯有当前块执行完毕，或者抛出错误，才会接着加载下一个 <code>&lt;script&gt;</code>。</p>
 <blockquote>
-<p>注意，这里提到的按顺序加载，是指没有 <code>defer</code> 和 <code>async</code> 属性的哈。它俩对外部脚本的加载方式是有影响的。但非本文话题，因此不展开讲述。</p>
+<p>注意，这里提到的按顺序加载是指未设置 <code>defer</code> 和 <code>async</code> 的情况下。这两个属性对外部脚本的加载方式是有影响的。</p>
 </blockquote>
 <p>那问题就来了，这很容易造成<strong>全局污染</strong>，对于大型、复杂的项目来说会非常棘手。</p>
 <p>假设没有 CommonJS 等模块化解决方案，要怎样解决这种问题呢？</p>
@@ -15341,8 +15341,7 @@ globalns.moduleB = (function () {
 <p>先瞅一下，一个 CommonJS 模块里面都包括一些什么信息：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767201833067.png" alt=""></p>
 <p>如果有一些看不懂或不了解其用处的，先不急，下面娓娓道来。</p>
-<p>CommonJS 的模块特点：</p>
-<blockquote>
+<p>CommonJS 模块特点：</p>
 <ul>
 <li>每一个 JavaScript 文件就是一个独立模块，其作用域仅在模块内，不会污染全局作用域。</li>
 <li>一个模块包括 <code>require</code>、<code>module</code>、<code>exports</code> 三个核心变量。</li>
@@ -15350,7 +15349,6 @@ globalns.moduleB = (function () {
 <li>模块可以加载多次，但只会在第一次加载时运行一次，然后运行结果就会被缓存起来。下次再加载是直接读取缓存结果。模块缓存是可以被清除的。</li>
 <li>模块的加载是同步的，而且是按编写顺序进行加载。</li>
 </ul>
-</blockquote>
 <h3>4.1 Module 对象</h3>
 <p>前面打印的 <code>module</code> 就是 <code>Module</code> 的实例对象。每个模块内部，都有一个 <code>module</code> 对象，表示当前模块。它有以下属性：</p>
 <pre><code class="language-js">// Module 构造函数
@@ -15367,10 +15365,10 @@ function Module(id = '', parent) {
 </code></pre>
 <p>源码 👉 <a href="https://github.com/nodejs/node/blob/34be1af5e17195dd9ce127e1daa7ab2bafd2df84/lib/internal/modules/cjs/loader.js#L172-L181">node/lib/internal/modules/cjs/loader.js（Node.js v17.x）</a></p>
 <ul>
-<li><code>module.id</code>：返回字符串，表示模块的标识符，通常这是完全解析的文件名。</li>
+<li><code>module.id</code>：返回字符串，表示模块的标识符，通常这是完全解析的文件名。当 <code>id</code> 为 <code>.</code> 表示入口文件。</li>
 <li><code>module.path</code>：返回字符串，表示模块的目录名称，通常与 <code>module.id</code> 的 <code>path.dirname()</code> 相同。</li>
 <li><code>module.exports</code>：模块对外输出的接口，默认值为 <code>{}</code>。默认情况下，<code>module.exports</code> 与 <code>exports</code> 是相等的。</li>
-<li><code>module.filename</code>：返回字符串，表示模块的完全解析文件名（含绝对路径）。</li>
+<li><code>module.filename</code>：返回字符串，表示模块的完全解析文件名（绝对路径）。</li>
 <li><code>module.loaded</code>：返回布尔值，表示模块是否已完成加载或正在加载。</li>
 <li><code>module.children</code>：返回数组，表示当前模块引用的其他模块的实例对象。</li>
 <li><code>module.parent</code>：返回 <code>null</code> 或数组。若返回值为数组时，表示当前模块被其他模块引用了，而且每个数组元素表示被引用模块对应的实例对象。</li>
@@ -15477,7 +15475,7 @@ exports = function () { console.log('Hi~') }
 </ul>
 <p>其中，绝对路径形式在实际项目中几乎不会使用（反正我是没用过）、而 <code>require('#some-library')</code> 形式目前仍在试验阶段...</p>
 <p>以下基于 <a href="https://nodejs.org/api/modules.html#all-together">Node.js 官网</a> 相关内容翻译并整理的版本（<a href="https://codesandbox.io/s/interesting-agnesi-46jjzl?file=/README.md">存档</a>）</p>
-<pre><code class="language-txt">场景：在 `Y.js` 文件下，`require(X)`，Node.js 内部模块查找算法：
+<pre><code class="language-txt">场景：在 `Y.js` 文件下 `require(X)`，Node.js 内部模块查找算法：
 
 1. 如果 `X` 为内置模块的话，立即返回该模块；
 
@@ -15590,7 +15588,7 @@ Module._load = function (request, parent, isMain) {
     return module.exports
   }
 
-  // 2️⃣ 缓动是否存在缓存
+  // 2️⃣ 模块是否已缓存
   // 所有加载过的模块都缓存于 Module._cache 中，以模块的绝对路径作为键值（cache key）
   const cachedModule = Module._cache[filename]
 
@@ -49781,15 +49779,15 @@ strict-ssl 选项是 npm 中用于控制 SSL 证书校验的选项。当 strict-
 <blockquote>
 <p>🚀 Fast and simple Node.js version manager, built in Rust.</p>
 </blockquote>
-<p><strong>1. 安装 fnm（以 macOS 为例）</strong></p>
-<pre><code class="language-shell">$ brew install fnm
+<h3>1. 安装 fnm</h3>
+<pre><code class="language-bash">$ brew install fnm
 </code></pre>
-<p><strong>2. 配置 fnm 所需的环境变量到 bash 或 zsh 配置文件中，以 zsh 为例：</strong></p>
-<pre><code class="language-shell">$ fnm env --use-on-cd &gt;&gt; ~/.zshrc
+<h3>2. 配置 fnm 所需的环境变量到 bash 或 zsh 配置文件中</h3>
+<pre><code class="language-bash">$ fnm env --use-on-cd &gt;&gt; ~/.zshrc
 </code></pre>
 <p>亦可执行 <code>fnm env --use-on-cd</code>，将输出内容手动添加至 <code>.bash_profile</code> 或 <code>.zshrc</code> 里。</p>
-<p><strong>3. 用 fnm 安装 Node</strong></p>
-<pre><code class="language-shell"># 安装 LTS 版本
+<h3>3. 用 fnm 安装 Node</h3>
+<pre><code class="language-bash"># 安装 LTS 版本
 $ fnm install --lts
 
 # 安装指定大版本的最新版本
@@ -49799,8 +49797,8 @@ $ fnm install 18
 $ fnm install 18.21.1
 </code></pre>
 <p>相反地，可通过 <code>fnm uninstall &lt;version&gt;</code> 或 <code>fnm uninstall &lt;alias-name&gt;</code> 来删除指定版本，后者会同时移除别名。</p>
-<p><strong>4. 通过 fnm 来指定 Node 版本</strong></p>
-<pre><code class="language-shell"># 使用系统版本
+<h3>4. 通过 fnm 来指定 Node 版本</h3>
+<pre><code class="language-bash"># 使用系统版本
 $ fnm use system
 
 # 使用 fnm 所安装，且版本号为 18.21.1 的 Node 程序
@@ -49810,45 +49808,45 @@ $ fnm use 18.21.1
 $ fnm use 18
 </code></pre>
 <p>只要用 <code>fnm use &lt;version&gt;</code> 指定后，每次启动 Shell 将会默认使用对应的 Node 版本。</p>
-<p><strong>5. 设置别名</strong></p>
-<pre><code class="language-shell"># 形式如：fnm alias &lt;指定版本号&gt; &lt;别名&gt;
+<h3>5. 设置别名</h3>
+<pre><code class="language-bash"># 形式如：fnm alias &lt;指定版本号&gt; &lt;别名&gt;
 $ fnm alias 18.21.1 v18
 
 # 设置别名后，可以简化指令为：
 $ fnm use v18
 </code></pre>
-<p><strong>其实以上示例的别名意义不大，仅用于举例而已</strong>。原因是：在「不设置别名」的情况下，使用 <code>fnm use 18</code>，也能切换至 <code>18.21.1</code>。使用 <code>fnm use &lt;major&gt;</code> 会切换至对应主版本号对应的最新版本。</p>
+<p>上述示例的别名意义不大，仅用于举例而已。原因是：在不设置别名的情况下，使用 <code>fnm use 18</code>，也能切换至 <code>18.21.1</code>。使用 <code>fnm use &lt;major&gt;</code> 会切换至对应主版本号对应的最新版本。</p>
 <blockquote>
 <p>假设我们安装了 <code>18.20.0</code> 和 <code>18.21.1</code> 两个主版本号相同的 Node 程序，使用 <code>fnm use 18</code> 只会切换至 <code>18.21.1</code>（即最新的版本），尽管通过 <code>fnm alias 18.20.0 18</code> 将 <code>18.20.0</code> 的别名设为 <code>18</code>，这样设置别名是无意义的。
 此时可能需要用 <code>fnm use 18.20</code> 或 <code>fnm use 18.20.0</code> 来切换指定版本了，或者其他非纯数字的别名了。</p>
 </blockquote>
-<p>较有意义的特殊别名 <code>system</code> 和 <code>default</code>：</p>
+<p>比较有意义的特殊别名：</p>
 <ul>
-<li>前者是以 <code>.pkg</code> 等形式（比如官网下载的安装包）所安装的 Node 应用程序，称为系统版本。</li>
-<li>后者是用于指定 <code>fnm</code> 的一个默认版本，作为与 <code>18</code> 是类似的，只是其语义表示默认罢了。</li>
+<li><code>system</code>：以 <code>.pkg</code> 等形式（比如官网下载的安装包）所安装的 Node 应用程序，称为系统版本。</li>
+<li><code>default</code>：用于指定 <code>fnm</code> 的一个默认版本，作为与 <code>18</code> 是类似的，只是其语义表示默认罢了。</li>
 </ul>
-<pre><code class="language-shell"># 指定默认版本
+<pre><code class="language-bash"># 指定默认版本
 $ fnm default 18.21.1
 
 # 相当于
 $ fnm alias 18.21.1 default
 </code></pre>
 <p>相反地，可通过 <code>fnm unalias &lt;alias-name&gt;</code> 来取消别名。</p>
-<p><strong>6. 项目中指定特定版本</strong></p>
+<h3>6. 项目中指定特定版本</h3>
 <p>可以通过在项目根目录下添加 <code>.node-version</code> 或 <code>.nvmrc</code> 文件，并在其中指定版本。比如：</p>
-<pre><code class="language-shell">$ echo '18' &gt; .node-version
+<pre><code class="language-bash">$ echo '18' &gt; .node-version
 </code></pre>
 <p>前提是，配置 fnm 环境用的是 <code>fnm env --use-on-cd</code> 命令，而不是 <code>fnm env</code>。后者没有添加 Hook，因此不会是检查对应配置文件。有兴趣的可以对比两条命令的差别就明白了。</p>
 <p>由于团队成员所安装的 Node，其次版本或补丁版本号可能是不一样的，因此，多数情况下指定主版本号即可，无需指定到 <code>18.21.1</code> 等更具体的版本号（特殊场景除外）。</p>
-<p><strong>7. 卸载 fnm</strong></p>
+<h3>7. 卸载 fnm</h3>
 <p>若是通过 <code>brew</code> 安装的 <code>fnm</code>，则：</p>
-<pre><code class="language-shell">$ brew uninstall fnm
+<pre><code class="language-bash">$ brew uninstall fnm
 </code></pre>
 <p>接着，再移除 <code>~/.fnm</code> 目录。</p>
-<pre><code class="language-shell">$ rm -rf ~/.fnm
+<pre><code class="language-bash">$ rm -rf ~/.fnm
 </code></pre>
 <p>最后，移除 <code>bash</code> 或 <code>zsh</code> 的配置文件中与 <code>fnm</code> 相关的配置。比如：</p>
-<pre><code class="language-shell">export PATH=&quot;/Users/frankie/Library/Caches/fnm_multishells/49559_1670052262156/bin&quot;:$PATH
+<pre><code class="language-bash">export PATH=&quot;/Users/frankie/Library/Caches/fnm_multishells/49559_1670052262156/bin&quot;:$PATH
 export FNM_VERSION_FILE_STRATEGY=&quot;local&quot;
 export FNM_DIR=&quot;/Users/frankie/Library/Application Support/fnm&quot;
 export FNM_NODE_DIST_MIRROR=&quot;https://nodejs.org/dist&quot;
@@ -49869,7 +49867,7 @@ rehash
 </code></pre>
 <h2>移除 nvm</h2>
 <p>在移除之前，通过以下方式查看使用 <code>nvm</code> 所安装的全局包，然后切换到 <code>fnm</code> 安装一下（有需要的话）：</p>
-<pre><code class="language-shell">$ nvm use 16
+<pre><code class="language-bash">$ nvm use 16
 Now using node v16.14.0 (npm v8.3.1)
 
 $ npm list -g
@@ -49881,14 +49879,29 @@ $ npm list -g
 └── zx@7.0.7
 </code></pre>
 <p>移除 <code>nvm</code> 的安装目录，通常是 <code>~/.nvm</code>。执行以下命令即可：</p>
-<pre><code class="language-shell">$ rm -rf &quot;$NVM_DIR&quot;
+<pre><code class="language-bash">$ rm -rf &quot;$NVM_DIR&quot;
 </code></pre>
 <p>移除 <code>bash</code> 或 <code>zsh</code> 的配置文件中与 <code>nvm</code> 相关的配置。比如：</p>
-<pre><code class="language-shell">export NVM_DIR=&quot;$HOME/.nvm&quot;
+<pre><code class="language-bash">export NVM_DIR=&quot;$HOME/.nvm&quot;
 [ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot; --no-use          # This loads nvm
 [ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \. &quot;$NVM_DIR/bash_completion&quot; # This loads nvm bash_completion
 </code></pre>
 <p>其他系统可看 <a href="https://github.com/nvm-sh/nvm#uninstalling--removal">Uninstalling / Removal</a>。</p>
+<h2>移除通过 pkg 安装的 Node.js</h2>
+<p>移除全局依赖以及 node、npm 等二进制软链接</p>
+<pre><code class="language-bash">$ sudo rm -rf /usr/local/lib/node_modules
+$ sudo rm /usr/local/bin/node
+$ rm /usr/local/bin/npm
+$ rm /usr/local/bin/yarn
+$ rm /usr/local/bin/pnpm
+</code></pre>
+<p>其他</p>
+<pre><code class="language-bash">$ sudo rm /usr/local/share/man/man1/node.1
+</code></pre>
+<p>与 Node.js 相关，但可能会影响其他形式安装的 Node.js 的 npm 所安装的依赖，移除请慎重！</p>
+<pre><code class="language-bash">$ sudo rm -rf ~/.npm
+$ sudo rm -rf ~/.node-gyp
+</code></pre>
 <h2>参考链接</h2>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/587008009">用锈化的 fnm 管理 Node.js 版本</a></li>
