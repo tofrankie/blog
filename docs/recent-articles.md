@@ -1,5 +1,7 @@
 # 近期更新
 
+- [再见 nvm，改用 fnm 了](https://github.com/tofrankie/blog/issues/96)
+- [细读 JS | JavaScript 模块化之路](https://github.com/tofrankie/blog/issues/281)
 - [梳理 node、npm、yarn、pnpm 相关路径](https://github.com/tofrankie/blog/issues/94)
 - [pnpm/yarn/npm 常用命令](https://github.com/tofrankie/blog/issues/88)
 - [Node.js 环境变量](https://github.com/tofrankie/blog/issues/338)
@@ -8,5 +10,3 @@
 - [tsconfig.json 详解](https://github.com/tofrankie/blog/issues/308)
 - [关于 Await、Promise 执行顺序差异问题](https://github.com/tofrankie/blog/issues/260)
 - [在 forEach 使用 async/await 的问题](https://github.com/tofrankie/blog/issues/254)
-- [Cursor: Model not available](https://github.com/tofrankie/blog/issues/384)
-- [浅谈 CSS 3D Transform 与 Perspective](https://github.com/tofrankie/blog/issues/379)
