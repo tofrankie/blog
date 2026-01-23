@@ -4,11 +4,48 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 21 Jan 2026 20:17:27 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 23 Jan 2026 15:31:48 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[为 AI Agents 安装 Skills]]></title>
+            <link>https://github.com/tofrankie/blog/issues/385</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/385</guid>
+            <pubDate>Fri, 23 Jan 2026 14:15:51 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1769177690224.jpg" alt="配图源自 Freepik"></p>
+<p>在 <a href="https://skills.sh">skills.sh]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1769177690224.jpg" alt="配图源自 Freepik"></p>
+<p>在 <a href="https://skills.sh">skills.sh</a> 收集了 7000+ 的 Skill，支持一众 AI Editor：</p>
+<ul>
+<li>Claude Code</li>
+<li>Cursor</li>
+<li>Windsurf</li>
+<li>Antigravity</li>
+<li>Kiro</li>
+<li>Trae</li>
+<li>Cline</li>
+<li>CodeX</li>
+<li>...</li>
+</ul>
+<p>导入非常简单：</p>
+<pre><code class="language-bash">$ npx skills add &lt;owner/repo&gt;
+</code></pre>
+<blockquote>
+<p><a href="https://github.com/vercel-labs/add-skill">add-skill</a></p>
+</blockquote>
+<p>比如：<code>npx add-skill vercel-labs/agent-skills</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1769177209714.png" alt=""></p>
+<p><a href="https://skills.sh">skills.sh</a> 还提供了搜索、安装排行榜：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1769177448894.png" alt=""></p>
+<h2>参考链接</h2>
+<ul>
+<li><a href="https://skills.sh/">Vercel Skills</a></li>
+<li><a href="https://agentskills.io/home">Agent Skills</a></li>
+</ul>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Cursor: Model not available]]></title>
             <link>https://github.com/tofrankie/blog/issues/384</link>
@@ -15247,7 +15284,7 @@ globalns.moduleB = {
   // module content
 }
 </code></pre>
-<p>尽管使用命名空间可以在一定程度上解决了命名冲突的问题，但是存在一个问题：在 <code>moduleB</code> 中可以修改 <code>moduleA</code> 的内容，而且 <code>moduleA</code> 可能还蒙在鼓里，不知情。</p>
+<p>尽管使用命名空间可以在一定程度上解决了命名冲突的问题，但是存在一个问题：在 <code>moduleB</code> 中可以修改 <code>moduleA</code> 的内容，甚至可以把 <code>ModuleA</code> 删掉。</p>
 <blockquote>
 <p>以上命名空间内的所有成员和方法，无论是否私有，对外都是可访问的。这是一个明显的缺点，模块化不应该如此设计。</p>
 </blockquote>
@@ -50179,7 +50216,7 @@ $ pnpm config set &lt;key&gt; &lt;value&gt;
 $ pnpm config set --location=project &lt;key&gt; &lt;value&gt;
 </code></pre>
 <p>上述三项对应的 <code>key</code> 分别是：<code>storeDir</code>、<code>globalDir</code>、<code>globalBinDir</code>。<a href="https://pnpm.io/settings">了解更多</a></p>
-<p>我们知道，在使用 npm、yarn 作为依赖管理工具的项目下，<code>node_modules/.bin/</code> 的可执行文件其实都是软链接，指向真实文件。但 pnpm 不太一样，比如：</p>
+<p>我们知道，在使用 npm、yarn 作为依赖管理工具的项目下，<code>node_modules/.bin/</code> 的可执行文件其实都是软链接，指向真实文件。但 pnpm 不太一样，它是一个 Shell 脚本（<a href="https://pnpm.io/limitations">详见</a>），比如：</p>
 <pre><code>#!/bin/sh
 basedir=$(dirname &quot;$(echo &quot;$0&quot; | sed -e 's,\\,/,g')&quot;)
 
@@ -50383,28 +50420,24 @@ ncp.copy('some text', function () {
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/91</guid>
             <pubDate>Sat, 25 Feb 2023 12:24:38 GMT</pubDate>
             <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767511436516.jpg" alt="配图源自 Freepik"></p>
-<p>此前介绍过 nrm 用于快速切换 NPM 源。</p>
-<blockquote]]></description>
+<p>此前介绍了 <a href="https://github.com/tofra]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767511436516.jpg" alt="配图源自 Freepik"></p>
-<p>此前介绍过 nrm 用于快速切换 NPM 源。</p>
-<blockquote>
-<p>详见：<a href="https://github.com/tofrankie/blog/issues/89">nrm 使用详解</a></p>
-</blockquote>
-<p>原始设置 NPM 或 YARN 源的命令对应如下：</p>
-<pre><code class="language-shell"># use npm
+<p>此前介绍了 <a href="https://github.com/tofrankie/blog/issues/89">nrm</a> 用于快速切换 NPM 镜像源。</p>
+<p>最原始设置 npm、yarn 镜像源的方式如下：</p>
+<pre><code class="language-bash"># use npm
 $ npm config set registry &lt;registry-url&gt;
 
 # use yarn
 $ yarn config set registry &lt;registry-url&gt;
 </code></pre>
-<p>而使用 <code>nrm</code> 可以快速地切换源：</p>
-<pre><code class="language-shell"># nrm use taobao
+<p>使用 nrm 更方便：</p>
+<pre><code class="language-bash"># nrm use taobao
 $ nrm use &lt;registry&gt;
 </code></pre>
 <blockquote>
-<p>但是这个有点不爽，就是说它只会切换 <code>npm</code> 命令的镜像源，<code>nrm</code> 无法修改 <code>yarn</code> 的。</p>
+<p>但是这个有点不爽，就是它只会切换 npm 命令的镜像源，无法修改 yarn 的。</p>
 </blockquote>
-<p>最近发现了一个 <a href="https://github.com/i5ting/yrm">yrm</a>（YARN registry manager）工具，可以同步修改 <code>npm</code> 和 <code>yarn</code> 镜像源，它本身也是 <code>nrm</code> 的一个 Fork 分支。</p>
+<p>最近发现了一个 <a href="https://github.com/i5ting/yrm">i5ting/yrm</a>（YARN registry manager）工具，可以同步修改 npm 和 yarn 镜像源，它本身也是 nrm 的一个 Fork 分支。</p>
 <pre><code class="language-shell"># install
 $ npm i yrm -g
 
@@ -50413,8 +50446,8 @@ $ yrm use &lt;registry&gt;
 
 # ...
 </code></pre>
-<p>使用方法与 <code>nrm</code> 一致，就不多说了。如果对 <code>nrm</code> 不了解的话，可以先看看前面那篇<a href="https://github.com/tofrankie/blog/issues/89">文章</a>。也可以通过 <code>-h</code> 查看所有命令。</p>
-<pre><code class="language-shell">$ yrm -h
+<p>使用方法与 nrm 一致，可以通过 <code>-h</code> 查看帮助。</p>
+<pre><code class="language-bash">$ yrm -h
 
 Usage: yrm [options] [command]
 
@@ -50436,17 +50469,18 @@ Commands:
 <p>当你使用其他非预设注册表时，不能使用 <code>publish</code> 命令。通常我发布 NPM 包都是直接使用 <code>npm public</code> 命令。</p>
 </blockquote>
 <p>效果如下：</p>
-<pre><code class="language-shell">$ yrm use taobao
+<pre><code class="language-bash">$ yrm use taobao
 
    YARN Registry has been set to: https://registry.npm.taobao.org/
 
    NPM Registry has been set to: https://registry.npm.taobao.org/
 </code></pre>
 <blockquote>
-<p><strong>「重要通知」</strong> 原淘宝 npm 域名即将停止解析，请切换至新域名 <a href="http://www.npmmirror.com/">npmmirror.com</a>，<code>http://npm.taobao.org</code>和 <code>http://registry.npm.taobao.org</code> 将在 <strong>2022.06.30</strong> 号正式下线和停止 DNS 解析。</p>
+<p>[!IMPORTANT]
+「<strong>重要通知</strong>」原淘宝 npm 域名即将停止解析，请切换至新域名 <a href="http://www.npmmirror.com/">npmmirror.com</a>，<code>http://npm.taobao.org</code>和 <code>http://registry.npm.taobao.org</code> 将在 <strong>2022.06.30</strong> 号正式下线和停止 DNS 解析。</p>
 </blockquote>
 <p>由于 <a href="https://www.npmjs.com/package/yrm">yrm</a> 包最新一次更新还是五年前，因此淘宝镜像的域名还是旧域名，可以通过以下方式进行更新：</p>
-<pre><code class="language-shell">$ yrm add taobao https://registry.npmmirror.com/
+<pre><code class="language-bash">$ yrm add taobao https://registry.npmmirror.com/
 </code></pre>
 <h2>参考链接</h2>
 <ul>
