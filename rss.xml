@@ -4,11 +4,72 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Fri, 23 Jan 2026 15:31:48 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 25 Jan 2026 18:26:24 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[pnpm 依赖结构]]></title>
+            <link>https://github.com/tofrankie/blog/issues/386</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/386</guid>
+            <pubDate>Sun, 25 Jan 2026 18:26:24 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1769365540964.jpg" alt="配图源自 Freepik"></p>
+<h2>项目依赖</h2>
+<p>示例：</p>
+<pre><code class=]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1769365540964.jpg" alt="配图源自 Freepik"></p>
+<h2>项目依赖</h2>
+<p>示例：</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;pnpm-demo&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;dependencies&quot;: {
+    &quot;alfred-color-converter&quot;: &quot;^0.0.11&quot;
+  }
+}
+</code></pre>
+<ul>
+<li>项目依赖 <code>alfred-color-converter</code></li>
+<li><code>alfred-color-converter</code> 依赖 <code>color-convert</code></li>
+<li><code>color-convert</code> 依赖 <code>color-name</code></li>
+</ul>
+<p>pnpm 依赖目录结构：</p>
+<ul>
+<li><code>node_modules/</code> 仅存放项目的<strong>直接依赖</strong></li>
+<li><code>node_modules/.pnpm/</code> 该目录下的包是项目目录下<strong>唯一真实</strong>的文件（指向全局 Store 文件）</li>
+<li><code>node_modules/.pnpm/node_modules/</code> 项目所有<strong>间接依赖</strong>都会生成到该目录（类似于 npm/yarn 的扁平依赖结构），该目录下的包都是软链接（指向父级对应包）</li>
+</ul>
+<blockquote>
+<p>已有的 npm 生态中很多包已受损，它们使用的依赖项未在其 package.json 中列出。 为了最大限度地减少新用户遇到的问题，pnpm 默认将所有依赖项提升到 <code>node_modules/.pnpm/node_modules</code>。可通过 <a href="https://pnpm.io/settings#hoist">hoist</a> 选项修改此特性。</p>
+</blockquote>
+<p><code>tree -a</code></p>
+<pre><code class="language-txt">node_modules
+├── .pnpm
+│   ├── alfred-color-converter@0.0.11
+│   │   └── node_modules
+│   │       ├── alfred-color-converter
+│   │       └── color-convert -&gt; ../../color-convert@2.0.1/node_modules/color-convert
+│   ├── color-convert@2.0.1
+│   │   └── node_modules
+│   │       ├── color-convert
+│   │       └── color-name -&gt; ../../color-name@1.1.4/node_modules/color-name
+│   ├── color-name@1.1.4
+│   │   └── node_modules
+│   │       └── color-name
+│   └── node_modules
+│       ├── color-convert -&gt; ../color-convert@2.0.1/node_modules/color-convert
+│       └── color-name -&gt; ../color-name@1.1.4/node_modules/color-name
+└── alfred-color-converter -&gt; .pnpm/alfred-color-converter@0.0.11/node_modules/alfred-color-converter
+</code></pre>
+<blockquote>
+<p>无论依赖层级有多深，pnpm 构建的依赖目录层级最多到 <code>node_modules/.pnpm/node_modules/&lt;package&gt;</code> 这层，避免了扁平化 npm 之前目录层级过深导致的问题。</p>
+</blockquote>
+<p>当使用 <code>require('alfred-color-converter')</code> 时，根据 Node.js 的解析策略，找到 <code>node_modules/alfred-color-converter</code>（它是软链接），此时 Node.js 会获取到链接文件指向的实际目录，因而访问到 <code>node_modules/.pnpm/alfred-color-converter@0.0.11/node_modules/alfred-color-converter</code>。</p>
+<h2>peerDependencies</h2>
+<h2>全局 Store</h2>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[为 AI Agents 安装 Skills]]></title>
             <link>https://github.com/tofrankie/blog/issues/385</link>
