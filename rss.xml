@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 25 Jan 2026 18:26:24 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 27 Jan 2026 08:15:50 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -16,11 +16,11 @@
             <pubDate>Sun, 25 Jan 2026 18:26:24 GMT</pubDate>
             <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1769365540964.jpg" alt="配图源自 Freepik"></p>
 <h2>项目依赖</h2>
-<p>示例：</p>
-<pre><code class=]]></description>
+<h3>示例</h3>
+<pre><code class]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1769365540964.jpg" alt="配图源自 Freepik"></p>
 <h2>项目依赖</h2>
-<p>示例：</p>
+<h3>示例</h3>
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;pnpm-demo&quot;,
   &quot;version&quot;: &quot;1.0.0&quot;,
@@ -30,19 +30,18 @@
 }
 </code></pre>
 <ul>
-<li>项目依赖 <code>alfred-color-converter</code></li>
+<li>项目 <code>pnpm-demo</code> 依赖 <code>alfred-color-converter</code></li>
 <li><code>alfred-color-converter</code> 依赖 <code>color-convert</code></li>
 <li><code>color-convert</code> 依赖 <code>color-name</code></li>
 </ul>
-<p>pnpm 依赖目录结构：</p>
+<p>在此示例，项目直接依赖为 <code>alfred-color-converter</code>，间接依赖有 <code>color-convert</code> 和 <code>color-name</code>。</p>
+<h3>依赖目录</h3>
 <ul>
-<li><code>node_modules/</code> 仅存放项目的<strong>直接依赖</strong></li>
-<li><code>node_modules/.pnpm/</code> 该目录下的包是项目目录下<strong>唯一真实</strong>的文件（指向全局 Store 文件）</li>
-<li><code>node_modules/.pnpm/node_modules/</code> 项目所有<strong>间接依赖</strong>都会生成到该目录（类似于 npm/yarn 的扁平依赖结构），该目录下的包都是软链接（指向父级对应包）</li>
+<li><code>node_modules/</code> 仅存放项目<strong>直接依赖</strong></li>
+<li><code>node_modules/.pnpm/</code> 该目录下的包是项目目录下唯一“<strong>真实</strong>”的文件（指向全局 Store 文件）</li>
+<li><code>node_modules/.pnpm/node_modules/</code> 默认情况下，项目所有<strong>间接依赖</strong>都会生成到该目录（类似于 npm/yarn 的扁平依赖结构），该目录下的包都是软链接（指向父级对应包）</li>
 </ul>
-<blockquote>
-<p>已有的 npm 生态中很多包已受损，它们使用的依赖项未在其 package.json 中列出。 为了最大限度地减少新用户遇到的问题，pnpm 默认将所有依赖项提升到 <code>node_modules/.pnpm/node_modules</code>。可通过 <a href="https://pnpm.io/settings#hoist">hoist</a> 选项修改此特性。</p>
-</blockquote>
+<h3>完整目录结构</h3>
 <p><code>tree -a</code></p>
 <pre><code class="language-txt">node_modules
 ├── .pnpm
@@ -65,7 +64,146 @@
 <blockquote>
 <p>无论依赖层级有多深，pnpm 构建的依赖目录层级最多到 <code>node_modules/.pnpm/node_modules/&lt;package&gt;</code> 这层，避免了扁平化 npm 之前目录层级过深导致的问题。</p>
 </blockquote>
-<p>当使用 <code>require('alfred-color-converter')</code> 时，根据 Node.js 的解析策略，找到 <code>node_modules/alfred-color-converter</code>（它是软链接），此时 Node.js 会获取到链接文件指向的实际目录，因而访问到 <code>node_modules/.pnpm/alfred-color-converter@0.0.11/node_modules/alfred-color-converter</code>。</p>
+<ol>
+<li>这种目录结构完全兼容 Node.js 的模块解析算法</li>
+<li>只有显式声明的直接依赖才能在项目中访问，避免了幽灵依赖问题</li>
+</ol>
+<h3>依赖目录生成过程</h3>
+<ol>
+<li>将直接和间接依赖生成到 <code>node_modules/.pnpm</code> 目录下
+<ul>
+<li><code>alfred-color-converter@0.0.11</code></li>
+<li><code>color-convert@2.0.1</code></li>
+<li><code>color-name@1.1.4</code></li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-txt">node_modules
+└── .pnpm
+    ├── alfred-color-converter@0.0.11 🆕
+    │   └── node_modules
+    │       └── alfred-color-converter
+    ├── color-convert@2.0.1 🆕
+    │   └── node_modules
+    │       └── color-convert
+    └── color-name@1.1.4 🆕
+        └── node_modules
+            └── color-name
+</code></pre>
+<blockquote>
+<p>观察发现，<code>alfred-color-converter@0.0.11</code> 与 <code>alfred-color-converter</code> 之间夹了一层 <code>node_modules</code>，目的是：</p>
+<ol>
+<li>允许包导入本身。例如在 <code>alfred-color-converter</code> 内部调用 <code>require('alfred-color-converter/package.json')</code>，这个方式是允许的。<a href="https://nodejs.org/api/modules.html#all-together">LOAD_PACKAGE_SELF</a></li>
+<li>避免循环软链接。包的依赖会放在与依赖包相同的目录下。基于 Node.js 模块解析算法，依赖无论放在 <code>node_modules</code> 还是父级的 <code>node_modules</code> 作用都一样，Node.js 都能找到目标包。pnpm 这样设计目录结构是没有问题的。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>我们知道 npm/yarn 扁平依赖结构下，若依赖版本有冲突且不兼容的情况下，会在子依赖项下创建 <code>node_modules</code>。而 pnpm 采用包名 + 版本号的目录形式，天然没有这种问题。</p>
+</blockquote>
+<ol start="2">
+<li>通过软链接的方式关联依赖项
+<ul>
+<li>将 <code>node_modules/.pnpm/color-convert@2.0.1/node_modules/color-convert</code> 链接到 <code>node_modules/.pnpm/alfred-color-converter@0.0.11/node_modules/color-convert</code></li>
+<li>将 <code>node_modules/.pnpm/color-name@1.1.4/node_modules/color-name</code> 链接到 <code>node_modules/.pnpm/color-convert@2.0.1/node_modules/color-name</code></li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-txt">node_modules
+└── .pnpm
+    ├── alfred-color-converter@0.0.11
+    │   └── node_modules
+    │       ├── alfred-color-converter
+    │       └── color-convert -&gt; ../../color-convert@2.0.1/node_modules/color-convert 🆕
+    ├── color-convert@2.0.1
+    │   └── node_modules
+    │       ├── color-convert
+    │       └── color-name -&gt; ../../color-name@1.1.4/node_modules/color-name 🆕
+    └── color-name@1.1.4
+        └── node_modules
+            └── color-name
+</code></pre>
+<ol start="3">
+<li>处理直接依赖
+<ul>
+<li>将 <code>node_modules/.pnpm/alfred-color-converter@0.0.11/node_modules/alfred-color-converter</code> 链接到 <code>node_modules/alfred-color-converter</code></li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-txt">node_modules
+├── .pnpm
+│   ├── alfred-color-converter@0.0.11
+│   │   └── node_modules
+│   │       ├── alfred-color-converter
+│   │       └── color-convert -&gt; ../../color-convert@2.0.1/node_modules/color-convert
+│   ├── color-convert@2.0.1
+│   │   └── node_modules
+│   │       ├── color-convert
+│   │       └── color-name -&gt; ../../color-name@1.1.4/node_modules/color-name
+│   └── color-name@1.1.4
+│       └── node_modules
+│           └── color-name
+└── alfred-color-converter -&gt; .pnpm/alfred-color-converter@0.0.11/node_modules/alfred-color-converter 🆕
+</code></pre>
+<ol start="4">
+<li>将所有间接依赖及其依赖，提升到 <code>node_modules/.pnpm/node_modules/</code> 目录
+<ul>
+<li>将 <code>node_modules/.pnpm/color-convert@2.0.1/node_modules/color-convert</code> 链接到 <code>node_modules/.pnpm/node_modules/color-convert</code></li>
+<li>将 <code>node_modules/.pnpm/color-name@1.1.4/node_modules/color-name</code> 链接到 <code>node_modules/.pnpm/node_modules/color-name</code></li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-txt">node_modules
+├── .pnpm
+│   ├── alfred-color-converter@0.0.11
+│   │   └── node_modules
+│   │       ├── alfred-color-converter
+│   │       └── color-convert -&gt; ../../color-convert@2.0.1/node_modules/color-convert
+│   ├── color-convert@2.0.1
+│   │   └── node_modules
+│   │       ├── color-convert
+│   │       └── color-name -&gt; ../../color-name@1.1.4/node_modules/color-name
+│   ├── color-name@1.1.4
+│   │   └── node_modules
+│   │       └── color-name
+│   └── node_modules 🆕
+│       ├── color-convert -&gt; ../color-convert@2.0.1/node_modules/color-convert
+│       └── color-name -&gt; ../color-name@1.1.4/node_modules/color-name
+└── alfred-color-converter -&gt; .pnpm/alfred-color-converter@0.0.11/node_modules/alfred-color-converter
+</code></pre>
+<blockquote>
+<p>受扁平化 <code>node_modules</code> 结构的影响，npm 生态中很多包未正确使用依赖，其依赖项未在其 <code>package.json</code> 中列出。既然已成事实，为了最大限度地减少新用户遇到的问题，pnpm 默认将所有依赖项提升到 <code>node_modules/.pnpm/node_modules</code>。可通过 <a href="https://pnpm.io/settings#hoist">hoist</a> 选项修改此特性。</p>
+</blockquote>
+<h3>Node.js 模块解析</h3>
+<blockquote>
+<p>By default, when Node.js loads a module from a path that is symbolically linked to a different on-disk location, Node.js will dereference the link and use the actual on-disk &quot;real path&quot; of the module as both an identifier and as a root path to locate other dependency modules. <a href="https://nodejs.org/docs/v24.13.0/api/cli.html#--preserve-symlinks">--preserve-symlinks</a></p>
+</blockquote>
+<blockquote>
+<p>默认情况下，Node.js 遇到软链接会使用 <code>fs.realpathSync()</code> 获取其真正路径。<a href="https://github.com/nodejs/node/blob/d14b484c73ff15010e51b0f290845306b0443d47/lib/internal/modules/cjs/loader.js#L767">toRealPath</a></p>
+</blockquote>
+<p>基于 pnpm 特殊的依赖结构，其依赖访问顺序如下：</p>
+<ol>
+<li>在项目 <code>index.js</code> 中访问 <code>require('alfred-color-converter')</code>
+根据 Node 模块解析算法，找到 <code>project/node_modules/alfred-color-converter</code>（软链接），Node 找到真正的目录位置 <code>project/node_modules/.pnpm/alfred-color-converter@0.0.11/node_modules/alfred-color-converter</code>，接着根据 <code>exports</code>、<code>main</code> 查找规则找到对应的文件。</li>
+<li>接着，<code>alfred-color-converter</code> 包内部（假设是 <code>dist/index.js</code>）访问了 <code>require('color-convert')</code>。注意，<code>require</code> 的解析起点是“当前模块的文件路径”，也就是 <code>project/node_modules/.pnpm/alfred-color-converter@0.0.11/node_modules/alfred-color-converter/dist/index.js</code>。因此 Node 最终解析到 <code>project/node_modules/.pnpm/alfred-color-converter@0.0.11/node_modules/color-convert</code>（软链接），Node 找到真正的目录位置 <code>project/node_modules/.pnpm/color-convert@2.0.1/node_modules/color-convert</code>。</li>
+<li>同理，在 <code>color-convert</code> 包内部（假设是 <code>dist/index.js</code>）访问 <code>require('color-name')</code>，Node 通过 <code>project/node_modules/.pnpm/color-convert@2.0.1/node_modules/color-name</code>（软链接）找到真正的文件 <code>project/node_modules/.pnpm/color-name@1.1.4/node_modules/color-name</code>。</li>
+</ol>
+<p>伪代码：</p>
+<pre><code class="language-bash"># 在项目 index.js 访问 require('alfred-color-converter')
+project/index.js
+project/node_modules/alfred-color-converter
+project/node_modules/.pnpm/alfred-color-converter@0.0.11/node_modules/alfred-color-converter
+
+# 在 alfred-color-converter 的 dist/index.js 访问 require('color-convert')
+project/node_modules/.pnpm/alfred-color-converter@0.0.11/node_modules/alfred-color-converter/dist/index.js
+project/node_modules/.pnpm/alfred-color-converter@0.0.11/node_modules/color-convert
+project/node_modules/.pnpm/color-convert@2.0.1/node_modules/color-convert
+
+# 在 color-convert 的 dist/index.js 访问 require('color-name')
+project/node_modules/.pnpm/color-convert@2.0.1/node_modules/color-convert/dist/index.js
+project/node_modules/.pnpm/color-convert@2.0.1/node_modules/color-name
+project/node_modules/.pnpm/color-name@1.1.4/node_modules/color-name
+</code></pre>
+<p>对于那些使用幽灵依赖的包（比如 <code>foo@1.0.0</code> 使用了 <code>bar@1.0.0</code>），由于 <code>bar</code> 未在 <code>foo</code> 的 <code>package.json</code> 列出，因此 pnpm 不会在 <code>project/node_modules/.pnpm/foo@1.0.0/node_modules</code> 目录创建 <code>bar</code> 包的软链接。此时，当在 <code>foo</code> 内部访问 <code>require('bar')</code> 时，基于 Node 的模块解析算法，会找到 <code>project/node_modules/.pnpm/node_modules</code> 这层（所有间接依赖都会在此目录下创建软链接），它找到 <code>project/node_modules/.pnpm/node_modules/foo</code>（软链接），进而访问 <code>project/node_modules/.pnpm/foo@1.0.0/node_modules/foo</code>。所以 pnpm 这种目录结构设计可以兼容到幽灵依赖的包。</p>
 <h2>peerDependencies</h2>
 <h2>全局 Store</h2>
 ]]></content:encoded>
@@ -50215,7 +50353,7 @@ $ npm bin -g
 <blockquote>
 <p>了解更多 <a href="https://docs.npmjs.com/cli/v10/commands/npm-ls">NPM Docs</a></p>
 </blockquote>
-<h2>四、yarn (classic) 路径</h2>
+<h2>四、yarn classic 路径</h2>
 <blockquote>
 <p>插个话，在 yarn 2 版本有着较大的差异。比如，yarn 2 将 <code>yarn global</code> 命令移除，其替代者是 <code>yarn dlx</code>。<a href="https://yarnpkg.com/getting-started/migration/#use-yarn-dlx-instead-of-yarn-global">了解更多</a></p>
 </blockquote>
@@ -50269,6 +50407,9 @@ $ pnpm root -g
 $ pnpm bin -g
 ~/Library/pnpm
 </code></pre>
+<blockquote>
+<p>项目依赖存储路径也可以通过 <code>node_modules/.modules.yaml</code> 下 <code>storeDir</code> 查看。</p>
+</blockquote>
 <p>可通过以下命令设置（获取用 <code>get</code> 同理）</p>
 <pre><code class="language-bash"># 全局设置
 $ pnpm config set &lt;key&gt; &lt;value&gt;
