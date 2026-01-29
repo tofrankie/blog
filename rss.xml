@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Tue, 27 Jan 2026 08:15:50 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 28 Jan 2026 19:49:39 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -50260,30 +50260,35 @@ path.join('a', '/b', 'c') // 返回 `a/b/c`，相对路径。
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/94</guid>
             <pubDate>Sat, 25 Feb 2023 12:27:18 GMT</pubDate>
             <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1767110239450.png" alt="配图源自 Freepik"></p>
-<p>如果你对 node、npm、yarn、pnpm 全局安装路径存疑，混乱分不清]]></description>
+<p>如果你对 node、npm、yarn、pnpm 相关路径存疑，混乱分不清，那]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1767110239450.png" alt="配图源自 Freepik"></p>
-<p>如果你对 node、npm、yarn、pnpm 全局安装路径存疑，混乱分不清，那么这篇文章或许能帮到你。</p>
+<p>如果你对 node、npm、yarn、pnpm 相关路径存疑，混乱分不清，那么这篇文章或许能帮到你。</p>
 <blockquote>
 <p>本文以 macOS 为例</p>
 </blockquote>
-<h2>一、which 命令</h2>
+<h2>一、Node 路径</h2>
 <p>使用 <code>which</code> 命令可以查看可执行文件的路径。</p>
 <p>需要注意的是，不同的安装方式其路径是有差异的。</p>
-<p>使用 .pkg 形式安装的 Node.js</p>
+<p>使用 <a href="https://nodejs.org/en/download/">.pkg</a> 形式安装的 Node.js</p>
 <pre><code class="language-bash">$ which node npm yarn pnpm
 /usr/local/bin/node
 /usr/local/bin/npm
 /usr/local/bin/yarn
 /usr/local/bin/pnpm
 </code></pre>
-<blockquote>
-<p>PS：<code>/usr/local/bin</code> 目录下的可执行文件多是软链接。</p>
-</blockquote>
 <p>使用 Homebrew 安装的 Node.js</p>
 <pre><code class="language-bash">$ which node npm yarn pnpm
 /usr/local/opt/node@22/bin/node
 /usr/local/opt/node@22/bin/npm
+/usr/local/opt/node@22/bin/yarn
 /usr/local/opt/node@22/bin/pnpm
+
+# ARM Mac
+$ which node npm yarn pnpm
+/opt/homebrew/opt/node@22/bin/node
+/opt/homebrew/opt/node@22/bin/npm
+/opt/homebrew/opt/node@22/bin/yarn
+/opt/homebrew/opt/node@22/bin/pnpm
 </code></pre>
 <p>使用 nvm 安装的 Node.js</p>
 <pre><code class="language-bash">$ which node npm yarn pnpm
@@ -50292,133 +50297,201 @@ path.join('a', '/b', 'c') // 返回 `a/b/c`，相对路径。
 ~/.nvm/versions/node/v22.18.0/bin/yarn
 ~/.nvm/versions/node/v22.18.0/bin/pnpm
 </code></pre>
-<h2>二、Node 路径</h2>
-<p>前往 <a href="https://nodejs.org/en/download/">Node.js</a> 下载 .pkg 包并安装，完成会有如下提示：</p>
-<blockquote>
-<p>This package has installed:</p>
-<ul>
-<li>Node.js v22.18.1 to <code>/usr/local/bin/node</code></li>
-<li>npm v10.9.3 to <code>/usr/local/bin/npm</code></li>
-</ul>
-<p>Make sure that <code>/usr/local/bin</code> is in your <code>$PATH</code>.</p>
-</blockquote>
-<p>PS：本文将以这种方式安装的 Node.js 称为系统版本的 Node，以区别使用 nvm 安装的 Node。</p>
-<h2>三、npm 路径</h2>
-<p>在 NPM 官方文档中，对「全局安装」如何存放文件都有比较清晰的描述（<a href="https://docs.npmjs.com/cli/v10/commands/npm-install#global">详见</a>）。</p>
-<p>简单来说：</p>
-<ul>
-<li>依赖包将会下载至 <code>{prefix}/lib/node_modules</code> 目录下。</li>
-<li>依赖包的可执行文件被软链接至 <code>{prefix}/bin</code> 目录。</li>
-</ul>
-<p>其中 <code>prefix</code> 是 npm 的一个配置项（<a href="https://docs.npmjs.com/cli/v10/configuring-npm/folders#prefix-configuration">详见</a>），它的默认值与 Node 的安装位置有关。在 Unix/Linux/Mac 操作系统中，通常是 <code>/usr/local</code>。在 Windows 操作系统上通常是 <code>%AppData%\npm</code>。其中「可执行文件」是指 <code>package.json</code> 中 <code>bin</code> 字段的配置项。</p>
-<p>使用 <code>npm config</code> 命令可对 <code>prefix</code> 配置进行操作：</p>
-<pre><code class="language-bash"># 查看
-$ npm config get prefix
-/usr/local
-
-# 设置
-$ npm config set prefix &lt;value&gt;
-
-# 移除
-$ npm config delete prefix
+<h2>二、npm 路径</h2>
+<h3>缓存目录</h3>
+<p>使用 <code>npm install</code> 安装依赖时，包都会下载至全局缓存目录 <code>~/.npm</code>。全局依赖或项目依赖都是从这个缓存目录中拷贝出来的。</p>
+<pre><code class="language-bash">$ npm config get cache
+~/.npm
 </code></pre>
-<p>也可在配置文件 <code>~/.npmrc</code> 直接进行修改（<a href="https://docs.npmjs.com/cli/v10/configuring-npm/npmrc#files">详见</a>）。</p>
 <blockquote>
-<p>若你在使用 nvm 来管理 Node 版本，不建议主动配置 <code>prefix</code>。如果它存在的话应将其移除，否则可能会导致无法合理地安装依赖包到相应目录，具体原因下文会介绍。</p>
+<p><a href="https://docs.npmjs.com/cli/v10/commands/npm-cache#a-note-about-the-caches-design">A note about the cache's design</a></p>
 </blockquote>
-<p>结论：</p>
+<p>清空缓存</p>
+<pre><code class="language-bash">$ npm cache clean
+</code></pre>
+<h3>全局依赖</h3>
+<p>安装全局依赖步骤（<a href="https://docs.npmjs.com/cli/v10/commands/npm-install#global">详见</a>）：</p>
 <ul>
-<li>依赖包存放于 <code>/usr/local/lib/node_modules</code> 目录。</li>
-<li>依赖包可执行文件将被软链接至 <code>/usr/local/bin</code> 目录。</li>
+<li>下载依赖包至缓存目录 <code>~/.npm</code></li>
+<li>从缓存目录拷贝到全局依赖目录 <code>{prefix}/lib/node_modules</code></li>
+<li>若全局依赖含 bin 命令，它们的可执行文件将软链接至目录 <code>{prefix}/bin</code></li>
 </ul>
-<p>可通过以下命令查看：</p>
+<p>其中 <code>prefix</code> 是 npm 的一个配置项（<a href="https://docs.npmjs.com/cli/v10/configuring-npm/folders#prefix-configuration">详见</a>），它的默认值与 Node 的安装位置有关，通常是 <code>/usr/local</code>。其中可执行文件是指依赖包 <code>package.json</code> 的 <code>bin</code> 字段。</p>
+<pre><code class="language-bash">$ npm config get prefix
+/usr/local
+</code></pre>
+<blockquote>
+<p>若使用 nvm 来管理 Node 版本，<strong>不建议</strong>主动配置 <code>prefix</code>，否则可能会导致无法合理地安装依赖包到相应目录。</p>
+</blockquote>
+<p>也就是说，默认情况下：</p>
+<ul>
+<li>缓存目录 <code>~/.npm</code></li>
+<li>全局依赖目录 <code>/usr/local/lib/node_modules</code></li>
+<li>全局依赖的可执行文件目录 <code>/usr/local/bin</code></li>
+</ul>
+<p>相关命令：</p>
 <pre><code class="language-bash">$ npm root -g
 /usr/local/lib/node_modules
 
 $ npm bin -g
 /usr/local/bin
-</code></pre>
-<blockquote>
-<p>自 npm v9 起，<code>npm bin</code> 命令已被移除，详见 <a href="https://github.com/npm/cli/pull/5459">npm #5459</a></p>
-</blockquote>
-<p>可通过 <code>npm ls</code> 命令查看全局安装的依赖包，个人更喜欢使用其别名 <code>npm list</code>，原因是它跟 <code>yarn list</code> 一致。</p>
-<pre><code class="language-bash">$ npm list -g
+
+$ npm list -g
 /usr/local/lib
+├── @google/gemini-cli@0.20.0
 ├── corepack@0.33.0
-├── jest@28.1.1
-├── npm@10.9.3
-└── yarn@1.22.19
+└── npm@10.9.3
 </code></pre>
-<p>其打印结果为树状形式，可配合 <code>--depth=n</code> 参数使用以查看包的依赖信息，其中 <code>n</code> 表示树状深度。上述 <code>npm list -g</code> 相当于 <code>npm list -g --depth=0</code>。</p>
 <blockquote>
-<p>了解更多 <a href="https://docs.npmjs.com/cli/v10/commands/npm-ls">NPM Docs</a></p>
+<p>自 npm v9 起，<code>npm bin</code> 命令已被移除。详见 <a href="https://github.com/npm/cli/pull/5459">npm#5459</a></p>
 </blockquote>
-<h2>四、yarn classic 路径</h2>
+<h3>nvm</h3>
+<p>nvm（Node Version Manager）是 Node 版本管理工具。</p>
 <blockquote>
-<p>插个话，在 yarn 2 版本有着较大的差异。比如，yarn 2 将 <code>yarn global</code> 命令移除，其替代者是 <code>yarn dlx</code>。<a href="https://yarnpkg.com/getting-started/migration/#use-yarn-dlx-instead-of-yarn-global">了解更多</a></p>
+<p>注意，npm 并不是 Node Package Manager 的简写，<a href="https://github.com/npm/cli#is-npm-an-acronym-for-node-package-manager">详见</a></p>
 </blockquote>
-<p>yarn 全局安装路径：</p>
+<p>通常我们可能同时维护着多个项目，它们使用不同的 Node 版本，使用 nvm 将会更方便、高效地安装/切换 Node。安装请看<a href="https://github.com/nvm-sh/nvm">官方文档</a>。</p>
+<p>使用传统方法安装的，它们的路径如下：</p>
 <ul>
-<li>依赖包存放于 <code>~/.config/yarn/global/node_modules</code> 目录。</li>
-<li>依赖包可执行文件将被软链接至 <code>/usr/local/bin</code> 目录，</li>
+<li>node <code>/usr/local/bin/node</code></li>
+<li>npm <code>/usr/local/bin/npm</code></li>
+<li>全局依赖 <code>/usr/local/lib/node_modules</code></li>
 </ul>
-<p>可通过以下命令查看：</p>
+<p>使用 nvm 安装，相关内容将会存放于 <code>~/.nvm</code>。</p>
+<p>比如，使用 <code>nvm install 22.22.0</code> 来安装 Node，它将会存放于 <code>~/.nvm/versions/node/v22.22.0</code> 目录。</p>
+<p>使用 <code>nvm use</code> 可以切换系统 Node 与 nvm 的 Node：</p>
+<pre><code class="language-bash"># 使用系统版本（即传统方法安装的）
+$ nvm use system
+
+# 使用 nvm 的 Node 版本
+$ nvm use 22
+</code></pre>
+<p>对比 <code>prefix</code> 的变化：</p>
+<pre><code class="language-bash">$ nvm use system
+Now using system version of node: v22.18.0 (npm v10.9.3)
+
+$ npm config get cache
+~/.npm
+
+$ npm config get prefix
+/usr/local
+
+$ npm bin -g
+/usr/local/bin
+
+$ which node npm
+/usr/local/bin/node
+/usr/local/bin/npm
+</code></pre>
+<pre><code class="language-bash">$ nvm use 22
+Now using node v22.22.0 (npm v10.9.4)
+
+$ npm config get cache
+~/.npm
+
+$ npm config get prefix
+~/.nvm/versions/node/v22.22.0
+
+$ npm bin -g
+~/.nvm/versions/node/v22.22.0/bin
+
+$ which node npm
+~/.nvm/versions/node/v22.22.0/bin/node
+~/.nvm/versions/node/v22.22.0/bin/npm
+</code></pre>
+<p>因此，在使用 nvm 管理的情况下：</p>
+<ul>
+<li>全局依赖包将会安装至 <code>~/.nvm/versions/node/vX.Y.Z/lib/node_modules</code> 目录。</li>
+<li>依赖包可执行文件将被软链接至 <code>~/.nvm/versions/node/vX.Y.Z/bin</code> 目录。</li>
+</ul>
+<p>前面提到过，<code>prefix</code> 的默认位置与 Node 的安装路径有关。<code>prefix</code> 通常是 Node 安装路径的上一级，即 <code>~/.nvm/versions/node/vX.Y.Z</code> 目录。因此切换 Node 版本时，它总能正确地安装到 <code>/usr/local/lib/node_modules</code> 或 <code>~/.nvm/versions/node/vX.Y.Z/lib/node_modules/</code>。</p>
+<p>但如果在 <code>~/.npmrc</code> 中配置了 <code>prefix</code>，无论你如何切换 Node 版本，它总是被安装至所配置的路径下。</p>
+<pre><code class="language-bash">$ npm config set prefix &quot;~/.npm-packages&quot;
+
+$ npm i -g jest
+
+$ tree ~/.npm-packages -L 3 
+/Users/frankie/.npm-packages
+├── bin
+│   └── jest -&gt; ../lib/node_modules/jest/bin/jest.js
+└── lib
+    └── node_modules
+        └── jest
+</code></pre>
+<p>这样就违背了用 nvm 的初心，自定义 <code>prefix</code> 配置与 nvm 不兼容。<a href="https://github.com/nvm-sh/nvm#important-notes">了解更多</a></p>
+<blockquote>
+<p>If you have an <code>~/.npmrc</code> file, make sure it does not contain any <code>prefix</code> settings (which is not compatible with <code>nvm</code>)</p>
+</blockquote>
+<blockquote>
+<p>[!NOTE]
+可能有人注意到了，基于 nvm 的存储路径，当使用 nvm 切换 Node 时，会隔离 npm 全局依赖，但不会隔离 yarn、pnpm 的全局依赖。也就是说，在 Node 16 下安装的 npm 全局依赖，在切换到 Node 18 时不能使用。</p>
+</blockquote>
+<h2>三、yarn classic 路径</h2>
+<h3>缓存目录</h3>
+<p>使用 yarn add 安装依赖时，包会下载至全局缓存目录 <code>~/Library/Caches/Yarn/v6</code>。</p>
+<pre><code class="language-bash">$ yarn cache dir
+~/Library/Caches/Yarn/v6
+</code></pre>
+<p>清空缓存：</p>
+<pre><code class="language-bash">$ yarn cache clean
+</code></pre>
+<h3>全局依赖</h3>
+<p>安装全局依赖步骤：</p>
+<ul>
+<li>下载依赖包至缓存目录 <code>~/Library/Caches/Yarn/v6</code></li>
+<li>从缓存目录拷贝到全局依赖目录 <code>~/.config/yarn/global/node_modules</code></li>
+<li>若全局依赖含 bin 命令，它们的可执行文件将软链接至目录 <code>/usr/local/bin</code></li>
+</ul>
+<p>相关命令：</p>
 <pre><code class="language-bash">$ yarn global dir
 ~/.config/yarn/global
 
 $ yarn global bin
 /usr/local/bin
-</code></pre>
-<p>若要修改以上配置，可通过 <code>yarn config</code> 命令处理：</p>
-<pre><code class="language-bash"># 修改依赖包安装路径
-$ yarn config set global-folder &lt;value&gt;
 
-# 修改依赖包可执行文件软链接路径
-$ yarn config set prefix &lt;value&gt;
+$ yarn global list
+yarn global v1.22.19
+info &quot;alfred-color-converter@0.0.11&quot; has binaries:
+   - alfred-color-converter-import
+info &quot;nrm@2.1.0&quot; has binaries:
+   - nrm
+✨  Done in 0.07s.
 </code></pre>
-<p>需要注意的是，修改全局安装路径的配置 <code>key</code> 是 <code>global-folder</code>，可执行文件的 <code>key</code> 为 <code>prefix</code>。别跟 npm 混淆了。</p>
-<p>也可以在配置文件 <code>~/.yarnrc</code> 直接修改：</p>
-<pre><code class="language-.yarnrc"># THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.
-# yarn lockfile v1
-
-
-registry &quot;https://registry.npmmirror.com/&quot;
-lastUpdateCheck 1656144727204
-</code></pre>
-<p>需要注意的是，其中 npm 配置文件使用的是 ini-formatted 格式，也就是 <code>key=value</code> 形式，而 yarn 则是 <code>key &quot;value&quot;</code> 形式。</p>
-<h2>五、pnpm 路径</h2>
-<p>通过 pnpm 安装的依赖包都会统一缓存在某个全局目录下，而项目依赖、全局依赖只是全局缓存依赖的一个软链接。</p>
+<blockquote>
+<p>自 yarn v2 起，<code>yarn global</code> 命令已被移除，替代方案是 <code>yarn dlx</code>。<a href="https://yarnpkg.com/migration/guide#use-yarn-dlx-instead-of-yarn-global">了解更多</a></p>
+</blockquote>
+<h2>四、pnpm 路径</h2>
+<h3>全局缓存</h3>
+<p>使用 yarn add 安装依赖时，包会下载至全局缓存目录 <code>~/Library/pnpm/store/v10</code>。</p>
+<p>但与 npm、yarn 不同的是，pnpm 的项目依赖、全局依赖跟全局缓存是通过「链接」方式进行关联的，而不是拷贝，好处是安装更快，更节省磁盘空间。</p>
 <blockquote>
 <p>温馨提示：</p>
 <p>由于 <code>pnpm remove</code> 不会主动清空全局缓存的依赖，随着时间积累、依赖升级等情况，难免会积累一些或许不会再用到的过时依赖，它会占据你的磁盘空间。你可以放心地使用 <code>pnpm store prune</code> 来清空那些没有被使用到的依赖。它是无害的，要是后续要用到此依赖，<code>pnpm install</code> 会重新下载缓存。<a href="https://pnpm.io/cli/store#prune">了解更多</a></p>
 </blockquote>
 <ul>
-<li><code>~/Library/pnpm/store</code> - 所有包实际存储路径</li>
-<li><code>~/Library/pnpm/global</code> - 全局依赖的目录</li>
-<li><code>~/Library/pnpm</code> - 全局依赖的 bin 文件目录</li>
+<li>缓存目录 <code>~/Library/pnpm/store</code></li>
 </ul>
-<p>可通过以下命令查看：</p>
 <pre><code class="language-bash">$ pnpm store path
 ~/Library/pnpm/store/v10
-
-$ pnpm root -g
-~/Library/pnpm/global/5/node_modules
+</code></pre>
+<h3>全局依赖</h3>
+<ul>
+<li>全局依赖目录 <code>~/Library/pnpm/global</code></li>
+<li>全局依赖 bin 文件目录 <code>~/Library/pnpm</code></li>
+</ul>
+<p>相关命令：</p>
+<pre><code class="language-bash$">~/Library/pnpm/global/5/node_modules
 
 $ pnpm bin -g
 ~/Library/pnpm
 </code></pre>
 <blockquote>
-<p>项目依赖存储路径也可以通过 <code>node_modules/.modules.yaml</code> 下 <code>storeDir</code> 查看。</p>
+<p>项目依赖存储路径也可以通过 <code>node_modules/.modules.yaml</code> 的 <code>storeDir</code> 查看。</p>
 </blockquote>
-<p>可通过以下命令设置（获取用 <code>get</code> 同理）</p>
-<pre><code class="language-bash"># 全局设置
-$ pnpm config set &lt;key&gt; &lt;value&gt;
-
-# 项目设置
-$ pnpm config set --location=project &lt;key&gt; &lt;value&gt;
-</code></pre>
-<p>上述三项对应的 <code>key</code> 分别是：<code>storeDir</code>、<code>globalDir</code>、<code>globalBinDir</code>。<a href="https://pnpm.io/settings">了解更多</a></p>
-<p>我们知道，在使用 npm、yarn 作为依赖管理工具的项目下，<code>node_modules/.bin/</code> 的可执行文件其实都是软链接，指向真实文件。但 pnpm 不太一样，它是一个 Shell 脚本（<a href="https://pnpm.io/limitations">详见</a>），比如：</p>
+<blockquote>
+<p><code>pnpm config</code> 默认是全局的，若要修改项目配置，可以添加 <code>--location=project</code> 参数。<a href="https://pnpm.io/cli/config#--location">了解更多</a></p>
+</blockquote>
+<p>另外，npm、yarn 的 <code>node_modules/.bin/</code> 的可执行文件是软链接，指向对应依赖的文件。但 pnpm 不太一样，它是一个 Shell 脚本（<a href="https://pnpm.io/limitations">详见</a>），比如：</p>
 <pre><code>#!/bin/sh
 basedir=$(dirname &quot;$(echo &quot;$0&quot; | sed -e 's,\\,/,g')&quot;)
 
@@ -50443,79 +50516,8 @@ fi
 
 </code></pre>
 <p>它往 <code>NODE_PATH</code> 环境变量上添加可能的 <code>node_modules</code> 目录以确保依赖模块正确加载，然后通过 <code>$@</code> 将参数原样传递给实际脚本。</p>
-<h2>六、使用 nvm</h2>
-<p>我们知道 npm（Node Package Manager）是 Node 包管理工具，而 nvm（Node Version Manager）则是 Node 版本管理工具。它可以通过命令行快速安装、使用不同版本的 Node。</p>
-<p>假设有多个项目使用了不同版本的 Node，或者需要在不同版本的 Node 下测试开发的 npm 包，那么使用 nvm 将会更高效。安装方法请看<a href="https://github.com/nvm-sh/nvm">官方文档</a>。</p>
-<p>使用「传统」的方法安装 Node.js，其路径如下：</p>
-<ul>
-<li>Node 被安装到 <code>/usr/local/bin/node</code>；</li>
-<li>npm 被安装到 <code>/usr/local/bin/npm</code>；</li>
-<li>npm 全局依赖包默认存放于 <code>/usr/local/lib/node_modules</code> 目录。</li>
-</ul>
-<p>但如果使用 nvm 来管理 Node，这些都将会发生变化，相关内容将会默认存放至 <code>~/.nvm</code> 目录。</p>
-<p>使用 <code>nvm install</code> 来安装 Node，它将会存放于 <code>~/.nvm/versions/node/v22.22.0</code> 目录：</p>
-<pre><code class="language-bash">$ nvm install 22.22.0
-</code></pre>
-<p>使用 <code>nvm use</code> 可以切换系统 Node 与 nvm 的 Node：</p>
-<pre><code class="language-bash"># 使用系统版本
-$ nvm use system
-
-# 使用 nvm 的 Node 版本，还有更多写法，请看：https://github.com/nvm-sh/nvm#usage
-$ nvm use 22
-</code></pre>
-<p>对比下 <code>prefix</code> 的变化：</p>
-<pre><code class="language-bash">$ nvm use system
-Now using system version of node: v22.18.0 (npm v10.9.3)
-
-$ npm config get prefix
-/usr/local
-
-$ npm bin -g
-/usr/local/bin
-
-$ which node
-/usr/local/bin/node
-</code></pre>
-<pre><code class="language-bash">$ nvm use 22
-Now using node v22.22.0 (npm v10.9.4)
-
-$ npm config get prefix
-~/.nvm/versions/node/v22.22.0
-
-$ npm bin -g
-~/.nvm/versions/node/v22.22.0/bin
-
-$ which node
-~/.nvm/versions/node/v22.22.0/bin/node
-</code></pre>
-<p>因此，在使用 nvm 管理的情况下：</p>
-<ul>
-<li>全局依赖包将会安装至 <code>~/.nvm/versions/node/vX.Y.Z/lib/node_modules</code> 目录。</li>
-<li>依赖包可执行文件将被软链接至 <code>~/.nvm/versions/node/vX.Y.Z/bin</code> 目录。</li>
-</ul>
-<p>前面提到过，<code>prefix</code> 的默认位置与 Node 的安装路径有关。在 Unix/Linux/Mac 操作系统中，<code>prefix</code> 通常是 Node 安装路径的上一级，即 <code>~/.nvm/versions/node/vX.Y.Z</code> 目录。因此，当我们在切换 Node 版本中，它总能正确地安装到 <code>/usr/local/lib/node_modules</code> 或 <code>~/.nvm/versions/node/vX.Y.Z/lib/node_modules/</code> 目录。</p>
-<blockquote>
-<p>了解更多 <a href="https://docs.npmjs.com/cli/v10/configuring-npm/folders#prefix-configuration">NPM Docs</a></p>
-</blockquote>
-<p>如果在 <code>~/.npmrc</code> 中配置了 <code>prefix</code>，无论你如何切换 Node 版本，它总是被安装至所配置的路径下。</p>
-<pre><code class="language-bash">$ npm config set prefix &quot;~/.npm-packages&quot;
-
-$ npm i -g jest
-
-$ tree ~/.npm-packages -L 3 
-/Users/frankie/.npm-packages
-├── bin
-│   └── jest -&gt; ../lib/node_modules/jest/bin/jest.js
-└── lib
-    └── node_modules
-        └── jest
-</code></pre>
-<p>这样就违背了用 nvm 的初心，自定义 <code>prefix</code> 配置与 nvm 不兼容。<a href="https://github.com/nvm-sh/nvm#important-notes">了解更多</a></p>
-<blockquote>
-<p>If you have an <code>~/.npmrc</code> file, make sure it does not contain any <code>prefix</code> settings (which is not compatible with <code>nvm</code>)</p>
-</blockquote>
-<h2>七、总结</h2>
-<p>目前，我同时使用着 nvm、npm、yarn、pnpm 等工具，个人建议：</p>
+<h2>五、总结</h2>
+<p>目前我同时使用着 nvm、npm、yarn classic、pnpm，一些个人建议（仅供参考）：</p>
 <ul>
 <li>非必要，一概不主动修改 npm、yarn、pnpm 默认安装路径</li>
 <li>非必要，一概不在 <code>.npmrc</code> 设置 <code>prefix</code> 选项，以避免全局依赖包安装至“不正确”的路径</li>
@@ -50523,14 +50525,26 @@ $ tree ~/.npm-packages -L 3
 <li><s>与 Node 版本无关的全局依赖包，统一用 yarn 进行安装</s>（不推荐）</li>
 <li>尽可能少装全局依赖，善用 <code>npx</code>、<code>yarn dlx</code>、<code>pnpm dlx</code>（<code>pnpx</code>）、<code>pnpm create</code>、<code>yarn create</code> 等命令</li>
 </ul>
-<p>全局依赖路径：</p>
+<p>缓存目录：</p>
 <ul>
-<li><code>/usr/local/lib/node_modules</code></li>
+<li><code>~/.npm</code>（传统安装和 nvm 安装的 Node.js 都是该目录）</li>
+<li><code>~/Library/Caches/Yarn/v6</code></li>
+<li><code>~/Library/pnpm/store/v10</code></li>
+</ul>
+<p>全局依赖目录：</p>
+<ul>
+<li><code>/usr/local/lib/node_modules</code>（传统安装的 Node.js）</li>
+<li><code>~/.nvm/versions/node/vX.X.X/lib/node_modules</code>（使用 nvm 安装的 Node.js）</li>
 <li><code>~/.config/yarn/global/node_modules</code></li>
 <li><code>~/Library/pnpm/global/5/node_modules</code></li>
-<li><code>~/.nvm/versions/node/vX.X.X/lib/node_modules</code></li>
 </ul>
-<p>查看全局依赖路径的命令：</p>
+<p>查看全局缓存目录的命令：</p>
+<ul>
+<li><code>npm config get cache</code></li>
+<li><code>yarn cache dir</code></li>
+<li><code>pnpm store path</code></li>
+</ul>
+<p>查看全局依赖目录的命令：</p>
 <ul>
 <li><code>npm root -g</code></li>
 <li><code>yarn global dir</code></li>
