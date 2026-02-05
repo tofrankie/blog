@@ -4,11 +4,128 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 28 Jan 2026 19:49:39 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 04 Feb 2026 21:26:24 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[在国内使用 Gemini in Chrome]]></title>
+            <link>https://github.com/tofrankie/blog/issues/387</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/387</guid>
+            <pubDate>Wed, 04 Feb 2026 21:18:03 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/2/1770239795349.jpg" alt="配图源自 Freepik"></p>
+<p>官网：<a href="https://gemini.google/overv]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/2/1770239795349.jpg" alt="配图源自 Freepik"></p>
+<p>官网：<a href="https://gemini.google/overview/gemini-in-chrome/">Gemini in Chrome</a></p>
+<h2>写在前面</h2>
+<p>截止目前（2026-02-05），Gemini in Chrome 仅面向美国用户使用。</p>
+<p>根据官方<a href="https://support.google.com/gemini/answer/16283624">要求</a>，需满足以下条件：</p>
+<ul>
+<li>Be 18 or over and in the US.</li>
+<li>Use a Chromebook Plus, Mac, or Windows computer.</li>
+<li>Use the latest version of Chrome.</li>
+<li>Sign in to Chrome.</li>
+<li>Have Chrome's language set to English (United States).</li>
+</ul>
+<p>对于国内用户来说，需满足以下条件：</p>
+<ul>
+<li>Google 账号关联地区是美国（可以前往<a href="https://policies.google.com/country-association-form">这里</a>修改，提交后留言邮箱的审核结果）</li>
+<li>更新至最新的 Chrome 144 版本</li>
+<li>Chrome 的语言设置为英语</li>
+<li>科学上网使用美国节点</li>
+</ul>
+<blockquote>
+<p>PS：我的 Google 账号关联了台湾，用美国节点也可以正常使用。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/2/1770235982111.png" alt=""></p>
+<h2>设置语言</h2>
+<p>Chrome App 的语言设置通常会根据系统语言来设定。</p>
+<p>以 macOS 为例，前往系统偏好设置为 Chrome 应用程序设置语言，参考图片：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/2/1770234459837.png" alt=""></p>
+<blockquote>
+<p>PS：在 Chrome 设置的「语言」选项将 English (United States) 调整至最高优先级是没用的，该选项不会影响应用本身的语言。</p>
+</blockquote>
+<blockquote>
+<p>其他系统语言设置参考<a href="https://support.google.com/chrome/answer/173424">这里</a></p>
+</blockquote>
+<h2>开启 flags</h2>
+<p>打开 <code>chrome://flags</code> 搜索 <code>glic</code>，将以下两个选项由 <code>Default</code> 改为 <code>Enable</code></p>
+<ul>
+<li><code>glic</code></li>
+<li><code>glic-side-panel</code></li>
+</ul>
+<p>改完记得重启 Chrome。</p>
+<p>如果还不行，继续往下...</p>
+<h2>修改 Local State 文件</h2>
+<blockquote>
+<p>[!TIP]
+了解意图后，可以直接使用下一章的脚本对文件进行修改。</p>
+</blockquote>
+<blockquote>
+<p>[!IMPORTANT]
+修改前先退出 Chrome（为避免误操作建议先创建 Local State 副本进行备份）。</p>
+</blockquote>
+<p>Chrome 判断用户地区会经过多重验证。一些 IP、地区标识会存储在本地文件 Local State 里面。</p>
+<ul>
+<li>macOS：<code>~/Library/Application Support/Google/Chrome/Local State</code></li>
+<li>Linux：<code>~/.config/google-chrome/Local State</code></li>
+<li>Windows：<code>%LOCALAPPDATA%\Google\Chrome\User Data\Local State</code></li>
+</ul>
+<p>打开 Local State 文件（一个 JSON 文件），修改这三个 key：</p>
+<ul>
+<li><code>variations_country</code>：将 <code>tw</code> 改为 <code>us</code></li>
+<li><code>variations_permanent_consistency_country</code>：将 <code>tw</code> 改为 <code>us</code></li>
+<li><code>is_glic_eligible</code>：设为 <code>true</code></li>
+</ul>
+<pre><code class="language-json">{
+  &quot;variations_country&quot;: &quot;us&quot;,
+  &quot;variations_permanent_consistency_country&quot;: [
+    &quot;144.0.7559.133&quot;,
+    &quot;us&quot;
+  ],
+  &quot;profile&quot;: {
+    &quot;info_cache&quot;: {
+      &quot;Default&quot;: {
+        &quot;is_glic_eligible&quot;: true
+      }
+  }
+}
+</code></pre>
+<blockquote>
+<p>我的 Google 账号关联了台湾，所以默认的 country 是 <code>tw</code>，其他国家/地区是不同值，都改为 <code>us</code> 便可</p>
+</blockquote>
+<blockquote>
+<p>如果 Chrome 登录了多个 Google 账号，<code>profile.info_cache</code> 会有多个用户记录（如 Default、Profile 1、Profile 2），可以按需使个别账号启用 Gemini in Chrome。</p>
+</blockquote>
+<h2>使用脚本</h2>
+<ul>
+<li><a href="https://github.com/appsail/Gemini-in-Chrome">appsail/Gemini-in-Chrome</a>（推荐）</li>
+<li><a href="https://github.com/lcandy2/enable-chrome-ai">lcandy2/enable-chrome-ai</a></li>
+</ul>
+<p>以 appsail/Gemini-in-Chrome 为例，执行以下命令一键操作：</p>
+<blockquote>
+<p>[!IMPORTANT]
+执行脚本前先退出 Chrome</p>
+</blockquote>
+<p>▼ macOS/Linux：</p>
+<pre><code class="language-bash">$ curl -fsSL https://raw.githubusercontent.com/appsail/Gemini-in-Chrome/main/install.sh | bash
+</code></pre>
+<p>▼ Windows（用 PowerShell）</p>
+<pre><code class="language-bash">$ irm https://raw.githubusercontent.com/appsail/Gemini-in-Chrome/main/install.ps1 | iex
+</code></pre>
+<p>脚本内部所做的事情：</p>
+<ol>
+<li>备份 <code>Local State</code> 到 <code>Local State.bak</code></li>
+<li>修改xx <code>is_glic_eligible</code>、<code>variations_country</code>、<code>variations_permanent_consistency_country</code></li>
+</ol>
+<h2>最后</h2>
+<p>在 <code>chrome://settings/ai/gemini</code> 可以为 Gemini in Chrome 调整配置。</p>
+<p>另外，Gemini in Chrome 和原有的 Side Panel 分居左右两侧，我更偏向将 Chat Panel 放在右侧。由于它没有独立的设置项，前往 <code>chrome://settings/appearance</code> 将 <code>Side panel position</code> 改为 <code>Show on left</code>，这样 Chat Panel 就会来到右侧。</p>
+<p>愉快地玩耍吧~</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/2/1770239180733.png" alt=""></p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[pnpm 依赖结构]]></title>
             <link>https://github.com/tofrankie/blog/issues/386</link>
