@@ -1,5 +1,6 @@
 # 近期更新
 
+- [在国内使用 Gemini in Chrome](https://github.com/tofrankie/blog/issues/387)
 - [梳理 node、npm、yarn、pnpm 相关路径](https://github.com/tofrankie/blog/issues/94)
 - [pnpm 依赖结构](https://github.com/tofrankie/blog/issues/386)
 - [一个比 nrm 更好用的镜像源管理工具](https://github.com/tofrankie/blog/issues/91)
@@ -9,4 +10,3 @@
 - [pnpm/yarn/npm 常用命令](https://github.com/tofrankie/blog/issues/88)
 - [Node.js 环境变量](https://github.com/tofrankie/blog/issues/338)
 - [Linux 链接文件详解](https://github.com/tofrankie/blog/issues/36)
-- [扫普通链接二维码打开小程序调研](https://github.com/tofrankie/blog/issues/303)
