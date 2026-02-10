@@ -6,7 +6,9 @@ import { fetchAllIssue, getGithubRepo, getGithubUser, type Issues } from './comm
 const TEMPLATE_FILE = path.resolve('docs', 'templates', 'readme.md')
 const OUTPUT_FILE = path.resolve('README.md')
 
-;(async function main() {
+main()
+
+async function main() {
   let templateContent = await fs.readFile(TEMPLATE_FILE, 'utf-8')
 
   const issues = await fetchAllIssue()
@@ -18,12 +20,12 @@ const OUTPUT_FILE = path.resolve('README.md')
   templateContent = replaceRelativePaths(
     templateContent,
     path.dirname(TEMPLATE_FILE),
-    path.dirname(OUTPUT_FILE),
+    path.dirname(OUTPUT_FILE)
   )
 
   await fs.writeFile(OUTPUT_FILE, templateContent, 'utf-8')
   console.log('README.md has been updated.')
-})()
+}
 
 interface YearLabel {
   [year: string]: number
@@ -54,7 +56,7 @@ async function genYearLinks(issues: Issues) {
 
   const labels = sortedYears.map(
     year =>
-      `[${year} 年，共 ${yearLabels[year]} 篇](https://github.com/${githubUser}/${githubRepo}/labels/${year})`,
+      `[${year} 年，共 ${yearLabels[year]} 篇](https://github.com/${githubUser}/${githubRepo}/labels/${year})`
   )
 
   return `- ${labels.join('\n- ')}`
@@ -69,7 +71,7 @@ function replaceRelativePaths(content: string, inputDir: string, outputDir: stri
       const outputPath = path.resolve(inputDir, filePath)
       const relativeOutputPath = path.relative(outputDir, outputPath)
       return `![${alt}](${relativeOutputPath})`
-    },
+    }
   )
 
   // link
@@ -80,7 +82,7 @@ function replaceRelativePaths(content: string, inputDir: string, outputDir: stri
       const outputPath = path.resolve(inputDir, filePath)
       const relativeOutputPath = path.relative(outputDir, outputPath)
       return `[${text}](${relativeOutputPath})`
-    },
+    }
   )
 
   return newContent

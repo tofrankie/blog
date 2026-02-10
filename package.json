@@ -5,6 +5,7 @@
   "description": "种一棵树，最好的时间是十年前。其次，是现在。",
   "author": "Frankie <1426203851@qq.com>",
   "license": "MIT",
+  "homepage": "https://github.com/tofrankie/blog",
   "keywords": [
     "blog",
     "github-blogger",
@@ -13,24 +14,24 @@
     "typescript"
   ],
   "scripts": {
-    "lint": "bun run eslint && bun run prettier",
-    "eslint": "eslint . --cache --fix",
-    "prettier": "prettier . --cache --write"
+    "lint": "bun run lint:eslint && bun run lint:prettier",
+    "lint:eslint": "eslint . --cache --fix",
+    "lint:prettier": "prettier . --cache --write --log-level silent"
   },
   "dependencies": {
-    "@octokit/core": "^7.0.2",
-    "@octokit/rest": "^21.0.2",
-    "dayjs": "^1.11.13",
-    "feed": "^5.1.0",
+    "@octokit/core": "^7.0.6",
+    "@octokit/rest": "^21.1.1",
+    "dayjs": "^1.11.19",
+    "feed": "^5.2.0",
     "gray-matter": "^4.0.3",
     "markdown-it": "^14.1.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.11.2",
-    "@types/bun": "^1.1.14",
+    "@tofrankie/eslint": "^0.0.3",
+    "@tofrankie/prettier": "^0.0.1",
+    "@types/bun": "^1.3.9",
     "@types/markdown-it": "^14.1.2",
-    "eslint": "^9.16.0",
-    "eslint-plugin-format": "^0.1.3",
-    "prettier": "^3.4.2"
+    "eslint": "^9.39.2",
+    "prettier": "^3.8.1"
   }
 }

@@ -10,8 +10,9 @@ import matter from 'gray-matter'
 
 import { fetchAllIssue, type Issue } from './common'
 
-//
-;(async function main() {
+main()
+
+async function main() {
   try {
     const issues = await fetchAllIssue()
     console.log(`Fetched ${issues.length} issues`)
@@ -22,7 +23,7 @@ import { fetchAllIssue, type Issue } from './common'
   } catch (error) {
     console.error('Error:', error)
   }
-})()
+}
 
 function determineYear(issue: Issue) {
   const createdAt = dayjs(issue.created_at)

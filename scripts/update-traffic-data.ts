@@ -14,6 +14,31 @@ import {
 
 dayjs.extend(utc)
 
+main()
+
+async function main() {
+  const trafficData = await getTrafficViews()
+
+  const trafficDir = path.resolve('docs/traffic')
+  const trafficDirExists = await fs.stat(trafficDir).catch(() => false)
+  if (!trafficDirExists) {
+    await fs.mkdir(trafficDir, { recursive: true })
+  }
+
+  const trafficDataYearly = Object.groupBy(trafficData.views, item =>
+    dayjs(item.timestamp).format('YYYY')
+  )
+  for (const [year, views] of Object.entries(trafficDataYearly)) {
+    const yearFilePath = path.resolve(trafficDir, `${year}.json`)
+    if (views) await updateYearTrafficJson(yearFilePath, views)
+  }
+
+  const allJsonPath = path.resolve(trafficDir, 'all.json')
+  await updateAllTrafficJson(trafficDir, allJsonPath)
+
+  console.log('Traffic data updated.')
+}
+
 async function updateYearTrafficJson(filePath: string, views: Views) {
   const currentYear = dayjs().year().toString()
   let yearData: TrafficYear = {
@@ -88,26 +113,3 @@ async function updateAllTrafficJson(trafficDir: string, allJsonPath: string) {
   const formattedAllTrafficData = JSON.stringify(allTrafficData, null, 2)
   await fs.writeFile(allJsonPath, formattedAllTrafficData)
 }
-
-;(async function main() {
-  const trafficData = await getTrafficViews()
-
-  const trafficDir = path.resolve('docs/traffic')
-  const trafficDirExists = await fs.stat(trafficDir).catch(() => false)
-  if (!trafficDirExists) {
-    await fs.mkdir(trafficDir, { recursive: true })
-  }
-
-  const trafficDataYearly = Object.groupBy(trafficData.views, item =>
-    dayjs(item.timestamp).format('YYYY'),
-  )
-  for (const [year, views] of Object.entries(trafficDataYearly)) {
-    const yearFilePath = path.resolve(trafficDir, `${year}.json`)
-    if (views) await updateYearTrafficJson(yearFilePath, views)
-  }
-
-  const allJsonPath = path.resolve(trafficDir, 'all.json')
-  await updateAllTrafficJson(trafficDir, allJsonPath)
-
-  console.log('Traffic data updated.')
-})()

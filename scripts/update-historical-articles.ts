@@ -13,6 +13,22 @@ const IGNORE_DIR = '2024'
 
 const octokit = new Octokit({ auth: GITHUB_TOKEN })
 
+main()
+
+async function main() {
+  try {
+    const markdownFiles = await getMarkdownFiles(ARCHIVES_DIR, IGNORE_DIR)
+
+    for (const filePath of markdownFiles) {
+      await processMarkdownFile(filePath)
+    }
+
+    // await commitChanges()
+  } catch (error) {
+    console.error('处理失败：', error)
+  }
+}
+
 // 获取指定目录及子目录的 Markdown 文件路径（忽略特定子目录）
 async function getMarkdownFiles(dir: string, ignoreDir: string) {
   const entries = await fs.readdir(dir, { withFileTypes: true })
@@ -39,7 +55,7 @@ async function processMarkdownFile(filePath: string) {
 
   const imageRegex = new RegExp(
     `(https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/images/(\\d+\\.\\w+))`,
-    'g',
+    'g'
   )
 
   const matchedImages = Array.from(fileContent.matchAll(imageRegex))
@@ -108,27 +124,11 @@ async function updateGitHubIssue(issueNumber: number, content: string) {
   }
 }
 
-// 主函数
-;(async function main() {
-  try {
-    const markdownFiles = await getMarkdownFiles(ARCHIVES_DIR, IGNORE_DIR)
-
-    for (const filePath of markdownFiles) {
-      await processMarkdownFile(filePath)
-    }
-
-    // await commitChanges()
-  } catch (error) {
-    console.error('处理失败：', error)
-  }
-})()
-
 // 提交变更到 GitHub
-// eslint-disable-next-line unused-imports/no-unused-vars
-async function commitChanges() {
+async function _commitChanges() {
   try {
     await exec('git add .')
-    await exec(`git commit -m "chore: migrate article images"`)
+    await exec('git commit -m "chore: migrate article images"')
     await exec(`git push origin ${GITHUB_BRANCH}`)
     console.log('文件变更已推送到远程仓库')
   } catch (error) {
