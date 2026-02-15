@@ -1,5 +1,6 @@
 # 近期更新
 
+- [记五月：汕头 - 潮州两日](https://github.com/tofrankie/blog/issues/358)
 - [在国内使用 Gemini in Chrome](https://github.com/tofrankie/blog/issues/387)
 - [梳理 node、npm、yarn、pnpm 相关路径](https://github.com/tofrankie/blog/issues/94)
 - [pnpm 依赖结构](https://github.com/tofrankie/blog/issues/386)
@@ -9,4 +10,3 @@
 - [再见 nvm，改用 fnm 了](https://github.com/tofrankie/blog/issues/96)
 - [pnpm/yarn/npm 常用命令](https://github.com/tofrankie/blog/issues/88)
 - [Node.js 环境变量](https://github.com/tofrankie/blog/issues/338)
-- [Linux 链接文件详解](https://github.com/tofrankie/blog/issues/36)
