@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 15 Feb 2026 07:09:56 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 24 Feb 2026 10:53:28 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -46978,7 +46978,7 @@ console.log(num)    // ['o', 'l', 'l', 'e', 'h']
 <p><a href="https://www.mercurial-scm.org/">Mercurial</a> 跟 Git 一样，也是一个分布式版本控制系统，使用汞的化学元素符号「Hg」的小写形式  <code>hg</code> 作为命令。</p>
 <h2>安装</h2>
 <p>使用 Homebrew 进行安装，其他方式请看<a href="https://www.mercurial-scm.org/downloads">这里</a>。</p>
-<pre><code class="language-shell">$ brew install mercurial
+<pre><code class="language-bash">$ brew install mercurial
 </code></pre>
 <h2>初始化</h2>
 <p>在全局配置文件 <code>~/.hgrc</code>（若无则新增），配置提交者的用户名和邮箱。比如：</p>
@@ -46988,7 +46988,7 @@ username = Frankie &lt;frankie@example.com&gt;
 <blockquote>
 <p>Use <code>hg config</code> to configure a user name, email address, editor, and other preferences once per machine.</p>
 </blockquote>
-<pre><code class="language-shell">$ hg init
+<pre><code class="language-bash">$ hg init
 
 # or
 $ hg clone &lt;repo-address&gt; [repo-name]
@@ -47007,38 +47007,48 @@ $ hg clone &lt;repo-address&gt; [repo-name]
 </blockquote>
 <h2>分支操作</h2>
 <h3>创建分支</h3>
-<pre><code class="language-shell">$ hg branch &lt;branch-name&gt;
+<pre><code class="language-bash">$ hg branch &lt;branch-name&gt;
 </code></pre>
 <blockquote>
 <p>一个刚创建的分支，至少 commit 一次，分支才算真正被创建。可以考虑提交一个空 commit，比如：<code>hg commit -m &quot;create '&lt;branch-name&gt;' branch&quot;</code>。</p>
 </blockquote>
 <h3>查看分支</h3>
-<pre><code class="language-shell"># 查看当前分支
+<pre><code class="language-bash"># 查看当前分支
 $ hg branch
 
 # 查看所有分支
 $ hg branches
 </code></pre>
 <h3>切换分支</h3>
-<pre><code class="language-shell">$ hg checkout &lt;branch-name&gt;
+<pre><code class="language-bash">$ hg checkout &lt;branch-name&gt;
+
+$ hg checkout &lt;commit-id&gt;
+
+$ hg checkout -r &lt;revision-id&gt;
 </code></pre>
+<blockquote>
+<p>以上操作实际上是移动 HEAD，后两者类似于 Git 的 <a href="https://github.com/tofrankie/blog/issues/107">Detached HEAD</a> 效果。</p>
+</blockquote>
+<blockquote>
+<p><code>hg checkout</code> 是 <code>hg update</code> 的别名，我更偏向使用前者，跟 <code>git checkout</code> 类似。</p>
+</blockquote>
 <p>假设有分支 A 和分支 B 同时在开发，需要来回切换，但当前分支功能未开发完成又不好 commit，这种场景可以考虑 shelve。</p>
 <p>在 Git 中，可以使用 <code>git stash</code> 将所有未提交的修改（工作区和暂存区）保存至堆栈中，用于后续恢复当前工作目录。Mercurial 也有类似的命令：</p>
-<pre><code class="language-shell">$ hg shelve --name &lt;name&gt;
+<pre><code class="language-bash">$ hg shelve --name &lt;name&gt;
 $ hg unshelve &lt;name&gt;
 </code></pre>
 <p>其中 <code>--name</code> 参数是可选的，也可简写为 <code>-n</code>。</p>
 <h3>合并分支</h3>
-<pre><code class="language-shell">$ hg merge &lt;branch-name&gt;
+<pre><code class="language-bash">$ hg merge &lt;branch-name&gt;
 </code></pre>
 <blockquote>
-<p>合并后别忘了 commit。</p>
+<p>合并完别忘了 commit。</p>
 </blockquote>
 <p>如果后悔了，想取消未提交的合并（变更不会丢失）</p>
-<pre><code class="language-shell">$ hg merge --abort
+<pre><code class="language-bash">$ hg merge --abort
 </code></pre>
-<p>还有有一种场景，假设你在合并分支，但另外一个同学又 push 了新的变更上来，当你合并完成，是推不上去。有一个很危险的操作，请谨慎使用：</p>
-<pre><code class="language-shell">$ hg update --clean
+<p>还有一种场景，假设你在合并分支时，另一个人 push 了新的变更，当你合并完成，你是推不上去。有一个很危险的操作，请谨慎使用：</p>
+<pre><code class="language-bash">$ hg update --clean
 </code></pre>
 <blockquote>
 <p>⚠️ 请注意 <code>--clean</code> 会丢掉所有 uncommited 的变更（包括 shelve 的内容）。如果是 untracked files 则不会被删除。</p>
@@ -47051,7 +47061,7 @@ $ hg unshelve &lt;name&gt;
 <p>在 Git 里可以通过 <code>git branch -d &lt;branch-name&gt;</code> 或 <code>git push origin --delete &lt;branch-name&gt;</code> 等方式删除本地分支或远程分支。</p>
 <p><strong>但 Mercurial 里没有删除分支的概念</strong>。Mercurial 则用「关闭」的概念来表示一个分支的结束。如果一个分支该结束了，我们可以提交一个空的 Commit 来关闭它（需加上 <code>--close-branch</code> 参数），比如 <code>hg commit -m 'xxx' --close-branch</code>。如果在已关闭的分支上提交新的 Commit，该分支会 Reopen。</p>
 <p>举个例子，将 <code>feature</code> 合并至 <code>default</code>，同时关闭 <code>feature</code> 分支：</p>
-<pre><code class="language-shell"># 1. 在 feature 分支提交一个空 Commit 来关闭当前分支
+<pre><code class="language-bash"># 1. 在 feature 分支提交一个空 Commit 来关闭当前分支
 $ hg commit -m 'xxx' --close-branch
 
 # 2. 切换至 default 分支
@@ -47068,35 +47078,79 @@ $ hg push
 </code></pre>
 <h3>代码合并工具</h3>
 <p>篇幅可能有点长，另起章节，放在文末。</p>
-<h2>代码提交</h2>
-<pre><code class="language-shell"># 普通提交
+<h2>提交操作</h2>
+<pre><code class="language-bash"># 普通提交
 $ hg commit -m 'some message...'
 
 # 空 commit 提交
 $ hg commit -m 'some message...' --config ui.allowemptycommit=1
 </code></pre>
 <p>刚创建的分支，是可以直接 <code>hg commit -m 'xxx'</code> 提交一个空 Commit 的。但在已有 Commit Log 的分支上，如果没有文件的改动，直接提交空 Commit 会失败并提示 <code>nothing changed</code>。针对有需要提交空 Commit 的场景，可以在末尾加上 <code>--config ui.allowemptycommit=1</code>。</p>
-<p>撤销上一个提交</p>
-<pre><code class="language-shell">$ hg rollback
+<h3>撤销最新提交</h3>
+<p>撤销最新的提交，并保留代码。</p>
+<pre><code class="language-bash">$ hg rollback
+</code></pre>
+<h3>撤销某个提交</h3>
+<p>以下使用 <code>hg strip</code> 命令之前，需要在 <code>~/.hgrc</code> 启用 <a href="https://repo.mercurial-scm.org/hg/help/strip">strip</a> 扩展：</p>
+<pre><code class="language-ini">[extensions]
+strip =
+</code></pre>
+<p>实现类似 <code>git reset --soft &lt;commit-id&gt;</code> 的效果：</p>
+<ul>
+<li>移动 HEAD</li>
+<li>删除历史 commit</li>
+<li>保留改动在工作区</li>
+</ul>
+<p>假设目前修订版本处于 100，你要回退到 90，并删除 91 及其之后的所有提交（包括 100）：</p>
+<pre><code class="language-bash">$ hg strip --keep -r 91
+</code></pre>
+<ul>
+<li><code>-r 91</code>：指定从哪个 revision 开始切断（包含 91 本身及其所有后代）。</li>
+<li><code>--keep</code>：保留代码变更在本地工作区。</li>
+</ul>
+<blockquote>
+<p>[!TIP]
+注意，如果你想回退到 90（表示保留 90 这个 commit，移除 90 之后的所有 commit），应该指定的 <code>-r 91</code>，而不是 <code>-r 90</code>。我经常忘记这茬。🤯</p>
+</blockquote>
+<blockquote>
+<p>若要实现类似 <code>git reset --hard &lt;commit-id&gt;</code> 的效果，则不要添加 <code>--keep</code> 参数。</p>
+</blockquote>
+<h3>复制提交</h3>
+<p>场景：有 A、B 两个分支，在 A 分支提交了一个 commit，要将该 commit 修改的内容“复制”到 B 分支。</p>
+<blockquote>
+<p>假设当前处于 A 分支，commit 的修订版本 rev 是 123。</p>
+</blockquote>
+<p>方式有两种：</p>
+<p>一是使用 <code>hg graft</code> 命令，它会在 B 分支创建一个新的 commit，内容和 commit message 跟原提交相同，但 commit hash 不同。</p>
+<pre><code class="language-bash">$ hg checkout feature-b
+
+$ hg graft -r 123
+</code></pre>
+<p>二是使用 <code>hg diff</code> 和 <code>hg import</code> 命令，这样可以手动调整、检查再提交。</p>
+<pre><code class="language-bash">$ hg diff -c 123 &gt; patch.diff
+
+$ hg checkout feature-b
+
+$ hg import --no-commit patch.diff
 </code></pre>
 <h2>代码推送</h2>
-<pre><code class="language-shell">$ hg push
+<pre><code class="language-bash">$ hg push
 </code></pre>
 <blockquote>
 <p>若推送远程仓库中还没有的新分支，需要加上 <code>--new-branch</code> 参数。</p>
 </blockquote>
 <h2>代码拉取与更新</h2>
-<pre><code class="language-shell"># 拉取代码（类似 git fetch）
+<pre><code class="language-bash"># 拉取代码（类似 git fetch）
 $ hg pull
 
 # 拉取代码后，更新本地分支
 $ hg update
 </code></pre>
 <p>以上两步等价于</p>
-<pre><code class="language-shell">$ hg pull -u
+<pre><code class="language-bash">$ hg pull -u
 </code></pre>
 <h2>查看提交记录</h2>
-<pre><code class="language-shell">$ hg log
+<pre><code class="language-bash">$ hg log
 
 # 分支图形化 --graph
 $ hg log -G
@@ -47110,7 +47164,7 @@ $ hg log -p
 <p>更多 <code>hg log -h</code> 或请看<a href="https://swcarpentry.github.io/hg-novice/12-merges/">这里</a>。</p>
 <h2>取消文件跟踪</h2>
 <p>通常来说，我们会将不需要提交到远程仓库的文件或目录添加到 <code>.hgignore</code> 文件中。对于已跟踪的文件（tracked file），若要取消某个文件或目录的跟踪，只更新 <code>.hgigonre</code> 是不行的，还要用到 <code>hg remove</code> 或 <code>hg forget</code> 命令。</p>
-<pre><code class="language-shell"># 取消跟踪，并删除本地文件
+<pre><code class="language-bash"># 取消跟踪，并删除本地文件
 $ hg remove &lt;tracked-file&gt;
 
 # 取消跟踪，但不删除本地文件
@@ -47131,7 +47185,7 @@ $ hg forget &lt;tracked-file&gt;
 </blockquote>
 <p>默认情况下，如果合并时存在冲突，会被标记为失败，需要进一步手动解决冲突。</p>
 <p>比如，当前有 <code>default</code> 和 <code>develop</code> 两个分支，现在要将 <code>develop</code> 合并至 <code>default</code> 分支里，而且两个分支是存在冲突的。</p>
-<pre><code class="language-shell">$ hg checkout default
+<pre><code class="language-bash">$ hg checkout default
 
 $ hg merge develop
 </code></pre>
@@ -47181,24 +47235,6 @@ opts.vsd = --wait --diff
 <p>上左表示要合并进来的分支。上中表示两个分支的共同祖先节点。右侧表示当前分支。下方表示合并结果。</p>
 <p>操作完成后，保存文件。关闭 Merging Tab 就表示 Merge Completed。如果有多个冲突文件，关闭这个会自动打开下一个。</p>
 <p>当然，还有很多第三方工具，就不展开介绍了，选择一个合适自己的就行。</p>
-<h2>复制提交</h2>
-<p>场景：有 A、B 两个分支，在 A 分支提交了一个 commit，要将该 commit 修改的内容“复制”到 B 分支。</p>
-<blockquote>
-<p>假设当前处于 A 分支，commit 的修订版本 rev 是 123。</p>
-</blockquote>
-<p>方式有两种：</p>
-<p>一是使用 <code>hg graft</code> 命令，它会在 B 分支创建一个新的 commit，内容和 commit message 跟原提交相同，但 commit hash 不同。</p>
-<pre><code class="language-shell">$ hg checkout feature-b
-
-$ hg graft -r 123
-</code></pre>
-<p>二是使用 <code>hg diff</code> 和 <code>hg import</code> 命令，这样可以手动调整、检查再提交。</p>
-<pre><code class="language-shell">$ hg diff -c 123 &gt; patch.diff
-
-$ hg checkout feature-b
-
-$ hg import --no-commit patch.diff
-</code></pre>
 <h2>参考链接</h2>
 <ul>
 <li><a href="https://www.mercurial-scm.org/">Mercurial SCM</a></li>
