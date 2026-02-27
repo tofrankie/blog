@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Tue, 24 Feb 2026 10:53:28 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 26 Feb 2026 18:13:58 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -47252,7 +47252,7 @@ opts.vsd = --wait --diff
             <author>tofrankie</author>
         </item>
         <item>
-            <title><![CDATA[细读 Git | 进阶]]></title>
+            <title><![CDATA[Git 进阶]]></title>
             <link>https://github.com/tofrankie/blog/issues/108</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/108</guid>
             <pubDate>Sat, 25 Feb 2023 12:55:41 GMT</pubDate>
@@ -47270,19 +47270,17 @@ opts.vsd = --wait --diff
 -->
 <h2>一、File Status</h2>
 <p>在 Git 的工作目录下，每一个文件都不外乎两种状态： <strong>tracked</strong>（已跟踪）和 <strong>untracked</strong>（未跟踪）。</p>
-<blockquote>
 <ul>
 <li><strong>tracked</strong>：表示被纳入版本控制的文件，它又细分为 <strong>unmodified</strong>（未修改）、<strong>modified</strong>（已修改）、<strong>staged</strong>（已暂存）三种状态。</li>
 <li><strong>untracked</strong>：表示除了 <strong>tracked</strong> 之外的所有文件，它既没有快照记录，也没有被放入 staging area（暂存区）。</li>
 </ul>
-</blockquote>
 <p>文件的状态变化周期，如下：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767415546485.png" alt=""></p>
-<p>在当前工作目录下，可以通过 <code>git status</code> 命令查看所有（已跟踪和未跟踪）文件状态。如果你希望某些文件出现在 <strong>untracked</strong> 列表，可以将其添加至 <code>.gitignore</code> 文件中。在 GitHub 上提供了针对数十种项目及语言的 <code>.gitignore</code> 模板，详看<a href="https://github.com/github/gitignore">这里</a>。</p>
+<p>在当前工作目录下，可以通过 <code>git status</code> 命令查看所有（已跟踪和未跟踪）文件状态。如果你希望某些文件出现在 <strong>untracked</strong> 列表，可以将其添加至 <code>.gitignore</code> 文件中。在 GitHub 上提供了针对数十种项目及语言的 <code>.gitignore</code> 模板，详见<a href="https://github.com/github/gitignore">这里</a>。</p>
 <h2>二、Git Object</h2>
 <p>从根本上来讲 Git 是一个内容寻址（content-addressable）文件系统，核心部分是一个简单的键值对数据库（key-value data store）。当你向 Git 仓库插入任意类型的内容时，它会返回一个唯一的键（SHA-1），通过该键可以在任意时刻再次取回该内容。</p>
 <p>在初始化 Git 仓库时，它会创建一个 <code>.git</code> 目录，该目录下包含了几乎所有 Git 存储和操作的东西。因此，如果你想备份或者复制一个版本库，只需把这个目录拷贝至另一处即可。</p>
-<pre><code class="language-shell">$ git init temp-repo
+<pre><code class="language-bash">$ git init temp-repo
 Initialized empty Git repository in /Users/frankie/Desktop/Web/Temp/temp-repo/.git/
 
 $ cd temp-repo
@@ -47299,17 +47297,15 @@ $ tree .git -L 1
 └── refs         # 存储指向数据（分支、远程仓库和标签等）的提交对象的指针
 </code></pre>
 <p>我们需要了解下 Git 对象（Git Object），有以下几种类型：</p>
-<blockquote>
 <ul>
 <li><strong>blob object</strong>（数据对象）</li>
 <li><strong>tree object</strong>（树对象）</li>
 <li><strong>commit object</strong>（提交对象）</li>
 <li><strong>tag object</strong>（标签对象）</li>
 </ul>
-</blockquote>
 <h3>2.1 Blob Object</h3>
 <p>通过 Git 操作的数据都存放于 <code>objects</code> 目录下。在仓库初始化时，<code>objects</code> 目录及其 <code>pack</code> 和 <code>info</code> 两个子目录，内容均是空的。</p>
-<pre><code class="language-shell">$ find .git/objects
+<pre><code class="language-bash">$ find .git/objects
 .git/objects
 .git/objects/pack
 .git/objects/info
@@ -47318,12 +47314,12 @@ $ find .git/objects -type f
 </code></pre>
 <p>接下来，我们利用底层命令（plumbing command） <code>git hash-object</code> 来演示一下 Git 存入和取出内容。</p>
 <p>使用 <code>git hash-object</code> 创建一条新数据对象，并将它手动存入你的 Git 数据库（指 <code>.git/objects</code> 目录）中：</p>
-<pre><code class="language-shell">$ echo 'some text...' | git hash-object -w --stdin
+<pre><code class="language-bash">$ echo 'some text...' | git hash-object -w --stdin
 2c3e89d43daa5761b247cbd1ae08e08ed8cd054d
 </code></pre>
 <p>其中 <code>-w</code> 表示除了返回「唯一键」之外，还要将该对象写入数据库中。<code>--stdin</code> 表示从标准输入读取内容。</p>
 <p>此时，我们可以看到 <code>objects</code> 目录下，新增了 <code>2c/3e89d43daa5761b247cbd1ae08e08ed8cd054d</code> 文件。</p>
-<pre><code class="language-shell">$ tree .git/objects
+<pre><code class="language-bash">$ tree .git/objects
 .git/objects
 ├── 2c
 │   └── 3e89d43daa5761b247cbd1ae08e08ed8cd054d
@@ -47337,11 +47333,11 @@ $ find .git/objects -type f
 <p>在 Git 中，它将校验和的「前 2 个字符」作为子目录名称，「余下 38 个字符」用作文件名。</p>
 </blockquote>
 <p>以上就是 Git 将内容存储到对象数据库的过程。如果想要取回数据，那么可以通过 <code>git cat-file</code> 命令取回。</p>
-<pre><code class="language-shell">$ git cat-file -p 2c3e89d4
+<pre><code class="language-bash">$ git cat-file -p 2c3e89d4
 some text...
 </code></pre>
 <p>关于 <code>git cat-file</code> 更多请看<a href="https://git-scm.com/docs/git-cat-file">这里</a>。</p>
-<pre><code class="language-shell">$ git cat-file &lt;options&gt; &lt;object&gt;
+<pre><code class="language-bash">$ git cat-file &lt;options&gt; &lt;object&gt;
   -t  show object type
   -s  show object size
   -e  exit with zero when there's no error
@@ -47349,7 +47345,7 @@ some text...
 </code></pre>
 <p>到这里，你对 Git 如何存入/取出数据应该有了初步的了解。</p>
 <p>除此之外，我们可以将这些操作应用于文件的内容。比如，创建一个自述文件并将其内容存入数据库：</p>
-<pre><code class="language-shell">$ echo 'Some instructions...' &gt; README.md
+<pre><code class="language-bash">$ echo 'Some instructions...' &gt; README.md
 
 $ git hash-object -w README.md
 9e486f6a40f2e45a8dd0835e6a0357d6f7f0db64
@@ -47359,7 +47355,7 @@ $ find .git/objects -type f
 .git/objects/2c/3e89d43daa5761b247cbd1ae08e08ed8cd054d
 </code></pre>
 <p>我们可以再次修改 <code>README.md</code> 的内容，对象数据库中将会记录该文件的两个不同版本：</p>
-<pre><code class="language-shell">$ echo 'Some instructions...(V2)' &gt; README.md
+<pre><code class="language-bash">$ echo 'Some instructions...(V2)' &gt; README.md
 
 $ git hash-object -w README.md
 e04f0c5c9d740ead52734ed920c580bf0f380ea2
@@ -47373,7 +47369,7 @@ $ find .git/objects -type f
 .git/objects/2c/3e89d43daa5761b247cbd1ae08e08ed8cd054d
 </code></pre>
 <p>接着，我们模拟下「版本回退」，取回 <code>README.md</code> 的第一版本内容：</p>
-<pre><code class="language-shell">$ git cat-file -p 9e486f6a &gt; README.md
+<pre><code class="language-bash">$ git cat-file -p 9e486f6a &gt; README.md
 
 $ cat README.md
 Some instructions...
@@ -47381,14 +47377,14 @@ Some instructions...
 <p>请注意，尽管以上操作进行了“版本回退”，但是 <code>objects/e0/4f0c5c9d740ead52734ed920c580bf0f380ea2</code> 文件并没有被删除。</p>
 <p>记住文件的每一个版本所对应的 SHA-1 值并不现实，还有另外一个问题，上述操作仅在 objects 目录下保存了文件的内容，而文件名却没有被记录。通俗地将，我们通过 <code>git cat-file -p 9e486f6a</code> 只能获取对应的内容为 <code>Some instructions...</code>，但 Git 不知道它是 <code>README.md</code> 文件的内容。</p>
 <p>上述类型的对象，我们称为<strong>数据对象（blob object）</strong>。可以通过 <code>git cat-file -t</code> 命令查到：</p>
-<pre><code class="language-shell">$ git cat-file -t 9e486f6a
+<pre><code class="language-bash">$ git cat-file -t 9e486f6a
 blob
 </code></pre>
 <h3>2.2 Tree Object</h3>
 <p>树对象（tree object），可以解决文件名保存的问题，也允许将多个文件组织到一起。</p>
 <p>一个树对象包含了一条或多条树对象的记录（tree entry），每条记录含有一个指向数据对象（blob object）或者子树对象的 SHA-1 指针，以及相应的模式、类型、文件名信息。</p>
 <p>我们将上一节用到的本地 <code>temp-repo</code> 仓库清空，并重新初始化，另外创建三个文件，目录结构如下：</p>
-<pre><code class="language-shell">$ rm -rf .git
+<pre><code class="language-bash">$ rm -rf .git
 
 $ git init
 Initialized empty Git repository in /Users/frankie/Desktop/Web/Temp/temp-repo/.git/
@@ -47407,7 +47403,7 @@ $ tree . -a
     └── index.js
 </code></pre>
 <p>接着，我们利用上层命令（porcelain command），将这些 <strong>unstracked</strong> 的文件，添加至暂存区并提交。</p>
-<pre><code class="language-shell">$ git add .
+<pre><code class="language-bash">$ git add .
 
 $ git commit -m 'first commit'
 [main (root-commit) 10a28a5] first commit
@@ -47417,13 +47413,13 @@ $ git commit -m 'first commit'
  create mode 100644 src/index.js
 </code></pre>
 <p>当前对应的最新树对象是这样的：</p>
-<pre><code class="language-shell">$ git cat-file -p main^{tree}
+<pre><code class="language-bash">$ git cat-file -p main^{tree}
 100644 blob 3c3629e647f5ddf82548912e337bea9826b434af    .gitignore
 100644 blob 6df930682ee921766a29e6504c27f79790a7bae6    README.md
 040000 tree b79960a978f46909a0449add4b2ab35766883e6d    src
 </code></pre>
 <p>其中 <code>main^{tree}</code> 语法表示 <code>main</code> 分支上最新的提交所指向的树对象。 请注意，<code>src</code> 子目录（所对应的那条树对象记录）并不是一个数据对象，而是一个指针，其指向的是另一个树对象：</p>
-<pre><code class="language-shell">$ git cat-file -p b79960a9
+<pre><code class="language-bash">$ git cat-file -p b79960a9
 100644 blob 064a5f9cffbc4df304f475a580dd961bdc2f7d38    index.js
 
 $ git cat-file -t b79960a9
@@ -47436,13 +47432,13 @@ tree
 <ol>
 <li>利用 <code>git hash-object</code> 来创建一个数据对象，并记录在 Git 数据库中：</li>
 </ol>
-<pre><code class="language-shell">$ echo 'readme v1' | git hash-object -w --stdin
+<pre><code class="language-bash">$ echo 'readme v1' | git hash-object -w --stdin
 504a7438c95afbd7f5280d756fb405bd85fbf19e
 </code></pre>
 <ol start="2">
 <li>利用底层命令 <code>git update-index</code> 将这个数据对象加入暂存区，该文件为 <code>README.md</code>。</li>
 </ol>
-<pre><code class="language-shell">$ git update-index --add --cacheinfo 10064 \
+<pre><code class="language-bash">$ git update-index --add --cacheinfo 10064 \
 &gt; 504a7438c95afbd7f5280d756fb405bd85fbf19e README.md
 </code></pre>
 <blockquote>
@@ -47456,7 +47452,7 @@ tree
 <ol start="3">
 <li>通过 <code>git write-tree</code> 命令将暂存区内容写入一个树对象。可以使用 <code>git cat-file -t</code> 来验证一下它确实是树对象。</li>
 </ol>
-<pre><code class="language-shell">$ git write-tree
+<pre><code class="language-bash">$ git write-tree
 d50d689553de001d8537d94dae3cb2c89788dae1
 
 $ git cat-file -p d50d689553de001d8537d94dae3cb2c89788dae1
@@ -47471,7 +47467,7 @@ tree
 <ol start="4">
 <li>接着，我们再创建一个新的树对象，它包含一个新文件 <code>docs.md</code> 以及 <code>README.md</code> 文件的第二个版本。</li>
 </ol>
-<pre><code class="language-shell">$ echo 'docs v1' &gt; docs.md
+<pre><code class="language-bash">$ echo 'docs v1' &gt; docs.md
 
 $ git update-index --add docs.md
 
@@ -47482,7 +47478,7 @@ $ git update-index --add --cacheinfo 100644 \
 &gt; 8d85786d2dc2fd2cad833d88bce5fca5d28a12fa README.md
 </code></pre>
 <p>到这来，目前暂存区包含了新文件 <code>docs.md</code> 和 <code>README.md</code> 的新版本。然后我们记录下这个目录数（将当前暂存区的状态记录为一个树对象），然后观察它的结构：</p>
-<pre><code class="language-shell">$ git write-tree
+<pre><code class="language-bash">$ git write-tree
 a3f266e268f9d5d337a4c494b234f7482a0b5840
 
 $ git cat-file -p a3f266e268f9d5d337a4c494b234f7482a0b5840
@@ -47493,7 +47489,7 @@ $ git cat-file -p a3f266e268f9d5d337a4c494b234f7482a0b5840
 <ol start="5">
 <li>如果为了好玩，你还可以将第一树对象（<code>d50d68</code>）加入到第二个树对象（<code>a3f266</code>），使其成为新的树对象的一个子目录。</li>
 </ol>
-<pre><code class="language-shell">$ git read-tree --prefix=bak d50d689553de001d8537d94dae3cb2c89788dae1
+<pre><code class="language-bash">$ git read-tree --prefix=bak d50d689553de001d8537d94dae3cb2c89788dae1
 
 $ git write-tree
 783727c40cc4b1205242d4130b3f713ed525b23d
@@ -47512,10 +47508,10 @@ $ git cat-file -p 783727c40cc4b1205242d4130b3f713ed525b23d
 <p>做完以上操作之后，现在有了两个树对象（<code>783727</code>、<code>d50d68</code>），分别代表我们想要跟踪的不同项目快照。</p>
 <p><strong>目前存在的问题有：如果想重用这些快照，你必须要记住所有 SHA-1 哈希值。况且，你也完全不知道谁保存了这些快照，在什么时候保存的，以及为什么保存这些快照。</strong></p>
 <p>接下来介绍的提交对象（commit object）就是为了保存基本信息的。通过调用底层命令 <code>git commit-tree</code> 可以创建一个提交对象。为此，需要指定一个树对象的 SHA-1 值，以及该提交的父提交对象（如果有的话）。</p>
-<pre><code class="language-shell">$ git commit-tree &lt;tree-object-sha1&gt; -p &lt;parent-commit-object-sha1&gt;
+<pre><code class="language-bash">$ git commit-tree &lt;tree-object-sha1&gt; -p &lt;parent-commit-object-sha1&gt;
 </code></pre>
 <p>我们使用 <code>d50d68</code> 树对象来创建第一个提交对象。由于是首次，因此没有父提交对象。</p>
-<pre><code class="language-shell">$ echo 'first commit' | git commit-tree d50d68
+<pre><code class="language-bash">$ echo 'first commit' | git commit-tree d50d68
 242bd136ff24d2880a68f2de9a8a3a66a0338eea
 
 $ git cat-file -p 242bd136ff24d2880a68f2de9a8a3a66a0338eea
@@ -47539,7 +47535,7 @@ first commit
 <p>提交对象的格式很简单，它先指定一个顶层的树对象，代表当前项目快照；然后是可能存在的父提交（到目前为止还不存在任何父提交）；之后是作者、提交者信息，它由 <code>user.name</code> 和 <code>user.email</code> 配置来设定，外加一个时间戳；留空一行，最后是提交注释。</p>
 </blockquote>
 <p>接着，我们使用 <code>783727</code> 树对象创建第二个提交对象，其父提交对象是 <code>242bd1</code>：</p>
-<pre><code class="language-shell">$ echo 'second commit' | git commit-tree 783727 -p 242bd1
+<pre><code class="language-bash">$ echo 'second commit' | git commit-tree 783727 -p 242bd1
 086ba597542c232e267d4b9aa4c0d3d4bcf2411a
 
 $ git cat-file -p 086ba5
@@ -47551,7 +47547,7 @@ committer Frankie &lt;1426203851@qq.com&gt; 1647703338 +0800
 second commit
 </code></pre>
 <p>现在，我们对最后提交的 SHA-1 值执行 <code>git log</code> 命令，你会发现，你已经有一个货真价实、可由 <code>git log</code> 查看的 Git 提交历史了。</p>
-<pre><code class="language-shell">$ git log --stat 086ba5
+<pre><code class="language-bash">$ git log --stat 086ba5
 commit 086ba597542c232e267d4b9aa4c0d3d4bcf2411a
 Author: Frankie &lt;1426203851@qq.com&gt;
 Date:   Sat Mar 19 23:22:18 2022 +0800
@@ -47577,7 +47573,7 @@ Date:   Sat Mar 19 23:11:27 2022 +0800
 <p><strong>我们使用 <code>git add</code> 和 <code>git commit</code> 上层命令时，Git 所做的工作实质就是：将被改写的文件保存为数据对象，更新暂存区，记录树对象，最后创建一个指明了顶层树对象和父提交对象的提交对象。</strong></p>
 </blockquote>
 <p>这三种 Git 对象 — 数据对象、树对象、提交对象，最初均以单独文件的形式保存在 <code>.git/objects</code> 目录下：</p>
-<pre><code class="language-shell">$ find .git/objects -type f
+<pre><code class="language-bash">$ find .git/objects -type f
 .git/objects/50/4a7438c95afbd7f5280d756fb405bd85fbf19e      # readme v1    (blob object)
 .git/objects/a3/f266e268f9d5d337a4c494b234f7482a0b5840      # tree 2       (tree object)
 .git/objects/08/6ba597542c232e267d4b9aa4c0d3d4bcf2411a      # commit 2     (commit object)
@@ -47591,7 +47587,7 @@ Date:   Sat Mar 19 23:11:27 2022 +0800
 <p>不知道有没有同学好奇，这里面为什么有三个树对象？原因是前面我们将 <code>tree 1</code>（d50d68）加入到 <code>tree 2</code>（a3f266），形成了新的树对象 <code>tree 3</code>（783727）。</p>
 </blockquote>
 <p>通过 <code>git cat-file</code> 查看下就清楚了：</p>
-<pre><code class="language-shell">$ git cat-file -p d50d68
+<pre><code class="language-bash">$ git cat-file -p d50d68
 100644 blob 504a7438c95afbd7f5280d756fb405bd85fbf19e    README.md
 
 $ git cat-file -p a3f266
@@ -47610,14 +47606,14 @@ $ git cat-file -p 783727
 <h3>2.5 对象存储</h3>
 <p>在介绍数据对象的时候，曾提及，在 Git 中的 SHA-1 哈希值，是由「待存储的数据」和「头部信息」一起做 SHA-1 校验运算而得的校验和。</p>
 <p>比如，在 Git 中字符串 <code>what is this?</code> 返回的 SHA-1 值为：<code>3246c91c89bbcada55565188499b8e214198fd48</code>。</p>
-<pre><code class="language-shell">$ echo -n 'what is this?' | git hash-object --stdin
+<pre><code class="language-bash">$ echo -n 'what is this?' | git hash-object --stdin
 ed8f50cbf7a25a1ad0a4ffed9f721b3e6f30bd25
 </code></pre>
 <blockquote>
 <p>这里使用了 <code>echo -n</code> 是避免在输出中添加换行。</p>
 </blockquote>
 <p>我们使用 <a href="https://www.ruby-lang.org/zh_cn/">Ruby</a> 脚本语言来演示下，如何生成相同的 SHA-1 值。这里通过 <code>irb</code>（Interactive Ruby）命令启动 Ruby 的交互模式：</p>
-<pre><code class="language-shell">$ irb
+<pre><code class="language-bash">$ irb
 
 &gt;&gt; content = &quot;what is this?&quot;
 =&gt; &quot;what is this?&quot;
@@ -47644,7 +47640,7 @@ ed8f50cbf7a25a1ad0a4ffed9f721b3e6f30bd25
 <p>生成 SHA-1 值之后，还没完呢... Git 会通过 <a href="https://zlib.net/">zlib</a> 压缩这条新内容，然后将压缩后的内容存入特定的文件中。</p>
 <p>它将会存在于 <code>.git/objects</code> 目录下一级，将 SHA-1 值的「前 2 位字符」作为子目录，「余下 38 位」作为该子目录下的文件名，文件内存储的是「头部信息」和「原始数据」经 <code>zlib</code> 压缩后的内容。</p>
 <p>比如，SHA-1 值为 <code>ed8f50cbf7a25a1ad0a4ffed9f721b3e6f30bd25</code> 的话，那么最终的文件路径为 <code>.git/objects/ed/8f50cbf7a25a1ad0a4ffed9f721b3e6f30bd25</code>。</p>
-<pre><code class="language-shell">&gt;&gt; require &quot;zlib&quot;
+<pre><code class="language-bash">&gt;&gt; require &quot;zlib&quot;
 =&gt; true
 
 &gt;&gt; zlib_content = Zlib::Deflate.deflate(store)
@@ -47670,7 +47666,7 @@ ed8f50cbf7a25a1ad0a4ffed9f721b3e6f30bd25
 </ol>
 </blockquote>
 <p>然后，可以通过 <code>git cat-file</code> 验证一下内容是否一致哦！</p>
-<pre><code class="language-shell">$ git cat-file -p ed8f50cbf7a25a1ad0a4ffed9f721b3e6f30bd25
+<pre><code class="language-bash">$ git cat-file -p ed8f50cbf7a25a1ad0a4ffed9f721b3e6f30bd25
 what is this?
 </code></pre>
 <p>到这里，你就创建了一个有效的 Git 数据对象。</p>
@@ -47683,7 +47679,7 @@ what is this?
 <p>因此，<code>git cat-file</code> 并不是要还原 SHA-1 所表示的原始数据，而是根据 SHA-1 哈希值在本地数据库（<code>.git/objects</code> 目录）找到对应的文件，然后再将这个文件还原出来。</p>
 <h2>三、Git References</h2>
 <p>如果你对仓库某一个提交（比如前面的 <code>086ba5</code>）开始往前的历史感兴趣，那么你可以运行 <code>git log 086ba5</code> 命令来显示历史：</p>
-<pre><code class="language-shell">$ git log 086ba5
+<pre><code class="language-bash">$ git log 086ba5
 commit 086ba597542c232e267d4b9aa4c0d3d4bcf2411a
 Author: Frankie &lt;1426203851@qq.com&gt;
 Date:   Sat Mar 19 23:22:18 2022 +0800
@@ -47698,7 +47694,7 @@ Date:   Sat Mar 19 23:11:27 2022 +0800
 </code></pre>
 <p>但这样的话，有一个明显的弊端，它要求你必须记住 SHA-1 哈希值，这显然是不合理的。假设有个一个文件来保存 SHA-1 值，而这个文件有一个简单的名字，然后用这个名字指针来代替原始的 SHA-1 值的话，会更加简单。</p>
 <p>在 Git 中，这种简单的名称被称为**「引用」（references，简写 refs）**。你可以在 <code>.git/refs</code> 目录下找到这类含有 SHA-1 值的文件。在当前仓库中，这个目录还没包含任何文件，目录结构如下：</p>
-<pre><code class="language-shell">$ find .git/refs
+<pre><code class="language-bash">$ find .git/refs
 .git/refs
 .git/refs/heads
 .git/refs/tags
@@ -47706,25 +47702,25 @@ Date:   Sat Mar 19 23:11:27 2022 +0800
 $ find .git/refs -type f
 </code></pre>
 <p>如要创建一个新引用用来帮助记录最新提交所在的位置，从技术上，只需要简单地做如下操作：</p>
-<pre><code class="language-shell">$ echo 086ba597542c232e267d4b9aa4c0d3d4bcf2411a &gt; .git/refs/heads/main
+<pre><code class="language-bash">$ echo 086ba597542c232e267d4b9aa4c0d3d4bcf2411a &gt; .git/refs/heads/main
 </code></pre>
 <p>现在，你可以使用刚创建的新引用来代替 SHA-1 值了。</p>
-<pre><code class="language-shell">$ git log main --pretty=oneline
+<pre><code class="language-bash">$ git log main --pretty=oneline
 086ba597542c232e267d4b9aa4c0d3d4bcf2411a (HEAD -&gt; main) second commit
 242bd136ff24d2880a68f2de9a8a3a66a0338eea first commit
 </code></pre>
 <p>但是不提倡直接编辑引用文件，如果想要更新某个引用，Git 提供了一个更加安全的命令 <code>git update-ref</code> 来完成此事：</p>
-<pre><code class="language-shell"># usage: git update-ref &lt;refname&gt; &lt;new-val&gt;
+<pre><code class="language-bash"># usage: git update-ref &lt;refname&gt; &lt;new-val&gt;
 $ git update-ref refs/heads/main 086ba597542c232e267d4b9aa4c0d3d4bcf2411a
 </code></pre>
 <p>这基本就是 Git 分支的本质：一个指向某一系列提价之首的指针或引用。若想在第一个提交上创建一个分支，可以这么做：</p>
-<pre><code class="language-shell">$ git update-ref refs/heads/test 242bd136ff24d2880a68f2de9a8a3a66a0338eea
+<pre><code class="language-bash">$ git update-ref refs/heads/test 242bd136ff24d2880a68f2de9a8a3a66a0338eea
 
 $ git log test --pretty=oneline
 242bd136ff24d2880a68f2de9a8a3a66a0338eea (test) first commit
 </code></pre>
 <p>这个 <code>test</code> 分支将只包含从第一个提交开始往前追溯的记录（但本文目前只有包含两次提交，哈哈）。此时我们运行上层命令 <code>git branch</code> 发现，目前已存在 <code>main</code> 和 <code>test</code> 两个分支了。</p>
-<pre><code class="language-shell">$ git branch
+<pre><code class="language-bash">$ git branch
 * main
   test
 </code></pre>
@@ -47745,11 +47741,11 @@ $ git log test --pretty=oneline
 <p>HEAD 文件通常是一个「符号引用」（symbolic reference），指向目前所在的分支。所谓的符号引用，表示它是已指向其他引用的指针。</p>
 <p>在某些罕见的情况下，HEAD 文件可能会包含一个 Git Object 的 SHA-1 值。当你 <code>checkout</code> 一个标签、提交或远程分支，使得你的仓库变成 的 <a href="https://git-scm.com/docs/git-checkout#_detached_head">detached HEAD</a> 状态时，就会出现这种情况（关于分离 HEAD 另一篇<a href="https://github.com/tofrankie/blog/issues/107">文章</a>也介绍过）。</p>
 <p>当你查看 HEAD 文件的内容时，通常会看到类似这样的内容：</p>
-<pre><code class="language-shell">$ cat .git/HEAD
+<pre><code class="language-bash">$ cat .git/HEAD
 ref: refs/heads/main
 </code></pre>
 <p>然后，如果执行 <code>git checkout test</code>，Git 会更新 HEAD 文件：</p>
-<pre><code class="language-shell">$ git checkout test
+<pre><code class="language-bash">$ git checkout test
 Switched to branch 'test'
 
 $ cat .git/HEAD
@@ -47757,7 +47753,7 @@ ref: refs/heads/test
 </code></pre>
 <p>当执行 <code>git commit</code> 时，该命令会创建一个「提交对象」，并用 HEAD 文件中那个引用所指向的 SHA-1 值设置其父提交字段。</p>
 <p>同样地，Git 提供了一个更加安全的命令：<code>git symbolic-ref</code>。既可以用来查看 HEAD 引用对应的值，同样也可以设置 HEAD 引用的值。</p>
-<pre><code class="language-shell">$ git symbolic-ref HEAD
+<pre><code class="language-bash">$ git symbolic-ref HEAD
 refs/heads/main
 
 $ git symbolic-ref HEAD refs/heads/test
@@ -47766,19 +47762,19 @@ $ cat .git/HEAD
 ref: refs/heads/test
 </code></pre>
 <p>但是，不能把符号引用设置为一个不符合引用规范的值：</p>
-<pre><code class="language-shell">$ git symbolic-ref HEAD test
+<pre><code class="language-bash">$ git symbolic-ref HEAD test
 fatal: Refusing to point HEAD outside of refs/
 </code></pre>
 <h3>3.2 标签引用</h3>
 <p>在 Git 中，标签的作用就是给某个提交对象加上一个更友好的名字罢了，分为「轻量标签」（lightweight）和「附注标签」（annotated）两种。</p>
 <p>可以这样创建一个轻量标签：</p>
-<pre><code class="language-shell">$ git update-ref refs/tags/v1.0.0 242bd136ff24d2880a68f2de9a8a3a66a0338eea
+<pre><code class="language-bash">$ git update-ref refs/tags/v1.0.0 242bd136ff24d2880a68f2de9a8a3a66a0338eea
 </code></pre>
 <p>若要创建一个附注标签，Git 会创建一个标签对象，并记录一个引用来指向该标签对象，而不是直接指向提交对象。下面使用 <code>git tag -a</code> 命令来生成：</p>
-<pre><code class="language-shell">$ git tag -a v2.0.0 086ba597542c232e267d4b9aa4c0d3d4bcf2411a -m 'latest tag'
+<pre><code class="language-bash">$ git tag -a v2.0.0 086ba597542c232e267d4b9aa4c0d3d4bcf2411a -m 'latest tag'
 </code></pre>
 <p>下面我们对比看下两个 Tag 的内容：</p>
-<pre><code class="language-shell">$ cat .git/refs/tags/v1.0.0
+<pre><code class="language-bash">$ cat .git/refs/tags/v1.0.0
 242bd136ff24d2880a68f2de9a8a3a66a0338eea
 
 $ git cat-file -p 242bd136ff24d2880a68f2de9a8a3a66a0338eea
@@ -47791,7 +47787,7 @@ first commit
 $ git cat-file -t 242bd136ff24d2880a68f2de9a8a3a66a0338eea
 commit
 </code></pre>
-<pre><code class="language-shell">$ cat .git/refs/tags/v2.0.0
+<pre><code class="language-bash">$ cat .git/refs/tags/v2.0.0
 980d0eab8a71de526ebd1eece1f6cbe33db0931b
 
 $ git cat-file -p 980d0eab8a71de526ebd1eece1f6cbe33db0931b
@@ -47809,7 +47805,7 @@ tag
 <h3>3.3 远程引用</h3>
 <p>接着介绍第三种引用类型：远程引用（remote reference）。如果你添加了一个远程版本库并对其执行过推送操作，Git 会记录下最近一次推送时每个分支所对应的值，并保存在 <code>.git/refs/remotes</code> 目录下。</p>
 <p>下面是未推送过，<code>.git/refs</code> 的目录结构：</p>
-<pre><code class="language-shell">$ tree .git/refs
+<pre><code class="language-bash">$ tree .git/refs
 .git/refs
 ├── heads
 │   ├── main
@@ -47821,7 +47817,7 @@ tag
 2 directories, 4 files
 </code></pre>
 <p>接下来，我们将 <code>main</code> 分支推送至远程仓库，然后再观察下 <code>.git/refs</code> 目录的变化。</p>
-<pre><code class="language-shell">$ git remote add origin git@github.com:toFrankie/simple-git.git
+<pre><code class="language-bash">$ git remote add origin git@github.com:toFrankie/simple-git.git
 
 $ git push origin main
 Enumerating objects: 7, done.
@@ -47855,14 +47851,13 @@ $ cat .git/refs/remotes/origin/main
 <p>远程引用（位于 <code>refs/remotes</code> 目录下的引用）和分支（位于 <code>refs/heads</code> 目录下的引用）之间最主要的区别在于，远程引用是<strong>只读</strong>的。</p>
 </blockquote>
 <p>尽管你可以通过 <code>git checkout</code> 切换至某个远程引用，但是 Git 不会将 HEAD 引用指向该远程引用。你永远不能通过 commit 命令来更新远程引用。Git 将这些远程引用作为记录远程服务器上各分支最后已知位置状态的书签来管理。</p>
+<h2>四、git log 与 git reflog</h2>
+<p>未完待续...</p>
 <!--
-
-## 三、git log 与 git reflog
 
 在前一篇[文章](https://github.com/tofrankie/blog/issues/107)中提到过：「分支」是由一个或多个 commit ID 组成的集合。
 
 -->
-<p>未完待续...</p>
 <h2>参考链接</h2>
 <ul>
 <li><a href="https://github.com/atlas-comstock/YongHaoWu.github.io/blob/master/_posts/2017-06-18-TheGitYouShouldKnow.md">你们仍未掌握那天所学的 git 知识</a></li>
@@ -47873,7 +47868,7 @@ $ cat .git/refs/remotes/origin/main
             <author>tofrankie</author>
         </item>
         <item>
-            <title><![CDATA[细读 Git | 弄懂 origin、HEAD、FETCH_HEAD 相关内容]]></title>
+            <title><![CDATA[彻底弄懂 Git 的 origin、HEAD、FETCH_HEAD 相关内容]]></title>
             <link>https://github.com/tofrankie/blog/issues/107</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/107</guid>
             <pubDate>Sat, 25 Feb 2023 12:47:15 GMT</pubDate>
@@ -47881,7 +47876,7 @@ $ cat .git/refs/remotes/origin/main
 <p>如果大家平常都在使用 Git 作为版本控制工具的话，那么一定每天都能见到 <]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767416038158.jpeg" alt="图片源自 Freepik"></p>
 <p>如果大家平常都在使用 Git 作为版本控制工具的话，那么一定每天都能见到 <code>origin</code>，诸如：</p>
-<pre><code class="language-shell">$ git push origin main
+<pre><code class="language-bash">$ git push origin main
 
 $ git fetch origin main
 
@@ -47893,7 +47888,7 @@ $ git pull origin main
 <p>就好比如说，在现实世界中小明、小红是再普通不过的名字，但由于在小学语文课本的对话中常被作为男一女一，用于表示对话的两个人而已，并没有特别的意义在里面。而在技术博文中，经常可以看到使用 <code>foo</code>、<code>bar</code> 作为变量标识符举例，它们就相当于语文课本中的小明、小红一样。那么本文接下来要讨论的 <code>origin</code>、<code>upstream</code> 等也是同样的道理。</p>
 <p>先来个餐前菜...</p>
 <p>如果我跟你说，以下两条命令是完全等效的，你是不是就差不多猜得出 <code>origin</code> 表示什么了？</p>
-<pre><code class="language-shell">$ git push origin main
+<pre><code class="language-bash">$ git push origin main
 $ git push git@github.com:toFrankie/repo-demo.git main
 </code></pre>
 <p>是的，跟你猜的一样...</p>
@@ -47905,7 +47900,7 @@ $ git push git@github.com:toFrankie/repo-demo.git main
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767416265149.png" alt=""></p>
 <p>可以看到 <code>git push</code> 失败了，原因很容易理解：我们只是在本地创建一个仓库，并没有将本仓库与远程仓库进行关联，因此 Git 无法理解是将其推送至哪个代码托管平台，然后也不知道是平台上的哪个远程仓库，是 GitHub 平台的，还是 GitLab 平台的？是平台上的 React 仓库，还是 Vue 仓库，还是别的什么仓库？Git 统统都不知道，那么自然是无法替你办事了。</p>
 <p>因此，我们需要做的就是把本地的 <code>repo-demo</code> 仓库与远程仓库关联一下（请注意，一个本地仓库是可以关联多个远程仓库的）：</p>
-<pre><code class="language-shell">$ git remote add origin &lt;repo_address&gt;
+<pre><code class="language-bash">$ git remote add origin &lt;repo_address&gt;
 </code></pre>
 <p>这里用到了 <code>origin</code>，我们先不管为什么用 <code>origin</code>，用其他（比如 <code>foo</code>）行不行的问题？（答案是可以的）</p>
 <p>关联之后，再进行 Push 就能成功了。</p>
@@ -47945,14 +47940,14 @@ $ git push git@github.com:toFrankie/repo-demo.git main
 </blockquote>
 <p>比起记住一个远程仓库地址，别名实在方便太多了。将 <code>origin</code> 作为远程仓库的别名是较为普遍的做法，况且所有代码托管平台默认就是 <code>origin</code>。</p>
 <p>回到文章开头的例子：</p>
-<pre><code class="language-shell">$ git push origin main
+<pre><code class="language-bash">$ git push origin main
 
 # 相当于（其中 origin 指向了 git@github.com:toFrankie/repo-demo.git 远程仓库）
 $ git push git@github.com:toFrankie/repo-demo.git main
 </code></pre>
 <p>以上两种方式是完全等价的，这样就更能体现别名的优势了，简洁很多。</p>
 <p>既然是别名，自然是可以修改的，主要有以下命令：</p>
-<pre><code class="language-shell"># 新增远程名称（一个本地仓库，可以关联多个远程仓库）
+<pre><code class="language-bash"># 新增远程名称（一个本地仓库，可以关联多个远程仓库）
 $ git remote add &lt;remote-name&gt; &lt;repo-address&gt;
 
 # 删除已存在远程名称（只会移除本地仓库与远程仓库的管理，不会删除远程仓库的代码哈）
@@ -47972,12 +47967,12 @@ $ git remote rename &lt;old-remote-name&gt; &lt;new-remote-name&gt;
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767416431259.png" alt=""></p>
 <p>到这里，你应彻底明白 <code>origin</code> 是什么了吧。</p>
 <p>前面提到过，一个本地仓库是可以关联多个远程仓库的，举个例子：</p>
-<pre><code class="language-shell">$ git remote add bar git@github.com:toFrankie/git-test-demo.git
+<pre><code class="language-bash">$ git remote add bar git@github.com:toFrankie/git-test-demo.git
 </code></pre>
 <p>我们可以查看下 <code>.git/congfig</code> 配置文件，如下（或者通过 <code>git remote -v</code> 查看）</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767416462693.png" alt=""></p>
 <p>从图中可以看到，别名 <code>foo</code> 和 <code>bar</code> 分别指向了两个不同的远程仓库，然后使用方法与 <code>origin</code> 是相同的，比如：</p>
-<pre><code class="language-shell"># 将本地的 main 分支推送至 foo 对应的远程仓库（repo-demo）
+<pre><code class="language-bash"># 将本地的 main 分支推送至 foo 对应的远程仓库（repo-demo）
 $ git push foo main
 
 # 将本地的 main 分支推送至 bar 对应的远程仓库（git-test-demo）
@@ -47990,7 +47985,7 @@ $ git push bar main
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767416482094.png" alt=""></p>
 <p>当我们将 <code>Origin-Repo</code> 克隆到本地，Git 会默认创建一个 <code>origin</code> 的别名指向 <code>Origin-Repo</code> 的仓库地址。</p>
 <p>如果要跟踪 <code>Upstream-Repo</code> 仓库的变更，您需要添加另一个名为 <code>upstream</code> 的别名，使其指向 <code>Upstream-Repo</code> 仓库。</p>
-<pre><code class="language-shell"># 1. 添加上游仓库的别名
+<pre><code class="language-bash"># 1. 添加上游仓库的别名
 $ git remote add upstream &lt;upstream-repo-address&gt;
 
 # 2. 获取上游仓库的变更
@@ -48004,7 +47999,7 @@ $ git merge upstream/main
 <h3>1.3 小结</h3>
 <p>除了 <code>origin</code>、<code>upstream</code> 等有众所周知的含义的远程名称之外，我们还可以这样使用：</p>
 <p>由于一个本地仓库是可以关联多个远程仓库的，因此，可以设置多个「别名」分别指向不同的远程仓库（比如一个 GitHub、一个 GitLab、一个 Gitee），然后通过别名的方式方便、快速地拉取某个远程仓库的代码或者将代码推送至某个远程仓库。</p>
-<pre><code class="language-shell"># 添加 github 别名
+<pre><code class="language-bash"># 添加 github 别名
 $ git remote add github git@github.com:toFrankie/repo-demo.git
 
 # 添加 gitlab 别名
@@ -48031,7 +48026,7 @@ $ git remote add gitee git@gitee.com:toFrankie/repo-demo.git
 <p><strong>若无特殊需求，不要为了个性去更改 <code>origin</code>、<code>upstream</code> 等被广泛使用的别名，其中所表示的约定俗成的、众所周知的含义。</strong></p>
 <h2>二、远程分支（Remote Branch）</h2>
 <p>常说的「远程分支」是远程仓库对应分支在本地的一个副本。比如常见的 <code>origin/master</code>、<code>origin/main</code>、<code>origin/develop</code> 等都是远程分支，可以在 <code>.git/refs/remotes/</code> 目录下看到。</p>
-<pre><code class="language-shell"># 查看所有本地分支
+<pre><code class="language-bash"># 查看所有本地分支
 $ git branch
 
 # 查看所有远程分支（-r 是 --remotes 的简写）
@@ -48041,7 +48036,7 @@ $ git branch -r
 $ git branch -a
 </code></pre>
 <p>可以通过 <code>git branch -r</code> 命令查看所有的远程分支：</p>
-<pre><code class="language-shell">$ git branch -r
+<pre><code class="language-bash">$ git branch -r
   origin/HEAD -&gt; origin/main
   origin/dev
   origin/main
@@ -48052,7 +48047,7 @@ $ git branch -a
 <p>如果对 <code>origin/HEAD</code> 不理解的话，先不管下文会介绍。</p>
 <p>上一节，我们介绍了远程名称只是一个代号、别名，是可以修改的。那么我们将 Remote Name 由 <code>origin</code> 修改为 <code>foo</code>，那么远程分支，会不会由 <code>origin/main</code> 变为 <code>foo/main</code> 呢？</p>
 <p>修改前：</p>
-<pre><code>$ git remote -v
+<pre><code class="language-bash">$ git remote -v
 origin  git@github.com:toFrankie/repo-demo.git (fetch)
 origin  git@github.com:toFrankie/repo-demo.git (push)
 
@@ -48062,7 +48057,7 @@ $ git branch -r
   origin/main
 </code></pre>
 <p>修改后：</p>
-<pre><code>$ git remote rename origin foo
+<pre><code class="language-bash">$ git remote rename origin foo
 
 $ git remote -v
 foo     git@github.com:toFrankie/repo-demo.git (fetch)
@@ -48074,7 +48069,7 @@ $ git branch -r
   foo/main
 </code></pre>
 <p>果然，将远程名称修改之后，远程分支名称也会跟着改变的。我们通过 <code>tree</code> 命令看下目录结构，如下：</p>
-<pre><code>$ tree .git/refs
+<pre><code class="language-bash">$ tree .git/refs
 .git/refs
 ├── heads
 │   ├── dev
@@ -48121,7 +48116,7 @@ $ git branch -r
 <p>对比发现，<code>HEAD</code> 发生改变了。</p>
 <p>前面提到，分支只是对 Commit-ID 的引用。每当在某个分支上提交代码，Git 都会产生一个全新的、唯一的 Commit-ID，此时我们的分支名称也随之移向最新的一个 Commit-ID。</p>
 <p>关于 HEAD 存放于本地仓库的 <code>.git/HEAD</code> 文件里面，利用 <code>cat</code> 命令可以看到它的内容。</p>
-<pre><code>$ cat .git/HEAD
+<pre><code class="language-bash">$ cat .git/HEAD
 ref: refs/heads/dev
 
 $ cat .git/refs/heads/dev
@@ -48137,7 +48132,7 @@ $ cat .git/refs/heads/dev
 </ul>
 <p>顺道提一下，<code>git reset</code> 的本质就是移动 <code>HEAD</code> 来达到撤销的目的。</p>
 <p>观察以下示例，我使用 <code>git reset --soft</code> 将 <code>HEAD</code> 从 Commit-ID 为 <code>42d46a2</code> 移至 <code>222a33c</code>，变化如下：</p>
-<pre><code>$ git log
+<pre><code class="language-bash">$ git log
 commit 42d46a2356cfdde0ad80bfc042b6cb15eae04759 (HEAD -&gt; main, origin/main, origin/HEAD)
 Author: Frankie &lt;1426203851@qq.com&gt;
 Date:   Sat Feb 26 16:44:30 2022 +0800
@@ -48178,7 +48173,7 @@ Date:   Sun Feb 20 15:45:15 2022 +0800
     docs: add README.md
 </code></pre>
 <p>此时，我们再看下 <code>.git/HEAD</code> 的内容：</p>
-<pre><code class="language-shell">$ cat .git/HEAD
+<pre><code class="language-bash">$ cat .git/HEAD
 ref: refs/heads/main
 
 $ cat .git/refs/heads/main
@@ -48197,7 +48192,7 @@ $ cat .git/refs/heads/main
 <li>切换至某个远程分支的时候。</li>
 </ol>
 <p>我们先将 Git 的提示语言切换为英文，看得更加清晰。</p>
-<pre><code class="language-shell">$ git checkout e0c619ca3978a38f6eabe79c3dfc67d4296ccc36
+<pre><code class="language-bash">$ git checkout e0c619ca3978a38f6eabe79c3dfc67d4296ccc36
 Note: switching to 'e0c619ca3978a38f6eabe79c3dfc67d4296ccc36'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
@@ -48219,20 +48214,20 @@ HEAD is now at e0c619c docs: update readme.md
 </code></pre>
 <p>此时 <code>HEAD</code> 指向 <code>e0c619c</code>，这个就是 <code>detached HEAD</code>。</p>
 <p>还有，前面提到「没有指向某个本地分支」，但其实我们使用 <code>git branch</code> 会发现有以下这样一个分支：</p>
-<pre><code class="language-shell">$ git branch
+<pre><code class="language-bash">$ git branch
 * (HEAD detached at e0c619c)
   dev
   main
 </code></pre>
 <p>但注意，当我们切换至其他分支时，这个 <code>(HEAD detached at e0c619c)</code> 分支是会被干掉的，因为它只是临时的。因此人家也提醒你可以使用 <code>git switch -c &lt;new-branch-name&gt;</code> 命令，以创建一个新分支来指向该 Commit-ID。</p>
 <p>假设我们有这样一个场景：想要查看某个历史版本的源码，就可以利用此功能来解决。</p>
-<pre><code class="language-shell"># -t 即 --track
+<pre><code class="language-bash"># -t 即 --track
 $ git branch &lt;new-branch-name&gt; &lt;commit-id&gt;
 # 或者
 $ git checkout -b &lt;new-branch-name&gt; &lt;commit-id&gt;
 </code></pre>
 <p>如果我们使用 <code>git checkout origin/main</code> 切换至 <code>origin/main</code> 远程分支时，也会产生一个 <code>detached HEAD</code> 的。如果我们想基于某个远程分支，新建一个同名本地分支，可以这样：</p>
-<pre><code class="language-shell">$ git checkout -t origin/dev
+<pre><code class="language-bash">$ git checkout -t origin/dev
 branch 'dev' set up to track 'origin/dev'.
 Switched to a new branch 'dev'
 
@@ -48244,7 +48239,7 @@ $ git checkout -b dev origin/dev
 <p>从名字可以看出，<code>origin/HEAD</code> 也是一个「远程分支」，其中 <code>origin</code> 则对应远程名称。</p>
 <p><strong>一般情况下，<code>origin/HEAD</code> 总是指向远程仓库的「默认分支」</strong>。假设我们的远程默认分支为 <code>main</code>。那么在远程仓库在本地的副本，<code>origin/HEAD</code> 就是相当于 <code>origin/main</code>。</p>
 <p>Git 提供了以下命令让我们去修改 <code>origin/HEAD</code> 的指向（可通过 <code>git remote set-head -h</code> 查看）：</p>
-<pre><code class="language-shell"># 将 origin/HEAD 设为远程仓库的默认分支（-a 即 --auto）
+<pre><code class="language-bash"># 将 origin/HEAD 设为远程仓库的默认分支（-a 即 --auto）
 $ git remote set-head &lt;remote-name&gt; -a
 
 # 将 origin/HEAD 设为某个远程分支，
@@ -48256,20 +48251,20 @@ $ git remote set-head &lt;remote-name&gt; -d
 </code></pre>
 <p>以上注释部分，假定了远程名称为 <code>origin</code>。</p>
 <p>我们修改下 <code>origin/HEAD</code> 为远程仓库的 <code>dev</code> 分支，<code>origin/HEAD</code> 文件里面存储的内容，同样表示的也是对某个远程分支的引用，仅此而已。</p>
-<pre><code class="language-shell">$ git remote set-head origin dev
+<pre><code class="language-bash">$ git remote set-head origin dev
 $ cat .git/refs/remotes/origin/HEAD
 ref: refs/remotes/origin/dev
 </code></pre>
 <h3>3.4 ORIG_HEAD（拓展内容）</h3>
 <p>在 <code>.git</code> 目录下，有一个 <code>ORIG_HEAD</code> 的文件，你有没有好奇怪，它是什么呢？</p>
-<pre><code class="language-shell">$ cat .git/ORIG_HEAD
+<pre><code class="language-bash">$ cat .git/ORIG_HEAD
 222a33cb3185457a5d726325aa7233e43f0b92d3
 </code></pre>
 <p>还记得，前面使用过 <code>git reset --soft 222a33cb3185457a5d726325aa7233e43f0b92d3</code> 指令来移动 <code>HEAD</code> 的指向吗？</p>
 <p>当我们进行了一些「危险操作」时，比如 <code>git reset</code>、<code>git merge</code>、<code>git rebase</code> 等操作时，Git 会将当前 <code>HEAD</code> 指向的的 Commit-ID 原值保存至 <code>ORIG_HEAD</code> 文件内。需要注意的是，类似 <code>git commit</code> 等操作并不会更新 <code>ORIG_HEAD</code> 的内容。</p>
 <p>这样的话，加入我们执行了一些「误操作」时，可以利用 <code>git reset --hard ORIG_HEAD</code> 回退至上一步。</p>
 <p>举个例子，我们进行一次 <code>git reset</code> 操作：</p>
-<pre><code class="language-shell">$ git log
+<pre><code class="language-bash">$ git log
 commit 42d46a2356cfdde0ad80bfc042b6cb15eae04759 (HEAD -&gt; main, origin/main)
 Author: Frankie &lt;1426203851@qq.com&gt;
 Date:   Sat Feb 26 16:44:30 2022 +0800
@@ -48295,7 +48290,7 @@ Date:   Sun Feb 20 15:45:15 2022 +0800
     docs: add README.md
 </code></pre>
 <p>在 <code>reset</code> 之前，我们可以看到 <code>HEAD</code> 指向的 Commit-ID 为 <code>42d46a2356cfdde0ad80bfc042b6cb15eae04759</code>，接着我们执行 git reset 指令：</p>
-<pre><code class="language-shell">$ git reset --soft e0c619ca3978a38f6eabe79c3dfc67d4296ccc36
+<pre><code class="language-bash">$ git reset --soft e0c619ca3978a38f6eabe79c3dfc67d4296ccc36
 $ git log
 commit e0c619ca3978a38f6eabe79c3dfc67d4296ccc36 (HEAD -&gt; main)
 Author: Frankie &lt;1426203851@qq.com&gt;
@@ -48317,11 +48312,11 @@ Date:   Sun Feb 20 15:45:15 2022 +0800
 </code></pre>
 <p>在 <code>git reset</code> 完成之后，<code>HEAD</code> 指向了 <code>e0c619ca3978a38f6eabe79c3dfc67d4296ccc36</code>。</p>
 <p>既然我们前面提到过，<code>ORIG_HEAD</code> 会记录高危操作前的 Commit-ID。如果没错的话，此时 <code>ORIG_HEAD</code> 记录的应该是 <code>42d46a2356cfdde0ad80bfc042b6cb15eae04759</code>。</p>
-<pre><code class="language-shell">$ cat .git/ORIG_HEAD
+<pre><code class="language-bash">$ cat .git/ORIG_HEAD
 42d46a2356cfdde0ad80bfc042b6cb15eae04759
 </code></pre>
 <p>如果我们想吃后悔药了，就可以通过 <code>git reset --hard ORIG_HEAD</code> 进行回退：</p>
-<pre><code class="language-shell">$ git reset --hard ORIG_HEAD
+<pre><code class="language-bash">$ git reset --hard ORIG_HEAD
 HEAD is now at 42d46a2 docs: update
 
 $ git log
@@ -48356,7 +48351,7 @@ Date:   Sun Feb 20 15:45:15 2022 +0800
 <p><strong><code>FETCH_HEAD</code> 指的是某个分支在远程仓库上最新的状态</strong>。每一个执行过 <code>git fetch</code> 操作的本地仓库都会存在一个 <code>FETCH_HEAD</code> 列表，这个列表保存在 <code>.git/FETCH_HEAD</code> 文件中。<code>FETCH_HEAD</code> 文件中的每一行对应着远程仓库的一个分支。当前本地分支指向的 <code>FETCH_HEAD</code> 就是该文件中的「第一行」对应的分支（这段表述源于<a href="https://ruby-china.org/topics/4768">此处</a>）。</p>
 </blockquote>
 <p>我们知道 <code>git fetch</code> 用以下几种用法：</p>
-<pre><code class="language-shell"># 1 
+<pre><code class="language-bash"># 1 
 $ git fetch
 
 # 2
@@ -48399,7 +48394,7 @@ $ git fetch &lt;remote-name&gt; &lt;remote-branch-name&gt;:&lt;local-branch-name
 <p>接着，与 <code>FETCH_HEAD</code> 相关的是 <code>git pull</code> 操作。</p>
 <p><code>git pull</code> 等价于 <code>git fetch</code> + <code>git merge FETCH_HEAD</code>  两个步骤的结合。</p>
 <p>当 <code>git pull</code> 不添加其他参数时，等价于 <code>git pull &lt;remote-name&gt; &lt;当前分支名&gt;</code>，如果远程仓库无与之对应的同名分支，执行该命令就会抛出错误。举个例子：</p>
-<pre><code class="language-shell">$ git branch -a
+<pre><code class="language-bash">$ git branch -a
 * temp
   remotes/origin/HEAD -&gt; origin/dev
   remotes/origin/dev
@@ -48418,7 +48413,7 @@ If you wish to set tracking information for this branch you can do so with:
 
 </code></pre>
 <p>好，我们切换到本地的 <code>main</code> 分支，远程仓库有与之对应的同名分支。</p>
-<pre><code class="language-shell"># 相当于 git pull origin main
+<pre><code class="language-bash"># 相当于 git pull origin main
 $ git pull
 </code></pre>
 <p>拆分为以下步骤：</p>
@@ -48435,7 +48430,7 @@ $ git pull
 <h2>四、更多</h2>
 <p>其实上面介绍了很多，细心的同学可能会发现，其实无论是「本地分支」，还是「远程分支」，它们记录的只是一个 Commit-ID 或者是对某个分支的引用（形如 <code>ref: refs/heads/main</code>）。</p>
 <p>我们观察本地仓库的 <code>.git</code> 目录可以发现，我们的本地分支、远程分支、标签都是存在于 <code>.git/refs/</code> 目录下：</p>
-<pre><code class="language-shell">$ tree .git/refs
+<pre><code class="language-bash">$ tree .git/refs
 .git/refs
 ├── heads
 │   ├── dev
@@ -48637,7 +48632,7 @@ Hi 越前君! You've successfully authenticated, but GITEE.COM does not provide 
             <author>tofrankie</author>
         </item>
         <item>
-            <title><![CDATA[Git 常用命令介绍]]></title>
+            <title><![CDATA[Git 常用命令]]></title>
             <link>https://github.com/tofrankie/blog/issues/103</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/103</guid>
             <pubDate>Sat, 25 Feb 2023 12:40:21 GMT</pubDate>
@@ -48649,7 +48644,7 @@ Hi 越前君! You've successfully authenticated, but GITEE.COM does not provide 
 <p>作个记录。</p>
 <h2>基本配置</h2>
 <p>指定提交者信息。</p>
-<pre><code class="language-shell"># 全局配置
+<pre><code class="language-bash"># 全局配置
 $ git config --global user.name &lt;your-name&gt;
 $ git config --global user.email &lt;your-email&gt;
 
@@ -48658,7 +48653,7 @@ git config user.name &lt;your-name&gt;
 git config user.email &lt;your-email&gt;
 </code></pre>
 <p>指定不忽略大小写。但不建议修过此配置。</p>
-<pre><code class="language-shell">$ git config --global core.ignorecase false
+<pre><code class="language-bash">$ git config --global core.ignorecase false
 </code></pre>
 <blockquote>
 <p>Related Link: <a href="https://git-scm.com/docs/git-config/2.43.0#Documentation/git-config.txt-coreignoreCase">git config core.ignoreCase</a></p>
@@ -48667,10 +48662,10 @@ git config user.email &lt;your-email&gt;
 <pre><code class="language-shell">$ git config --global init.defaultBranch main
 </code></pre>
 <blockquote>
-<p>Git 3.0 默认分支将会从 master 改为 main，<a href="https://git-scm.com/docs/git-init#Documentation/git-init.txt---initial-branchbranch-name">详见</a>。</p>
+<p>Git 3.0 默认分支将会从 <code>master</code> 改为 <code>main</code>，<a href="https://git-scm.com/docs/git-init#Documentation/git-init.txt---initial-branchbranch-name">详见</a>。</p>
 </blockquote>
 <h2>初始化</h2>
-<pre><code class="language-shell"># 初始化
+<pre><code class="language-bash"># 初始化
 $ git init
 
 # 与远程仓库建立连接
@@ -48687,24 +48682,24 @@ $ git remote add origin &lt;repo-address&gt;
 $ vim .git/config
 </code></pre>
 <h2>克隆</h2>
-<pre><code class="language-shell"># dir-name 可选，默认为仓库名称
+<pre><code class="language-bash"># dir-name 可选，默认为仓库名称
 $ git clone &lt;repo-address&gt; [dir-name]
 </code></pre>
 <p>以上方式仅会克隆仓库的「默认分支」，通过 <code>git branch --list</code> 能看到本地只有一个分支。</p>
 <p>如果再通过新建分支再拉取指定分支，甚至可能还需要解决冲突，太繁琐了。</p>
 <p>那么，如何快速有效的直接克隆远程指定分支？</p>
-<pre><code class="language-shell">$ git clone -b &lt;branch-name&gt; &lt;repo-address&gt;
+<pre><code class="language-bash">$ git clone -b &lt;branch-name&gt; &lt;repo-address&gt;
 
 # 指定目录名称
 $ git clone -b &lt;branch-name&gt; &lt;repo-address&gt; &lt;local-dirname&gt;
 </code></pre>
-<p>比如，远程有 <code>master</code> 和 <code>develop</code> 两个分支，通过 <code>git clone -b develop git@github.com:toFrankie/git_dev_demo.git</code> 会克隆 <code>develop</code> 分支到本地，而且本地只有 <code>develop</code> 一个分支。</p>
+<p>比如，远程有 <code>master</code> 和 <code>develop</code> 两个分支，通过 <code>git clone -b develop git@github.com:tofrankie/git_dev_demo.git</code> 会克隆 <code>develop</code> 分支到本地，而且本地只有 <code>develop</code> 一个分支。</p>
 <blockquote>
-<p>部分内容源自 <a href="https://www.cnblogs.com/weidaijie/p/10893708.html">Git 克隆远程仓库的指定分支</a>。</p>
+<p>部分内容源自《<a href="https://www.cnblogs.com/weidaijie/p/10893708.html">Git 克隆远程仓库的指定分支</a>》</p>
 </blockquote>
 <h2>分支操作</h2>
 <h3>查看分支</h3>
-<pre><code class="language-shell"># 列出所有本地分支
+<pre><code class="language-bash"># 列出所有本地分支
 $ git branch
 
 # 列出所有远程分支
@@ -48718,7 +48713,7 @@ $ git branch | grep &lt;branch-name&gt;
 </code></pre>
 <h3>新建分支</h3>
 <p>若分支已存在，以下命令都会失败。</p>
-<pre><code class="language-shell"># 新建分支，但不会切换至新分支
+<pre><code class="language-bash"># 新建分支，但不会切换至新分支
 $ git branch &lt;branch-name&gt;
 
 # 新建分支，并切换至该分支。
@@ -48733,7 +48728,7 @@ $ git checkout -b &lt;branch-name&gt; origin/&lt;远程分支名称&gt;
 $ git branch -m &lt;old-branch-name&gt; &lt;new-branch-name&gt;
 </code></pre>
 <p>有时候，你可能需要取出某个历史版本，可以理解为基于某个 Commit 来创建一个新的分支，就能看到历史版本了。可以使用以下命令：</p>
-<pre><code class="language-shell"># 基于 &lt;SHA1&gt; 新建一个新分支
+<pre><code class="language-bash"># 基于 &lt;SHA1&gt; 新建一个新分支
 $ git checkout -b &lt;branch-name&gt; &lt;SHA1&gt;
 
 # 若不打算修改，只是想 checkout 的话
@@ -48743,7 +48738,7 @@ $ git checkout &lt;SHA1&gt;
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767417455234.png" alt=""></p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767417470934.png" alt=""></p>
 <h3>合并分支</h3>
-<pre><code class="language-shell"># 合并指定分支到当前分支
+<pre><code class="language-bash"># 合并指定分支到当前分支
 $ git merge &lt;branch-name&gt;
 
 # 工作中，特性分支合并至主干分支，通常会使用以下这个
@@ -48754,7 +48749,7 @@ $ git merge --no-ff &lt;branch-name&gt;
 <p>关于分支合并，有使用 <code>git merge</code> 的，也有使用 <code>git rebase</code> 的，而且不同派别还很容易争吵起来。就像缩进是采用 Tab 好还是 Space 好的争论一样，那么实际中如何权衡，根据团队而定吧。</p>
 </blockquote>
 <h3>删除分支</h3>
-<pre><code class="language-shell"># 删除本地指定分支
+<pre><code class="language-bash"># 删除本地指定分支
 $ git branch -d &lt;branch-name&gt;
 
 # 删除远程分支
@@ -48766,7 +48761,7 @@ $ git push origin :&lt;远程分支名&gt;
 <h3>重命名远程分支</h3>
 <p>要重命名远程分支名称，其实就是先删除远程分支，然后重命名本地分支，再重新推送一个远程分支的过程。</p>
 <p>例如，将远程分支 <code>dev</code> 重命名为 <code>develop</code>，可以这样操作：</p>
-<pre><code class="language-shell"># 1. 删除远程分支 dev
+<pre><code class="language-bash"># 1. 删除远程分支 dev
 $ git push origin --delete dev
 
 # 2. 重命名本地分支 dev 为 develop
@@ -48777,7 +48772,7 @@ $ git push origin develop
 </code></pre>
 <h2>暂存、提交、推送操作</h2>
 <h3>暂存文件</h3>
-<pre><code class="language-shell"># 提交新文件(new file)、被修改(modified)文件以及被删除(deleted)文件。
+<pre><code class="language-bash"># 提交新文件(new file)、被修改(modified)文件以及被删除(deleted)文件。
 $ git add .
 
 # 提交新文件(new file)、被修改(modified)文件以及被删除(deleted)文件。
@@ -48800,7 +48795,7 @@ $ git add --ignore-removal .
 ```
 -->
 <h3>提交暂存</h3>
-<pre><code class="language-shell"># 提交已暂存文件
+<pre><code class="language-bash"># 提交已暂存文件
 $ git commit -m 'commit message'
 
 # 提交已暂存文件，以及跟踪过但未被添加到暂存的文件
@@ -48817,10 +48812,10 @@ $ git commit --amend
 </blockquote>
 <h3>推送至远程分支</h3>
 <blockquote>
-<p>如果你不熟悉 origin 所表示的意思，可先看 《<a href="https://github.com/tofrankie/blog/issues/107">弄懂 origin、HEAD、FETCH_HEAD 相关内容</a>》。</p>
+<p>如果你不熟悉 <code>origin</code> 所表示的意思，可先看 《<a href="https://github.com/tofrankie/blog/issues/107">弄懂 origin、HEAD、FETCH_HEAD 相关内容</a>》。</p>
 </blockquote>
 <p>主要用于将本地更新推送到远程仓库，但不同简化形式、命令参数产生延申效果。</p>
-<pre><code class="language-shell"># 不省略本地分支名和远程分支名情况下，冒号（:）前后是没有空格的
+<pre><code class="language-bash"># 不省略本地分支名和远程分支名情况下，冒号（:）前后是没有空格的
 $ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;
 # git push origin master:master
 </code></pre>
@@ -48828,15 +48823,14 @@ $ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&g
 <ul>
 <li><strong>省略远程分支</strong>（多分支情况下，本人常用这种形式）</li>
 </ul>
-<pre><code class="language-shell"># 将本地分支推送到远程主机上的同名分支。如果远程分支不存在，则会自动创建一个远程分支。
+<pre><code class="language-bash"># 将本地分支推送到远程主机上的同名分支。如果远程分支不存在，则会自动创建一个远程分支。
 $ git push &lt;远程主机名&gt; &lt;本地分支名&gt;
 # git push origin master
 </code></pre>
-<details><summary>展开</summary>
 <ul>
 <li><strong>（慎用）省略本地分支</strong>（相当于删除远程分支）</li>
 </ul>
-<pre><code class="language-shell"># 将一个“空的本地分支”推送至远程分支，即表示删除指定的远程分支。
+<pre><code class="language-bash"># 将一个“空的本地分支”推送至远程分支，即表示删除指定的远程分支。
 $ git push &lt;远程主机名&gt; :&lt;远程分支名&gt;
 # git push origin :master
 
@@ -48846,7 +48840,7 @@ $ git push origin --delete &lt;远程分支名&gt;
 <ul>
 <li><strong>（不推荐）省略本地分支、远程分支</strong></li>
 </ul>
-<pre><code class="language-shell"># 将当前分支推送至远程主机上的对应分支
+<pre><code class="language-bash"># 将当前分支推送至远程主机上的对应分支
 $ git push &lt;远程主机名&gt;
 # git push origin
 </code></pre>
@@ -48855,11 +48849,10 @@ $ git push &lt;远程主机名&gt;
 <p>怎么理解？</p>
 <p><strong>个人不推荐，而且平常也不用这种形式的进行推送的</strong>。假如有存在 <code>master</code> 和 <code>develop</code> 两个分支，当与远程分支建立追踪关系的是 <code>master</code> 分支，那么处于 <code>develop</code> 分支时，使用 <code>git push origin</code> 形式推送至远程主机时就会提示：<code>The current branch test has no upstream branch.</code>，然后再执行 <code>git push --set-upstream origin develop</code> 即可使用这种形式的推送。</p>
 </blockquote>
-</details>
 <ul>
 <li><strong>省略远程主机、本地分支、远程分支</strong></li>
 </ul>
-<pre><code class="language-shell"># 将当前分支推送至远程主机对应分支
+<pre><code class="language-bash"># 将当前分支推送至远程主机对应分支
 $ git push
 </code></pre>
 <blockquote>
@@ -48868,7 +48861,7 @@ $ git push
 <ul>
 <li><strong>省略远程分支，添加参数 <code>-u</code></strong></li>
 </ul>
-<pre><code class="language-shell"># 将本地分支推送到远程主机上的同名分支。如果远程分支不存在，则会自动创建一个远程分支。
+<pre><code class="language-bash"># 将本地分支推送到远程主机上的同名分支。如果远程分支不存在，则会自动创建一个远程分支。
 $ git push -u &lt;远程主机名&gt; &lt;本地分支名&gt;
 # git push -u origin master
 </code></pre>
@@ -48887,16 +48880,16 @@ $ git push -u &lt;远程主机名&gt; &lt;本地分支名&gt;
 	merge = refs/heads/develop
 </code></pre>
 <h2>标签操作</h2>
-<pre><code class="language-shell"># 列出所有 tag
+<pre><code class="language-bash"># 列举所有标签
 $ git tag
 
-# 查看 tag 信息
+# 查看标签信息
 $ git show &lt;tag-name&gt;
 
-# 轻量标签
+# 创建轻量标签
 $ git tag &lt;tag-name&gt;
 
-# 轻量标签，给历史 Commit 打标签
+# 在某个 commit 下创建轻量标签
 $ git tag &lt;tag-name&gt; &lt;commit-id&gt;
 
 # 附注标签
@@ -48907,23 +48900,23 @@ $ git tag -a &lt;tag-name&gt; -m &lt;message&gt;
 # 后期打标签
 $ git tag -a &lt;tag-name&gt; &lt;version&gt;
 
-# 提交指定 tag
+# 推送标签至远程仓库
 $ git push origin &lt;tag-name&gt;
 
-# 提交所有 tag
+# 推送所有标签至远程仓库
 $ git push origin --tags
 
-# 删除本地 tag
+# 将本地所有不在远程仓库上的标签推送至远程仓库
+git push origin –tags
+
+# 删除本地标签
 $ git tag -d &lt;tag-name&gt;
 
-# 删除远程 tag
+# 删除远程标签
 $ git push origin --detele tag &lt;tag-name&gt;
 
-# 还可以向远程推送一个“空标签”，等同于删除远程标签
+# 向远程推送一个“空标签”，等同于删除远程标签
 $ git push origin :refs/tags/&lt;tag-name&gt;
-
-# 将本地所有不在远程仓库服务器上的标签推送至服务器
-git push origin –tags
 </code></pre>
 <h2>拉取操作</h2>
 <p>主要有 <code>git fetch</code> 和 <code>git pull</code>，区别如下：</p>
@@ -48936,7 +48929,7 @@ git push origin –tags
 <p><strong>如果你 Fetch 完成之后，不进行 Merge 或 Rebase 等合并操作，它是不会更新 <code>dev</code> 分支内容的</strong>。在合并之前，可以利用 <code>git diff dev origin/dev</code> 去对比两个分支的内容，最终决定是否要将远程的更新合并至本地的 <code>branch-name</code> 分支中。</p>
 </blockquote>
 <h3>git fetch</h3>
-<pre><code class="language-shell"># 将 git remote 中所有关联的远程仓库包含的所有分支的更新拉取到本地
+<pre><code class="language-bash"># 将 git remote 中所有关联的远程仓库包含的所有分支的更新拉取到本地
 $ git fetch
 
 # 将指定远程所有分支的更新拉取至本地
@@ -48946,19 +48939,19 @@ $ git fetch &lt;远程主机名&gt;
 $ git fetch &lt;远程主机名&gt; &lt;分支名&gt;
 </code></pre>
 <p>当拉取成功后，会返回一个 <code>FETCH_HEAD</code>，指的是某个分支在服务器上的最新状态。通过以下方式可以查看刚拉取回来的更新信息：</p>
-<pre><code class="language-shell">$ git log -p FETCH_HEAD
+<pre><code class="language-bash">$ git log -p FETCH_HEAD
 </code></pre>
 <p>我们来试一下，如下图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767417832635.png" alt=""></p>
 <p>图中可以看到一些文件更新信息，包括文件名、更新作者、更新时间、更新代码等，并通过这些信息来判断是否产生冲突。</p>
 <p>接着，可以通过 <code>git merge</code> 来将这些拉取下来的最新内容合并到当前分支中：</p>
-<pre><code class="language-shell">$ git merge FETCH_HEAD
+<pre><code class="language-bash">$ git merge FETCH_HEAD
 
 # 或者使用以下这个，其中 &lt;branch-name&gt; 表示要合并的分支名称，例如 origin/main
 $ git merge origin/&lt;branch-name&gt;
 </code></pre>
 <h3>git pull</h3>
-<pre><code class="language-shell"># 拉取远程某分支的更新，并与本地指定分支合并
+<pre><code class="language-bash"># 拉取远程某分支的更新，并与本地指定分支合并
 $ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;
 # git pull origin
 
@@ -48967,7 +48960,7 @@ $ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;
 # git pull origin &lt;branch-name&gt;
 </code></pre>
 <p>因此</p>
-<pre><code class="language-shell">$ git pull origin main
+<pre><code class="language-bash">$ git pull origin main
 
 # 相当于
 $ git fetch origin main
@@ -48980,7 +48973,7 @@ $ git merge FETCH_HEAD
 <p>将拉取（Fetch）和合并（Merge）放到一个命令里的另外一个弊端是，你的本地工作目录在未经确认的情况下就会被远程分支更新。当然，除非你关闭所有的安全选项，否则 <code>git pull</code> 在你本地工作目录还不至于造成不可挽回的损失，但很多时候我们宁愿做的慢一些，也不愿意返工重来。</p>
 </blockquote>
 <p>尤其在多人协作的时候，可能是一个复杂的合并操作，可以这样：</p>
-<pre><code class="language-shell"># 1. 拉取
+<pre><code class="language-bash"># 1. 拉取
 $ git fetch origin main
 
 # 2. 比较
@@ -48990,14 +48983,14 @@ $ git diff main origin/main
 $ git merge origin/main
 </code></pre>
 <p>有些团队的合并操作要求使用 <code>git rebase</code>，而不是 <code>git merge</code>。当然了也有 <code>git pull --rebase</code> 可使用啦。</p>
-<p>Related Link:</p>
+<p>相关链接:</p>
 <ul>
 <li><a href="https://longair.net/blog/2009/04/16/git-fetch-and-merge/">GIT: FETCH AND MERGE, DON’T PULL</a></li>
 <li><a href="https://blog.csdn.net/weixin_41975655/article/details/82887273">详解 git pull 和 git fetch 的区别</a></li>
 </ul>
 <h2>文件操作</h2>
 <p>我们知道 <code>.gitignore</code> 仅对未跟踪过的文件才起作用。对于已存在于版本管理库中的文件/目录，我们需要使用 <code>git rm</code> 命令来取消对文件/目录的跟踪。</p>
-<pre><code class="language-shell"># 不删除本地文件
+<pre><code class="language-bash"># 不删除本地文件
 $ git rm -r --cached &lt;file-or-dir&gt;
 
 # 删除本地文件
@@ -49007,10 +49000,23 @@ $ git rm -r -f &lt;file-or-dir&gt;
 <p>通过 <code>git config core.ignorecase false</code> 可以让 git 区分大小写。</p>
 <p>但如果文件已经推送到远端，以上设置可能不会生效。</p>
 <p>可以用 <code>git mv</code> 命令，比如：</p>
-<pre><code class="language-shell">$ git mv App.tsx app.tsx
+<pre><code class="language-bash">$ git mv App.tsx app.tsx
 </code></pre>
 <blockquote>
 <p>如果出现类似 <code>fatal: bad source, source=App.tsx, destination=app.tsx</code> 错误，可以加上 <code>-f</code> 参数。</p>
+</blockquote>
+<h2>找回 git reset --hard 的代码</h2>
+<blockquote>
+<p>关于 <code>git reset</code> 的三种模式介绍，推荐这篇<a href="https://www.jianshu.com/p/c2ec5f06cf1a">文章</a>。</p>
+</blockquote>
+<p>假设误执行了 <code>git reset --hard HEAD^</code>（移动 HEAD 至当前 commit 的上一个 commit，并舍弃变更）导致代码丢失。</p>
+<p>解决方法：</p>
+<ol>
+<li>通过 <code>git reflog</code> 找到对应的 commit-id</li>
+<li>执行 <code>git reset --hard &lt;commit-id&gt;</code> 重新回到对应的记录。</li>
+</ol>
+<blockquote>
+<p>当我们执行 <code>git reset</code> 或 <code>git cherry-pick</code> 时，Git 会把这些操作记录在<strong>本地</strong>，这些操作记录可以通过 <code>git reflog</code> 来找到。</p>
 </blockquote>
 <!--
 
