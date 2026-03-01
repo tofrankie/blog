@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 26 Feb 2026 18:13:58 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 01 Mar 2026 08:45:57 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -15440,23 +15440,29 @@ parseInt('1024n', 36) // 1682375
 * HTTP 是怎样的？
 
 -->
-<p><strong>HTTP</strong> 全称是 Hyper Text Transfer Protocol，译为“超文本传输协议”（超文本转移协议）。</p>
+<p><strong>HTTP</strong> 全称是 Hyper Text Transfer Protocol，译为“超文本传输协议”，也有译作“超文本转移协议”的。</p>
 <h2>一、前言</h2>
 <p>在很久很久以前，人们为了在世界范围内轻松知识共享，提出了 Web（World Wide Web）的概念。简单来说，就是在 Web 浏览器的地址栏输入 Web 页面对应的 URL，Web 浏览器从 Web 服务器端获取到文件资源等信息，从而显示出 Web 页面。它使用 HTTP 协议为规范，完成在客户端与服务端一系列的运作流程。</p>
 <p>最初，HTTP 协议出现是为了解决文本传输的难题。但由于协议本身非常简单，现在 HTTP 协议已经超出了 Web 这个框架，被运用到各种场景里。</p>
 <p>尽管我们常说，在 Web 中客户端与服务器端是通过 HTTP 协议进行通信的，但不代表这个通信的全过程都由 HTTP 就能完成的。</p>
 <p>通常使用的的网络是在 TCP/IP 协议簇的基础上运作的，而 HTTP 属于它内部的一个子集。</p>
 <h2>二、概念</h2>
-<h4>协议（Protocol）</h4>
+<h3>协议（Protocol）</h3>
 <p>在计算机与网络设备进行通信，双方需要基于相同的方法。不同的硬件、操作系统之间的通信，所有的这一切都需要一种规则，这种规则被称为“协议”。</p>
-<h4>TCP/IP 协议（簇）</h4>
-<p>TCP/IP（Transmission Control Protocol/Internet Protocol，传输控制协议/网际协议）是指能够在多个不同网络间实现信息传输的协议簇（Protocol Suite，也有译作“协议族”）。TCP/IP 协议不仅仅指的是 TCP 和 IP 两个协议，而是指由 FTP、SMTP、TCP、IP 等协议构成的协议簇。<strong>由于在 TCP/IP 协议中 TCP 协议和 IP 协议最具代表性，因此被称为 TCP/IP 协议。</strong></p>
-<h4>计算机网络体系结构分层</h4>
-<p>OSI（Open System Interconnect）七层模型：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767210891716.png" alt=""></p>
-<p>OSI 七层模型与 TCP/IP 四层模型的区别：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767210897648.png" alt=""></p>
-<p>OSI 七层模型：</p>
+<h3>TCP/IP 协议（簇）</h3>
+<p>TCP/IP（Transmission Control Protocol/Internet Protocol，传输控制协议/网际协议）是指能够在多个不同网络间实现信息传输的协议簇（Protocol Suite，也有译作“协议族”）。TCP/IP 协议不仅仅指的是 TCP 和 IP 两个协议，而是指由 FTP、SMTP、TCP、IP 等协议构成的协议簇。<strong>由于在 TCP/IP 协议中 TCP 协议和 IP 协议最具代表性，因此被称为 TCP/IP 协议。</strong></p>
+<blockquote>
+<p>关于 TCP/IP 的几种说法：</p>
+<ol>
+<li>把互联网相关联的协议（TCP、IP、HTTP、FTP、UDP、ICMP、IEEE 802.3、PPPoE、FDDI、SNMP）集合起来总称为 TCP/IP。</li>
+<li>TCP/IP 是指 TCP 和 IP 这两种协议。</li>
+<li>TCP/IP 是在 IP 协议的通信过程中，使用到的协议簇的统称。</li>
+</ol>
+</blockquote>
+<h3>计算机网络体系结构分层</h3>
+<p>TCP/IP 协议簇里最重要的一点是分层。好处是，如果某个地方需要改变设计，只需要把变动的层替换掉即可。</p>
+<h4>OSI 七层模型</h4>
+<p>Open System Interconnect</p>
 <pre><code class="language-text">应用层（Application Layer）
     网络服务与最终用户的一个接口。
     协议有：HTTP、FTP、TFTP、SMTP、SNMP、DNS、TELNET、POP3、DHCP 等。
@@ -15484,7 +15490,7 @@ parseInt('1024n', 36) // 1682375
 物理层（Physical Layer）
     建立、维护、断开物理连接。（由底层网络定义协议）
 </code></pre>
-<p>TCP/IP 四层模型：</p>
+<h4>TCP/IP 四层模型</h4>
 <p>TCP/IP 协议簇按层次分别分为：应用层、传输层、网络层和数据链路层。</p>
 <pre><code class="language-text">应用层：
     应用层决定了向用户提供应用服务时通信的活动。
@@ -15502,8 +15508,11 @@ parseInt('1024n', 36) // 1682375
 链路层（数据链路层、网络接口层）
     用来处理连接网络的硬件部分。包括控制操作系统、硬件的设备驱动、NIC（网络适配器，即网卡）、及光纤等物理可见部分（还包括连接器等一切传输媒介）。硬件上的范畴均在链路层的作用范围之内。
 </code></pre>
+<h4>七层与四层模型的区别</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767210891716.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767210897648.png" alt=""></p>
 <h2>三、HTTP</h2>
-<h4>HTTP 状态码</h4>
+<h3>HTTP 状态码</h3>
 <pre><code class="language-text">2XX（成功）
     200 OK：表示请求在服务端被正常处理了。
     204 No Content：表示请求已正常处理，但在返回的响应报文中不含实体的主体部分。
@@ -15526,7 +15535,7 @@ parseInt('1024n', 36) // 1682375
     500 Internal Server Error：表示服务器端在执行 请求时发生了错误。
     503 Service Unavailable：表示服务器暂时处于超负载或正在进行停机维护，现在无法处理请求。
 </code></pre>
-<h4>HTTP 报文</h4>
+<h3>HTTP 报文</h3>
 <pre><code class="language-text">报文首部
 空行
 报文主体
@@ -15537,7 +15546,7 @@ parseInt('1024n', 36) // 1682375
 响应报文包括：状态行、首部字段（响应首部字段、通用首部字段、实体首部字段）、其他
 
 请求行：由方法、URI、HTTP 版本组成
-状态行：由HTTP 版本、状态码（数字和原因短语）组成
+状态行：由 HTTP 版本、状态码（数字和原因短语）组成
 </code></pre>
 <p>未完待续...</p>
 <!--
