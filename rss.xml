@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 01 Mar 2026 08:45:57 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 02 Mar 2026 10:50:46 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -15454,13 +15454,17 @@ parseInt('1024n', 36) // 1682375
 <blockquote>
 <p>关于 TCP/IP 的几种说法：</p>
 <ol>
-<li>把互联网相关联的协议（TCP、IP、HTTP、FTP、UDP、ICMP、IEEE 802.3、PPPoE、FDDI、SNMP）集合起来总称为 TCP/IP。</li>
+<li>把互联网相关联的协议（TCP、IP、HTTP、FTP、UDP、ICMP、IEEE 802.3、PPPoE、FDDI、SNMP、DNS）集合起来总称为 TCP/IP。</li>
 <li>TCP/IP 是指 TCP 和 IP 这两种协议。</li>
 <li>TCP/IP 是在 IP 协议的通信过程中，使用到的协议簇的统称。</li>
 </ol>
 </blockquote>
 <h3>计算机网络体系结构分层</h3>
-<p>TCP/IP 协议簇里最重要的一点是分层。好处是，如果某个地方需要改变设计，只需要把变动的层替换掉即可。</p>
+<p>分层的好处是，如果某个地方需要改变设计，只需要把变动的层替换掉即可。主要有两种模型：</p>
+<ul>
+<li>OSI 模型（七层）</li>
+<li>TCP/IP 模型（四层）</li>
+</ul>
 <h4>OSI 七层模型</h4>
 <p>Open System Interconnect</p>
 <pre><code class="language-text">应用层（Application Layer）
@@ -15511,8 +15515,144 @@ parseInt('1024n', 36) // 1682375
 <h4>七层与四层模型的区别</h4>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767210891716.png" alt=""></p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767210897648.png" alt=""></p>
-<h2>三、HTTP</h2>
+<h3>常见协议</h3>
+<h4>应用层</h4>
+<ul>
+<li><strong>HTTP</strong> - HyperText Transfer Protocol 超文本传输协议</li>
+<li><strong>HTTPS</strong> - HyperText Transfer Protocol Secure 安全版超文本传输协议（通过 SSL/LTS 进行加密）</li>
+<li><strong>FTP</strong> - File Transfer Protocol 文件传输协议</li>
+<li><strong>DNS</strong> - Domain Name System 域名系统</li>
+<li><strong>SMTP</strong> - Simple Mail Transfer Protocol 简单邮件传输协议</li>
+<li><strong>SSH</strong> - Secure Shell 安全 Shell 协议</li>
+</ul>
+<h4>传输层</h4>
+<ul>
+<li><strong>TCP</strong> - Transmission Control Protocol 传输控制协议</li>
+<li><strong>UDP</strong> - User Data Protocol 用户数据报协议</li>
+</ul>
+<h4>网络层</h4>
+<ul>
+<li><strong>IP</strong> - Internet Protocol 网际协议</li>
+<li><strong>ICMP</strong> - Internet Control Message Protocol 互联网控制报文协议</li>
+<li><strong>ARP</strong> - Address Resolution Protocol 地址解析协议</li>
+</ul>
+<h4>链路层</h4>
+<ul>
+<li><strong>Ethernet</strong> - 以太网协议</li>
+<li><strong>PPP</strong> - Point-to-Point Protocol 点对点协议（如宽带拨号 PPPoE 经常用到）</li>
+<li><strong>IEEE</strong> 802.11 - 无线局域网通信协议（WiFi）</li>
+</ul>
+<h2>三、HTTP 请求与响应的过程</h2>
+<p>HTTP 协议与 TCP/IP 协议族中的各种协议密不可分。</p>
+<h3>大致流程</h3>
+<p>假设在浏览器浏览 <code>http://github.com</code> 页面：</p>
+<ol>
+<li>向 DNS 请求将 <code>github.com</code> 解析为机器可以识别的 IP 地址，如 <code>20.205.243.166</code>（客户端 - 应用层）</li>
+<li>HTTP 协议负责生成 HTTP 请求报文（客户端 - 应用层）</li>
+<li>TCP 协议负责：（客户端传输层）
+<ol>
+<li>将 HTTP 请求报文分割为多个报文段（segment）</li>
+<li>将报文段标记好序号</li>
+<li>将报文段传输给对方</li>
+</ol>
+</li>
+<li>IP 协议负责搜索对方（服务端）的地址（客户端 - 网络层）
+<ul>
+<li>通常需要经过多个网络设备中转才能连接到对方，</li>
+</ul>
+</li>
+<li>服务端的 TCP 协议负责将对方传输过来的报文段，按序号重组请求报文（服务端 - 传输层）</li>
+<li>服务端的 HTTP 协议负责处理对方的请求（服务端 - 应用层）</li>
+<li>服务端处理完成，同样利用 TCP/IP 协议将结果回传给用户（此时客户端、服务端角色互换）</li>
+</ol>
+<h3>域名解析</h3>
+<p>浏览器先检查本地缓存，若有缓存直接返回，否则发起 DNS 请求获取 IP 地址。</p>
+<h3>三次握手</h3>
+<p>生成 HTTP 请求报文后，此时报文还没发出去。</p>
+<p>来到传输层，会先建立 TCP 链接，以确定数据是否能送达目的地。此过程不会发送真正的 HTTP 数据给服务端。</p>
+<p>建立 TCP 连接的过程被称为「三次握手」🤝</p>
+<ol>
+<li>客户端：听得到吗？（发送 SYN）</li>
+<li>服务端：听到了，你听得到我吗？（发送 SYN/ACK）</li>
+<li>客户端：我也听到了，可以开始传数据了（发送 ACK）</li>
+</ol>
+<p>简单来说，三次握手是用来确认双方具备正常的发送、接收数据能力的。</p>
+<table>
+<thead>
+<tr>
+<th>握手阶段</th>
+<th>客户端 A 确认的能力</th>
+<th>服务端 B 确认的能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一次握手 A -&gt; B</td>
+<td>无</td>
+<td><strong>A 发、B 收</strong></td>
+</tr>
+<tr>
+<td>第二次握手 B -&gt; A</td>
+<td><strong>A 发、A 收、B 发、B 收</strong></td>
+<td>A 发、B 收</td>
+</tr>
+<tr>
+<td>第三次握手 A -&gt; B</td>
+<td>A 发、A 收、B 发、B 收</td>
+<td>A 发、<strong>A 收</strong>、<strong>B 发</strong>、B 收</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/3/1772437426278.png" alt=""></p>
+<h3>为什么两次握手不行？</h3>
+<p>假设 TCP 连接是两次握手，也就是说，当客户端发送连接请求，服务端进行回应，只要服务端一回应连接就建立了。</p>
+<p>假设一个场景：</p>
+<ol>
+<li>客户端发起了一个连接请求，但由于网络阻塞，这个请求网络世界中迷失了，迟迟未到达服务端...</li>
+<li>客户端等不及了，又重新发起了一个请求，这次很快就连上了，用完后又关闭了连接。</li>
+<li>此时，“迷失”的那个旧请求，终于找到方向，到达了服务端。</li>
+<li><strong>如果是两次握手，服务端一回应连接建立，服务端就一直傻等着客户端发送数据，但客户端可能根本不知道这个连接的存在，这样会导致服务端的资源浪费。</strong></li>
+</ol>
+<p>如果是三次握手，当客户端收到服务端对“过时请求”的回应，发现序列号不对，会直接发送一个拒绝信息到服务端，服务端就知道不需要建立连接了。</p>
+<h2>四、HTTP</h2>
 <h3>HTTP 状态码</h3>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>类别</th>
+<th>原因短语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1XX</td>
+<td>Information（信息性状态码）</td>
+<td>表示接收的请求正在处理</td>
+</tr>
+<tr>
+<td>2XX</td>
+<td>Success（成功状态码）</td>
+<td>表示请求正常处理完毕</td>
+</tr>
+<tr>
+<td>3XX</td>
+<td>Redirection（重定向状态码）</td>
+<td>表示需要进行附加操作以完成请求</td>
+</tr>
+<tr>
+<td>4XX</td>
+<td>Client Error（客户端错误状态码）</td>
+<td>表示服务器无法处理请求</td>
+</tr>
+<tr>
+<td>5XX</td>
+<td>Server Error（服务器错误码）</td>
+<td>表示服务器处理请求出错</td>
+</tr>
+</tbody>
+</table>
+<p>常见状态栏：</p>
 <pre><code class="language-text">2XX（成功）
     200 OK：表示请求在服务端被正常处理了。
     204 No Content：表示请求已正常处理，但在返回的响应报文中不含实体的主体部分。
@@ -15535,6 +15675,10 @@ parseInt('1024n', 36) // 1682375
     500 Internal Server Error：表示服务器端在执行 请求时发生了错误。
     503 Service Unavailable：表示服务器暂时处于超负载或正在进行停机维护，现在无法处理请求。
 </code></pre>
+<p>更多状态码：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767368730218.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767368765567.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767368785366.png" alt=""></p>
 <h3>HTTP 报文</h3>
 <pre><code class="language-text">报文首部
 空行
@@ -15548,6 +15692,31 @@ parseInt('1024n', 36) // 1682375
 请求行：由方法、URI、HTTP 版本组成
 状态行：由 HTTP 版本、状态码（数字和原因短语）组成
 </code></pre>
+<p>示例：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/2/1677406046919.png" alt=""></p>
+<p>请求报文的格式：</p>
+<pre><code class="language-xml">&lt;method&gt; &lt;request-URL&gt; &lt;version&gt;
+&lt;headers&gt;
+
+&lt;entiry-body&gt;
+</code></pre>
+<p>响应报文格式：</p>
+<pre><code class="language-xml">&lt;version&gt; &lt;status&gt; &lt;reason-phrase&gt;
+&lt;headers&gt;
+
+&lt;entity-body&gt;
+</code></pre>
+<p>报文对应表示：</p>
+<ul>
+<li><code>method</code>：客户端希望服务器对资源执行的动作，如 <code>GET</code>、<code>HEAD</code>、<code>POST</code> 等</li>
+<li><code>request-URL</code>: 命名了所请求的资源</li>
+<li><code>version</code>: 报文所使用的 HTTP 版本，如 <code>HTTP/1.0</code>、<code>HTTP/1.1</code></li>
+<li><code>headers</code>: 首部，可以有零个或多个，如 <code>Accept: text/*</code>、<code>Content-Type: text/plain</code></li>
+<li><code>entity-body</code>: 主体部分，包含一个由任意数据组成的数据块，并不是所有的报文都包含实体的主体部分，有时报文是以一个 CRLF 结束的。</li>
+</ul>
+<blockquote>
+<p>注意：请求行、响应行的每个字段都是由“空格”进行分割的。</p>
+</blockquote>
 <p>未完待续...</p>
 <!--
 
