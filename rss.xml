@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Mon, 02 Mar 2026 10:50:46 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 03 Mar 2026 01:10:41 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -15603,7 +15603,37 @@ parseInt('1024n', 36) // 1682375
 </tr>
 </tbody>
 </table>
+<p>图示：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/3/1772437426278.png" alt=""></p>
+<p>图解：</p>
+<ul>
+<li>第一次握手：
+<ul>
+<li>请求建立连接，我的初始序号是 x。（<code>SYN=1, seq=x</code>）</li>
+</ul>
+</li>
+<li>第二次握手：
+<ul>
+<li>我已收到你的 SYN（消耗 1 个序号），期望下一个是 x+1。(<code>ACK=1, ack=x+1</code>)</li>
+<li>我也请求建立连接，我的初始序号是 y。(<code>SYN=1, seq=y</code>)</li>
+</ul>
+</li>
+<li>第三次握手：
+<ul>
+<li>我已收到你的 SYN（消耗 1 个序号），期望下一个是 y+1。(<code>ACK=1, ack=y+1</code>)</li>
+<li>当前我的发送位置是 x+1。(<code>seq=x+1</code>)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>SYN（同步标志位）消耗一个序号，ACK（确认标志位）不消耗序号。</p>
+</blockquote>
+<blockquote>
+<p><code>ack=N</code> 的含义是我已经成功接收了序号 &lt; N 的所有字节，下一个我期望是 N。</p>
+</blockquote>
+<blockquote>
+<p>TCP 规定纯粹的 ACK 报文（不携带数据的 ACK）不占序号，原因是防止“死循环确认”。如果客户端发一个 ACK 给服务端，服务端为了确认收到这个 ACK，就必须再发一个 ACK 给客户端。客户端为了确认收到服务端的那个 ACK，又得发一个 ACK...这样就会陷入无穷无尽的确认里面。</p>
+</blockquote>
 <h3>为什么两次握手不行？</h3>
 <p>假设 TCP 连接是两次握手，也就是说，当客户端发送连接请求，服务端进行回应，只要服务端一回应连接就建立了。</p>
 <p>假设一个场景：</p>
@@ -15614,6 +15644,70 @@ parseInt('1024n', 36) // 1682375
 <li><strong>如果是两次握手，服务端一回应连接建立，服务端就一直傻等着客户端发送数据，但客户端可能根本不知道这个连接的存在，这样会导致服务端的资源浪费。</strong></li>
 </ol>
 <p>如果是三次握手，当客户端收到服务端对“过时请求”的回应，发现序列号不对，会直接发送一个拒绝信息到服务端，服务端就知道不需要建立连接了。</p>
+<h3>三次握手可以携带数据吗？</h3>
+<p>第一、第二次握手不能携带数据，第三次握手可以。</p>
+<p>这样设计的目的是：</p>
+<ol>
+<li>假设第一、二次可以携带数据，如果攻击者疯狂发送 SYN 包，在服务端还没确定对方身份，需要腾出巨大的内存来存这些数据，容易宕机。</li>
+<li>尽管第三次握手，攻击者也能进行攻击，但代价极大，容易被防御。
+<ol>
+<li>由于攻击者要接收服务端发来的序号（seq=y，用于计算第三次握手 ack=y+1），因此需要一个真实的 IP。既然知道 IP 了，就容易封杀它。</li>
+<li>如果是利用假 IP 发送 SYN 包，由于 IP 不存在没法完成握手，等待一段时间后，服务端对本次请求会进行超时处理。</li>
+</ol>
+</li>
+</ol>
+<h3>四次挥手</h3>
+<p>在 TCP 协议中，当数据传输完成后，连接会被终止，终止的过程称为“四次挥手”。</p>
+<ol>
+<li>客户端：我不发数据了，我想断开连接。</li>
+<li>服务端：收到了你的断开请求了。但我这边可能还有点数据没传完，你等我一下。</li>
+<li>服务端：好了，我的数据也传完了，我也准备好断开了。</li>
+<li>客户端：收到你的断开信号了，我也彻底关了。</li>
+</ol>
+<p>图示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/3/1772497489473.png" alt=""></p>
+<p>图解：</p>
+<ul>
+<li>第一次挥手：
+<ul>
+<li>我已不再发送数据，请求断开连接，我的当前序号是 u。(<code>FIN=1, seq=u</code>)</li>
+</ul>
+</li>
+<li>第二次挥手：
+<ul>
+<li>我已收到你的 FIN（消耗 1 个序号），期望下一个是 u+1。(<code>ACK=1, ack=u+1</code>)</li>
+<li>当前我的发送位置是 v。(<code>seq=v</code>)</li>
+</ul>
+</li>
+<li>第三次挥手：
+<ul>
+<li>我的数据也发完了，请求断开连接，我的当前序号还是从 w 开始。(<code>FIN=1, ACK=1, seq=w, ack=u+1</code>)</li>
+</ul>
+</li>
+<li>第四次挥手：
+<ul>
+<li>我已收到你的 FIN（消耗 1 个序号），期望下一个是 w+1。(<code>ACK=1, ack=w+1</code>)</li>
+<li>当前我的发送位置是 u+1。(<code>seq=u+1</code>)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>FIN（结束标志位）消耗一个序号。</p>
+</blockquote>
+<blockquote>
+<p>第二次挥手阶段，链接处于<strong>半关闭</strong>状态。客户端不能发送数据，但服务端如果有数据，客户端依然要接收。</p>
+</blockquote>
+<blockquote>
+<p>第四次挥手阶段，发出 ACK 后，客户端进入 TIME-WAIT 状态，服务端收到 ACK 后直接 CLOSED。客户端要等 2MSL 时间后才正式 CLOSED。</p>
+</blockquote>
+<h3>为什么是四次挥手，而不是三次挥手？</h3>
+<p>第二次握手服务端的 SYN 和 ACK 是合并在一个包发出的。</p>
+<p>第二次挥手服务端的 ACK 和 FIN 通常是分两次发出的。原因：当客户端说要断开，服务端仅表示“收到了”，但此时服务端可能还有没发完的数据，而服务端必须要把数据发完，才能发送自己的 FIN 报文。因此二者通常是分开两次发出的。</p>
+<h3>为什么客户端要等待 2MSL 才能关闭？</h3>
+<blockquote>
+<p>等待 2MSL 通常是 1 ~ 4 分钟。</p>
+</blockquote>
+<p>经过 2MSL 的时间，可以确保本连接产生的所有报文在网络中消失。如果不等就直接建立新连接，万一旧连接的某个“迟到”的包突然冒出来，会被错认为新连接的请求。</p>
 <h2>四、HTTP</h2>
 <h3>HTTP 状态码</h3>
 <table>
