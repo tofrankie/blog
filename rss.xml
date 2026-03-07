@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 05 Mar 2026 20:51:28 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 07 Mar 2026 14:32:51 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -35884,205 +35884,295 @@ new p2(4, 4, 4) // output: undefined 4 4 4
             <link>https://github.com/tofrankie/blog/issues/198</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/198</guid>
             <pubDate>Sun, 26 Feb 2023 09:11:51 GMT</pubDate>
-            <description><![CDATA[<p>本文仅作为个人记录，文中可能存在不严谨的地方。</p>
-<p>要了解更多可以看下这两篇文章：</p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/3/1772893668067.jpg" alt="配图源自 Freepik"></p>
 <ul>
-<li><a href="https://zhuanlan.zhihu.com/p/21834559">史上最易读懂的 Promise/A+ 完全实现</a></li>
-<li><a href="htt]]></description>
-            <content:encoded><![CDATA[<p>本文仅作为个人记录，文中可能存在不严谨的地方。</p>
-<p>要了解更多可以看下这两篇文章：</p>
+<li><a href="https://promisesaplus.co]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/3/1772893668067.jpg" alt="配图源自 Freepik"></p>
 <ul>
-<li><a href="https://zhuanlan.zhihu.com/p/21834559">史上最易读懂的 Promise/A+ 完全实现</a></li>
-<li><a href="https://segmentfault.com/a/1190000018589798">promise/A+ 规范翻译以及手写实现</a></li>
+<li><a href="https://promisesaplus.com/">Promises/A+ Spec</a></li>
+<li><a href="https://github.com/promises-aplus/promises-tests">Promises/A+ Test Suite</a></li>
 </ul>
-<h2>Promise/A+ 的标准有哪些？</h2>
-<ul>
-<li>只有一个 <code>then</code> 方法，没有 <code>catch</code>、<code>race</code>、<code>all</code> 等方法。</li>
-<li><code>then</code> 返回一个新的 Promise。</li>
-<li>不同的 Promise 的实现需要相互调用。</li>
-<li>Promise 的状态有 <code>pending</code>、<code>fullfilled</code>、<code>rejected</code> 三种。初始状态是 <code>pending</code>，可以由 <code>pending</code> 转化为 <code>fullfilled</code> 或者 <code>rejected</code>。一旦状态确定之后，不能再被改变。</li>
-<li>更具体的官方标准，看<a href="https://promisesaplus.com/">这里</a>。</li>
-</ul>
-<h2>具体代码实现</h2>
-<pre><code class="language-js">function MyPromise(executor) {
-  const _this = this
-  // 状态
-  _this.status = 'pending'
-  // resolve 值
-  _this.value = null
-  // reject 原因
-  _this.reason = null
-  // resolve、reject 函数
-  _this.onFullfilled = []
-  _this.onRejected = []
-
-  function resolve(value) {
-    if (value instanceof MyPromise) {
-      return value.then(resolve, reject)
-    }
-
-    // 其实这里采用 setTimeout 方式实现异步执行 onFullfilled/onRejected 不太符合 Event Loop 机制。下面 reject 同理。
-    setTimeout(() =&gt; {
-      // 只有状态为 pending 才能被改变
-      if (_this.status == 'pending') {
-        _this.value = value
-        _this.status = 'resolved'
-        _this.onFullfilled.forEach(currentValue =&gt; currentValue(value))
-      }
-    }, 0)
-  }
-
-  function reject(reason) {
-    setTimeout(() =&gt; {
-      // 只有状态为 pending 才能被改变
-      if (_this.status == 'pending') {
-        _this.reason = reason
-        _this.status = 'rejected'
-        _this.onRejected.forEach(currentValue =&gt; currentValue(reason))
-      }
-    }, 0)
-  }
-
-  // 注意：若执行过程出现异常，则捕获异常并执行 reject 函数。
-  try {
-    executor(resolve, reject)
-  } catch (e) {
-    reject(e)
-  }
+<h2>构造器实现</h2>
+<p>注意点：</p>
+<ol>
+<li>考虑 <code>executor</code> 执行时机</li>
+<li>考虑多次执行 <code>resolve()</code>、<code>reject()</code> 状态变更问题</li>
+<li>考虑 <code>executor</code> 执行异常问题，包括同步异常、异步异常的场景</li>
+<li>考虑 <code>resolve(promise)</code> 的问题</li>
+</ol>
+<p>用例：</p>
+<pre><code class="language-js">class MyPromise {
+  // TODO: ...
 }
 
-function resolvePromise(promise2, x, resolve, reject) {
-  let then
-  let thenCallorThrow = false
+// 2️⃣
+const p1 = new Promise(resolve =&gt; {
+  resolve(1)
+})
 
-  if (promise2 === x) {
-    return reject(new TypeError('same Promise!'))
-  }
+// 3️⃣
+const p2 = new Promise((resolve, reject) =&gt; {
+  resolve(1)
+  reject(2)
+})
 
-  if (x instanceof MyPromise) {
-    if (x.status === 'pending') {
-      x.then(value =&gt; {
-        resolvePromise(promise2, value, resolve, reject)
-      }, reject)
-    } else {
-      x.then(resolve, reject)
-    }
-    return
-  }
+// 4️⃣
+const p3 = new Promise(resolve =&gt; {
+  resolve(1)
+  throw 2
+})
 
-  if (x !== null &amp;&amp; (typeof x === 'object' || typeof x === 'function')) {
-    try {
-      then = x.then
-      if (typeof then === 'function') {
-        then.call(
-          x,
-          res =&gt; {
-            if (thenCallorThrow) return
-            thenCallorThrow = true
-            return resolvePromise(promise2, res, resolve, reject)
-          },
-          err =&gt; {
-            if (thenCallorThrow) return
-            thenCallorThrow = true
-            return reject(err)
-          }
-        )
-      } else {
-        resolve(x)
-      }
-    } catch (e) {
-      if (thenCallorThrow) return
-      thenCallorThrow = true
-      return reject(e)
-    }
-  } else {
-    return resolve(x)
-  }
-}
+// 5️⃣
+const p4 = new Promise(resolve =&gt; {
+  setTimeout(() =&gt; {
+    resolve(1)
+  })
+})
 
-MyPromise.prototype.then = function (onFullfilled, onRejected) {
-  const _this = this
-  let promise2 // promise.then() 返回一个 promise 对象
-
-  // Promise 值的穿透处理：
-  // 场景如： new Promise(resolve =&gt; resolve('abc')).then().catch().then(res =&gt; {console.log('print abc')})
-  onFullfilled = typeof onFullfilled === 'function' ? onFullfilled : val =&gt; val
-  onRejected =
-    typeof onRejected === 'function'
-      ? onRejected
-      : err =&gt; {
-          throw err
-        }
-
-  switch (_this.status) {
-    case 'pending':
-      promise2 = new MyPromise((resolve, reject) =&gt; {
-        _this.onFullfilled.push(value =&gt; {
-          try {
-            const x = onFullfilled(value)
-            resolvePromise(promise2, x, resolve, reject)
-          } catch (e) {
-            reject(e)
-          }
-        })
-        _this.onRejected.push(reason =&gt; {
-          try {
-            const x = onRejected(reason)
-            resolvePromise(promise2, x, resolve, reject)
-          } catch (e) {
-            reject(e)
-          }
-        })
-      })
-      break
-    case 'resolved':
-      promise2 = new MyPromise((resolve, reject) =&gt; {
-        setTimeout(() =&gt; {
-          try {
-            const x = onFullfilled(_this.value)
-            resolvePromise(promise2, x, resolve, reject)
-          } catch (e) {
-            reject(e)
-          }
-        })
-      })
-      break
-    case 'rejected':
-      promise2 = new MyPromise((resolve, reject) =&gt; {
-        setTimeout(() =&gt; {
-          try {
-            const x = onRejected(_this.reason)
-            resolvePromise(promise2, x, resolve, reject)
-          } catch (e) {
-            reject(e)
-          }
-        })
-      })
-      break
-    default:
-      break
-  }
-
-  return promise2
-}
-
-// Promise 标准里面没有 catch、race、all 等方法，只有一个 then 方法
-MyPromise.prototype.catch = function (onRejected) {
-  return this.then(null, onRejected)
-}
-
-new MyPromise((resolve, reject) =&gt; {
-  resolve('right')
-}).then(
-  res =&gt; {
-    console.log(res)
-  },
-  err =&gt; {
-    console.warn(err)
-  }
-)
+// 6️⃣
+const p4 = new Promise(resolve =&gt; {
+  setTimeout(() =&gt; {
+    resolve(1)
+  })
+  throw 2
+})
 </code></pre>
-<p>未完待续...</p>
+<p>实现：</p>
+<pre><code class="language-js">const STATE = {
+  PENDING: 'pending',
+  FULFILLED: 'fulfilled',
+  REJECTED: 'rejected',
+}
+
+class MyPromise {
+  #state = STATE.PENDING
+  #result = undefined
+
+  constructor(executor) {
+    const resolve = value =&gt; {
+      this.#stateChange(STATE.FULFILLED, value)
+    }
+
+    const reject = reason =&gt; {
+      this.#stateChange(STATE.REJECTED, reason)
+    }
+
+    try {
+      executor(resolve, reject)
+    } catch (err) {
+      // 处理异常，如 throw 'xxx'
+      reject(err)
+    }
+  }
+
+  #stateChange(state, result) {
+    // 处理多次执行 resolve、reject 的请求
+    if (this.#state !== STATE.PENDING) return
+    
+    this.#state = state
+    this.#result = result
+  }
+
+  // TODO: 下一步
+  then() {}
+}
+</code></pre>
+<h2>then 实现</h2>
+<p>注意点：</p>
+<ol>
+<li>考虑 <code>then()</code> 参数个数问题</li>
+<li>考虑 <code>then()</code> 及其回调的执行时机问题</li>
+<li>考虑 <code>then()</code> 参数不是函数的问题</li>
+<li>考虑 <code>then()</code> 返回类型问题</li>
+<li>考虑链式调用值穿透问题，比如 <code>promise.then().then().then(res =&gt; res)</code></li>
+<li>考虑非链式多次调用问题，比如 <code>promise.then(res =&gt; res + 1); promise.then(res =&gt; res + 1)</code></li>
+<li>当 Promise 实例处于不同状态（ <code>pending</code>、<code>fulfilled</code>、<code>rejected</code>），<code>then()</code> 执行时机问题</li>
+</ol>
+<p>用例：</p>
+<pre><code class="language-js">const promise = new MyPromise(resolve =&gt; resolve(1))
+
+
+// 1️⃣ 注意：调用 then 时，promise 可能已经是 fulfilled 或 rejected，也可能仍处于 pending
+promise.then(res =&gt; res)
+
+// 2️⃣
+promise.then(res =&gt; res, err =&gt; err)
+
+// 3️⃣
+promise.then().then(res =&gt; res)
+
+// 4️⃣
+promise.then().then().then(res =&gt; res)
+
+// 5️⃣ 注意，区别于 promise.then(res =&gt; res + 1).then(res =&gt; res + 1) 链式调用
+promise.then(res =&gt; res + 1)
+promise.then(res =&gt; res + 1)
+</code></pre>
+<p>实现：</p>
+<pre><code class="language-js">class MyPromise {
+  #state = STATE.PENDING
+  #result = undefined
+  #thenables = []
+
+  constructor(executor) {
+    const resolve = value =&gt; {
+      this.#stateChange(STATE.FULFILLED, value)
+    }
+
+    const reject = reason =&gt; {
+      this.#stateChange(STATE.REJECTED, reason)
+    }
+
+    try {
+      executor(resolve, reject)
+    } catch (err) {
+      reject(err)
+    }
+  }
+  
+  then(onfulfilled, onrejected) {
+    // 返回新的 Promise
+    return new MyPromise((resolve, reject) =&gt; {
+      // 由于一个 promise 可以多次调用 then 方法，这里需要一个队列维护这些回调方法
+      // 比如 `promise.then(); promise.then()`（非链式调用）
+      this.#thenables.push({ onfulfilled, onrejected, resolve, reject })
+
+      // 如果 Promise 状态已变更，执行调用 then 则立即执行（指立刻放入微队列），否则等 #stateChange 处触发
+      // 注意，如果是 then 回调应该在微任务队列里执行，而不是同步执行。
+      this.#run()
+    })
+  }
+
+  #stateChange(state, result) {
+    if (this.#state !== STATE.PENDING) return
+    
+    this.#state = state
+    this.#result = result
+
+    // 对于 setTimout(() =&gt; {resolve(1)}) 这类情况，then 回调应该在其 Promise 状态变化时执行
+    this.#run()
+  }
+  
+  #run() {
+    // 由于 then 回调会马上调用一次 run 方法，这里要做状态判断
+    if (this.#state === STATE.PENDING) return
+
+    // 把队列里的东西，按先进先出的顺序，拿出来执行
+    while (this.#thenables.length) {
+      const { onfulfilled, onrejected, resolve, reject } = this.#thenables.shift()
+
+      const callback = this.#state === STATE.FULFILLED ? onfulfilled : onrejected
+      this.#handleThenableCallback(callback, resolve, reject)
+    }
+  }
+
+  #handleThenableCallback(callback, resolve, reject) {
+    // 处理值穿透，比如 promise.then().then(res =&gt; res)
+    if (typeof callback !== 'function') {
+      // 状态变更要放到微队列里面
+      queueMicrotask(() =&gt; {
+        if (this.#state === STATE.FULFILLED) {
+          resolve(this.#result)
+        } else {
+          reject(this.#result)
+        }
+      })
+
+      return
+    }
+
+    // 考虑 reject 可能是一个 undefined 的问题，比如 promise.then(res =&gt; {}) 省略第二个参数
+    queueMicrotask(() =&gt; {
+      try {
+        // 将 then 回调执行结果传到下一个 then 里面
+        const result = callback(this.#result)
+        resolve(result)
+      } catch (err) {
+        reject(err)
+      }
+    })
+  }
+}
+</code></pre>
+<h2>完整示例</h2>
+<pre><code class="language-js">const STATE = {
+  PENDING: 'pending',
+  FULFILLED: 'fulfilled',
+  REJECTED: 'rejected',
+}
+
+class MyPromise {
+  #state = STATE.PENDING
+  #result = undefined
+  #thenables = []
+
+  constructor(executor) {
+    const resolve = value =&gt; {
+      this.#stateChange(STATE.FULFILLED, value)
+    }
+
+    const reject = reason =&gt; {
+      this.#stateChange(STATE.REJECTED, reason)
+    }
+
+    try {
+      executor(resolve, reject)
+    } catch (err) {
+      reject(err)
+    }
+  }
+
+  then(onfulfilled, onrejected) {
+    return new MyPromise((resolve, reject) =&gt; {
+      this.#thenables.push({ onfulfilled, onrejected, resolve, reject })
+      this.#run()
+    })
+  }
+
+  #stateChange(state, result) {
+    if (this.#state !== STATE.PENDING) return
+
+    this.#state = state
+    this.#result = result
+
+    this.#run()
+  }
+
+  #run() {
+    if (this.#state === STATE.PENDING) return
+
+    while (this.#thenables.length) {
+      const { onfulfilled, onrejected, resolve, reject } = this.#thenables.shift()
+      
+      const callback = this.#state === STATE.FULFILLED ? onfulfilled : onrejected
+      this.#handleThenableCallback(callback, resolve, reject)
+    }
+  }
+
+  #handleThenableCallback(callback, resolve, reject) {
+    if (typeof callback !== 'function') {
+      queueMicrotask(() =&gt; {
+        if (this.#state === STATE.FULFILLED) {
+          resolve(this.#result)
+        } else {
+          reject(this.#result)
+        }
+      })
+
+      return
+    }
+
+    queueMicrotask(() =&gt; {
+      try {
+        const result = callback(this.#result)
+        resolve(result)
+      } catch (err) {
+        reject(err)
+      }
+    })
+  }
+}
+</code></pre>
 ]]></content:encoded>
             <author>tofrankie</author>
         </item>
