@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sat, 07 Mar 2026 14:32:51 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 07 Mar 2026 20:06:40 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -35895,9 +35895,9 @@ new p2(4, 4, 4) // output: undefined 4 4 4
 <h2>构造器实现</h2>
 <p>注意点：</p>
 <ol>
-<li>考虑 <code>executor</code> 执行时机</li>
+<li>考虑 <code>resolver</code> 执行时机</li>
 <li>考虑多次执行 <code>resolve()</code>、<code>reject()</code> 状态变更问题</li>
-<li>考虑 <code>executor</code> 执行异常问题，包括同步异常、异步异常的场景</li>
+<li>考虑 <code>resolver</code> 执行异常问题，包括同步异常、异步异常的场景</li>
 <li>考虑 <code>resolve(promise)</code> 的问题</li>
 </ol>
 <p>用例：</p>
@@ -35948,7 +35948,7 @@ class MyPromise {
   #state = STATE.PENDING
   #result = undefined
 
-  constructor(executor) {
+  constructor(resolver) {
     const resolve = value =&gt; {
       this.#stateChange(STATE.FULFILLED, value)
     }
@@ -35958,7 +35958,7 @@ class MyPromise {
     }
 
     try {
-      executor(resolve, reject)
+      resolver(resolve, reject)
     } catch (err) {
       // 处理异常，如 throw 'xxx'
       reject(err)
@@ -36014,8 +36014,18 @@ promise.then(res =&gt; res + 1)
   #result = undefined
   #thenables = []
 
-  constructor(executor) {
+  constructor(resolver) {
     const resolve = value =&gt; {
+      // 如果 value 是 promise 或者 thenable 对象，当前 Promise 应该“跟随”它的状态。这里调用其 then 方法便可
+      if (
+        value instanceof MyPromise ||
+        value instanceof Promise ||
+        (value !== null &amp;&amp; typeof value === 'object' &amp;&amp; typeof value.then === 'function')
+      ) {
+        value.then(resolve, reject)
+        return
+      }
+      
       this.#stateChange(STATE.FULFILLED, value)
     }
 
@@ -36024,7 +36034,7 @@ promise.then(res =&gt; res + 1)
     }
 
     try {
-      executor(resolve, reject)
+      resolver(resolve, reject)
     } catch (err) {
       reject(err)
     }
@@ -36085,8 +36095,8 @@ promise.then(res =&gt; res + 1)
     queueMicrotask(() =&gt; {
       try {
         // 将 then 回调执行结果传到下一个 then 里面
-        const result = callback(this.#result)
-        resolve(result)
+        const x = callback(this.#result)
+        resolve(x)
       } catch (err) {
         reject(err)
       }
@@ -36106,8 +36116,18 @@ class MyPromise {
   #result = undefined
   #thenables = []
 
-  constructor(executor) {
+  constructor(resolver) {
     const resolve = value =&gt; {
+      // 如果 value 是 promise 或者 thenable 对象，当前 Promise 应该“跟随”它的状态。这里调用其 then 方法便可
+      if (
+        value instanceof MyPromise ||
+        value instanceof Promise ||
+        (value !== null &amp;&amp; typeof value === 'object' &amp;&amp; typeof value.then === 'function')
+      ) {
+        value.then(resolve, reject)
+        return
+      }
+      
       this.#stateChange(STATE.FULFILLED, value)
     }
 
@@ -36116,7 +36136,7 @@ class MyPromise {
     }
 
     try {
-      executor(resolve, reject)
+      resolver(resolve, reject)
     } catch (err) {
       reject(err)
     }
@@ -36164,8 +36184,8 @@ class MyPromise {
 
     queueMicrotask(() =&gt; {
       try {
-        const result = callback(this.#result)
-        resolve(result)
+        const x = callback(this.#result)
+        resolve(x)
       } catch (err) {
         reject(err)
       }
@@ -36173,6 +36193,55 @@ class MyPromise {
   }
 }
 </code></pre>
+<h2>扩展</h2>
+<p>在 Promise A+ 标准中，其实例只有一个 <code>then</code> 方法。</p>
+<p>现在实现下其他方法：</p>
+<ul>
+<li><code>Promise.prototype.catch()</code></li>
+<li><code>Promise.prototype.finally()</code></li>
+</ul>
+<h3>Promise.prototype.catch</h3>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch">MDN</a></p>
+</blockquote>
+<p>它实际是一个 <code>then(onfulfilled, onrejected)</code> 的一个语法糖。</p>
+<pre><code class="language-js">class MyPromise {
+  // ...
+
+  catch(onrejected) {
+    return this.then(null, onrejected)
+  }
+}
+</code></pre>
+<h3>Promise.prototype.finally</h3>
+<blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally">MDN</a></p>
+</blockquote>
+<p>特点：</p>
+<ol>
+<li>接收一个回调函数，回调不接收任何参数</li>
+<li>当 Promise 的状态发生变化时触发</li>
+<li>返回一个新的 Promise 对象，“跟随”上一个 Promise 的值（注意不是回调函数的返回值）</li>
+</ol>
+<pre><code class="language-js">class MyPromise {
+  // ...
+
+  finally(onfinally) {
+    const onfulfilled = value =&gt; {
+      // 如有实现 Promise.resolve 静态方法 可替换为 `return Promise.resolve(onfinally()).then(() =&gt; value)`
+      return new MyPromise(resolve =&gt; resolve(onfinally())).then(() =&gt; value)
+    }
+    const onrejected = reason =&gt; {
+      // 如有实现 Promise.resolve 静态方法 可替换为 `return Promise.resolve(onfinally()).then(() =&gt; { throw reason })`
+      return new MyPromise(resolve =&gt; resolve(onfinally())).then(() =&gt; {
+        throw reason
+      })
+    }
+    return this.then(onfulfilled, onrejected)
+  }
+}
+</code></pre>
+<p>由于 <code>Promise.resolve('foo')</code> 相当于 <code>new Promise(resolve =&gt; resolve('foo'))</code>，加上还没有实现 <code>MyPromise.resolve()</code> 静态方法，因此用后者实现。</p>
 ]]></content:encoded>
             <author>tofrankie</author>
         </item>
