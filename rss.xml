@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sat, 07 Mar 2026 20:06:40 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 09 Mar 2026 09:47:20 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -7307,11 +7307,15 @@ TODO:
 <li><code>is:issue involves:tofrankie alfred</code>：与我相关的、标题或正文包含 alfred 的 Issues。</li>
 <li><code>is:issue in:title involves:tofrankie alfred</code>：与我相关的、标题包含 alfred 的 Issues。</li>
 </ul>
-<p>为了方便，我会用 Alfred 定义一个 <a href="https://www.alfredapp.com/help/features/web-search/">Web Search</a> 指令。使用时只要「⌥ + Space」唤起 Alfred 并输入关键词就能快速搜索。比如：</p>
+<p>为了方便，我会用 Raycast 创建 <a href="https://manual.raycast.com/quicklinks">Quicklink</a> 指令以快速搜索。</p>
 <blockquote>
-<p><code>https://github.com/issues?q=is%3Aissue+involves%3AtoFrankie {query}</code></p>
+<p><code>https://github.com/issues?q=is%3Aissue+involves%3Atofrankie {argument}</code></p>
 </blockquote>
-<h2>References</h2>
+<p>如果使用 Alfred，则参考 <a href="https://www.alfredapp.com/help/features/web-search/">Features/Web Search</a> 创建指令。</p>
+<blockquote>
+<p><code>https://github.com/issues?q=is%3Aissue+involves%3Atofrankie {query}</code></p>
+</blockquote>
+<h2>参考链接</h2>
 <ul>
 <li><a href="https://docs.github.com/zh/search-github">Search on Github</a></li>
 </ul>
