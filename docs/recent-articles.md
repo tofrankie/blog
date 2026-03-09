@@ -1,5 +1,6 @@
 # 近期更新
 
+- [如何查看自己在 Github 中提及或回复过的 Issue 记录？](https://github.com/tofrankie/blog/issues/335)
 - [手写实现 Promise/A+ 标准](https://github.com/tofrankie/blog/issues/198)
 - [GIF 图片优化](https://github.com/tofrankie/blog/issues/377)
 - [浅读 HTTP](https://github.com/tofrankie/blog/issues/283)
@@ -9,4 +10,3 @@
 - [Mercurial 使用详解](https://github.com/tofrankie/blog/issues/109)
 - [记五月：汕头 - 潮州两日](https://github.com/tofrankie/blog/issues/358)
 - [在国内使用 Gemini in Chrome](https://github.com/tofrankie/blog/issues/387)
-- [梳理 node、npm、yarn、pnpm 相关路径](https://github.com/tofrankie/blog/issues/94)
