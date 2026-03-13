@@ -1,9 +1,8 @@
+import type { Issue } from './common'
 import fs from 'node:fs/promises'
-
 import { Feed } from 'feed'
 import MarkdownIt from 'markdown-it'
-
-import { fetchAllIssue, type Issue } from './common'
+import { fetchAllIssue } from './common'
 
 const md = MarkdownIt({
   html: true,

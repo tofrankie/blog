@@ -1,16 +1,10 @@
+import type { AllTraffic, AllTrafficItem, TrafficYear, Views } from './common'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-
 import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
 
-import {
-  type AllTraffic,
-  type AllTrafficItem,
-  getTrafficViews,
-  type TrafficYear,
-  type Views,
-} from './common'
+import utc from 'dayjs/plugin/utc'
+import { getTrafficViews } from './common'
 
 dayjs.extend(utc)
 

@@ -2,13 +2,13 @@
  * 获取所有 Issue 并生成与 github-blogger 相同的 Markdown 文件，以批量存档文章。
  */
 
+import type { Issue } from './common'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-
 import dayjs from 'dayjs'
-import matter from 'gray-matter'
 
-import { fetchAllIssue, type Issue } from './common'
+import matter from 'gray-matter'
+import { fetchAllIssue } from './common'
 
 main()
 
