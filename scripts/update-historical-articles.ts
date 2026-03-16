@@ -57,7 +57,7 @@ async function processMarkdownFile(filePath: string) {
     'g'
   )
 
-  const matchedImages = Array.from(fileContent.matchAll(imageRegex))
+  const matchedImages = [...fileContent.matchAll(imageRegex)]
   if (matchedImages.length === 0) return // 无需处理
 
   const imageFiles = matchedImages.map(match => match[2]) // 提取文件名
