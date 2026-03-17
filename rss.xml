@@ -4,11 +4,35 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Mon, 09 Mar 2026 09:47:20 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 13 Mar 2026 03:06:26 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[Codex App on Intel Mac]]></title>
+            <link>https://github.com/tofrankie/blog/issues/388</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/388</guid>
+            <pubDate>Fri, 13 Mar 2026 03:06:26 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/3/1773371107734.jpg" alt="配图源自 Freepik"></p>
+<p>截止目前，Codex App 的官方版本仅支持 Apple Silicon 版]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/3/1773371107734.jpg" alt="配图源自 Freepik"></p>
+<p>截止目前，Codex App 的官方版本仅支持 Apple Silicon 版本（<a href="https://openai.com/zh-Hans-CN/codex/get-started/">前往</a>），无法在 Intel Mac 上使用。</p>
+<blockquote>
+<p><a href="https://github.com/openai/codex/issues/10410">Codex Desktop App: macOS Intel (x86_64) support</a></p>
+</blockquote>
+<p>目前可用：</p>
+<ul>
+<li><a href="https://intelcodexguide.wiki/">Codex App on Intel Macs</a> 直接下载构建好的包（非官方）</li>
+</ul>
+<p>已失效：</p>
+<ul>
+<li><s><a href="https://github.com/ox01024/intel-codex/blob/main/README.zh-CN.md">ox01024/intel-codex</a></s> 最新版本已失效，无法重新打包</li>
+<li><s><a href="https://github.com/ry2009/codex-intel-mac">ry2009/codex-intel-mac</a></s> 构建完无法打开</li>
+</ul>
+]]></content:encoded>
+            <author>tofrankie</author>
+        </item>
         <item>
             <title><![CDATA[在国内使用 Gemini in Chrome]]></title>
             <link>https://github.com/tofrankie/blog/issues/387</link>
