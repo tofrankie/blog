@@ -2,7 +2,7 @@
 
 <h2 style="border-bottom: none">Hey, I'm Frankie 👋</h2>
 
-[![RSS](https://img.shields.io/badge/rss-subscribe-orange?logo=rss&style=flat)](https://raw.githubusercontent.com/tofrankie/blog/refs/heads/main/rss.xml)
+[![RSS](https://img.shields.io/badge/rss-subscribe-orange?style=flat)](https://raw.githubusercontent.com/tofrankie/blog/refs/heads/main/rss.xml)
 
 种一棵树，最好的时间是十年前。其次，是现在。
 
