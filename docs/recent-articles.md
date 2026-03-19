@@ -1,7 +1,7 @@
 # 近期更新
 
-- [Cooking](https://github.com/tofrankie/blog/issues/199)
 - [常用 VS Code 扩展推荐](https://github.com/tofrankie/blog/issues/43)
+- [Cooking](https://github.com/tofrankie/blog/issues/199)
 - [Codex App on Intel Mac](https://github.com/tofrankie/blog/issues/388)
 - [如何查看自己在 Github 中提及或回复过的 Issue 记录？](https://github.com/tofrankie/blog/issues/335)
 - [手写实现 Promise/A+ 标准](https://github.com/tofrankie/blog/issues/198)
