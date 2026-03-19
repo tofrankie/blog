@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 18 Mar 2026 15:49:44 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 19 Mar 2026 16:05:01 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -58135,21 +58135,24 @@ export NVM_DIR=&quot;$HOME/.nvm&quot;
   &quot;autoDetectColorScheme&quot;: false,
   &quot;workbench.colorCustomizations&quot;: {
     &quot;[Vitesse Dark]&quot;: {
-      &quot;list.activeSelectionBackground&quot;: &quot;#4774F666&quot;,
-      &quot;editor.selectionBackground&quot;: &quot;#4774F666&quot;,
-      &quot;editor.selectionHighlightBackground&quot;: &quot;#4774F633&quot;,
-      &quot;terminal.selectionBackground&quot;: &quot;#4774F6b3&quot;,
+      &quot;editor.selectionBackground&quot;: &quot;#4774f666&quot;,
+      &quot;editor.selectionHighlightBackground&quot;: &quot;#4774f633&quot;,
+      &quot;list.hoverBackground&quot;: &quot;#4773f615&quot;,
+      &quot;list.activeSelectionBackground&quot;: &quot;#4774f666&quot;,
+      &quot;list.inactiveSelectionBackground&quot;: &quot;#4774f631&quot;,
+      &quot;quickInputList.focusBackground&quot;: &quot;#4773f615&quot;, // 命令面板选中背景色
+      &quot;terminal.selectionBackground&quot;: &quot;#4774f6b3&quot;, // 终端选中背景色
     },
   },
 }
 </code></pre>
 <blockquote>
-<p>由于 Vitesse Dark 默认的选中背景色特别弱，因此调整了一下编辑器和终端模块的颜色。</p>
+<p>由于 Vitesse Dark 默认的选中背景色特别弱，因此调整了一下编辑器和终端模块的颜色。<a href="https://github.com/antfu/vscode-theme-vitesse/blob/main/themes/vitesse-dark.json">vitesse-dark.json</a></p>
 </blockquote>
 <blockquote>
-<p>前不久 Cursor 2.x 某版本支持 Markdown 的预览模式，它对应的选中背景色为 <code>list.activeSelectionBackground</code>。</p>
+<p>前不久 Cursor 2.x 某版本支持 Markdown 的预览模式，它对应的选中背景色为 <code>list.activeSelectionBackground</code>。这也会影响一些导航列表的选中、悬浮颜色。</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/3/1773839275759.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/3/1773933719255.png" alt=""></p>
 <h3>Cursor 纵向布局</h3>
 <p>将 Cursor 导航栏改成纵向布局：</p>
 <pre><code class="language-json">{
