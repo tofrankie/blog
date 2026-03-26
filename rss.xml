@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 19 Mar 2026 16:05:01 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 26 Mar 2026 09:01:46 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -455,6 +455,9 @@ This model provider doesn't serve your region.Visit https://docs.cursor.com/acco
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765456520697.png" alt=""></p>
 <blockquote>
 <p>我发现 <a href="https://clashx.org/clashx-download/">ClashX</a> 似乎没有开启 TUN 模式的选项，后来装了 <a href="https://www.clashverge.dev/install.html#__tabbed_1_3">Clash Verge</a>，通过上面开启。</p>
+</blockquote>
+<blockquote>
+<p>近期，我发现电脑 CPU 占用很高，风扇狂转 🤯。似乎就是 Clash Verge 惹的祸（<a href="https://github.com/clash-verge-rev/clash-verge-rev/issues?q=is%3Aissue%20CPU">更多</a>），建议将「设置 - 界面设置 - 浏览图显」关闭，全世界都安静了。</p>
 </blockquote>
 <p>第三步，安装 Antigravity，按引导操作便可：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765456681648.png" alt=""></p>
