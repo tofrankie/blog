@@ -1,5 +1,6 @@
 # 近期更新
 
+- [Google Antigravity 登录成功无法跳转的解决方法](https://github.com/tofrankie/blog/issues/382)
 - [常用 VS Code 扩展推荐](https://github.com/tofrankie/blog/issues/43)
 - [Cooking](https://github.com/tofrankie/blog/issues/199)
 - [Codex App on Intel Mac](https://github.com/tofrankie/blog/issues/388)
@@ -9,4 +10,3 @@
 - [浅读 HTTP](https://github.com/tofrankie/blog/issues/283)
 - [彻底弄懂 Git 的 origin、HEAD、FETCH_HEAD 相关内容](https://github.com/tofrankie/blog/issues/107)
 - [Git 进阶](https://github.com/tofrankie/blog/issues/108)
-- [Git 常用命令](https://github.com/tofrankie/blog/issues/103)
