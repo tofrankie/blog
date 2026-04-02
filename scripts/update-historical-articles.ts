@@ -52,10 +52,7 @@ async function processMarkdownFile(filePath: string) {
   // /\!\[.*?\]\((https:\/\/cdn\.jsdelivr\.net\/gh\/tofrankie\/blog\/images\/(\d+\.\w+))\)/g
   // /\((https:\/\/cdn\.jsdelivr\.net\/gh\/tofrankie\/blog\/images\/(\d+\.\w+))\)/g
 
-  const imageRegex = new RegExp(
-    `(https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/images/(\\d+\\.\\w+))`,
-    'g'
-  )
+  const imageRegex = new RegExp(`(https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}/images/(\\d+\\.\\w+))`, 'g')
 
   const matchedImages = [...fileContent.matchAll(imageRegex)]
   if (matchedImages.length === 0) return // 无需处理

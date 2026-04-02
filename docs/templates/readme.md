@@ -24,6 +24,7 @@
 - [JavaScript 系列专题（goddyZhao）](../../docs/js/00-导读.md)
 - [深入理解 JavaScript 系列（汤姆大叔）](https://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
 - [JavaScript 二十年](https://github.com/doodlewind/jshistory-cn)
+- [Small Focused Modules（Sindre Sorhus）](https://sindresorhus.com/blog/small-focused-modules)
 
 #### ❓ 如何问出一个好问题
 

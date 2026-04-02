@@ -17,11 +17,7 @@ async function main() {
 
   templateContent = templateContent.replace('{{yearLinks}}', yearLinks)
 
-  templateContent = replaceRelativePaths(
-    templateContent,
-    path.dirname(TEMPLATE_FILE),
-    path.dirname(OUTPUT_FILE)
-  )
+  templateContent = replaceRelativePaths(templateContent, path.dirname(TEMPLATE_FILE), path.dirname(OUTPUT_FILE))
 
   await fs.writeFile(OUTPUT_FILE, templateContent, 'utf-8')
   console.log('README.md has been updated.')
@@ -55,8 +51,7 @@ async function genYearLinks(issues: Issues) {
   const githubRepo = getGithubRepo()
 
   const labels = sortedYears.map(
-    year =>
-      `[${year} 年，共 ${yearLabels[year]} 篇](https://github.com/${githubUser}/${githubRepo}/labels/${year})`
+    year => `[${year} 年，共 ${yearLabels[year]} 篇](https://github.com/${githubUser}/${githubRepo}/labels/${year})`
   )
 
   return `- ${labels.join('\n- ')}`
