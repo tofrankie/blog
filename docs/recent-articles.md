@@ -1,5 +1,6 @@
 # 近期更新
 
+- [pnpm/yarn/npm 常用命令](https://github.com/tofrankie/blog/issues/88)
 - [Cooking](https://github.com/tofrankie/blog/issues/199)
 - [Cursor: Model not available](https://github.com/tofrankie/blog/issues/384)
 - [Google Antigravity 登录成功无法跳转的解决方法](https://github.com/tofrankie/blog/issues/382)
@@ -9,4 +10,3 @@
 - [手写实现 Promise/A+ 标准](https://github.com/tofrankie/blog/issues/198)
 - [GIF 图片优化](https://github.com/tofrankie/blog/issues/377)
 - [浅读 HTTP](https://github.com/tofrankie/blog/issues/283)
-- [彻底弄懂 Git 的 origin、HEAD、FETCH_HEAD 相关内容](https://github.com/tofrankie/blog/issues/107)
