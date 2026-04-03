@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Mon, 30 Mar 2026 23:32:35 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 02 Apr 2026 22:33:10 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -52083,6 +52083,29 @@ $ npm docs &lt;package&gt;                      # 打开包的文档
 $ npm config get registry                 # 获取当前镜像源
 $ npm config set registry &lt;registry-url&gt;  # 获取当前镜像源
 </code></pre>
+<h3>8. 废弃包</h3>
+<p>废弃包不会从 npm 服务器删除包，但会在用户安装时显示警告，并在 npm 官网显示 Deprecated 标签</p>
+<pre><code class="language-bash"># 废弃整个包
+$ npm deprecate &lt;package&gt; &quot;该项目不再维护，请迁移至 xxx&quot;
+
+# 仅废弃特定版本
+$ npm deprecate &lt;package&gt;@&lt;version&gt; &quot;该版本存在安全漏洞，请升级至 x.x 版本&quot;
+</code></pre>
+<p>执行命令前，用 <code>npm whoami</code>、<code>npm login</code> 确保登录，否则会有权限问题，特别是 Scoped packages。</p>
+<h3>9. 撤销包</h3>
+<p>这是真正的“删除”。一旦撤销，它将会永久从 npm 仓库中消失。</p>
+<blockquote>
+<p>为保护生态系统，撤销有时间限制，一般超过 72h 无法自行撤销。</p>
+</blockquote>
+<pre><code class="language-bash"># 撤销整个包（删除所有版本）
+npm unpublish &lt;package&gt; --force
+
+# 撤销特定版本
+$ npm unpublish &lt;package&gt;@&lt;version&gt;
+</code></pre>
+<blockquote>
+<p>注意：如果你是因为包里泄露了敏感信息（如 API Key）而想撤销，仅仅撤销是不够的，你应该立即修改该 Key，因为该信息可能已经被爬虫抓取。</p>
+</blockquote>
 ]]></content:encoded>
             <author>tofrankie</author>
         </item>
