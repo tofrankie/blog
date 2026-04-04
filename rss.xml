@@ -4,11 +4,95 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 02 Apr 2026 22:33:10 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 04 Apr 2026 16:10:13 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[使用 Prettier/Stylelint 为 WXML 提供完整的格式化]]></title>
+            <link>https://github.com/tofrankie/blog/issues/389</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/389</guid>
+            <pubDate>Sat, 04 Apr 2026 10:06:28 GMT</pubDate>
+            <description><![CDATA[<h2>前言</h2>
+<p>在写代码这件事上，我是有点强迫症的，代码格式便是其中之一。</p>
+<h3>工具</h3>
+<p>个人常用组合是：</p>
+<ul>
+<li><strong>ESLint</strong> - 代码质量检查</li>
+<li><strong>Prettier</strong> - 代码格式]]></description>
+            <content:encoded><![CDATA[<h2>前言</h2>
+<p>在写代码这件事上，我是有点强迫症的，代码格式便是其中之一。</p>
+<h3>工具</h3>
+<p>个人常用组合是：</p>
+<ul>
+<li><strong>ESLint</strong> - 代码质量检查</li>
+<li><strong>Prettier</strong> - 代码格式检查</li>
+<li><strong>Stylelint</strong> - CSS 质量检查（含格式化）</li>
+</ul>
+<p>相较之下，比较纯粹的是 Prettier，专注于格式化。而 ESLint、Stylelint 由于历史原因，它除了做质量检查，其实也做格式化的事。所幸的是，它们也逐渐“去掉”格式化相关的规则，专注于质量检查。</p>
+<ul>
+<li>在 ESLint 9 后，移除了所有格式化相关的规则。</li>
+<li>在 Stylelint 15 后，移除了 76 条格式化相关的规则。</li>
+</ul>
+<p>其后由社区接盘，通过 Plugin 的方式继续提供：</p>
+<ul>
+<li><a href="https://eslint.style/guide/getting-started">ESLint Stylistic</a></li>
+<li><a href="https://github.com/stylelint-stylistic/stylelint-stylistic">Stylelint Stylistic</a></li>
+</ul>
+<p>Prettier 是“固执己见”的，足够简单。相反，有定制化需求就比较困难，需通过 Plugin 自行实现。当然，它也不是完美的，如托尼老师 antfu 文章《<a href="https://antfu.me/posts/why-not-prettier-zh">为什么我不使用 Prettier</a>》指出的一些问题，确确实实有困扰过，但接受它的不完美就还好吧。突然想起，当初刚开始用的时候也有类似的<a href="https://segmentfault.com/q/1010000023464230">问题</a>。</p>
+<p>这个过程，其实用起来挺不爽的，要配置多个工具，还要解决它们之间的冲突问题。</p>
+<blockquote>
+<p>唤醒一下沉睡的记忆：此前解决 ESLint 与 Prettier 冲突的问题，有两种方法：一是配置 <a href="https://github.com/prettier/eslint-config-prettier">eslint-config-prettier</a> 屏蔽相关冲突规则，将格式化交由 Prettier 处理。二是使用 <a href="https://github.com/prettier/eslint-plugin-prettier">eslint-plugin-prettier</a> 将不符合 Prettier 格式化规则的报告成 ESLint 错误，利用 ESLint AutoFix 自动修复。</p>
+</blockquote>
+<p>后来又出现了 <a href="https://biomejs.dev/guides/getting-started/">Biome</a>、<a href="https://oxc.rs/docs/guide/usage/linter.html">Oxlint</a> 这种集 linter 和 formatter 于一体的工具，好处是不用配置那么多工具了。缺点是它们目前生态没那么繁荣。</p>
+<h3>小程序生态</h3>
+<p>前面提到这些，在标准 Web 里都有完善的插件提供支持。但小程序生态，它带一些特有的规则，不完全兼容。</p>
+<p>罄竹难书：</p>
+<ul>
+<li>WXML 支持插值语法。类似于 Vue，但又不完全相同，如属性插值。</li>
+<li>WXML 支持嵌入 <code>&lt;wxs&gt;</code>，类似于 HTML 的 <code>&lt;script&gt;</code> 元素，但现有的 Parser 认不出来，原因是它不是标准 Web 元素。
+<ul>
+<li>在 Prettier 用 <code>parser: 'html'</code> 或 <code>parser: 'vue'</code> 遇 <code>&lt;wxs&gt;</code> 会报错，前者还会将 <code>&lt;wxs&gt;</code> 当作文本内容产生不合法的换行，导致内置 JS 语句语法错误，编译失败。</li>
+<li>在 Stylelint 用 <code>customSyntax: 'postcss-html'</code> 遇 <code>&lt;wxs&gt;</code> 会报错。</li>
+</ul>
+</li>
+<li>WXML 的元素属性不允许换行，否则会编译失败，而 HTML 是兼容的。
+<ul>
+<li>对于超过 Prettier 指定行宽的属性值会产生换行。</li>
+<li>对于文本节点插值，由于 HTML 不支持插值语法，Prettier 可能会在非预期地方进行换行导致插值表达式语法错误</li>
+</ul>
+</li>
+<li>WXML 有一套特有的标签、单位，而不是 HTML 中的 <code>&lt;div&gt;</code>、<code>&lt;span&gt;</code> 等，因此 Stylelint 默认认不出这些特有特性：
+<ul>
+<li>遇到 <code>page {}</code> 会抛出 <code>selector-type-no-unknown</code> 错误</li>
+<li>遇到 <code>rpx</code> 会抛出 <code>declaration-property-value-no-unknown</code> 错误</li>
+</ul>
+</li>
+<li>WXML 的属性支持 <code>style=&quot;{{style}}&quot;</code>、<code>style=&quot;font-size: {{fontSize}}rpx&quot;</code>、<code>style=&quot;font-size: 10rpx; {{color}}; font-Weight: 600&quot;</code> 等特有的语法，对于 postcss-html 解析内联样式有点蛋疼。</li>
+<li>...</li>
+</ul>
+<p>所以，无论按 HTML，还是 Vue 去解析 WXML 都不太行，怎么破？</p>
+<h2>解决方案</h2>
+<p>唯有自实现一个 Parser 去解析，凑巧不是有 AI 嘛，于是...</p>
+<ul>
+<li><a href="https://github.com/tofrankie/prettier-plugin-wxml">@tofrankie/prettier-plugin-wxml</a> - 用于 Prettier</li>
+<li><a href="https://github.com/tofrankie/postcss-wxml">@tofrankie/postcss-wxml</a> - 用于 Stylelint</li>
+</ul>
+<p>大致思路：</p>
+<ol>
+<li>将 WXML 拆开为 wxs 和 wxml（指无 wxs 的 wxml）</li>
+<li>把 wxs 按 JS 形式进行格式化</li>
+<li>将 wxml 按 Vue 形式进行格式化</li>
+<li>用 angular-html-parser 对格式化后的 wxml 提取插值</li>
+<li>按 JS 形式对插值表达式进行格式化，完成后替换回去</li>
+<li>用 angular-html-parser 解析所有属性，遍历将多行折叠为单行</li>
+<li>将格式化后的 wxs 替换回去</li>
+</ol>
+<p>未完待续...</p>
+]]></content:encoded>
+            <author>tofrankie</author>
+        </item>
         <item>
             <title><![CDATA[Codex App on Intel Mac]]></title>
             <link>https://github.com/tofrankie/blog/issues/388</link>
