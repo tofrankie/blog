@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 05 Apr 2026 07:46:52 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 08 Apr 2026 17:12:47 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -498,7 +498,7 @@ This model provider doesn't serve your region.Visit https://docs.cursor.com/acco
 <li>重启 Cursor</li>
 </ol>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1768208408853.png" alt=""></p>
-<h2>解决方法二（推荐）</h2>
+<h2>解决方法二</h2>
 <p>使用方案一，发现有两个比较蛋疼的问题：</p>
 <ul>
 <li>使用 Clash Verge 太占 CPU 了，务必关闭「浏量图显」</li>
@@ -518,6 +518,22 @@ This model provider doesn't serve your region.Visit https://docs.cursor.com/acco
 <blockquote>
 <p>实测还是要借助 Clash Verge 的 TUN 模式。</p>
 </blockquote>
+<h2>解决方法三 👍</h2>
+<p>使用下来，在 settings.json 配置代理影响较大，比如开发 Extension 会让扩展宿主环境不正常，部分用 Cursor 内置浏览器打开的本地网页会出现异常。</p>
+<p>在 Shell 设置环境变量，借助 Cursor 的 CLI 命令打开，它会继承父进程的变量。可以定义一个函数，像 <code>cpx /path/to/project</code></p>
+<pre><code class="language-bash">cpx() {
+  if [[ $# -eq 0 ]]; then
+    echo 'Usage: cpx &lt;path&gt; [cursor-args...]' &gt;&amp;2
+    echo 'Example: cpx ~/Web/myproject' &gt;&amp;2
+    return 1
+  fi
+  env \
+    HTTP_PROXY=http://127.0.0.1:7897 \
+    HTTPS_PROXY=http://127.0.0.1:7897 \
+    ALL_PROXY=socks5://127.0.0.1:7897 \
+    command cursor &quot;$@&quot;
+}
+</code></pre>
 ]]></content:encoded>
             <author>tofrankie</author>
         </item>
@@ -1257,7 +1273,7 @@ $ gg &lt;input-dir&gt; -o &lt;output-dir&gt;
             <author>tofrankie</author>
         </item>
         <item>
-            <title><![CDATA[React Query 小记]]></title>
+            <title><![CDATA[TanStack Query 小记]]></title>
             <link>https://github.com/tofrankie/blog/issues/376</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/376</guid>
             <pubDate>Mon, 17 Nov 2025 09:20:11 GMT</pubDate>
@@ -1269,6 +1285,11 @@ $ gg &lt;input-dir&gt; -o &lt;output-dir&gt;
 <blockquote>
 <p>本文以 V5 版本为例</p>
 </blockquote>
+<h2>写在前面</h2>
+<ul>
+<li><a href="https://tkdodo.eu/blog/practical-react-query">React Query 系列文章</a></li>
+<li><a href="https://www.youtube.com/watch?v=l3PxErcKeAI">React Query API Design: Lessons Learned</a>（视频）</li>
+</ul>
 <h2>Query Key</h2>
 <p>它是由字符串、（可嵌套）对象、或两者兼具组成的数组。</p>
 <h3>顺序</h3>
