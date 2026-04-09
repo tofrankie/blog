@@ -19,7 +19,9 @@ async function main() {
     await fs.mkdir(trafficDir, { recursive: true })
   }
 
-  const trafficDataYearly = Object.groupBy(trafficData.views, item => dayjs(item.timestamp).format('YYYY'))
+  const trafficDataYearly = Object.groupBy(trafficData.views, item =>
+    dayjs(item.timestamp).format('YYYY')
+  )
   for (const [year, views] of Object.entries(trafficDataYearly)) {
     const yearFilePath = path.resolve(trafficDir, `${year}.json`)
     if (views) await updateYearTrafficJson(yearFilePath, views)
