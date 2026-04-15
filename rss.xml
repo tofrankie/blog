@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 08 Apr 2026 17:12:47 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 15 Apr 2026 13:08:54 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -62,7 +62,7 @@
 <ul>
 <li>遇 <code>&lt;wxs&gt;</code>，Prettier 无法按预期进行折行，它把 wxs 当作类似 div 的标签，其内部 JS 当作普通文本节点，超过 printWidth 折行大概率会导致 JS 语法异常，进而影响小程序编译 WXML。</li>
 <li>遇 <code>style=&quot;{{style}}&quot;</code>、<code>style=&quot;font-size: {{fontSize}}rpx&quot;</code> 等特殊插值语法，用 Vue Parser 去解析无法完全兼顾，插值表达式借助现有的 Parser 进行格式化，只能格式化文本插值。</li>
-<li>遇 <code>&lt;wxs&gt;</code>，Stylelint 无法借助 postcss-html 对齐进行格式化，会解析失败。</li>
+<li>遇 <code>&lt;wxs&gt;</code>，Stylelint 无法借助 postcss-html 对其进行格式化，会解析失败。</li>
 <li>遇 <code>*.wxss</code> 的 <code>page</code>、<code>view</code>、<code>picker</code> 等标签选择器，默认情况下无法识别，会抛出 <code>declaration-property-value-no-unknown</code> 错误，这点可以扩展 <code>selector-type-no-unknown</code> 规则。</li>
 <li>遇 <code>rpx</code> 长度单位，Stylelint 无法识别，会抛出 <code>declaration-property-value-no-unknown</code> 错误，幸好最近更新支持扩展自定义单位。</li>
 <li>...</li>
@@ -102,12 +102,13 @@
 <blockquote>
 <p><a href="https://github.com/openai/codex/issues/10410">Codex Desktop App: macOS Intel (x86_64) support</a></p>
 </blockquote>
-<p>目前可用：</p>
+<p>当前可用：</p>
 <ul>
-<li><a href="https://intelcodexguide.wiki/">Codex App on Intel Macs</a> 直接下载构建好的包（非官方）</li>
+<li><a href="https://github.com/sohail288/codex-app-intel-repackager">sohail288/codex-app-intel-repackager</a> 在 Release 下载 Intel 版本包</li>
 </ul>
 <p>已失效：</p>
 <ul>
+<li><s><a href="https://intelcodexguide.wiki/">Codex App on Intel Macs</a></s> 版本有点过时</li>
 <li><s><a href="https://github.com/ox01024/intel-codex/blob/main/README.zh-CN.md">ox01024/intel-codex</a></s> 最新版本已失效，无法重新打包</li>
 <li><s><a href="https://github.com/ry2009/codex-intel-mac">ry2009/codex-intel-mac</a></s> 构建完无法打开</li>
 </ul>
