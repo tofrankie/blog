@@ -1,7 +1,7 @@
 # 近期更新
 
-- [使用 Prettier/Stylelint 为 WXML 提供完整的格式化](https://github.com/tofrankie/blog/issues/389)
 - [Codex App on Intel Mac](https://github.com/tofrankie/blog/issues/388)
+- [使用 Prettier/Stylelint 为 WXML 提供完整的格式化](https://github.com/tofrankie/blog/issues/389)
 - [Cursor: Model not available](https://github.com/tofrankie/blog/issues/384)
 - [TanStack Query 小记](https://github.com/tofrankie/blog/issues/376)
 - [pnpm/yarn/npm 常用命令](https://github.com/tofrankie/blog/issues/88)
