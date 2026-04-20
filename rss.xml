@@ -4,11 +4,105 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sat, 18 Apr 2026 07:51:24 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 19 Apr 2026 20:57:51 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[VS Code Extension 开发记录]]></title>
+            <link>https://github.com/tofrankie/blog/issues/390</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/390</guid>
+            <pubDate>Sun, 19 Apr 2026 20:57:51 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/4/1776632207715.jpg" alt="配图源自 Freepik"></p>
+<p>就 VS Code 扩展开发作个记录。</p>
+<h2>WebView Ext]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/4/1776632207715.jpg" alt="配图源自 Freepik"></p>
+<p>就 VS Code 扩展开发作个记录。</p>
+<h2>WebView Extension</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/api/extension-guides/webview">Webview API</a></li>
+<li><a href="https://code.visualstudio.com/api/extension-guides/web-extensions">Web Extensions</a></li>
+<li><a href="https://code.visualstudio.com/docs/debugtest/tasks">BUILD, DEBUG, TEST</a></li>
+</ul>
+<h3>Web 页面调试</h3>
+<p>在命令面板输入 <code>Open Webview Developer Tools</code> 可以唤起控制台。</p>
+<h3>调试扩展时关闭其他扩展</h3>
+<p>目的是在扩展开发宿主窗口关闭所有扩展以减少干扰，便于排查问题。在 <code>.vscode/lanuch.json</code> 的 <code>args</code> 中加入 <code>--disable-extensions</code>，示例：</p>
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;0.2.0&quot;,
+  &quot;configurations&quot;: [
+    {
+      &quot;name&quot;: &quot;Debug Extension&quot;,
+      &quot;type&quot;: &quot;extensionHost&quot;,
+      &quot;request&quot;: &quot;launch&quot;,
+      &quot;args&quot;: [&quot;--disable-extensions&quot;, &quot;--extensionDevelopmentPath=${workspaceFolder}&quot;],
+      &quot;outFiles&quot;: [&quot;${workspaceFolder}/dist/extension/*.js&quot;],
+      &quot;preLaunchTask&quot;: &quot;npm: dev&quot;
+    }
+  ]
+}
+</code></pre>
+<h3>无法打开扩展开发宿主窗口</h3>
+<p>如果在调试面板启动调试，久久不能打开扩展开发宿主窗口，提示“正在生成...”，并且任务执行并无报错，通常是未正确配置 <code>problemMatcher</code>。</p>
+<p>任务运行的结果是由属性 <code>problemMatcher</code> 来控制的。可以选择 VS Code 内置的，或者其他插件提供的结果分析器，甚至可以自己书写结果分析器来分析任务运行结果。</p>
+<p>比如基于 tsdown 开发，默认情况下无法判断运行结果，可以根据 tsdown 的运行结果自行编写。</p>
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;2.0.0&quot;,
+  &quot;tasks&quot;: [
+    {
+      &quot;label&quot;: &quot;dev&quot;,
+      &quot;type&quot;: &quot;shell&quot;,
+      &quot;command&quot;: &quot;npm&quot;,
+      &quot;args&quot;: [&quot;run&quot;, &quot;dev&quot;, &quot;--loglevel&quot;, &quot;silent&quot;],
+      &quot;isBackground&quot;: true,
+      &quot;problemMatcher&quot;: {
+        &quot;base&quot;: &quot;$tsc-watch&quot;,
+        &quot;background&quot;: {
+          &quot;activeOnStart&quot;: true,
+          &quot;beginsPattern&quot;: &quot;^.*$&quot;,
+          &quot;endsPattern&quot;: &quot;([Bb]uilt|[Ss]uccess|[Ff]inished|[Dd]one|[Ww]atching)&quot;
+        }
+      },
+      &quot;group&quot;: {
+        &quot;kind&quot;: &quot;build&quot;,
+        &quot;isDefault&quot;: false
+      },
+      &quot;presentation&quot;: {
+        &quot;reveal&quot;: &quot;silent&quot;,
+        &quot;panel&quot;: &quot;shared&quot;
+      }
+    }
+  ]
+}
+</code></pre>
+<h3>本地资源加载问题</h3>
+<p>Webview 在隔离的上下文中运行，无法直接访问本地资源，这也是出于安全原因考虑。</p>
+<p>默认是 <code>default-src 'none'</code>，无法加载本地资源或 HTTPS 资源。</p>
+<pre><code class="language-html">&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src 'none';&quot;&gt;
+</code></pre>
+<p>如果出现类似错误，通常因为未设置 CSP：</p>
+<pre><code>Loading the font '&lt;URL&gt;' violates the following Content Security Policy directive: &quot;default-src 'none'&quot;. Note that 'font-src' was not explicitly set, so 'default-src' is used as a fallback. The action has been blocked.
+</code></pre>
+<p>允许加载<strong>本地</strong>的 JS、CSS、图片、字体资源文件，允许加载 HTTPS、Base64 的图片，允许加载 Base64 的字体。</p>
+<pre><code class="language-html">&lt;meta
+  http-equiv=&quot;Content-Security-Policy&quot;
+  content=&quot;default-src 'none'; img-src ${webview.cspSource} https: data:; script-src ${webview.cspSource}; style-src ${webview.cspSource}; font-src ${cspSource} data:;&quot;
+/&gt;
+</code></pre>
+<ul>
+<li><a href="https://code.visualstudio.com/api/references/vscode-api#extensions">webview.cspSource</a> 最终会注入类似 <code>font-src 'self' vscode-remote-resource: vscode-managed-remote-resource: https://*.vscode-unpkg.net</code> 的规则，以加载本地资源。</li>
+<li><code>https:</code> 顾名思义</li>
+<li><code>data:</code> 表示允许使用 Base64 资源。一些构建工具在打包时，若文件大小小于特定值会以 Base64 的形式打包到 JS 或 CSS 文件中</li>
+</ul>
+<blockquote>
+<p>完整示例参考 <a href="https://github.com/microsoft/vscode-extension-samples/tree/main/webview-sample">webview-sample</a></p>
+</blockquote>
+<h3>开发热更新问题</h3>
+<p>未完待续...</p>
+]]></content:encoded>
+            <author>tofrankie</author>
+        </item>
         <item>
             <title><![CDATA[使用 Prettier/Stylelint 为 WXML 提供完整的格式化]]></title>
             <link>https://github.com/tofrankie/blog/issues/389</link>
