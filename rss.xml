@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 19 Apr 2026 20:57:51 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 22 Apr 2026 16:18:29 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -16,9 +16,17 @@
             <pubDate>Sun, 19 Apr 2026 20:57:51 GMT</pubDate>
             <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/4/1776632207715.jpg" alt="配图源自 Freepik"></p>
 <p>就 VS Code 扩展开发作个记录。</p>
-<h2>WebView Ext]]></description>
+<h2>写在前面</h2>
+<]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/4/1776632207715.jpg" alt="配图源自 Freepik"></p>
 <p>就 VS Code 扩展开发作个记录。</p>
+<h2>写在前面</h2>
+<p>现在 Visual Studio Marketplace 生态起来之后，要求越来越严格了。</p>
+<p>⚠️ 一些注意事项：</p>
+<ol>
+<li><code>name</code> 和 <code>displayName</code> 必须是 Marketplace 上唯一的，否则无法发布到 Visual Studio Marketplace。<a href="https://code.visualstudio.com/api/references/extension-manifest">Extension Manifest</a></li>
+<li>如果已经发布的扩展突然在 Marketplace 上找不到了，可以在 <a href="https://github.com/microsoft/vsmarketplace/blob/main/RemovedPackages.md">RemovedPackages</a> 看看有没有你的扩展，里面很多 Fork 类型的扩展都被移除了！</li>
+</ol>
 <h2>WebView Extension</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/api/extension-guides/webview">Webview API</a></li>
@@ -7544,6 +7552,9 @@ TODO:
 <p>我们知道，在 Github 主页左侧有个 Recent Activity 的栏]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/4/1713108869593.jpg" alt="配图源自 Freepik"></p>
 <p>我们知道，在 Github 主页左侧有个 Recent Activity 的栏目，但它最多显示过去两周内 4 次最近的更新，但要求状态是 <code>open</code> 的。</p>
+<blockquote>
+<p>Recent Activity 已被移除 <a href="https://github.com/orgs/community/discussions/176449#discussioncomment-15238388">&quot;Recent Activity&quot; gone from home page?</a></p>
+</blockquote>
 <p>有时候，我们需要查找自己创建的、评论过的 Issue 或 PR 记录，然而它可能已经 <code>closed</code> 了。</p>
 <blockquote>
 <p><a href="https://github.com/issues">https://github.com/issues</a></p>
