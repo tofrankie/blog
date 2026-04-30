@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 22 Apr 2026 16:18:29 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 30 Apr 2026 14:25:38 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -550,8 +550,12 @@ project/node_modules/.pnpm/color-name@1.1.4/node_modules/color-name
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/385</guid>
             <pubDate>Fri, 23 Jan 2026 14:15:51 GMT</pubDate>
             <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1769177690224.jpg" alt="配图源自 Freepik"></p>
-<p>在 <a href="https://skills.sh">skills.sh]]></description>
+<h2>Offical Agent Skills</h2>
+<p><a href="]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1769177690224.jpg" alt="配图源自 Freepik"></p>
+<h2>Offical Agent Skills</h2>
+<p><a href="https://officialskills.sh/">officialskills.sh</a> 收录了各软件团队的官方 Skills。</p>
+<h2><a href="http://skills.sh">skills.sh</a></h2>
 <p>在 <a href="https://skills.sh">skills.sh</a> 收集了 7000+ 的 Skill，支持一众 AI Editor：</p>
 <ul>
 <li>Claude Code</li>
@@ -578,6 +582,7 @@ project/node_modules/.pnpm/color-name@1.1.4/node_modules/color-name
 <ul>
 <li><a href="https://skills.sh/">Vercel Skills</a></li>
 <li><a href="https://agentskills.io/home">Agent Skills</a></li>
+<li><a href="https://officialskills.sh/">Offical Agent Skills</a></li>
 </ul>
 ]]></content:encoded>
             <author>tofrankie</author>
@@ -1435,6 +1440,12 @@ export function hashKey(queryKey: QueryKey | MutationKey): string {
   )
 }
 </code></pre>
+<blockquote>
+<p>为什么是确定性的？</p>
+<p>首先，此前 ECMA-262 规范未指定对象枚举顺序，具体取决于 JS 引擎实现，事实是大部分浏览器都是基于插入的顺序。</p>
+<p>其次，最新的 ECMA-262 规范中以明确规定了遍历的顺序。<a href="https://tc39.es/ecma262/#sec-ordinaryownpropertykeys">OrdinaryOwnPropertyKeys(obj)</a></p>
+<p>了解更多细节请看此<a href="https://www.zhihu.com/question/23494408/answer/374191529">回答</a>。</p>
+</blockquote>
 <h3>结构化</h3>
 <p>尽管 Query Key 在整个 Query 中唯一便可使用，但我们可以按一定的颗粒度进行划分。比如：</p>
 <pre><code class="language-ts">useQuery({ queryKey: ['todos', 'list', { filters: 'all' }] })
