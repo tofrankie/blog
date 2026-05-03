@@ -1,5 +1,6 @@
 # 近期更新
 
+- [Git 常用命令](https://github.com/tofrankie/blog/issues/103)
 - [为 AI Agents 安装 Skills](https://github.com/tofrankie/blog/issues/385)
 - [TanStack Query 小记](https://github.com/tofrankie/blog/issues/376)
 - [VS Code Extension 开发记录](https://github.com/tofrankie/blog/issues/390)
@@ -9,4 +10,3 @@
 - [Cursor: Model not available](https://github.com/tofrankie/blog/issues/384)
 - [pnpm/yarn/npm 常用命令](https://github.com/tofrankie/blog/issues/88)
 - [Cooking](https://github.com/tofrankie/blog/issues/199)
-- [Google Antigravity 登录成功无法跳转的解决方法](https://github.com/tofrankie/blog/issues/382)
