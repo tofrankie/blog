@@ -4,11 +4,137 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 03 May 2026 00:48:35 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 03 May 2026 21:04:44 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[当 Raycast extensions 仓库过大，如何更方便提交 PR？]]></title>
+            <link>https://github.com/tofrankie/blog/issues/391</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/391</guid>
+            <pubDate>Sun, 03 May 2026 21:01:41 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1777841944064.jpg" alt="配图源自 Freepik"></p>
+<h2>背景</h2>
+<p>当我们开发完一个 Raycast 扩展，如要发布到 R]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1777841944064.jpg" alt="配图源自 Freepik"></p>
+<h2>背景</h2>
+<p>当我们开发完一个 Raycast 扩展，如要发布到 Raycast Store，需要在官方<a href="https://github.com/raycast/extensions">仓库</a>提交 PR，等待官方成员审核合并。</p>
+<p>但有一个令人头疼的事情，Raycast Store 现有扩展数 2000+，每个扩展都要有截图信息，使得整个仓库非常大（超过 70GB）。无论克隆，还是本地空间占用都极其不友好。</p>
+<h2>解决方案</h2>
+<p>Git 提供了不同克隆方案：</p>
+<ul>
+<li>浅克隆（Shallow Clone）：<code>git clone --depth &lt;N&gt; &lt;repo_url&gt;</code> 只拉取最近 N 次的提交记录，而不是完整的历史。</li>
+<li>部分克隆（Partial Clone）：<code>git clone --filter=blob:none &lt;repo_url&gt;</code> 它会下载所有的提交历史，但不会立即下载内容。只有切换分支或者查看某个文件时，它才会按需从远程仓库下载。</li>
+<li>稀疏检出（Sparse Checkout）：<code>git clone --filter=blob:none --no-checkout &lt;repo_url&gt;</code> 适合只需要修改仓库某个子目录。</li>
+</ul>
+<p>常规克隆会下载所有 Commit 对象 + 所有 Blob 对象。部分克隆会下载所有 Commit 对象，但跳过所有的 Blob 对象。其中 Commit 对象包含作者、时间、提交记录、树结构，这些信息通常是文本，增长速度很慢，一般不会太大，最多也就几百 MB。</p>
+<p>无论是新增或者更新扩展，只需要调整 <code>extensions</code> 下某个子目录，所以这里选择「部分克隆 + 稀疏检出」结合的方案。</p>
+<h2>部分克隆 + 稀疏检出</h2>
+<blockquote>
+<p>结果：从 70GB+ → 200MB，舒服了 😜</p>
+</blockquote>
+<h3>简要了解</h3>
+<ol>
+<li>只拉取记录，不拉取文件：<code>git clone --filter=blob:none --no-checkout &lt;url&gt;</code></li>
+<li>按需检出子模块，工作区仅显示你指定的文件或目录：<code>git sparse-checkout init --cone</code> + <code>git sparse-checkout set &lt;file_or_directory&gt;</code></li>
+<li>执行 checkout 下载指定的文件或目录：<code>git checkout main</code></li>
+<li>后续在现有基础上最佳新的目录：<code>git sparse-checkout add &lt;new_file_or_directory&gt;</code></li>
+<li>重新设定查看范围：<code>git sparse-checkout set &lt;new_file_or_directory&gt;</code></li>
+<li>禁用稀疏模式，恢复所有文件： <code>git sparse-checkout disable</code></li>
+</ol>
+<h3>main 分支示例</h3>
+<p>官方 <a href="https://github.com/raycast/extensions">extensions</a> 仓库目录如下，完整克隆时 <code>.git</code> 占用超过 55GB，<code>extensions</code> 占用超过 15GB。</p>
+<pre><code class="language-bash">$ tree . -L 1
+.
+├── .git
+├── .gitattributes
+├── .github
+├── .gitignore
+├── .nvmrc
+├── CONTRIBUTING.md
+├── docs
+├── examples
+├── examples
+├── images
+├── LICENSE
+├── migrations
+├── README.md
+├── scripts
+├── SECURITY.md
+└── templates
+</code></pre>
+<p>因此，部分克隆的时候，排除掉 <code>extensions</code> 目录便可。</p>
+<ol>
+<li>部分克隆：不下载文件实体，不自动检出</li>
+</ol>
+<pre><code class="language-bash">$ git clone --filter=blob:none --no-checkout git@github.com:tofrankie/raycast-extensions.git extensions
+
+$ cd extensions
+</code></pre>
+<ol start="2">
+<li>初始化稀疏检出</li>
+</ol>
+<pre><code class="language-bash">$ git sparse-checkout init --cone
+</code></pre>
+<ol start="3">
+<li>检出“除 extensions 目录外”的所有内容</li>
+</ol>
+<pre><code class="language-bash">$ git sparse-checkout set $(git ls-tree -d --name-only HEAD | grep -v '^extensions$')
+</code></pre>
+<blockquote>
+<p>由于此时本地还有任何文件（除 <code>.git</code> 外），不能使用 <code>$(ls -d */ | grep -v 'extensions/' | sed 's/\///g')</code> 等命令过滤，避免找不到任何文件夹抛出错误。</p>
+</blockquote>
+<blockquote>
+<p>使用 <code>git ls-tree</code> 获取远程根目录下的所有文件夹，过滤掉 <code>extensions</code></p>
+</blockquote>
+<ol start="4">
+<li>执行检出，下载文件实体</li>
+</ol>
+<pre><code class="language-bash">$ git checkout main
+</code></pre>
+<blockquote>
+<p>此时本地仓库还没有 <code>extensions</code> 目录</p>
+</blockquote>
+<ol start="5">
+<li>后续想要查看某个扩展（不影响已经存在的其他目录）</li>
+</ol>
+<pre><code class="language-bash">$ git sparse-checkout add extensions/wechat-devtool
+</code></pre>
+<blockquote>
+<p>不影响已经存在的其他目录，Git 会自动下载 <code>extensions/wechat-devtool</code> 的 Blob 数据。</p>
+</blockquote>
+<ol start="6">
+<li>如果只是想临时查看某个文件（不会下载到工作区，直接输出在终端）</li>
+</ol>
+<pre><code class="language-bash">$ git show HEAD:extensions/wechat-devtool/package.json
+</code></pre>
+<h3>新分支</h3>
+<p>有时候，可能会同时维护着多个扩展，加之官方目前审核速度极慢，所以个人习惯维护多个子分支，一个分支对应一个扩展的维护，而 <code>main</code> 分支负责跟 <code>upstream</code> 同步，因此它总是最新的。</p>
+<p>新开分支之前，先从上游同步到我的 <code>main</code> 分支，接着基于 <code>main</code> 分支创建新的分支。</p>
+<p>以 <code>ext/my-new-extension</code> 为例：</p>
+<ol>
+<li>创建并切换新分支</li>
+</ol>
+<pre><code class="language-bash">$ git checkout -b ext/my-new-extension
+</code></pre>
+<blockquote>
+<p>由于是基于 <code>main</code> 分支创建的，所以 <code>main</code> 分支可以看到的目录，新分支也能看到。</p>
+</blockquote>
+<blockquote>
+<p>如果你希望切换到 <code>main</code> 分支只能看到 A，切换到 <code>B</code> 分支，只能看到 B，你可以在每次切换分支后执行一次 <code>git sparse-checkout set ...</code>。这比较麻烦，通常不建议。Raycast 扩展之间是独立的包，不会相互影响，而且几个扩展所占的空间不大（相比整体超过 70GB 来说），没必要。</p>
+</blockquote>
+<ol start="2">
+<li>添加新扩展的目录到稀疏检出列表（即便这个目录在远程中不存在）</li>
+</ol>
+<pre><code class="language-bash">$ git sparse-checkout add extensions/my-new-extension
+</code></pre>
+<ol start="3">
+<li>后续可以正常 commit、push 等操作</li>
+</ol>
+]]></content:encoded>
+            <author>tofrankie</author>
+        </item>
         <item>
             <title><![CDATA[VS Code Extension 开发记录]]></title>
             <link>https://github.com/tofrankie/blog/issues/390</link>
@@ -2698,6 +2824,9 @@ $ npm run dev
 <li>Fork 官方<a href="https://github.com/raycast/extensions">仓库</a>，将你的扩展放在仓库 <code>extensions</code> 目录下，提交 PR。</li>
 <li>创建独立仓库，然后通过 <code>ray publish</code> 提交。</li>
 </ul>
+<blockquote>
+<p><a href="https://github.com/tofrankie/blog/issues/391">当 Raycast extensions 仓库过大，如何更方便提交 PR？</a></p>
+</blockquote>
 <p>提交 PR 时，建议附上视频，或许可以更快地审核。我之前写了一个微信开发工具的<a href="https://github.com/tofrankie/raycast-wechat-devtool">扩展</a>，由于他们没有小程序项目，流程上它们跑不通，可能会要求附上视频辅助审核，例如<a href="https://github.com/raycast/extensions/pull/20222#pullrequestreview-3003917464">这个</a>。</p>
 <blockquote>
 <p>If you add a new extension or command, include a screencast (or screenshot for straightforward changes). A good screencast will make the review much faster - especially if your extension requires registration in other services.</p>
