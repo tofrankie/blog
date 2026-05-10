@@ -1,5 +1,6 @@
 # 近期更新
 
+- [解决 Mac App Store 不显示可用更新的问题](https://github.com/tofrankie/blog/issues/320)
 - [GitHub GraphQL API 分页查询](https://github.com/tofrankie/blog/issues/323)
 - [梳理 node、npm、yarn、pnpm 相关路径](https://github.com/tofrankie/blog/issues/94)
 - [解决 Unable to resolve your shell environment in a reasonable time.](https://github.com/tofrankie/blog/issues/47)
@@ -9,4 +10,3 @@
 - [当 Raycast extensions 仓库过大，如何更方便提交 PR？](https://github.com/tofrankie/blog/issues/391)
 - [Git 常用命令](https://github.com/tofrankie/blog/issues/103)
 - [为 AI Agents 安装 Skills](https://github.com/tofrankie/blog/issues/385)
-- [TanStack Query 小记](https://github.com/tofrankie/blog/issues/376)
