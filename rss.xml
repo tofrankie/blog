@@ -4,11 +4,117 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 10 May 2026 03:03:33 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 12 May 2026 03:38:47 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[为本地项目生成结构化的 Wiki 文档]]></title>
+            <link>https://github.com/tofrankie/blog/issues/392</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/392</guid>
+            <pubDate>Tue, 12 May 2026 03:26:10 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1778556341673.jpg" alt="配图源自 Freepik"></p>
+<h2>前言</h2>
+<p>以前，我们快速了解新项目的方式是：项目文档、使用文档、]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1778556341673.jpg" alt="配图源自 Freepik"></p>
+<h2>前言</h2>
+<p>以前，我们快速了解新项目的方式是：项目文档、使用文档、源码。现在把文档和源码丢给 AI，简单写个 Prompt 就能快速吐出答案。如果要生成包含架构图、代码摘要等结构化的 Wiki 文档，肯定要好好打磨 Prompt。</p>
+<p>目前，以下这些产品提供了 Wiki 文档生成的能力，包括架构图、源文件链接、代码摘要等。</p>
+<ul>
+<li><a href="https://deepwiki.com/">DeepWiki</a> - Devin</li>
+<li><a href="https://codewiki.google/">Code Wiki</a> - Google</li>
+<li><a href="https://zread.ai/">Zread</a> - 智谱</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>免费</li>
+<li>对公开仓库友好</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>非实时</li>
+<li>对私有仓库不友好，尽管</li>
+<li>自动生成不支持人工干预，甚至无法修改</li>
+<li>前两者生成的英文文档对国内用户不友好，但可使用中文问答</li>
+</ul>
+<blockquote>
+<p>Code Wiki 前不久好像推出了实时代码的能力 <a href="https://codewiki.google/faq">详见</a></p>
+</blockquote>
+<blockquote>
+<p>DeepWiki 支持一定程度地干预 Wiki 文档生成，但需要有维护者权限，需要将 <code>.devin/wiki.json</code> 添加到项目中 <a href="https://docs.devin.ai/work-with-devin/deepwiki#steering-deepwiki">详见</a></p>
+</blockquote>
+<blockquote>
+<p>对于私有仓库，DeepWiki 支持在 <a href="https://app.devin.ai/">Devin AI</a> 对话里生成（使用 GitHub 账号登录）。Code Wiki 则以 Gemini Extension 的形式提供在本地生成（加入 <a href="https://developers.google.com/profile/badges/community/sdlcagents/gca-agents">Waitlist</a>）。Zread 提供了手动 GitHub 授权方式。</p>
+</blockquote>
+<h2>本地项目</h2>
+<p>对于暂未公开或无法公开的项目，我们可以借助一些工具在本地生成结构化的 Wiki 文档。</p>
+<p>本文介绍的是 <a href="https://zread.ai/cli">Zread CLI</a>，官方文档已经写得很清楚了，不再重复。</p>
+<h3>1. 全局安装</h3>
+<pre><code class="language-bash">$ pnpm add zread_cli -g
+</code></pre>
+<h3>2. 配置</h3>
+<pre><code class="language-bash">$ zread config # 交互式
+</code></pre>
+<p>也可以直接修改文件 <code>~/.zread/config.yaml</code>，没有则新增。比如：</p>
+<pre><code>language: zh
+doc_language: zh
+llm:
+  provider: custom
+  model: gpt-5.4-mini
+  api_key: sk-fake
+  base_url: https://example.ai/v1
+concurrency:
+  max_concurrent: 1
+  max_retries: 0
+</code></pre>
+<p>对于官方订阅用户来说，里面内置了部分提供商，也可以使用 API Key 进行登录，只要兼容 OpenAI 接口即可。</p>
+<p>报错问题：</p>
+<ul>
+<li><code>LLM returned empty choices</code>：确保你的 API 支持 chat/completions 模型</li>
+</ul>
+<h3>3. 生成文档</h3>
+<p>执行 <code>zread generate</code> 生成文档，耐心等待所有完成。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1778553576043.png" alt=""></p>
+<p>最终的文档放在 <code>.zread</code> 目录下：</p>
+<pre><code>.zread
+└── wiki
+    ├── current
+    └── versions
+        └── 2026-05-12-103756
+            ├── 1-xiang-mu-gai-lan.md
+            ├── 10-zheng-ti-jia-gou-yu-yun-xing-bian-jie.md
+            ├── 11-vs-code-kuo-zhan-ji-huo-yu-ming-ling-zhu-ce.md
+            ├── 12-webview-mian-ban-sheng-ming-zhou-qi-yu-hui-fu.md
+            ├── 13-github-api-fu-wu-ceng-yu-rpc-dai-li.md
+            ├── 14-react-ying-yong-ru-kou-yu-ti-gong-zhe-zu-he.md
+            ├── 15-bian-ji-qi-wen-zhang-lie-biao-yu-biao-qian-guan-li.md
+            ├── 16-zhuang-tai-guan-li-yu-wei-bao-cun-bian-geng-bao-hu.md
+            ├── 17-shu-ju-qing-qiu-huan-cun-yu-cuo-wu-zhong-shi.md
+            ├── 18-markdown-bian-ji-qi-cha-jian-yu-shang-chuan-lian-lu.md
+            ├── 19-webview-rpc-xiao-xi-xie-yi.md
+            ├── 2-kuai-su-shang-shou.md
+            ├── 20-graphql-yu-rest-shu-ju-gua-pei.md
+            ├── 21-gong-xiang-lei-xing-yu-ling-yu-dui-xiang.md
+            ├── 22-vite-gou-jian-yu-webview-zi-yuan-chu-li.md
+            ├── 23-dai-ma-gui-fan-ti-jiao-gui-fan-yu-fa-bu-liu-shui-xian.md
+            ├── 3-pei-zhi-yu-quan-xian-yao-qiu.md
+            ├── 4-he-xin-shi-yong-liu-cheng.md
+            ├── 5-tong-guo-issue-bian-xie-yu-guan-li-bo-ke.md
+            ├── 6-markdown-yu-lan-yu-fu-wen-ben-zeng-qiang.md
+            ├── 7-tu-pian-shang-chuan-yu-cdn-xian-shi.md
+            ├── 8-da-kai-bian-ji-qi-yu-pei-zhi-ming-ling.md
+            ├── 9-wen-zhang-lie-biao-yu-biao-qian-mian-ban.md
+            └── wiki.json
+</code></pre>
+<h3>4. 浏览文档</h3>
+<p>使用 <code>zread browse</code>，将 current 所对应的文档版本用浏览量打开，方便阅读查看。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1778555361829.png" alt=""></p>
+<h3>5. 更新文档</h3>
+<p>后续迭代，还能继续使用 <code>zread generate</code> 最新版本的文档。</p>
+]]></content:encoded>
+            <author>tofrankie</author>
+        </item>
         <item>
             <title><![CDATA[当 Raycast extensions 仓库过大，如何更方便提交 PR？]]></title>
             <link>https://github.com/tofrankie/blog/issues/391</link>
