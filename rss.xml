@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Tue, 12 May 2026 03:38:47 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 13 May 2026 02:44:53 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -467,11 +467,18 @@ $ cd extensions
 <p>官网：<a href="https://gemini.google/overv]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/2/1770239795349.jpg" alt="配图源自 Freepik"></p>
 <p>官网：<a href="https://gemini.google/overview/gemini-in-chrome/">Gemini in Chrome</a></p>
+<h2>更新 2026.05.13</h2>
+<p>目前该功能已经面向更多国家地区开放（<a href="https://support.google.com/gemini/answer/16283624#supported_regions">Supported Region</a>），比如中国香港、中国澳门、中国台湾等。</p>
+<p>更新到 Chrome 148 之后，原来设置语言、脚本那些操作都不用弄了，挂个香港节点就能正常使用 Gemini in Chrome 了。</p>
+<blockquote>
+<p>但 Intel Mac 版本的似乎还没有... 🙄</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1778639564579.png" alt=""></p>
 <h2>写在前面</h2>
 <p>截止目前（2026-02-05），Gemini in Chrome 仅面向美国用户使用。</p>
 <p>根据官方<a href="https://support.google.com/gemini/answer/16283624">要求</a>，需满足以下条件：</p>
 <ul>
-<li>Be 18 or over and in the US.</li>
+<li><s>Be 18 or over and in the US.</s> Be 18 or over and in a <a href="https://support.google.com/gemini/answer/16283624#supported_regions">supported region</a>.</li>
 <li>Use a Chromebook Plus, Mac, or Windows computer.</li>
 <li>Use the latest version of Chrome.</li>
 <li>Sign in to Chrome.</li>
