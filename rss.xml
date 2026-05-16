@@ -4,11 +4,196 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 13 May 2026 02:44:53 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 16 May 2026 07:10:31 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[为 Raycast AI 接入中转服务]]></title>
+            <link>https://github.com/tofrankie/blog/issues/393</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/393</guid>
+            <pubDate>Sat, 16 May 2026 04:55:39 GMT</pubDate>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1778915378954.jpg" alt="配图源自 Freepik"></p>
+<h2>前言</h2>
+<p>此前，要使用 Raycast 内置的 AI 功能需要订]]></description>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1778915378954.jpg" alt="配图源自 Freepik"></p>
+<h2>前言</h2>
+<p>此前，要使用 Raycast 内置的 AI 功能需要订阅 Raycast Pro。甚至需要同时开通 Raycast Pro 和大模型厂商订阅，花两份钱。在 macOS Tahoe 发布的 Spotlight 迎来史上最大更新，Raycast 倍感压力，开放了一些能力给免费订阅用户。</p>
+<p>时间线：</p>
+<ul>
+<li>Raycast v1.102.0 带来了 Bring Your Own Models (BYOM)</li>
+<li>Raycast v1.100.0 带来了 Bring Your Own Key (BYOK)，允许用户使用自己的 Anthropic、Google 和 OpenAI 的 API Key，无需订阅 Raycast Pro，但不支持自定义 API URL。</li>
+<li>Raycast v1.99.0 带来了 Local Models，支持使用本地 Ollama 模型。</li>
+</ul>
+<blockquote>
+<p><a href="https://www.raycast.com/changelog">Raycast Changelog</a></p>
+</blockquote>
+<h2>基于 Custom Provider 的中转服务 👍</h2>
+<h3>开始之前</h3>
+<ul>
+<li>不低于 Raycast v1.102.0</li>
+<li>无需订阅 Raycast Pro</li>
+</ul>
+<h3>Raycast 配置</h3>
+<ol>
+<li>打开 Raycast Settings AI 界面</li>
+<li>启用 Custom Providers 选项</li>
+<li>点击 Custom Providers 的 Reveal Providers Config，打开 <code>~/.config/raycast/ai</code> 目录</li>
+<li>拷贝 <code>providers.template.yaml</code> 一份，命名为 <code>providers.yaml</code></li>
+<li>修改 <code>providers.yaml</code> 配置</li>
+<li>依次修改 Quick AI Model、New Chat Settings、AI Commands Model，选择你的 Custom Provider Model。
+<ul>
+<li>个人习惯将 New Chat Settings 选用 Last Used Model</li>
+</ul>
+</li>
+<li>后续也可以在 AI Command 的 Action Panel 中切换模型。</li>
+</ol>
+<p>示例：</p>
+<pre><code class="language-yaml"># ~/.config/raycast/ai/providers.yaml
+providers:
+  # provider with multiple api keys
+  - id: custom_provider
+    name: Custom Provider
+    base_url: &lt;your-api-base-url&gt;
+    api_keys:
+      openai: &lt;your-api-key&gt;
+    models:
+      - id: gpt-5.4
+        name: 'GPT-5.4'
+        context: 200000
+        provider: openai # matches &quot;openai&quot; in api_keys
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1778914406608.png" alt=""></p>
+<h2>基于 Ollama 的中转服务</h2>
+<p>原理是代理 Ollama 的 API 调用转至任意兼容 OpenAI 接口的服务提供商。</p>
+<p>本方案使用 <a href="https://github.com/miikkaylisiurunen/raycast-ai-openrouter-proxy">raycast-ai-openrouter-proxy</a> 项目，关于如何使用文档已经写得很好了。</p>
+<h3>开始之前</h3>
+<p>要求：</p>
+<ul>
+<li>不低于 Raycast v1.99.0</li>
+<li>无需订阅 Raycast Pro</li>
+<li>无需安装 Ollama</li>
+<li>需要安装 Docker</li>
+</ul>
+<p>不支持特性：</p>
+<ul>
+<li>无法使用 Web Search</li>
+<li>不支持 Remote AI Extension</li>
+</ul>
+<h3>启动 raycast-ai-openrouter-proxy</h3>
+<ol>
+<li>克隆到本地</li>
+</ol>
+<pre><code class="language-bash">$ git clone https://github.com/miikkaylisiurunen/raycast-ai-openrouter-proxy.git
+
+$ cd raycast-ai-openrouter-proxy
+</code></pre>
+<ol start="2">
+<li>
+<p>修改 <code>docker-compose.yml</code> 文件，把 <code>YOUR_API_KEY</code> 和 <code>BASE_URL</code> 修改为你的 Api Key 和 baseURL。</p>
+</li>
+<li>
+<p>修改 <code>models.json</code> 配置文件。示例</p>
+</li>
+</ol>
+<pre><code class="language-jsonc">[
+  {
+    &quot;name&quot;: &quot;GPT-5.4&quot;, // 在 Raycast 显示的模型名称
+    &quot;id&quot;: &quot;openai/gpt-5.4&quot;, // 按照你的服务提供商期望格式标注的型号 ID
+    &quot;contextLength&quot;: 128000, // 模型支持的最大上下文长度（以 token 计）。它只影响 Raycast 的 UI，不影响模型本身。
+    &quot;capabilities&quot;: [&quot;vision&quot;, &quot;tools&quot;] // 表示模型能力，vision 表示可以处理图像，tools 表示可以支持 AI Extensions 和 MCP
+  }
+]
+</code></pre>
+<blockquote>
+<p><a href="https://github.com/miikkaylisiurunen/raycast-ai-openrouter-proxy#configuration">更多细节</a></p>
+</blockquote>
+<ul>
+<li>使用 <code>tools</code> 需要在 Raycast AI 设置最下面开启「AI Extensions for Ollama Models」选项。</li>
+<li>注：Ollama 方案不支持 Remote AI Extension。</li>
+<li>每次修改 models.json 需要重启代理服务 <code>docker compose restart</code></li>
+</ul>
+<ol start="4">
+<li>构建并启动 Docker 服务</li>
+</ol>
+<pre><code class="language-bash">$ docker compose up -d --build
+</code></pre>
+<p>其他命令：</p>
+<pre><code class="language-bash"># 启动服务
+$ docker compose up -d
+
+# 停止服务
+$ docker compose down
+
+# 重启服务
+$ docker compose restart
+
+# 查看 compose 容器状态
+$ docker compose ps
+
+# 查看 compose 近期日志
+$ docker compose logs --tail=200
+
+# 查看 compose 配置
+$ docker compose config
+</code></pre>
+<ol start="5">
+<li>确保 Docker 服务已启动，日志里出现类似 <code>Server is up on port 3000</code> 说明容器内服务正常启动。</li>
+</ol>
+<pre><code class="language-bash">$ docker compose ps
+$ docker compose logs --tail=200
+</code></pre>
+<h3>配置 Raycast</h3>
+<blockquote>
+<p>请确保不低于 Raycast v1.99.0，且上述 Docker 服务已启动。</p>
+</blockquote>
+<ol>
+<li>打开 Raycast Settings AI 界面</li>
+<li>启用 AI Extensions for Ollama Models 选项</li>
+<li>设置 Ollama Host 为 <code>localhost:11435</code>（如果前面有修改 raycast-ai-openrouter-proxy 默认端口号，按需调整）</li>
+<li>点击 Sync Models，预期应该会有 <code>Synced Ollama Models</code> 的提示，但可能不会直接显示</li>
+<li>依次修改 Quick AI Model、New Chat Settings、AI Commands Model，选择你的 Local Model。
+<ul>
+<li>个人习惯将 New Chat Settings 选用 Last Used Model</li>
+</ul>
+</li>
+<li>后续也可以在 AI Command 的 Action Panel 中切换模型。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1778906669025.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1778906713611.png" alt=""></p>
+<h3>不用 Docker 的方案</h3>
+<p>其实 raycast-ai-openrouter-proxy 就是一个 Node 服务，可以不用 Docker 启动。</p>
+<ol>
+<li>创建 <code>.env</code> 文件： <code>cp .env.example .env</code></li>
+<li>修改 <code>.env</code></li>
+</ol>
+<pre><code>PORT=&quot;11435&quot;
+API_KEY=&quot;&lt;your-api-key&gt;&quot;
+BASE_URL=&quot;&lt;your-api-base-url&gt;&quot;
+MODELS_PATH=&quot;./models.json&quot;
+</code></pre>
+<blockquote>
+<p>不使用 Docker 的话，这里改用本地端口 11435。</p>
+</blockquote>
+<ol start="3">
+<li>安装依赖 <code>npm install</code></li>
+<li>构建 <code>npm run build</code></li>
+<li>启动服务 <code>npm run start</code></li>
+</ol>
+]]></content:encoded>
+            <author>tofrankie</author>
+        </item>
         <item>
             <title><![CDATA[为本地项目生成结构化的 Wiki 文档]]></title>
             <link>https://github.com/tofrankie/blog/issues/392</link>
