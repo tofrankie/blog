@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sat, 16 May 2026 07:10:31 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 20 May 2026 20:19:07 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -59051,6 +59051,9 @@ export NVM_DIR=&quot;$HOME/.nvm&quot;
 </ul>
 <blockquote>
 <p>有时要写个 HTML 示例，用 Live Server 启动轻量的文件服务器，提供热重载，是一个非常不错的选择。</p>
+</blockquote>
+<blockquote>
+<p>Markdown Preview Enhanced 主题美化：<a href="https://github.com/tofrankie/gfm-theme">gfm-theme</a></p>
 </blockquote>
 <h2>参考链接</h2>
 <ul>
