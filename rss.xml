@@ -4,11 +4,32 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 20 May 2026 20:19:07 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 25 May 2026 17:34:21 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[Thank you Guardiola]]></title>
+            <link>https://github.com/tofrankie/blog/issues/394</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/394</guid>
+            <pubDate>Sun, 24 May 2026 18:39:21 GMT</pubDate>
+            <description><![CDATA[<p>我很喜欢夏天，但夏天也会伴随着告别</p>
+<p>感谢你们出现在我每周的足球时间里，瓜瓜再见 👋</p>
+<p>#ManCity #Guardiola</p>
+<p><img src="https://github.com/user-attachments/assets/d04493e4-ea2a-43f0-9]]></description>
+            <content:encoded><![CDATA[<p>我很喜欢夏天，但夏天也会伴随着告别</p>
+<p>感谢你们出现在我每周的足球时间里，瓜瓜再见 👋</p>
+<p>#ManCity #Guardiola</p>
+<p><img src="https://github.com/user-attachments/assets/d04493e4-ea2a-43f0-9529-bed3e7fac8a9" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/b7ceea59-c96c-4363-9740-758a070d1714" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/da1dd6f8-0de2-4296-ab20-4e94268ef5fd" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/d6569b5b-ba4a-4c9b-8173-a26cfa0a856b" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/18dcc323-838f-44ab-a4a4-02f29f3124a8" alt=""></p>
+<p><img src="https://github.com/user-attachments/assets/1348b2be-13cf-472e-88a1-e36e605a2c4b" alt=""></p>
+]]></content:encoded>
+            <author>tofrankie</author>
+        </item>
         <item>
             <title><![CDATA[为 Raycast AI 接入中转服务]]></title>
             <link>https://github.com/tofrankie/blog/issues/393</link>
@@ -5700,6 +5721,18 @@ microtask 2
 <p>好长时间没用 Photoshop 了，有些操作忘得很快，在此记录一下。</p>]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/8/1723273263737.jpg" alt="配图源自 Freepik"></p>
 <p>好长时间没用 Photoshop 了，有些操作忘得很快，在此记录一下。</p>
+<h2>常用快捷键</h2>
+<ul>
+<li><code>⌘ + J</code>：复制图层（处于上一层）</li>
+<li><code>⌘ + ;</code>：显示/隐藏参考线
+<ul>
+<li>在旧版 PS 该快捷键是 ⌘ + H，但它跟 macOS 系统快捷键（隐藏当前窗口）冲突</li>
+<li>参考线快捷键处于：编辑 - 键盘快捷键 - 应用程序菜单 - 视图 - 显式 - 参考线</li>
+<li>隐藏 Photoshop 快捷键处于：编辑 - 键盘快捷键 - 应用程序菜单 - Photoshop - 隐藏 Photoshop</li>
+<li>如果想沿用 ⌘ + H 来切换参考线，一是清空「隐藏 Photoshop」快捷键，二是将「参考线」快捷键改为 ⌘ + H，然后接受、确定即可。</li>
+</ul>
+</li>
+</ul>
 <h2>将 PNG 非透明部分填充为前景色</h2>
 <p>步骤：</p>
 <ol>
@@ -5718,6 +5751,24 @@ microtask 2
 <li>打开「窗口 - 动作 - 创建新动作」，将上述步骤录一遍。</li>
 <li>打开「文件 - 自动 - 批处理」，选择上一步的动作和要处理的图片目录，点击确定即可。</li>
 </ol>
+<h2>将不规则图层作用于图层蒙版</h2>
+<p>背景：制作一个深浅参半的 Banner 图片，其中两张截图四周投影且为圆角。发现使用剪贴蒙版的话，作为蒙版的矩形图层的背景色无法排除掉，尝试将不透明度 Opacity 或填充 Fill 调至 0%，结果会适当作用于该蒙版的图层不可见。这种场景可以使用<strong>图层蒙版</strong>解决。</p>
+<p>步骤：</p>
+<ol>
+<li>两张截图置于不同同层</li>
+<li>使用矩形工具创建一个与画布同尺寸的矩形图层</li>
+<li>选中矩形图层，切换至删除锚点工具（工具栏钢笔图案处右键展开）</li>
+<li>点击矩形图层出现锚点，点击要删除的锚点，形成直角三角形</li>
+<li>选中三角形图层</li>
+<li>载入三角形图层选区：按住 ⌘ 键（Windows 为 Ctrl 键）点击<strong>图层缩略图</strong>（不是画布上的图层），出现”蚂蚁线“选区</li>
+<li>应用选区到截图上：
+<ol>
+<li>选中截图图层</li>
+<li>点击图层窗口底部的“添加图层蒙版”图标（右下角一个矩形中间带个圈的图标）</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/5/1779727374820.png" alt=""></p>
 ]]></content:encoded>
             <author>tofrankie</author>
         </item>
