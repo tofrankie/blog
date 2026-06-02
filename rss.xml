@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Mon, 25 May 2026 17:34:21 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 02 Jun 2026 17:45:35 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -12134,7 +12134,7 @@ div {
 </li>
 <li>
 <p><strong>anywhere</strong></p>
-<p>每个印刷字符单元周围都有一个软换行机会，包括任何标点符号周围或保留的空白符，或在单词中间，无视任何禁止换行符的规定，即使是那些由具有 <a href="https://www.unicode.org/reports/tr14/tr14-49.html#GL">GL</a>、<a href="https://www.unicode.org/reports/tr14/tr14-49.html#WJ">WJ</a> 或 <a href="https://www.unicode.org/reports/tr14/tr14-49.html#ZWJ">ZWJ</a> 换行符类别的字符引入的或由 <code>work-break</code> 属性强制要求。不能优先考虑不同的换行机会。不应用连字符。</p>
+<p>每个印刷字符单元周围都有一个软换行机会，包括任何标点符号周围或保留的空白符，或在单词中间，无视任何禁止换行符的规定，即使是那些由具有 <a href="https://www.unicode.org/reports/tr14/tr14-49.html#GL">GL</a>、<a href="https://www.unicode.org/reports/tr14/tr14-49.html#WJ">WJ</a> 或 <a href="https://www.unicode.org/reports/tr14/tr14-49.html#ZWJ">ZWJ</a> 换行符类别的字符引入的或由 <code>work-break</code> 属性强制要求。不能优先考虑不同的换行机会。不应用连字符。 </p>
 </li>
 </ul>
 <p>请注意：<code>line-break: anywhere</code> 只允许在 <code>white-space</code> 设为 <code>break-spaces</code> 时，将行末的保留空格换行到下一行，因为在其他情况下：</p>
@@ -31598,7 +31598,7 @@ var a = function (x) { console.log(x) }(function () {
 <p>数组的各种方法对于 holes 的处理非常非常非常不一致，有的会跳过（<code>forEach</code>），有的不处理但是保留（<code>map</code>），有的会消除掉 holes（<code>filter</code>），还有的会当成 <code>undefined</code> 来处理（<code>join</code>）。这可以说是 JavaScript 中最大的坑之一，不看文档很难自己理清楚。</p>
 <p>具体可以参考这两篇文章：</p>
 <ul>
-<li><a href="http://www.2ality.com/2013/07/array-iteration-holes.html">Array iteration and holes in JavaScript</a></li>
+<li><a href="http://www.2ality.com/2013/07/array-iteration-holes.html">Array iteration and holes in JavaScript</a> </li>
 <li><a href="http://www.2ality.com/2015/09/holes-arrays-es6.html">ECMAScript 6: holes in Arrays</a></li>
 </ul>
 <h2>九、 Array-like objects</h2>
@@ -51657,63 +51657,43 @@ strict-ssl 选项是 npm 中用于控制 SSL 证书校验的选项。当 strict-
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/96</guid>
             <pubDate>Sat, 25 Feb 2023 12:30:01 GMT</pubDate>
             <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767256417405.jpg" alt="配图源自 Freepik"></p>
-<p>社区上用于管理 Node 版本的工具很多，较为流行的有：</p>
-<ul>
-<]]></description>
+<h2>前言</h2>
+<p>社区上用于管理 Node 版本的工具很多，比如：</p]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767256417405.jpg" alt="配图源自 Freepik"></p>
-<p>社区上用于管理 Node 版本的工具很多，较为流行的有：</p>
+<h2>前言</h2>
+<p>社区上用于管理 Node 版本的工具很多，比如：</p>
 <ul>
 <li>非跨平台：<a href="https://github.com/nvm-sh/nvm">nvm</a>、<a href="https://github.com/tj/n">n</a></li>
-<li>跨平台：<a href="https://github.com/jasongin/nvs">nvs</a>、<a href="https://github.com/Schniz/fnm">fnm</a></li>
+<li>跨平台：<a href="https://github.com/jasongin/nvs">nvs</a>、<a href="https://github.com/Schniz/fnm">fnm</a>、<s><a href="https://github.com/volta-cli/volta">volta</a></s>（已停止维护）</li>
 </ul>
-<p><strong>个人弃用 nvm 不是因为它不跨平台，而是启动 Shell 进程太耗时</strong>，加之它本身问题挺多的（<a href="https://github.com/nvm-sh/nvm#important-notes">详见</a>)。</p>
-<p>对我最直接的影响是：此前那台 8G 内存的 MacBook Pro 打开 VS Code 总会因为 Shell 解析太久导致 VS Code 终止解析，造成了某些扩展无法正常使用。可移步 <a href="https://github.com/tofrankie/blog/issues/47">解决 Unable to resolve your shell environment in a reasonable time</a>。</p>
-<h2>nvm 启动慢的原因</h2>
-<p>它不是传统的可执行文件，而是一个组 Shell 函数，在 Shell 配置文件 <code>source nvm.sh</code> 来加载它。</p>
-<p>当 Shell 启动，它会：</p>
-<ol>
-<li>加载 <code>nvm.sh</code> 里所有函数定义</li>
-<li>执行 <code>nvm_process_paramters</code> 来处理自动版本切换</li>
-<li>根据配置自动使用或安装默认版本（内部使用了 <code>nvm use</code>），将对应版本的 node path 放在 PATH 的最前面，以确保 shell 在搜索可执行文件时，优先找到 NVM 管理的 node 二进制文件，而不是系统中其他位置的 node。</li>
-</ol>
-<p>性能瓶颈出现在 <code>nvm use</code> 内部的 <code>nvm_ensure_version_installed</code> 过程（<a href="https://github.com/nvm-sh/nvm/blob/f695512c80308b3b98e6b3f4da8cf70ad472ccc8/nvm.sh#L4057-L4061">详见</a>）。顾名思义，该操作涉及：</p>
-<ul>
-<li>文件系统检查（查找已安装的版本）</li>
-<li>可能的网络请求（如果需要查询远程版本）</li>
-<li>PATH、NVM_BIN、NVM_INC 等环境变量的修改</li>
-</ul>
-<p>具体性能开销：</p>
-<ul>
-<li>文件系统遍历：<code>nvm_version()</code> 需要扫描 <code>$NVM_DIR/versions/</code> 目录来查找匹配的版本</li>
-<li>多次目录访问：函数需要检查多个位置（node、io.js、old 版本目录）</li>
-<li>每次 Shell 启动都执行：这不是一次性操作，而是在每个新 Shell 会话启动时都要执行</li>
-</ul>
-<p>使用 <code>source nvm.sh --no-use</code> 可以加快启动速度的原因是跳过了这个耗时的步骤。</p>
+<p>此前用 nvm，现在切换到 fnm，原因是使用 nvm 时启动 Shell 太耗时。最直接的影响是那台 8GB 的 MacBook Pro 打开 VS Code 总会因为 Shell 解析太久导致 VS Code 终止解析，导致了某些扩展无法正常使用（<a href="https://github.com/tofrankie/blog/issues/47">解决 Unable to resolve your shell environment in a reasonable time</a>）。另外，nvm 本身问题挺多的（<a href="https://github.com/nvm-sh/nvm#important-notes">详见</a>)。</p>
 <h2>fnm 安装与使用</h2>
-<p><a href="https://github.com/Schniz/fnm">fnm</a>（Fast Node Manager）基于 Rust 开发，是不是还没用就感觉到它的快了，哈哈~
-同时，它是跨平台的，支持 macOS、Linux、Windows。</p>
+<p><a href="https://github.com/Schniz/fnm">fnm</a> 基于 Rust 开发，跨平台。</p>
 <blockquote>
 <p>🚀 Fast and simple Node.js version manager, built in Rust.</p>
 </blockquote>
 <h3>1. 安装 fnm</h3>
 <pre><code class="language-bash">$ brew install fnm
 </code></pre>
-<h3>2. 配置 fnm 所需的环境变量到 bash 或 zsh 配置文件中</h3>
-<pre><code class="language-bash">$ fnm env --use-on-cd &gt;&gt; ~/.zshrc
+<h3>2. 配置 Shell</h3>
+<pre><code class="language-bash">$ fnm env --use-on-cd --shell zsh &gt;&gt; ~/.zshrc
 </code></pre>
-<p>亦可执行 <code>fnm env --use-on-cd</code>，将输出内容手动添加至 <code>.bash_profile</code> 或 <code>.zshrc</code> 里。</p>
-<h3>3. 用 fnm 安装 Node</h3>
-<pre><code class="language-bash"># 安装 LTS 版本
+<p>也可执行 <code>fnm env --use-on-cd</code> 将输出内容手动添加至你的 Shell 配置文件里。</p>
+<blockquote>
+<p>个人习惯使用 <code>fnm env --use-on-cd --shell zsh --corepack-enabled --resolve-engines</code>，一是安装 Node 时自动执行 <code>corepack enable</code>；二是自动检测 package.json 的 <code>engines.node</code> 选择/安装合适的 Node 版本。</p>
+</blockquote>
+<h3>3. 安装 Node</h3>
+<pre><code class="language-bash"># LTS 版本
 $ fnm install --lts
 
-# 安装指定大版本的最新版本
+# 指定大版本的最新版本
 $ fnm install 18
 
-# 安装指定版本
+# 指定版本
 $ fnm install 18.21.1
 </code></pre>
 <p>相反地，可通过 <code>fnm uninstall &lt;version&gt;</code> 或 <code>fnm uninstall &lt;alias-name&gt;</code> 来删除指定版本，后者会同时移除别名。</p>
-<h3>4. 通过 fnm 来指定 Node 版本</h3>
+<h3>4. 切换 Node</h3>
 <pre><code class="language-bash"># 使用系统版本
 $ fnm use system
 
@@ -51748,10 +51728,13 @@ $ fnm alias 18.21.1 default
 <p>在项目根目录下添加 <code>.node-version</code> 文件（兼容 <code>.nvmrc</code> 文件），并指定版本。比如：</p>
 <pre><code class="language-bash">$ echo '18' &gt; .node-version
 </code></pre>
-<p>前提是配置 fnm 环境用 <code>fnm env --use-on-cd</code>，而不是 <code>fnm env</code>。后者没有添加 Hook，进入目录时不会是检查配置文件。对比两条命令输出就明白了。</p>
-<p>在团队协作中，如果没有最低版本要求，个人推荐仅指定 major 版本，比如 <code>18</code> 而不是 <code>18.10</code>，这样团队成员即便是 minor 版本或 patch 版本不同都可以正常匹配，无需下载多个大版本相同的 Node.js。但如有版本要求，可以指定到更具体的 <code>18.10</code> 或 <code>18.10.1</code>，此时更合理的做法是在 <code>package.json</code> 中指定 <code>engines</code> 版本进行约束。</p>
+<blockquote>
+<p>个人推荐用 <code>.nvmrc</code> 文件，因为 nvm 使用更广泛！</p>
+</blockquote>
+<p>前提是配置 fnm 环境用 <code>fnm env --use-on-cd</code>，而不是 <code>fnm env</code>，后者没有添加 Hook，进入目录时不会是检查配置文件。对比输出就明白了。</p>
+<p>在团队协作中，如果没有最低版本要求，个人推荐仅指定 major 版本，比如 <code>18</code> 而不是 <code>18.10</code>，这样团队成员即便是 minor 或 patch 版本不同都可以正常匹配，无需下载多个大版本相同的 Node.js。但如有版本要求，可以指定到更具体的 <code>18.10</code> 或 <code>18.10.1</code>，此时更合理的做法是在 <code>package.json</code> 中指定 <code>engines</code> 版本进行约束。</p>
 <h3>7. 卸载 fnm</h3>
-<p>若是通过 <code>brew</code> 安装的 <code>fnm</code>，则：</p>
+<p>若是通过 Homebrew 安装的 fnm，则：</p>
 <pre><code class="language-bash">$ brew uninstall fnm
 </code></pre>
 <p>接着，再移除 <code>~/.fnm</code> 目录。</p>
@@ -51777,6 +51760,33 @@ add-zsh-hook chpwd _fnm_autoload_hook &amp;&amp;
 
 rehash
 </code></pre>
+<h2>nvm 与 fnm 原理</h2>
+<p>nvm 在每次启动 Shell 时，将对应 node 执行文件所在路径添加到 PATH 路径最前面。切换 Node 版本时，会更新此路径。</p>
+<p>fnm 不太一样，它从固定路径（通过 fnm env 生成并写入到你的 Shell 配置文件里）去找 node 可执行文件。而这个路径是一个软链接，链接到 fnm 下载的对应的 Node 目录下。切换 Node 版本时，是更新这个固定路径的软链接指向。</p>
+<p>对此，我觉得各有优缺点吧。</p>
+<p>nvm 在不同 Shell 窗口 Node 版本不会相互影响，因为当前 Shell 的 PATH 是启动才注入的，不是持久化的，比如 A 项目的 Shell 切换 Node 版本，B 项目的 Shell 不会受影响。而 fnm 切换 Node 会影响所有已打开的 Shell 窗口。还有启动新 Shell 窗口时，fnm 不会切换回默认 Node 版本。</p>
+<p>平时免不了要同时操作多个不同 Node 版本的项目，fnm 这种机制挺蛋疼的！</p>
+<h2>nvm 启动慢的原因</h2>
+<p>nvm 不是传统的可执行文件，而是一组 Shell 函数，在 Shell 配置文件通过 <code>source nvm.sh</code> 加载它。</p>
+<p>当 Shell 启动，它会：</p>
+<ol>
+<li>加载 <code>nvm.sh</code> 里所有函数定义</li>
+<li>执行 <code>nvm_process_paramters</code> 来处理自动版本切换</li>
+<li>根据配置自动使用或安装默认版本（内部使用了 <code>nvm use</code>），将对应版本的 node 路径放在 PATH 变量最前面，以确保 Shell 在搜索可执行文件时优先使用 nvm 的 node 二进制文件，而不是系统中其他位置的 node。</li>
+</ol>
+<p>性能瓶颈出现在 <code>nvm use</code> 内部的 <code>nvm_ensure_version_installed</code> 过程（<a href="https://github.com/nvm-sh/nvm/blob/f695512c80308b3b98e6b3f4da8cf70ad472ccc8/nvm.sh#L4057-L4061">详见</a>）。顾名思义，该操作涉及：</p>
+<ul>
+<li>文件系统检查（查找已安装的版本）</li>
+<li>可能的网络请求（如果需要查询远程版本）</li>
+<li>PATH、NVM_BIN、NVM_INC 等环境变量的修改</li>
+</ul>
+<p>具体性能开销：</p>
+<ul>
+<li>文件系统遍历：<code>nvm_version()</code> 需要扫描 <code>$NVM_DIR/versions/</code> 目录来查找匹配的版本</li>
+<li>多次目录访问：函数需要检查多个位置（node、io.js、old 版本目录）</li>
+<li>每次 Shell 启动都执行：这不是一次性操作，而是在每个新 Shell 会话启动时都要执行</li>
+</ul>
+<p>使用 <code>source nvm.sh --no-use</code> 可以加快启动速度的原因是跳过了这个耗时的步骤。</p>
 <h2>移除 nvm</h2>
 <p>在移除之前，通过以下方式查看使用 <code>nvm</code> 所安装的全局包，然后切换到 <code>fnm</code> 安装一下（有需要的话）：</p>
 <pre><code class="language-bash">$ nvm use 16
@@ -53231,12 +53241,12 @@ $ yarn cache clean         # 清除缓存
 <ul>
 <li><code>1.2.5</code>：将会安装 <code>1.2.5</code> 的版本。</li>
 <li><code>~1.2.5</code>：将会安装 <code>[1.2.5, 1.3.0)</code> 之间最新的版本。</li>
-<li><code>^1.2.5</code>：将会安装 <code>[1.2.5, 2.0.0)</code> 之间最新的版本。</li>
+<li><code>^1.2.5</code>：将会安装 <code>[1.2.5, 2.0.0)</code> 之间最新的版本。 </li>
 </ul>
 <p><strong>0.x 版本</strong></p>
 <p>对于 0.x 的版本，npm 将其视为不稳定的版本，安装策略会更保守。</p>
 <ul>
-<li><code>^0.2.5</code>：将会安装 <code>[0.2.5, 0.3.0)</code> 之间最新的版本。</li>
+<li><code>^0.2.5</code>：将会安装 <code>[0.2.5, 0.3.0)</code> 之间最新的版本。 </li>
 </ul>
 <p>除了常见的 <code>^</code>、<code>~</code> 之外，npm 还支持 <code>&gt;</code>、<code>&gt;=</code> 等<a href="https://docs.npmjs.com/cli/v11/configuring-npm/package-json#dependencies">更多</a>版本范围。</p>
 <h2>扩展阅读</h2>
@@ -55659,7 +55669,7 @@ dist
 <p>ESLint 解决的是<strong>代码质量问题</strong>，而 Prettier 解决的是<strong>代码风格问题</strong>。按道理 ESLint + Prettier 结合就能解决前面两个问题，但实际上两者一起使用的时候会有冲突，原因是 ESLint 也有参与代码格式问题。</p>
 <p>所以，我们需要以下两个依赖包来处理冲突：</p>
 <ul>
-<li><a href="https://github.com/prettier/eslint-config-prettier">eslint-config-prettier</a></li>
+<li><a href="https://github.com/prettier/eslint-config-prettier">eslint-config-prettier</a> </li>
 </ul>
 <blockquote>
 <p>关闭所有与 Prettier 冲突的 ESLint 规则。（被关闭的规则是与代码风格相关的）</p>
