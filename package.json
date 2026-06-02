@@ -22,17 +22,17 @@
   "dependencies": {
     "@octokit/core": "^7.0.6",
     "@octokit/rest": "^22.0.1",
-    "dayjs": "^1.11.20",
+    "dayjs": "^1.11.21",
     "feed": "^5.2.1",
     "gray-matter": "^4.0.3",
-    "markdown-it": "^14.1.1"
+    "markdown-it": "^14.2.0"
   },
   "devDependencies": {
     "@tofrankie/eslint": "^0.3.1",
     "@tofrankie/prettier": "^0.2.0",
     "@types/bun": "^1.3.14",
     "@types/markdown-it": "^14.1.2",
-    "eslint": "^10.4.0",
+    "eslint": "^10.4.1",
     "prettier": "^3.8.3"
   }
 }
