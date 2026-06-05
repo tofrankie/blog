@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Thu, 04 Jun 2026 18:17:33 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 05 Jun 2026 03:11:58 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -676,9 +676,9 @@ $ cd extensions
 <h2>更新 2026.06.05</h2>
 <p>今天我将 Intel Mac 的 Chrome 更新到 Chrome 149，发现还没有默认开启 Gemini in Chrome，心想不应该啊！尝试前往 <code>chrome://flags</code> 点击「全部重置」并重启，然后 Gemini in Chrome 就出来了。</p>
 <blockquote>
-<p>不确定是否旧教程要修改某些 flag 导致的。</p>
+<p>不确定是否因为旧教程修改了某些 flag 的默认值导致的。</p>
 </blockquote>
-<p>还发现，现在阅读清单和 Gemini in Chrome 可以通过「外观 - 侧边栏位置」设置显示在左侧或右侧，终于不用一边一个了。</p>
+<p>还发现，现在阅读清单和 Gemini in Chrome 可以通过「外观 - 侧边栏位置」设置显示在左侧或右侧，终于不会一边一个了。</p>
 <h2>更新 2026.05.13</h2>
 <p>目前该功能已经面向更多国家地区开放（<a href="https://support.google.com/gemini/answer/16283624#supported_regions">Supported Region</a>），比如中国香港、中国澳门、中国台湾等。</p>
 <p>更新到 Chrome 148 之后，旧教程的操作都不需要了，挂个香港节点也能使用 Gemini in Chrome 了。</p>
