@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 10 Jun 2026 08:15:41 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 24 Jun 2026 19:55:25 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -63142,7 +63142,7 @@ $ sudo wechattweak-cli uninstall # 卸载
 </tbody>
 </table>
 <blockquote>
-<p>Related Link: <a href="https://docs.brew.sh/Manpage#terminology">Homebrew Terminology</a>, <a href="https://github.com/Homebrew/brew/issues/10798">Simplifying Homebrew terminology</a>.</p>
+<p>Related Link: <a href="https://docs.brew.sh/Manpage#terminology">Homebrew Terminology</a>, <a href="https://github.com/Homebrew/brew/issues/10798">Simplifying Homebrew terminology</a></p>
 </blockquote>
 <h3>组成</h3>
 <p>Homebrew 由以下几部分组成。</p>
@@ -63275,10 +63275,13 @@ $ source ~/.zshrc
 <pre><code class="language-shell">$ echo '
 export HOMEBREW_BREW_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/brew.git&quot;
 export HOMEBREW_API_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles/api&quot;
-export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles/bottles&quot;
+export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;
 ' &gt;&gt; ~/.zshrc
 </code></pre>
-<p>如果使用 4.0 之前版本，或者使用 4.x 但又想用此前的安装方式，添加以下环境变量配置：</p>
+<p><s>如果使用 4.0 之前版本，或者使用 4.x 但又想用此前的安装方式，添加以下环境变量配置：</s></p>
+<blockquote>
+<p>自 2026 年 6 月起，USTC 不再提供此镜像 <a href="https://mirrors.ustc.edu.cn/help/homebrew-core.git.html#_3">详情</a></p>
+</blockquote>
 <pre><code class="language-shell">$ echo '
 export HOMEBREW_NO_INSTALL_FROM_API=1
 export HOMEBREW_BREW_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/brew.git&quot;
