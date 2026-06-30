@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 24 Jun 2026 19:55:25 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 30 Jun 2026 17:41:22 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -4072,7 +4072,7 @@ function joinHomebrewPath() {
 </code></pre>
 <p>你可以创建一个包含以下认证信息的 Issue（右键认证处可复制），用于证明你是此订阅源的所有者。</p>
 <blockquote>
-<p>This message is used to verify that this feed (feedId:154574662305076224) belongs to me (userId:150343881723676672). Join me in enjoying the next generation information browser <a href="https://follow.is">https://follow.is</a>.</p>
+<p>This message is used to verify that this feed (feedId:1179340532296318976) belongs to me (userId:150343881723676672). Join me in enjoying the next generation information browser <a href="https://folo.is">https://folo.is</a>.</p>
 </blockquote>
 ]]></content:encoded>
             <author>tofrankie</author>
