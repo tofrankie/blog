@@ -1,6 +1,7 @@
 name: Update Traffic Views
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '20 0 * * *'
   push:

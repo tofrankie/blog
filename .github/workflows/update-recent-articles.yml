@@ -1,6 +1,7 @@
 name: Update Recent Articles
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 16 * * *' # 北京时间 00:00
 
