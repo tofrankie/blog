@@ -1,5 +1,7 @@
 # 近期更新
 
+- [通过两个例子再探事件循环](https://github.com/tofrankie/blog/issues/348)
+- [如何查看自己在 GitHub 中提及或回复过的 Issue 记录？](https://github.com/tofrankie/blog/issues/335)
 - [Thank you Guardiola](https://github.com/tofrankie/blog/issues/394)
 - [Folo Verification](https://github.com/tofrankie/blog/issues/360)
 - [Homebrew 使用详解](https://github.com/tofrankie/blog/issues/9)
@@ -8,5 +10,3 @@
 - [再见 nvm，改用 fnm 了](https://github.com/tofrankie/blog/issues/96)
 - [Photoshop 操作记录](https://github.com/tofrankie/blog/issues/347)
 - [常用 VS Code 扩展推荐](https://github.com/tofrankie/blog/issues/43)
-- [为 Raycast AI 接入中转服务](https://github.com/tofrankie/blog/issues/393)
-- [为本地项目生成结构化的 Wiki 文档](https://github.com/tofrankie/blog/issues/392)
