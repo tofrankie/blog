@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Tue, 30 Jun 2026 18:29:50 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 05 Jul 2026 18:59:33 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -1146,10 +1146,13 @@ This model provider doesn't serve your region.Visit https://docs.cursor.com/acco
 </ol>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765456520697.png" alt=""></p>
 <blockquote>
-<p>我发现 <a href="https://clashx.org/clashx-download/">ClashX</a> 似乎没有开启 TUN 模式的选项，后来装了 <a href="https://www.clashverge.dev/install.html#__tabbed_1_3">Clash Verge</a>，通过上面开启。</p>
+<p><s>我发现 <a href="https://clashx.org/clashx-download/">ClashX</a> 似乎没有开启 TUN 模式的选项，后来装了 <a href="https://www.clashverge.dev/install.html#__tabbed_1_3">Clash Verge</a>，通过上面开启。</s></p>
 </blockquote>
 <blockquote>
-<p>近期，我发现电脑 CPU 占用很高，风扇狂转 🤯。似乎就是 Clash Verge 惹的祸（<a href="https://github.com/clash-verge-rev/clash-verge-rev/issues?q=is%3Aissue%20CPU">更多</a>），建议将「设置 - 界面设置 - 浏览图显」关闭，全世界都安静了。</p>
+<p><s>近期，我发现电脑 CPU 占用很高，风扇狂转 🤯。似乎就是 Clash Verge 惹的祸（<a href="https://github.com/clash-verge-rev/clash-verge-rev/issues?q=is%3Aissue%20CPU">更多</a>），建议将「设置 - 界面设置 - 浏览图显」关闭，全世界都安静了。</s></p>
+</blockquote>
+<blockquote>
+<p>20260706 更新：已用 <a href="https://github.com/Clash-FX/ClashFX">ClashFX</a> 替代 Clash Verge 了</p>
 </blockquote>
 <p>第三步，安装 Antigravity，按引导操作便可：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765456681648.png" alt=""></p>
@@ -61582,7 +61585,7 @@ alfred                                                                 alfred@4
 <h3>修改鼠标方向</h3>
 <p>严格来说 macOS 默认的「自然方向」，个人认为是符合触控场景的。这点与手机体验是一致的，应该没有人认为手机触控屏的滑动方向是反人类的吧。</p>
 <p>那么在 macOS 上为什么备受争议呢？原因很简单，绝大多数人都是从 Windows 操作系统开始接触电脑的，加之市面上绝大多数的鼠标也是「滚轮式」的，在身体已经形成条件反射之后，初次接触到 macOS 的自然方向式的操作之后，是显然会抵触的，自然会被人视为反人类。但是 Apple 自家的 Magic Mouse 一直都是「触控式」的啊，它没有滚轮，因此它的滑动的方向与触控板一致逻辑上是正确的。</p>
-<p>虽然但是...，由于平常用得最多的是滚轮鼠标，可以使用第三方软件去调整鼠标的滚动方向。这里推荐 <a href="https://pilotmoon.com/scrollreverser/">Scroll Reverser</a>。</p>
+<p>虽然但是......由于平常用得最多的是滚轮鼠标，可以使用第三方软件去调整鼠标的滚动方向。这里推荐 <a href="https://pilotmoon.com/scrollreverser/">Scroll Reverser</a>。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1767196649857.png" alt=""></p>
 <h3>打开任何来源</h3>
 <pre><code class="language-shell">$ sudo spctl –master-disable
@@ -61654,12 +61657,12 @@ $ defaults write com.apple.Finder AppleShowAllFiles NO; killall Finder;
 </code></pre>
 <h3>第三方增强</h3>
 <ul>
-<li><a href="https://raycast.com/?via=73820f">Raycast</a>，一个比 Alfred 更好用的启动器。</li>
-<li><s><a href="https://www.alfredapp.com/">Alfred</a>，或许是比内置 Spotlight 更好的选择，生态上也有很多便捷、好用的 Workflows。</s>（现更推荐 Raycast）</li>
-<li><a href="https://www.trankynam.com/xtrafinder/">XtraFinder</a>，Finder 增强插件，可惜颜值没跟上最新的 Finder。</li>
-<li><a href="https://totalfinder.binaryage.com/">TotalFinder</a>，Finder 增强插件，可实现类似 Chrome 的多标签。</li>
-<li><a href="https://pilotmoon.com/scrollreverser/">Scroll Reverser</a>，还在为 macOS 触控板、鼠标的“自然”方向抓狂？试试这个吧。</li>
-<li><a href="https://www.mowglii.com/itsycal/">Itsycal for Mac</a>，菜单栏日历增强插件，颜值能打，而且可以在菜单栏查看日程等交互。</li>
+<li><a href="https://raycast.com/?via=73820f">Raycast</a>：一个比 Alfred 更好用的启动器 ⭐️⭐️⭐️⭐️⭐️</li>
+<li><s><a href="https://www.alfredapp.com/">Alfred</a>：或许是比内置 Spotlight 更好的选择，生态上也有很多便捷、好用的 Workflows</s>（现更推荐 Raycast）</li>
+<li><a href="https://www.trankynam.com/xtrafinder/">XtraFinder</a>：Finder 增强插件，可惜颜值没跟上最新的 Finder</li>
+<li><a href="https://totalfinder.binaryage.com/">TotalFinder</a>：Finder 增强插件，可实现类似 Chrome 的多标签</li>
+<li><a href="https://pilotmoon.com/scrollreverser/">Scroll Reverser</a>：还在为 macOS 触控板、鼠标的“自然”方向抓狂？试试这个吧</li>
+<li><a href="https://www.mowglii.com/itsycal/">Itsycal for Mac</a>：菜单栏日历增强插件，颜值能打，而且可以在菜单栏查看日程等交互</li>
 </ul>
 <h2>终端</h2>
 <blockquote>
@@ -61723,16 +61726,27 @@ $ corepack enable
 <h2>日常软件</h2>
 <p>除上文系统增强提到的软件外，还有...</p>
 <ul>
-<li><a href="https://www.google.com/intl/zh-CN/chrome/">Chrome</a>，日常使用最多的软件，没什么好说的。</li>
-<li><a href="https://www.mozilla.org/zh-CN/firefox/all/#product-desktop-developer">Firefox</a>，开发者版本，调试 CSS 很棒。</li>
-<li><a href="https://www.microsoft.com/zh-cn/edge">Edge</a>，基于 Chromium，但颜值打不过 Chrome。</li>
-<li><a href="https://pinyin.sogou.com/mac/">搜狗输入法</a>，自定义短语设置很不错。</li>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a>，前端必备吧。</li>
-<li><a href="https://www.smartisan.com/apps/#/handshaker">HandShaker</a>，连接 Android 设备进行文件管理，老罗出品，但多年不更新了。</li>
-<li><s><a href="https://github.com/yichengchen/clashX">ClashX</a>，你懂的</s>（作者已删库）。（<a href="https://clashx.org/clashx-official/">备用网站</a>）</li>
-<li><a href="https://apps.apple.com/cn/app/ishot-%E4%BC%98%E7%A7%80%E7%9A%84%E6%88%AA%E5%9B%BE%E8%B4%B4%E5%9B%BE%E5%BD%95%E5%B1%8F%E5%BD%95%E9%9F%B3ocr%E7%BF%BB%E8%AF%91%E5%8F%96%E8%89%B2%E6%A0%87%E6%B3%A8%E5%B7%A5%E5%85%B7/id1485844094?mt=12">iShot</a>，免费的截图工具（个人偏好设置阴影大小 6pt，圆角大小 10pt）。可惜更喜欢的<a href="https://apps.apple.com/cn/app/%E6%88%AA%E5%9B%BE-jietu-%E5%BF%AB%E9%80%9F%E6%A0%87%E6%B3%A8-%E4%BE%BF%E6%8D%B7%E5%88%86%E4%BA%AB%E7%9A%84%E6%88%AA%E5%B1%8F%E5%B7%A5%E5%85%B7/id1059334054?mt=12">截图（Jietu）</a>不再更新了。</li>
-<li><a href="https://www.diagrams.net/">Diagram</a>，软件开发作图软件，免费、强大且完善，有网页版、桌面版。</li>
-<li><a href="https://macpaw.com/cleanmymac">CleanMyMac X</a>，MacPaw 出品，是 macOS 里较为受欢迎的垃圾清理、软件卸载工具。</li>
+<li><a href="https://www.google.com/intl/zh-CN/chrome/">Chrome</a>：日常使用最多的软件，没什么好说的</li>
+<li><a href="https://www.mozilla.org/zh-CN/firefox/all/#product-desktop-developer">Firefox</a>：开发者版本，调试 CSS 很棒</li>
+<li><a href="https://www.microsoft.com/zh-cn/edge">Edge</a>：基于 Chromium，但颜值打不过 Chrome</li>
+<li><a href="https://pinyin.sogou.com/mac/">搜狗输入法</a>：自定义短语设置很不错</li>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a>，前端必备吧</li>
+<li><a href="https://www.smartisan.com/apps/#/handshaker">HandShaker</a>，连接 Android 设备进行文件管理，老罗出品，但多年不更新了</li>
+<li>ClashX：
+<ul>
+<li><s><a href="https://github.com/yichengchen/clashX">ClashX</a>：作者已删库。有<a href="https://clashx.org/clashx-official/">备用网站</a>但已停止更新</s></li>
+<li><a href="https://clashx.tech/">ClashX</a>：基于原 ClashX 代码更新以支持最新系统（似乎无法开启 TUN 模式）</li>
+<li><a href="https://clashfx.com/">ClashFX</a>：号称基于 mihomo 内核的下一代 macOS 代理客户端（推荐）</li>
+<li><a href="https://github.com/clash-verge-rev/clash-verge-rev">Clash Verge</a>：基于 Tauri 开发，实际体验不佳</li>
+</ul>
+</li>
+<li><a href="https://apps.apple.com/cn/app/ishot-%E4%BC%98%E7%A7%80%E7%9A%84%E6%88%AA%E5%9B%BE%E8%B4%B4%E5%9B%BE%E5%BD%95%E5%B1%8F%E5%BD%95%E9%9F%B3ocr%E7%BF%BB%E8%AF%91%E5%8F%96%E8%89%B2%E6%A0%87%E6%B3%A8%E5%B7%A5%E5%85%B7/id1485844094?mt=12">iShot</a>：免费的截图工具（个人偏好设置阴影大小 6pt，圆角大小 10pt）
+<ul>
+<li><s>可惜更喜欢的<a href="https://apps.apple.com/cn/app/%E6%88%AA%E5%9B%BE-jietu-%E5%BF%AB%E9%80%9F%E6%A0%87%E6%B3%A8-%E4%BE%BF%E6%8D%B7%E5%88%86%E4%BA%AB%E7%9A%84%E6%88%AA%E5%B1%8F%E5%B7%A5%E5%85%B7/id1059334054?mt=12">截图（Jietu）</a>不再更新了</s></li>
+</ul>
+</li>
+<li><a href="https://www.diagrams.net/">Diagram</a>：软件开发作图软件，免费、强大且完善，有网页版、桌面版</li>
+<li><a href="https://macpaw.com/cleanmymac">CleanMyMac X</a>：MacPaw 出品，是 macOS 里较为受欢迎的垃圾清理、软件卸载工具</li>
 </ul>
 <!--
 
