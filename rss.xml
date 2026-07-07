@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 05 Jul 2026 18:59:33 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 06 Jul 2026 21:25:03 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -660,6 +660,32 @@ $ cd extensions
 <li><s><a href="https://intelcodexguide.wiki/">Codex App on Intel Macs</a></s> 版本过时</li>
 <li><s><a href="https://github.com/ox01024/intel-codex/blob/main/README.zh-CN.md">ox01024/intel-codex</a></s> 最新版本已失效，无法重新打包</li>
 <li><s><a href="https://github.com/ry2009/codex-intel-mac">ry2009/codex-intel-mac</a></s> 构建完无法打开</li>
+</ul>
+<hr>
+<blockquote>
+<p>English version</p>
+</blockquote>
+<h2>Update 2026.04.18</h2>
+<p>Codex officially now provides a download for the Intel Mac version.</p>
+<ul>
+<li><a href="https://x.com/dimillian/status/2044828593876795697">https://x.com/dimillian/status/2044828593876795697</a></li>
+<li><a href="https://developers.openai.com/codex/quickstart">https://developers.openai.com/codex/quickstart</a></li>
+</ul>
+<h2>Background</h2>
+<p>As of now, the official Codex App only provides an Apple Silicon version (<a href="https://openai.com/zh-Hans-CN/codex/get-started/">Go to</a>), which cannot be used on Intel Mac.</p>
+<blockquote>
+<p><a href="https://github.com/openai/codex/issues/10410">Codex Desktop App: macOS Intel (x86_64) support</a></p>
+</blockquote>
+<h2>Solution</h2>
+<p>Currently available:</p>
+<ul>
+<li><a href="https://github.com/sohail288/codex-app-intel-repackager">sohail288/codex-app-intel-repackager</a> Download the Intel version package from Releases</li>
+</ul>
+<p>No longer available:</p>
+<ul>
+<li><s><a href="https://intelcodexguide.wiki/">Codex App on Intel Macs</a></s> Outdated version</li>
+<li><s><a href="https://github.com/ox01024/intel-codex/blob/main/README.zh-CN.md">ox01024/intel-codex</a></s> The latest version no longer works and cannot be repackaged again</li>
+<li><s><a href="https://github.com/ry2009/codex-intel-mac">ry2009/codex-intel-mac</a></s> It cannot be opened after building</li>
 </ul>
 ]]></content:encoded>
             <author>tofrankie</author>
