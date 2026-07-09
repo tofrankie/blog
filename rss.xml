@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 08 Jul 2026 16:48:09 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 08 Jul 2026 19:34:43 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -2571,7 +2571,7 @@ foo.length // 3
 <pre><code class="language-js">const foo = 'abc'
 Object(3).length // 3
 </code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/9/1756975794364.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/9/1756975794364.png" alt=""></p>
 <p>但 <code>undefined</code>、<code>null</code> 这两个家伙无法转为引用类型，因此类似 <code>undefined.length</code> 这种会抛出 TypeError。</p>
 <p>前面铺垫完之后，再看看示例：</p>
 <pre><code class="language-ts">let obj: Object
@@ -4140,9 +4140,9 @@ function joinHomebrewPath() {
             <link>https://github.com/tofrankie/blog/issues/360</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/360</guid>
             <pubDate>Fri, 06 Jun 2025 16:57:49 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/6/1749232666730.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/6/1749232666730.jpg" alt="配图源自 Freepik"></p>
 <p>使用 <a href="https://docs.rsshub.app/rou]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/6/1749232666730.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/6/1749232666730.jpg" alt="配图源自 Freepik"></p>
 <p>使用 <a href="https://docs.rsshub.app/routes/programming#repo-issues">RSSHub</a> 可以为 GitHub Issues 快速创建订阅源。</p>
 <pre><code>/github/issue/:user/:repo/:state?/:labels?
 </code></pre>
@@ -4617,12 +4617,12 @@ OR
             <link>https://github.com/tofrankie/blog/issues/355</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/355</guid>
             <pubDate>Tue, 18 Feb 2025 09:43:35 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/2/1740291122815.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/2/1740291122815.jpg" alt="配图源自 Freepik"></p>
 <h2>实时</h2>
 <p>参赛选手：</p>
 <ul>
 <li>realtime]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2025/2/1740291122815.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/2/1740291122815.jpg" alt="配图源自 Freepik"></p>
 <h2>实时</h2>
 <p>参赛选手：</p>
 <ul>
@@ -4777,10 +4777,10 @@ OR
             <link>https://github.com/tofrankie/blog/issues/353</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/353</guid>
             <pubDate>Tue, 10 Dec 2024 01:52:31 GMT</pubDate>
-            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/12/1733795779961.jpg" alt="配图源自 Freepik"></p>
+            <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/12/1733795779961.jpg" alt="配图源自 Freepik"></p>
 <p>有些东西隔一段时间不用就容易忘记，在此作下记录。</p>
 <h2>自定义组件]]></description>
-            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/12/1733795779961.jpg" alt="配图源自 Freepik"></p>
+            <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/12/1733795779961.jpg" alt="配图源自 Freepik"></p>
 <p>有些东西隔一段时间不用就容易忘记，在此作下记录。</p>
 <h2>自定义组件选项配置</h2>
 <p>诸如 styleIsolation、virtualHost 等自定义组件<a href="https://uniapp.dcloud.net.cn/tutorial/vue3-api.html#%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE">配置</a>，声明方式如下：</p>
@@ -7119,8 +7119,8 @@ function handleVisibilityChange({ hiddenFn = () =&gt; {}, visibleFn = () =&gt; {
 <li><code>window.performance.now()</code> 返回自 <code>performance.timeOrigin</code> 开始以来的毫秒数，不受系统时钟影响。</li>
 <li><code>wx.getPerformance().now()</code> 返回自 1970 年 1 月 1 日 0 点开始以来的毫秒数，受系统时钟影响。</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/7/1721466409884.png" alt=""></p>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/7/1722151057063.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/7/1721466409884.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/7/1722151057063.png" alt=""></p>
 <p>既然小程序里面获取不到不受系统时钟影响的当前时间，唯有使用 <code>Date.now()</code> 了，并在 <code>onShow()</code> 时重新校验。</p>
 <p>示例如下（<a href="https://developers.weixin.qq.com/s/CKP3e1mO7qTB">小程序代码片段</a>）：</p>
 <pre><code class="language-js">import { getServerTime } from '../../utils/index'
@@ -11687,7 +11687,7 @@ div {
 
 效果如下：
 
-![](https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2023/6/1685866841342.png)
+![](https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/6/1685866841342.png)
 
 其中 `Hey Frankie` 和 `Hey&nbsp;Frankie`，前者的空格是通过键盘 Space 键输入的，后者则是在源码中键入了 `&nbsp;`，这样可以更直观地了解 No-Breaking Space 的含义（不换行空格）。`Hey&nbsp;Frankie` 就相当于 `Hey Frankie` + `white-space: nowrap` 的效果。
 
@@ -17041,7 +17041,7 @@ module.exports = exports = { sayHi: function () {} } // ✅
 <li>利用 <code>module.parent</code> 返回 <code>null</code> 或数值的特性，可以判断当前模块是否为入口脚本。另外，也可以通过 <code>require.main</code> 来获取入口脚本的实例对象。</li>
 </ul>
 <p><strong>module.exports 与 exports 的注意点</strong></p>
-<p>此前已写过一篇<a href="https://github.com/toFrankie/blog/issues/218">文章</a>去介绍它俩的区别了。</p>
+<p>此前已写过一篇<a href="https://github.com/tofrankie/blog/issues/218">文章</a>去介绍它俩的区别了。</p>
 <blockquote>
 <p>一句话总结：<strong><code>exports</code> 变量只是 <code>module.exports</code> 属性的一个别名，仅此而已。</strong></p>
 </blockquote>
@@ -19578,7 +19578,7 @@ getMax(1, 2, 3) // 3
 <p>非严格模式下，<code>arguments</code> 允许重新赋值。而且形参的更新，也会伴随着 <code>arguments</code> 对象相应属性值的更新。</p>
 </li>
 <li>
-<p>严格模式下，则不允许对 <code>arguments</code> 对象赋值，且不会最终参数的变化。也不允许使用 <code>arguments.callee</code> 方法（关于严格模式对 arguments 对象的限制，可看这篇<a href="https://github.com/toFrankie/blog/issues/232">文章</a>）。</p>
+<p>严格模式下，则不允许对 <code>arguments</code> 对象赋值，且不会最终参数的变化。也不允许使用 <code>arguments.callee</code> 方法（关于严格模式对 arguments 对象的限制，可看这篇<a href="https://github.com/tofrankie/blog/issues/232">文章</a>）。</p>
 </li>
 </ul>
 </blockquote>
@@ -23714,7 +23714,7 @@ console.log(gen.next()) // {value: undefined, done: true}
 // 调用 next() 方法会让生成器开始或恢复执行
 // 由于生成器函数体为空，因此调用一次 next() 方法就会让生成器到达 done: true 的状态
 </code></pre>
-<p>本文不会详细介绍生成器函数相关语法，后面另起<a href="https://github.com/toFrankie/blog/issues/258">一文</a>。本文提到它的缘由是：<strong>Generator 函数会产生一个“生成器对象”，该对象也实现了 Iterator 接口。</strong></p>
+<p>本文不会详细介绍生成器函数相关语法，后面另起<a href="https://github.com/tofrankie/blog/issues/258">一文</a>。本文提到它的缘由是：<strong>Generator 函数会产生一个“生成器对象”，该对象也实现了 Iterator 接口。</strong></p>
 <p>因此，生成器格外合适作为默认迭代器。在实现自定义可迭代对象时，也是最简单的一种实现。例如：</p>
 <pre><code class="language-js">class Foo {
   constructor(value) {
@@ -28392,7 +28392,7 @@ for (let i = 0; i &lt; 10; i++) {
   // 上面 final-expression 允许自增、自减，但循环体本身不允许
 }
 </code></pre>
-<p>详见：<a href="https://github.com/toFrankie/blog/issues/127">no-plusplus</a>。</p>
+<p>详见：<a href="https://github.com/tofrankie/blog/issues/127">no-plusplus</a>。</p>
 <h2>十一、总结</h2>
 <p>综上所述，总结成一句话：<strong>爱咋咋地</strong>。</p>
 <p>都 2021 年了，项目都继承 ESLint、Prettier 了吧，那上面的很多毛病，它们基本上都给你处理了。但我们应该要了解下背后的原因，对吧。</p>
@@ -28851,7 +28851,7 @@ Referer: http://192.168.1.105:8080/
 </ul>
 <p>上面的解释比较官方，换句话说就是从哪个页面链接过来的。例如，我从 GitHub 仓库点击跳转至简书文章，可以从 HTML 的请求报文看到：</p>
 <pre><code class="language-text">Host: www.jianshu.com
-Referer: https://github.com/toFrankie/csscomb-mini
+Referer: https://github.com/tofrankie/csscomb-mini
 </code></pre>
 <p>假设有一个需求是统计从 GitHub 访问简书的访问量，那么就可以通过 <code>Referer</code> 来实现。也常用于防盗链等。</p>
 <blockquote>
@@ -32633,7 +32633,7 @@ str.replace(/\s/g, '')
 <ul>
 <li><a href="https://developer.mozilla.org/zh-cn/docs/web/javascript/guide/regular_expressions">正则表达式 MDN</a></li>
 <li><a href="https://www.cnblogs.com/mmzuo-798/p/7264093.html">JS 正则表达式大全</a></li>
-<li><a href="https://github.com/toFrankie/blog/issues/134">常用正则表达式</a></li>
+<li><a href="https://github.com/tofrankie/blog/issues/134">常用正则表达式</a></li>
 </ul>
 ]]></content:encoded>
             <author>tofrankie</author>
@@ -37302,7 +37302,7 @@ document.URL // 只读
 <li>主线程之外，事件触发线程管理着一个任务队列，只要异步任务有了结果，就在任务队列里面放置一个事件。</li>
 <li>一旦执行栈中所有同步任务执行完毕（JS 引擎空闲之后），就会去读取任务队列，将可运行的异步任务添加到可执行栈里面，开始执行。</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/toFrankie/blog@main/images/2024/12/1733794120351.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/12/1733794120351.png" alt=""></p>
 <blockquote>
 <p>任务分为「同步任务」和「异步任务」，其中异步任务又分为「宏任务」和「微任务」。</p>
 </blockquote>
@@ -45416,7 +45416,7 @@ trim_trailing_whitespace = false
   &quot;version&quot;: &quot;1.0.0&quot;,
   &quot;description&quot;: &quot;微信小程序 Demo&quot;,
   &quot;main&quot;: &quot;app.js&quot;,
-  &quot;repository&quot;: &quot;git@github.com:toFrankie/wechat_applet_demo.git&quot;,
+  &quot;repository&quot;: &quot;git@github.com:tofrankie/wechat_applet_demo.git&quot;,
   &quot;author&quot;: &quot;Frankie &lt;1426203851@qq.com&gt;&quot;,
   &quot;license&quot;: &quot;MIT&quot;,
   &quot;private&quot;: true,
@@ -49080,7 +49080,7 @@ tag
 2 directories, 4 files
 </code></pre>
 <p>接下来，我们将 <code>main</code> 分支推送至远程仓库，然后再观察下 <code>.git/refs</code> 目录的变化。</p>
-<pre><code class="language-bash">$ git remote add origin git@github.com:toFrankie/simple-git.git
+<pre><code class="language-bash">$ git remote add origin git@github.com:tofrankie/simple-git.git
 
 $ git push origin main
 Enumerating objects: 7, done.
@@ -49089,7 +49089,7 @@ Delta compression using up to 12 threads
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (7/7), 507 bytes | 507.00 KiB/s, done.
 Total 7 (delta 0), reused 0 (delta 0), pack-reused 0
-To github.com:toFrankie/simple-git.git
+To github.com:tofrankie/simple-git.git
  * [new branch]      main -&gt; main
 
 $ tree .git/refs
@@ -49152,7 +49152,7 @@ $ git pull origin main
 <p>先来个餐前菜...</p>
 <p>如果我跟你说，以下两条命令是完全等效的，你是不是就差不多猜得出 <code>origin</code> 表示什么了？</p>
 <pre><code class="language-bash">$ git push origin main
-$ git push git@github.com:toFrankie/repo-demo.git main
+$ git push git@github.com:tofrankie/repo-demo.git main
 </code></pre>
 <p>是的，跟你猜的一样...</p>
 <h3>1.1 Origin</h3>
@@ -49170,15 +49170,15 @@ $ git push git@github.com:toFrankie/repo-demo.git main
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767416288982.png" alt=""></p>
 <p>那么 <code>git remote add</code> 内部做了什么默默无闻的工作呢，它其实是往 <code>.git/config</code> 中写入了一个叫 <code>[remote &quot;origin&quot;]</code> 配置：</p>
 <pre><code class="language-ini">[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
-	logallrefupdates = true
-	ignorecase = true
-	precomposeunicode = true
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+  ignorecase = true
+  precomposeunicode = true
 [remote &quot;origin&quot;]
-	url = git@github.com:toFrankie/repo-demo.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+  url = git@github.com:tofrankie/repo-demo.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
 </code></pre>
 <p>如果你本地的仓库是通过 <code>git clone</code> 下来的，Git 会默认将远程仓库命名为 <code>origin</code>，自动帮你关联上远端仓库（可在 <code>.git/config</code> 文件中看到已有 <code>[remote &quot;origin&quot;]</code> 配置项了），因此 Commit 之后就能直接 Push 了。</p>
 <blockquote>
@@ -49188,8 +49188,8 @@ $ git push git@github.com:toFrankie/repo-demo.git main
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767416312317.png" alt=""></p>
 <p>我们来分析一下，这配置表示什么意思。</p>
 <pre><code class="language-ini">[remote &quot;origin&quot;]
-	url = git@github.com:toFrankie/repo-demo.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+  url = git@github.com:tofrankie/repo-demo.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
 </code></pre>
 <p>通过 <code>git remote add</code> 命令，添加了一个叫做 <code>origin</code> 的远程名称（Remote Name），</p>
 <ul>
@@ -49205,8 +49205,8 @@ $ git push git@github.com:toFrankie/repo-demo.git main
 <p>回到文章开头的例子：</p>
 <pre><code class="language-bash">$ git push origin main
 
-# 相当于（其中 origin 指向了 git@github.com:toFrankie/repo-demo.git 远程仓库）
-$ git push git@github.com:toFrankie/repo-demo.git main
+# 相当于（其中 origin 指向了 git@github.com:tofrankie/repo-demo.git 远程仓库）
+$ git push git@github.com:tofrankie/repo-demo.git main
 </code></pre>
 <p>以上两种方式是完全等价的，这样就更能体现别名的优势了，简洁很多。</p>
 <p>既然是别名，自然是可以修改的，主要有以下命令：</p>
@@ -49230,7 +49230,7 @@ $ git remote rename &lt;old-remote-name&gt; &lt;new-remote-name&gt;
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767416431259.png" alt=""></p>
 <p>到这里，你应彻底明白 <code>origin</code> 是什么了吧。</p>
 <p>前面提到过，一个本地仓库是可以关联多个远程仓库的，举个例子：</p>
-<pre><code class="language-bash">$ git remote add bar git@github.com:toFrankie/git-test-demo.git
+<pre><code class="language-bash">$ git remote add bar git@github.com:tofrankie/git-test-demo.git
 </code></pre>
 <p>我们可以查看下 <code>.git/congfig</code> 配置文件，如下（或者通过 <code>git remote -v</code> 查看）</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767416462693.png" alt=""></p>
@@ -49263,13 +49263,13 @@ $ git merge upstream/main
 <p>除了 <code>origin</code>、<code>upstream</code> 等有众所周知的含义的远程名称之外，我们还可以这样使用：</p>
 <p>由于一个本地仓库是可以关联多个远程仓库的，因此，可以设置多个「别名」分别指向不同的远程仓库（比如一个 GitHub、一个 GitLab、一个 Gitee），然后通过别名的方式方便、快速地拉取某个远程仓库的代码或者将代码推送至某个远程仓库。</p>
 <pre><code class="language-bash"># 添加 github 别名
-$ git remote add github git@github.com:toFrankie/repo-demo.git
+$ git remote add github git@github.com:tofrankie/repo-demo.git
 
 # 添加 gitlab 别名
-$ git remote add gitlab git@gitlab.com:toFrankie/repo-demo.git
+$ git remote add gitlab git@gitlab.com:tofrankie/repo-demo.git
 
 # 添加 gitee 别名
-$ git remote add gitee git@gitee.com:toFrankie/repo-demo.git
+$ git remote add gitee git@gitee.com:tofrankie/repo-demo.git
 </code></pre>
 <p>小结：</p>
 <ul>
@@ -49311,8 +49311,8 @@ $ git branch -a
 <p>上一节，我们介绍了远程名称只是一个代号、别名，是可以修改的。那么我们将 Remote Name 由 <code>origin</code> 修改为 <code>foo</code>，那么远程分支，会不会由 <code>origin/main</code> 变为 <code>foo/main</code> 呢？</p>
 <p>修改前：</p>
 <pre><code class="language-bash">$ git remote -v
-origin  git@github.com:toFrankie/repo-demo.git (fetch)
-origin  git@github.com:toFrankie/repo-demo.git (push)
+origin  git@github.com:tofrankie/repo-demo.git (fetch)
+origin  git@github.com:tofrankie/repo-demo.git (push)
 
 $ git branch -r
   origin/HEAD -&gt; origin/main
@@ -49323,8 +49323,8 @@ $ git branch -r
 <pre><code class="language-bash">$ git remote rename origin foo
 
 $ git remote -v
-foo     git@github.com:toFrankie/repo-demo.git (fetch)
-foo     git@github.com:toFrankie/repo-demo.git (push)
+foo     git@github.com:tofrankie/repo-demo.git (fetch)
+foo     git@github.com:tofrankie/repo-demo.git (push)
 
 $ git branch -r
   foo/HEAD -&gt; foo/main
@@ -49709,21 +49709,21 @@ $ git pull
 <p>具体数据都被放在 <code>.git/objects/</code> 目录下。</p>
 <p>然后，现在回头再看 <code>.git/config</code> 的配置，看起来是不是很容易理解了。</p>
 <pre><code class="language-ini">[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
-	logallrefupdates = true
-	ignorecase = true
-	precomposeunicode = true
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+  ignorecase = true
+  precomposeunicode = true
 [remote &quot;origin&quot;]
-	url = git@github.com:toFrankie/repo-demo.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+  url = git@github.com:tofrankie/repo-demo.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
 [branch &quot;main&quot;]
-	remote = origin
-	merge = refs/heads/main
+  remote = origin
+  merge = refs/heads/main
 [branch &quot;dev&quot;]
-	remote = origin
-	merge = refs/heads/dev
+  remote = origin
+  merge = refs/heads/dev
 </code></pre>
 <p>未完待续...</p>
 <!--
@@ -50138,14 +50138,14 @@ $ git push -u &lt;远程主机名&gt; &lt;本地分支名&gt;
 </blockquote>
 <p>以上指令执行之后，在 <code>.git/config</code> 配置文件下会有分支的对应：</p>
 <pre><code class="language-ini">[remote &quot;origin&quot;]
-	url = git@github.com:toFrankie/git_dev_demo.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+  url = git@github.com:tofrankie/git_dev_demo.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
 [branch &quot;master&quot;]
-	remote = origin
-	merge = refs/heads/master
+  remote = origin
+  merge = refs/heads/master
 [branch &quot;develop&quot;]
-	remote = origin
-	merge = refs/heads/develop
+  remote = origin
+  merge = refs/heads/develop
 </code></pre>
 <h2>标签操作</h2>
 <pre><code class="language-bash"># 列举所有标签
@@ -57656,7 +57656,7 @@ if(module.hot) {
   &quot;version&quot;: &quot;1.0.0&quot;,
   &quot;description&quot;: &quot;从零到一搭建 react 项目&quot;,
   &quot;main&quot;: &quot;src/index.js&quot;,
-  &quot;repository&quot;: &quot;git@github.com:toFrankie/webpack4_demo.git&quot;,
+  &quot;repository&quot;: &quot;git@github.com:tofrankie/webpack4_demo.git&quot;,
   &quot;author&quot;: &quot;Frankie &lt;1426203851@qq.com&gt;&quot;,
   &quot;license&quot;: &quot;MIT&quot;,
   &quot;private&quot;: true,
@@ -58072,7 +58072,7 @@ module.exports = config
   &quot;version&quot;: &quot;1.0.0&quot;,
   &quot;description&quot;: &quot;从零到一搭建 react 项目&quot;,
   &quot;main&quot;: &quot;src/index.js&quot;,
-  &quot;repository&quot;: &quot;git@github.com:toFrankie/webpack4_demo.git&quot;,
+  &quot;repository&quot;: &quot;git@github.com:tofrankie/webpack4_demo.git&quot;,
   &quot;author&quot;: &quot;Frankie &lt;1426203851@qq.com&gt;&quot;,
   &quot;license&quot;: &quot;MIT&quot;,
   &quot;private&quot;: true,
@@ -58114,7 +58114,7 @@ module.exports = config
   &quot;version&quot;: &quot;1.0.0&quot;,
   &quot;description&quot;: &quot;从零到一搭建 react 项目&quot;,
   &quot;main&quot;: &quot;index.js&quot;,
-  &quot;repository&quot;: &quot;git@github.com:toFrankie/webpack4_demo.git&quot;,
+  &quot;repository&quot;: &quot;git@github.com:tofrankie/webpack4_demo.git&quot;,
   &quot;author&quot;: &quot;Frankie &lt;1426203851@qq.com&gt;&quot;,
   &quot;license&quot;: &quot;MIT&quot;,
   &quot;private&quot;: true
@@ -58182,7 +58182,7 @@ console.log('This is main.js!')
   &quot;version&quot;: &quot;1.0.0&quot;,
   &quot;description&quot;: &quot;从零到一搭建 react 项目&quot;,
   &quot;main&quot;: &quot;src/index.js&quot;,
-  &quot;repository&quot;: &quot;git@github.com:toFrankie/webpack4_demo.git&quot;,
+  &quot;repository&quot;: &quot;git@github.com:tofrankie/webpack4_demo.git&quot;,
   &quot;author&quot;: &quot;Frankie &lt;1426203851@qq.com&gt;&quot;,
   &quot;license&quot;: &quot;MIT&quot;,
   &quot;private&quot;: true,
