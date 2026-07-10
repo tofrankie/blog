@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 08 Jul 2026 19:34:43 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 10 Jul 2026 08:36:15 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -3679,12 +3679,13 @@ function joinHomebrewPath() {
 <h2>贡献</h2>
 <p>如果想对已发布的扩展作出贡献：</p>
 <ol>
+<li>如果你的变更很大，最好在投入大量时间之前联系扩展的作者。未经作者同意，可能无法合并。</li>
 <li>fork <a href="https://github.com/raycast/extensions">raycast/extensions</a></li>
 <li>功能调整...</li>
 <li>将你的 Raycast 用户名添加到 package.json 的 <code>contributors</code> 字段</li>
 <li>提交 PR，等待审核发布</li>
 </ol>
-<p>由于审核较慢，如果同时多个扩展做出贡献，可以创建不同的分支去处理，如 ext/extension-a、ext/extension-b。</p>
+<p>由于审核较慢，如果同时多个扩展做出贡献，可以创建不同的分支去处理，如 <code>ext/extension-a</code>、<code>ext/extension-b</code>。</p>
 ]]></content:encoded>
             <author>tofrankie</author>
         </item>
