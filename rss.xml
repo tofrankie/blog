@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Fri, 10 Jul 2026 08:36:15 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 11 Jul 2026 14:47:15 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -1149,7 +1149,7 @@ This model provider doesn't serve your region.Visit https://docs.cursor.com/acco
 <h2>解决方法二</h2>
 <p>使用方案一，发现有两个比较蛋疼的问题：</p>
 <ul>
-<li>使用 Clash Verge 太占 CPU 了，务必关闭「浏量图显」</li>
+<li><s>使用 Clash Verge 太占 CPU 了，务必关闭「浏量图显」</s> 改用 <a href="https://clashfx.com/">ClashFX</a></li>
 <li>经常会 Taking longer than expected...，可能是使用 HTTP 1.x 的原因吧</li>
 </ul>
 <p>参考《<a href="https://www.cursor-ide.com/blog/cursor-region-restriction-vpn-guide">Cursor 地区限制完全解决指南：This Model Provider Doesn't Serve Your Region 修复方案</a>》代理配置方式。</p>
