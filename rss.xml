@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sat, 11 Jul 2026 14:47:15 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 12 Jul 2026 20:21:41 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -9335,7 +9335,11 @@ echo &quot;处理完成！&quot;
 <p>超椭圆（Superellipse）也称为拉梅曲线（Lamé curve），是在笛卡儿坐标系下满足以下方程式的点的集合：</p>
 <p>$|\frac{x}a|^{n} + |\frac{y}b|^{n} = 1$</p>
 <p>未完待续...</p>
-]]></content:encoded>
+<!--
+
+- [Creating iOS Icon Masks in the Browser](https://blog.jim-nielsen.com/2017/creating-ios-icon-masks-in-the-browser/)
+
+-->]]></content:encoded>
             <author>tofrankie</author>
         </item>
         <item>
