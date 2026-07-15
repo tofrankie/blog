@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 12 Jul 2026 20:21:41 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 15 Jul 2026 09:10:54 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -690,7 +690,7 @@ $ cd extensions
 <p>Codex 官方已提供 Intel Mac 版本下载。</p>
 <ul>
 <li><a href="https://x.com/dimillian/status/2044828593876795697">https://x.com/dimillian/status/2044828593876795697</a></li>
-<li><a href="https://developers.openai.com/codex/quickstart">https://developers.openai.com/codex/quickstart</a></li>
+<li><a href="https://learn.chatgpt.com/docs/quickstart?setup=app#setup-app-install">https://learn.chatgpt.com/docs/quickstart?setup=app#setup-app-install</a> （选择 macOS Intel 版本）</li>
 </ul>
 <h2>背景</h2>
 <p>截止目前，Codex App 官方仅提供 Apple Silicon 版本（<a href="https://openai.com/zh-Hans-CN/codex/get-started/">前往</a>），它无法在 Intel Mac 上使用。</p>
@@ -716,7 +716,7 @@ $ cd extensions
 <p>Codex officially now provides a download for the Intel Mac version.</p>
 <ul>
 <li><a href="https://x.com/dimillian/status/2044828593876795697">https://x.com/dimillian/status/2044828593876795697</a></li>
-<li><a href="https://developers.openai.com/codex/quickstart">https://developers.openai.com/codex/quickstart</a></li>
+<li><a href="https://learn.chatgpt.com/docs/quickstart?setup=app#setup-app-install">https://learn.chatgpt.com/docs/quickstart?setup=app#setup-app-install</a> (Choose macOS Intel Version)</li>
 </ul>
 <h2>Background</h2>
 <p>As of now, the official Codex App only provides an Apple Silicon version (<a href="https://openai.com/zh-Hans-CN/codex/get-started/">Go to</a>), which cannot be used on Intel Mac.</p>
