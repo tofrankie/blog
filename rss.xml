@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Wed, 15 Jul 2026 09:10:54 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 19 Jul 2026 15:09:57 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -3172,23 +3172,22 @@ point2 = { x: 1, y: 2 } // ✅
 <li>Clipboard History - 剪贴板历史，没什么好说的，用过都说好用。</li>
 <li>Workflow - 工作流，比如翻译、打开项目等，写过一两个插件，开发体验不好，能做的有限。</li>
 </ul>
-<p>这些在 Raycast 都有替代方案，甚至更好。除此之外，Raycast 的界面更现代一些，跟最新的 macOS 风格更加契合。并且可以完全通过键盘完成一系列操作。</p>
+<p>这些在 Raycast 都有替代方案，甚至更好。除此之外，Raycast 的界面更现代一些，跟最新的 macOS 风格更加契合，并且可以完全通过键盘完成一系列操作。</p>
 <blockquote>
-<p>Raycast 官方博文：<a href="https://www.raycast.com/raycast-vs-alfred?via=73820f">Raycast vs Alfred</a></p>
+<p><a href="https://www.raycast.com/raycast-vs-alfred?via=73820f">Raycast vs Alfred</a></p>
 </blockquote>
-<p>最重要的是，Raycast Extension 的开发体验比 Alfred 好太多了。官方有提供很多了 API，统一的 UI 风格，有统一的分发 <a href="https://www.raycast.com/store?via=73820f">Store</a>，不用网上到处搜索。<a href="https://github.com/raycast/extensions/pulse">活跃度</a>很高，目前扩展数量 <a href="https://github.com/raycast/extensions/blob/cffac925444c27172ccf9538a15bad35a97a0adf/.github/CODEOWNERS">2200+</a>。</p>
-<p>比较麻烦的是，在 Raycast 发布扩展，需要经过官方审核，通过后才会上传到 Store，审核周期较慢！</p>
+<p>最重要的是，Raycast Extension 的开发体验比 Alfred 好太多了。官方提供了很多便捷好用的 API、统一的 UI 风格、有官方分发平台 <a href="https://www.raycast.com/store?via=73820f">Raycast Store</a>、<a href="https://github.com/raycast/extensions/pulse">活跃度</a>很高、目前扩展数量 <a href="https://github.com/raycast/extensions/blob/cffac925444c27172ccf9538a15bad35a97a0adf/.github/CODEOWNERS">2200+</a>。</p>
 <h2>开始之前</h2>
 <h3>技术栈</h3>
 <p>Node.js + TypeScript + React</p>
-<p>虽然使用 React 构建，但只能使用官方提供的内置组件，不能过多地自定义（可能是 React to macOS Native 的缘故吧），好处是 UI 风格统一。</p>
+<p>虽然使用 React 构建，但只能使用官方提供的内置 UI 组件，不能过多地自定义（可能是 React to macOS Native 的缘故吧），好处是统一的 UI 体验。</p>
 <h3>安装扩展</h3>
 <ul>
 <li>键入 Store 搜索安装</li>
 <li>键入 Import Extension 在本地导入</li>
 </ul>
 <blockquote>
-<p>键入 Manage Extensions 可以管理本地扩展。</p>
+<p>键入 Manage Extensions 可以管理本地扩展</p>
 </blockquote>
 <h3>卸载扩展</h3>
 <ul>
@@ -3196,16 +3195,19 @@ point2 = { x: 1, y: 2 } // ✅
 <li>键入 Manage Extension 可管理本地扩展。</li>
 </ul>
 <blockquote>
-<p>在 Raycast 中卸载本地扩展（即非通过 Store 安装的扩展）时，本地扩展文件不会被删除。</p>
+<p>在 Raycast 中卸载本地扩展（即非通过 Store 安装的扩展）时，本地扩展文件不会被删除</p>
 </blockquote>
 <blockquote>
-<p>扩展路径 <code>~/Library/Application Support/com.raycast.macos/extensions</code>。</p>
+<p>macOS 扩展路径：<code>~/Library/Application Support/com.raycast.macos/extensions</code></p>
+</blockquote>
+<blockquote>
+<p>Windows 扩展路径：<code>%LocalAppData%\Raycast\extensions\Raycast\extensions</code></p>
 </blockquote>
 <h3>创建扩展</h3>
-<p>键入 Create Extension 回车输入必要信息，便创建好了。</p>
+<p>键入 Create Extension 回车填写必要字段便创建好了。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/7/1751903805052.png" alt=""></p>
 <blockquote>
-<p>官方提供了多个模板，可以选择简单的 Show Detail 模板。</p>
+<p>官方提供了多个模板，可以选择简单的 Show Detail 模板</p>
 </blockquote>
 <p>接着：</p>
 <pre><code class="language-shell">$ cd &lt;your-extension-path&gt;
@@ -3235,7 +3237,7 @@ $ npm run dev
 <blockquote>
 <p><a href="https://github.com/tofrankie/blog/issues/391">当 Raycast extensions 仓库过大，如何更方便提交 PR？</a></p>
 </blockquote>
-<p>提交 PR 时，建议附上视频，或许可以更快地审核。我之前写了一个微信开发工具的<a href="https://github.com/tofrankie/raycast-wechat-devtool">扩展</a>，由于他们没有小程序项目，流程上它们跑不通，可能会要求附上视频辅助审核，例如<a href="https://github.com/raycast/extensions/pull/20222#pullrequestreview-3003917464">这个</a>。</p>
+<p>提交 PR 时，建议附上视频/截图以便于审核。我之前写了一个微信开发工具的<a href="https://github.com/tofrankie/raycast-wechat-devtool">扩展</a>，由于他们没有小程序项目，流程上它们跑不通，可能会要求附上视频辅助审核，例如<a href="https://github.com/raycast/extensions/pull/20222#pullrequestreview-3003917464">这个</a>。</p>
 <blockquote>
 <p>If you add a new extension or command, include a screencast (or screenshot for straightforward changes). A good screencast will make the review much faster - especially if your extension requires registration in other services.</p>
 </blockquote>
@@ -3249,22 +3251,22 @@ $ npm run dev
 <p>遵循 Apple Style Guide，详见<a href="https://developers.raycast.com/basics/prepare-an-extension-for-store#extensions-and-commands-naming">这里</a>。</p>
 <p>示例：</p>
 <ul>
-<li>扩展标题：尽量使用名词，而不是动词，比如 WeChat DevTool。</li>
-<li>扩展描述：一句话准确、简洁地描述扩展程序的功能。</li>
-<li>命令标题：动名词组合，尽可能具体地描述命令的作用，比如 Open Project。</li>
-<li>命令副标题：为标题提供上下文信息。如果副标题几乎与命令标题重复，那么你可能不需要它。不指定时，该位置会显示扩展标题。
+<li>扩展标题：尽量使用名词，而不是动词，比如 WeChat DevTool</li>
+<li>扩展描述：一句话准确、简洁地描述扩展程序的功能</li>
+<li>命令标题：动名词组合，尽可能具体地描述命令的作用，比如 Open Project</li>
+<li>命令副标题：为标题提供上下文信息。如果副标题几乎与命令标题重复，那么你可能不需要它。不指定时，该位置会显示扩展标题
 <ul>
-<li>示例：命令标题 Search Package，命令副标题 NPM，</li>
-<li>示例：命令标题 Search NPM Package，无命名副标题。</li>
-<li>以上示例，对于使用者来说，都是非常清晰明确的。</li>
+<li>示例：命令标题 Search Package，命令副标题 npm</li>
+<li>示例：命令标题 Search npm Package，无命名副标题</li>
+<li>以上示例，对于使用者来说，都是非常清晰明确的</li>
 </ul>
 </li>
-<li>命令描述：一句话准确、简洁地描述命令的功能。</li>
+<li>命令描述：一句话准确、简洁地描述命令的功能</li>
 </ul>
 <h3>本地化</h3>
 <p>很遗憾，目前 Raycast 扩展仅支持美式英文，不支持本地化语言，更多请看<a href="https://developers.raycast.com/basics/prepare-an-extension-for-store#localization-language">这里</a>。</p>
 <blockquote>
-<p>不上传到 Store 可忽略。</p>
+<p>不发布到 Raycast Store 忽略，随便造！</p>
 </blockquote>
 <h3>扩展信息</h3>
 <p>基本上都在 <code>package.json</code> 声明，列举一些基本字段:</p>
@@ -3327,21 +3329,22 @@ $ npm run dev
 </code></pre>
 <p>一些注意点：</p>
 <ul>
-<li><strong>name</strong>：不能与 Store 已有扩展重复，可以在<a href="https://github.com/raycast/extensions/blob/main/.github/extensionName2Folder.json">这里</a>搜索一下。将用于发布后的扩展链接，比如： <code>https://www.raycast.com/tofrankie/wechat-devtool</code>。</li>
-<li><strong>icon</strong>：图标放在 <code>/assets</code> 目录。其他需要跟扩展一同打包的静态资源都要放在此目录下。</li>
-<li><strong>author</strong>：是 Raycast 用户名，不是 GitHub 用户名。</li>
-<li><strong>license</strong>：若要发布到 Store，只能是 MIT 协议。</li>
-<li><strong>categories</strong>：至少选择一个，可选分类看<a href="https://developers.raycast.com/basics/prepare-an-extension-for-store#all-categories">这里</a>。</li>
+<li><strong>name</strong>：不能与 Store 已有扩展重复，可以在<a href="https://github.com/raycast/extensions/blob/main/.github/extensionName2Folder.json">这里</a>搜索一下。将用于发布后的扩展链接，比如： <code>https://www.raycast.com/tofrankie/wechat-devtool</code></li>
+<li><strong>icon</strong>：图标放在 <code>/assets</code> 目录。其他需要跟扩展一同打包的静态资源都要放在此目录下</li>
+<li><strong>author</strong>：是 Raycast 用户名，不是 GitHub 用户名</li>
+<li><strong>license</strong>：若要发布到 Store，只能是 MIT 协议</li>
+<li><strong>categories</strong>：至少选择一个，可选分类看<a href="https://developers.raycast.com/basics/prepare-an-extension-for-store#all-categories">这里</a></li>
 <li><strong>commands</strong>：
 <ul>
-<li><strong>mode</strong>：可选值 <code>view</code>、<code>no-view</code>、<code>menu-bar</code>。比如，打开链接等不需要界面的命令操作，可以选择 <code>no-view</code>。</li>
+<li><strong>mode</strong>：可选值 <code>view</code>、<code>no-view</code>、<code>menu-bar</code>。比如，打开链接等不需要界面的命令操作，可以选择 <code>no-view</code></li>
 </ul>
 </li>
-<li><strong>preferences</strong>：偏好设置时可以同步的。
+<li><strong>preferences</strong>：偏好设置时可以同步的
 <ul>
-<li><strong>required</strong>：当设为 <code>true</code> 时，用户设置后才能使用其他命令。</li>
+<li><strong>required</strong>：当设为 <code>true</code> 时，用户设置后才能使用其他命令</li>
 </ul>
 </li>
+<li><strong>platforms</strong>：现在 Raycast 支持 macOS 和 Windows 双平台。在开发跨平台的扩展时，避免使用某个操作系统特有的 API 或快捷键等。在 Node.js 中可以用 <code>process.platform === 'darwin'</code> 和 <code>process.platform === 'win32'</code> 来判断操作系统</li>
 </ul>
 <p>更多请看 <a href="https://developers.raycast.com/information/manifest#extension-properties">Extension Properties</a> 或 <a href="https://www.raycast.com/schemas/extension.json">Extension Schemas</a>。</p>
 <h3>命令入口文件</h3>
@@ -3375,7 +3378,10 @@ $ npm run dev
       &lt;Action.CopyToClipboard
         title=&quot;Copy Project Path&quot;
         content=&quot;project path&quot;
-        shortcut={{ modifiers: [&quot;cmd&quot;, &quot;shift&quot;], key: &quot;,&quot; }}
+        shortcut={{
+          macOS: { modifiers: ['cmd', 'shift'], key: ',' },
+          Windows: { modifiers: ['ctrl', 'shift'], key: ',' },
+        }}
       /&gt;
       &lt;Action
         title=&quot;Delete Project&quot;
@@ -3494,6 +3500,30 @@ $ npm run dev
 </tr>
 </tbody>
 </table>
+<p>常用快捷键内置了一些常量（<a href="https://developers.raycast.com/api-reference/keyboard#keyboard.shortcut.common">更多</a>），它们是跨平台的，比如：</p>
+<pre><code class="language-jsx">&lt;Action.CopyToClipboard
+  title=&quot;Copy Project Path&quot;
+  content=&quot;project path&quot;
+  shortcut={Keyboard.Shortcut.Common.CopyPath}
+/&gt;
+</code></pre>
+<p>相当于如下配置：</p>
+<pre><code class="language-jsx">&lt;Action.CopyToClipboard
+  title=&quot;Copy Project Path&quot;
+  content=&quot;project path&quot;
+  shortcut={{
+    macOS: { modifiers: ['cmd', 'shift'], key: ',' },
+    Windows: { modifiers: ['ctrl', 'shift'], key: ',' },
+  }}
+/&gt;
+</code></pre>
+<p>若你的扩展仅支持 macOS 时，可以如下设置（Windows 同理）：</p>
+<pre><code class="language-jsx">&lt;Action.CopyToClipboard
+  title=&quot;Copy Project Path&quot;
+  content=&quot;project path&quot;
+  shortcut={{ modifiers: ['cmd', 'shift'], key: ',' } }}
+/&gt;
+</code></pre>
 <h3>图标、图片</h3>
 <p>开发扩展免不了使用图片，Raycast 已经内置了很多图标可直接使用，详见<a href="https://developers.raycast.com/api-reference/user-interface/icons-and-images#icon">这里</a>。</p>
 <p>还可以指定远程图片、本地文件等。</p>
@@ -3506,7 +3536,7 @@ type ImageSource = URL | Asset | Icon | { light: URL | Asset; dark: URL | Asset 
 <li><strong>Asset</strong>：<code>assets</code> 目录的图片文件</li>
 <li><strong>Icon</strong>：Raycast 内置的图标</li>
 <li><strong>FileIcon</strong>：该文件/目录在 Finder 所显示的图标</li>
-<li><strong>Image</strong>：类型如 ImageSource，还可以指定浅色、深色主题的图片，命名形式 <code>icon.png</code> 和 <code>icon@dark.png</code>。</li>
+<li><strong>Image</strong>：类型如 ImageSource，还可以指定浅色、深色主题的图片，命名形式 <code>icon.png</code> 和 <code>icon@dark.png</code></li>
 </ul>
 <p>图片着色：</p>
 <pre><code class="language-tsx">import { Color, Icon, List } from &quot;@raycast/api&quot;
@@ -3646,7 +3676,7 @@ function joinHomebrewPath() {
 }
 </code></pre>
 <h3>Change Log</h3>
-<p>开发完成后，需要在 <a href="http://CHANGELOG.md">CHANGELOG.md</a> 补充一条变更记录。</p>
+<p>开发完成后，需要在 <code>CHANGELOG.md</code> 补充一条变更记录。</p>
 <p>遵循 <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a> 写法，要求如下：</p>
 <ul>
 <li>格式必须是 <code>## [xxx] - {PR_MERGE_DATE}</code></li>
@@ -3669,23 +3699,23 @@ function joinHomebrewPath() {
 - **Open Project** - Open configured mini program project via WeChat DevTool CLI.
 - **Graphical Configuration** - Complete graphical interface for dynamic project management.
 </code></pre>
-<h3>截图</h3>
-<p>存放在 <code>metadata</code> 目录下，可提供 1 ~ 6 张截图。</p>
+<h3>扩展截图</h3>
+<p>扩展截图在 Raycast Store 展示用，存放在 <code>metadata</code> 目录下，可提供 1 ~ 6 张截图。文件名未作限制，建议 <code>screenshot-1.png</code>、<code>&lt;extension-name&gt;-1.png</code> 这类形式。</p>
 <p>Raycast 内置了截屏功能，在 Raycast Settings - Advanced - Window Capture 中设置快捷键（如 ⌥ + ⇧ + ⌘ + M）。</p>
-<p>在 <code>npm run dev</code> 模式下启动扩展，按下快捷键，便可调出截屏窗口，并勾选上「Save to Metadata」，就会自动保存到扩展的 <code>metadata</code> 目录，更多请看<a href="https://developers.raycast.com/basics/prepare-an-extension-for-store#screenshots">这里</a>。</p>
+<p>在开发模式下（使用 <code>npm run dev</code>）启动扩展，按下快捷键便可调出截屏窗口，勾选「Save to Metadata」，截图时自动保存到项目的 <code>metadata</code> 目录（不行的话移进去），更多请看<a href="https://developers.raycast.com/basics/prepare-an-extension-for-store#screenshots">这里</a>。</p>
 <blockquote>
-<p>Raycast 提供了一些高清壁纸，请看<a href="https://www.raycast.com/wallpapers">这里</a>。</p>
+<p>Raycast 提供了一些高分辨的<a href="https://www.raycast.com/wallpapers?via=73820f">高清壁纸</a></p>
 </blockquote>
-<h2>贡献</h2>
+<h2>参与贡献</h2>
 <p>如果想对已发布的扩展作出贡献：</p>
 <ol>
-<li>如果你的变更很大，最好在投入大量时间之前联系扩展的作者。未经作者同意，可能无法合并。</li>
+<li>如果你的变更很大，最好在投入大量时间之前联系扩展的作者。未经作者同意，可能无法完成合并</li>
 <li>fork <a href="https://github.com/raycast/extensions">raycast/extensions</a></li>
 <li>功能调整...</li>
 <li>将你的 Raycast 用户名添加到 package.json 的 <code>contributors</code> 字段</li>
 <li>提交 PR，等待审核发布</li>
 </ol>
-<p>由于审核较慢，如果同时多个扩展做出贡献，可以创建不同的分支去处理，如 <code>ext/extension-a</code>、<code>ext/extension-b</code>。</p>
+<p>由于审核较慢，如果同时多个扩展做出贡献，建议使用不同的分支提交 PR，如 <code>ext/extension-a</code>、<code>ext/extension-b</code>。</p>
 ]]></content:encoded>
             <author>tofrankie</author>
         </item>
@@ -5229,7 +5259,7 @@ function genSvgBase64(svgSourceStr) {
 <li>README 为主页</li>
 <li>Issues 为文章列表</li>
 </ul>
-<p>📢 这是我的<a href="https://github.com/tofrankie/blog">博客</a>，你也可以试试用 <a href="https://github.com/tofrankie/github-blogger">Github Blogger</a> 写一个属于自己的。</p>
+<p>📢 这是我的<a href="https://github.com/tofrankie/blog">博客</a>，你也可以试试用 <a href="https://github.com/tofrankie/github-blogger">GitHub Blogger</a> 写一个属于自己的。</p>
 <h2>入门速看</h2>
 <ul>
 <li><a href="https://docs.github.com/zh/actions/writing-workflows/quickstart">GitHub Action 快速入门</a></li>
@@ -5237,7 +5267,7 @@ function genSvgBase64(svgSourceStr) {
 </ul>
 <h2>备份</h2>
 <p>数据在手才最让人安心的。</p>
-<p>如果你是用 <a href="https://github.com/tofrankie/github-blogger">Github Blogger</a> 来管理文章（Issue），文章、配图会自动存档到 <code>archives</code>、<code>images</code> 目录。</p>
+<p>如果你是用 <a href="https://github.com/tofrankie/github-blogger">GitHub Blogger</a> 来管理文章（Issue），文章、配图会自动存档到 <code>archives</code>、<code>images</code> 目录。</p>
 <p>如果你未使用 GitHub Blogger 或在此之前有一些历史 Issue，可以在本地使用脚本调用 <a href="https://docs.github.com/zh/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues">GitHub API</a> 拉取所有 issue，然后重新推到远程仓库。</p>
 <blockquote>
 <p>可参考 <a href="https://github.com/tofrankie/blog/blob/main/scripts/fetch-all-issues.ts">fetch-all-issues.ts</a></p>
@@ -5265,7 +5295,10 @@ function genSvgBase64(svgSourceStr) {
 <p>如果使用 Folo 订阅，都可以参考这篇<a href="https://github.com/tofrankie/blog/issues/360">文章</a>认领你的 RSS。</p>
 </blockquote>
 <p>如果是第二种方式，可参考 <a href="https://github.com/tofrankie/blog/blob/main/scripts/generate-rss.ts">generate-rss.ts</a>，并在 README 中引入 Badge，比如：</p>
-<pre><code class="language-md">[![RSS](https://img.shields.io/badge/rss-subscribe-orange?logo=rss&amp;style=flat)](https://raw.githubusercontent.com/tofrankie/blog/refs/heads/main/rss.xml)
+<pre><code class="language-md">[![RSS](https://img.shields.io/badge/rss-subscribe-orange?style=for-the-badge&amp;color=4d9375)](https://raw.githubusercontent.com/tofrankie/blog/refs/heads/main/rss.xml)
+</code></pre>
+<p>也可以使用 Folo 订阅链接，比如：</p>
+<pre><code class="language-md">[![RSS](https://img.shields.io/badge/rss-subscribe-orange?style=for-the-badge&amp;color=4d9375)](https://app.folo.is/share/feeds/1179340532296318976)
 </code></pre>
 <h2>文章统计</h2>
 <p>可以做些什么呢？</p>
@@ -6308,7 +6341,7 @@ l    # 右
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/6/1718520988032.png" alt=""></p>
 <h2>开始之前</h2>
-<p>项目没必要一步一步去搭，选择社区流行方案即可，我选 <a href="https://www.plasmo.com/">Plasmo</a>，开发体验还不错。目录样式参考了 <a href="https://github.blog/changelog/2021-04-13-table-of-contents-support-in-markdown-files/">Github</a>、<a href="https://github.com/bytedance/bytemd">ByteMD</a>。</p>
+<p>项目没必要一步一步去搭，选择社区流行方案即可，我选 <a href="https://www.plasmo.com/">Plasmo</a>，开发体验还不错。目录样式参考了 <a href="https://github.blog/changelog/2021-04-13-table-of-contents-support-in-markdown-files/">GitHub</a>、<a href="https://github.com/bytedance/bytemd">ByteMD</a>。</p>
 <p>可粗略看看，了解一些基础概念：</p>
 <ul>
 <li><a href="https://github.com/pekonchan/Blog/issues/8">一篇文章教你顺利入门和开发 chrome 扩展程序（插件）</a></li>
@@ -8144,7 +8177,7 @@ TODO:
 <blockquote>
 <p><a href="https://docs.github.com/zh/search-github/searching-on-github/searching-issues-and-pull-requests#search-by-a-user-thats-involved-in-an-issue-or-pull-request">按议题或拉取请求中涉及的用户搜索</a></p>
 </blockquote>
-<p>可根据 <code>involves</code> 限定符查找以某种方式涉及特定用户的问题，该限定符是 <code>author</code>、<code>assignee</code>、<code>mentions</code> 和 <code>commenter</code> 的逻辑或关系。限定条件为 <code>involves@me</code> 或 <code>involves:&lt;your-username&gt;</code>（你的 Github 用户名）。</p>
+<p>可根据 <code>involves</code> 限定符查找以某种方式涉及特定用户的问题，该限定符是 <code>author</code>、<code>assignee</code>、<code>mentions</code> 和 <code>commenter</code> 的逻辑或关系。限定条件为 <code>involves@me</code> 或 <code>involves:&lt;your-username&gt;</code>（你的 GitHub 用户名）。</p>
 <p>也可组合更多的限定条件达到更精细的查询，比如</p>
 <ul>
 <li><code>is:issue involves:tofrankie alfred</code>：与我相关的、标题或正文包含 alfred 的 Issues。</li>
@@ -9548,8 +9581,8 @@ Total xfer: 1.00x
 <p>前不久做 <a href="https://gith]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2023/12/1701619319197.jpg" alt="配图源自 Freepik"></p>
 <h2>背景</h2>
-<p>前不久做 <a href="https://github.com/tofrankie/github-blogger">Github Blogger</a> 插件开发时，遇到分页查询的场景，是用于查询 Issue 的。</p>
-<p>使用 Github REST API 的话，可以很方便地分页查询，比如：</p>
+<p>前不久做 <a href="https://github.com/tofrankie/github-blogger">GitHub Blogger</a> 插件开发时，遇到分页查询的场景，是用于查询 Issue 的。</p>
+<p>使用 GitHub REST API 的话，可以很方便地分页查询，比如：</p>
 <pre><code class="language-js">const {Octokit} = require('@octokit/core')
 
 const octokit = new Octokit({
@@ -9595,7 +9628,7 @@ await octokit.request('GET /repos/{owner}/{repo}/issues', {
   }
 }
 </code></pre>
-<p>如果对 Github Graph API 不熟的话，可以借助 Github 提供的 <a href="https://docs.github.com/en/graphql/overview/explorer">GraphQL Explorer</a> 进行验证，不懂可看 <a href="https://docs.github.com/en/graphql/guides/using-the-explorer">Using the Explorer</a>。</p>
+<p>如果对 GitHub Graph API 不熟的话，可以借助 GitHub 提供的 <a href="https://docs.github.com/en/graphql/overview/explorer">GraphQL Explorer</a> 进行验证，不懂可看 <a href="https://docs.github.com/en/graphql/guides/using-the-explorer">Using the Explorer</a>。</p>
 <blockquote>
 <p>GraphQL Explorer 已于 2025.11.07 从 API 文档移除，详见<a href="https://github.blog/changelog/2025-11-07-graphql-explorer-removal-from-api-documentation-on-november-7-2025/">官方公告</a>。</p>
 </blockquote>
@@ -9609,7 +9642,7 @@ await octokit.request('GET /repos/{owner}/{repo}/issues', {
 </ul>
 <p>也就是说，如果已知 <code>startCursor</code> 和 <code>endCursor</code> 就能代入 Search 的 <code>after</code> 和 <code>before</code> 参数实现翻页的需求。</p>
 <p>如果是按顺序从第一页、第二页......进行翻页的话，从本页的 pageInfo 中取出 <code>endCursor</code> 代入下一个查询的 <code>after</code> 中就行。<strong>如果我要从第 1 页调到第 5 页呢？</strong></p>
-<p>我试图去寻找 Cursor 的规律，从 <a href="https://docs.github.com/en/graphql/guides/introduction-to-graphql#edge">Introduction to GraphQL</a> 可知，Github 采用 GraphQL 的 <a href="https://graphql.org/learn/pagination/#pagination-and-edges">cursor-based pagination</a> 方式以实现翻页。</p>
+<p>我试图去寻找 Cursor 的规律，从 <a href="https://docs.github.com/en/graphql/guides/introduction-to-graphql#edge">Introduction to GraphQL</a> 可知，GitHub 采用 GraphQL 的 <a href="https://graphql.org/learn/pagination/#pagination-and-edges">cursor-based pagination</a> 方式以实现翻页。</p>
 <p>原来 Cursor 是用 Base64 编码后的字符串。</p>
 <pre><code class="language-text">Y3Vyc29yOjU=
 </code></pre>
@@ -9661,7 +9694,7 @@ await octokit.graphql(`
 </blockquote>
 <h2>参考链接</h2>
 <ul>
-<li><a href="https://docs.github.com/en/rest?apiVersion=2022-11-28">Github REST API</a></li>
+<li><a href="https://docs.github.com/en/rest?apiVersion=2022-11-28">GitHub REST API</a></li>
 <li><a href="https://docs.github.com/en/graphql">GitHub GraphQL API</a></li>
 <li><a href="https://docs.github.com/en/graphql/overview/explorer">GitHub GraphQL Explorer</a></li>
 <li><a href="https://octokit.rest/GET/repos/%7Bowner%7D/%7Brepo%7D/issues">Octokit Rest Online</a></li>
@@ -10998,9 +11031,9 @@ const startAt = store?.activity?.today?.start_at
 <td style="text-align:left"><a href="https://marketplace.visualstudio.com/items?itemName=wmaurer.change-case">change-case</a></td>
 </tr>
 <tr>
-<td style="text-align:left">Open/Configure Github Blogger</td>
+<td style="text-align:left">Open/Configure GitHub Blogger</td>
 <td style="text-align:left">写博客</td>
-<td style="text-align:left"><a href="https://marketplace.visualstudio.com/items?itemName=frankie.github-blogger">Github Blogger</a></td>
+<td style="text-align:left"><a href="https://marketplace.visualstudio.com/items?itemName=frankie.github-blogger">GitHub Blogger</a></td>
 </tr>
 <tr>
 <td style="text-align:left">Toggle Screencast Mode</td>
@@ -34550,7 +34583,7 @@ class GithubUser {
   }
 
   login() {
-    console.log(this.username + &quot; 要登录 Github，密码是：&quot; + this.password);
+    console.log(this.username + &quot; 要登录 GitHub，密码是：&quot; + this.password);
   }
 }
 </code></pre>
@@ -34570,7 +34603,7 @@ class GithubUser {
   }
 
   public login(): void {
-    console.log(this.username + &quot; 要登录 Github，密码是：&quot; + this.password);
+    console.log(this.username + &quot; 要登录 GitHub，密码是：&quot; + this.password);
   }
 }
 </code></pre>
@@ -34582,7 +34615,7 @@ class GithubUser {
   this.username = username;
   // public 方法
   GithubUser.prototype.login = function() {
-    console.log(this.username + &quot; 要登录 Github，密码是：&quot; + _password);
+    console.log(this.username + &quot; 要登录 GitHub，密码是：&quot; + _password);
   };
 }
 
@@ -34624,7 +34657,7 @@ GithubUser.getPublicServices = function() {
   let _password = password;
   this.username = username;
   GithubUser.prototype.login = function () {
-    console.log(this.username + &quot; 要登录 Github，密码是：&quot; + _password);
+    console.log(this.username + &quot; 要登录 GitHub，密码是：&quot; + _password);
   };
 }
 
@@ -34648,7 +34681,7 @@ function GithubUser(username, password) {
   let _password = password;
   this.username = username;
   GithubUser.prototype.login = function () {
-    console.log(this.username + &quot; 要登录 Github，密码是：&quot; + _password);
+    console.log(this.username + &quot; 要登录 GitHub，密码是：&quot; + _password);
   };
 }
 
@@ -34683,7 +34716,7 @@ function GithubUser(username, password) {
   let _password = password;
   this.username = username;
   GithubUser.prototype.login = function () {
-    console.log(this.username + &quot; 要登录 Github，密码是：&quot; + _password);
+    console.log(this.username + &quot; 要登录 GitHub，密码是：&quot; + _password);
   };
 }
 
@@ -34740,7 +34773,7 @@ function GithubUser(username, password) {
   let _password = password;
   this.username = username;
   GithubUser.prototype.login = function () {
-    console.log(this.username + &quot; 要登录 Github，密码是：&quot; + _password);
+    console.log(this.username + &quot; 要登录 GitHub，密码是：&quot; + _password);
   };
 }
 
@@ -34765,7 +34798,7 @@ function GithubUser(username, password) {
   let _password = password;
   this.username = username;
   GithubUser.prototype.login = function () {
-    console.log(this.username + &quot; 要登录 Github，密码是：&quot; + _password);
+    console.log(this.username + &quot; 要登录 GitHub，密码是：&quot; + _password);
   };
 }
 
@@ -34806,7 +34839,7 @@ function GithubUser(username, password) {
   let _password = password;
   this.username = username;
   GithubUser.prototype.login = function () {
-    console.log(this.username + &quot; 要登录 Github，密码是：&quot; + _password);
+    console.log(this.username + &quot; 要登录 GitHub，密码是：&quot; + _password);
   };
 }
 
@@ -34974,7 +35007,7 @@ function inherit(child, parent) {
 }
 
 GithubUser.prototype.login = function () {
-  console.log(this.username + &quot; 要登录 Github，密码是：&quot; + this.password);
+  console.log(this.username + &quot; 要登录 GitHub，密码是：&quot; + this.password);
 }
 
 function User(username, password, articles) {
@@ -49187,7 +49220,7 @@ $ git push git@github.com:tofrankie/repo-demo.git main
 </code></pre>
 <p>如果你本地的仓库是通过 <code>git clone</code> 下来的，Git 会默认将远程仓库命名为 <code>origin</code>，自动帮你关联上远端仓库（可在 <code>.git/config</code> 文件中看到已有 <code>[remote &quot;origin&quot;]</code> 配置项了），因此 Commit 之后就能直接 Push 了。</p>
 <blockquote>
-<p>When a repo is cloned, it has a default remote called <code>origin</code> that points to your fork on GitHub, not the original repo it was forked from.（引自 <a href="https://stackoverflow.com/questions/9257533/what-is-the-difference-between-origin-and-upstream-on-github/9257901#9257901">Github page</a>）</p>
+<p>When a repo is cloned, it has a default remote called <code>origin</code> that points to your fork on GitHub, not the original repo it was forked from.（引自 <a href="https://stackoverflow.com/questions/9257533/what-is-the-difference-between-origin-and-upstream-on-github/9257901#9257901">GitHub page</a>）</p>
 </blockquote>
 <p>如果我们在 GitHub 新创建一个 Repository 的话，会看到以下指引：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767416312317.png" alt=""></p>
@@ -50654,7 +50687,7 @@ $ git config --global --list
 <h2>参考链接</h2>
 <ul>
 <li><a href="https://blog.csdn.net/liuxiao723846/article/details/83113317">Git config 介绍</a></li>
-<li><a href="https://www.jianshu.com/p/f3020c04d966">对 Git 用户名与 Github 账户关系的理解</a></li>
+<li><a href="https://www.jianshu.com/p/f3020c04d966">对 Git 用户名与 GitHub 账户关系的理解</a></li>
 <li><a href="https://blog.csdn.net/wang975380547/article/details/78116070">关于 ssh -T git@github.com 连接 GitHub 失败，以及 Permission denied (publickey) 问题</a></li>
 </ul>
 ]]></content:encoded>
@@ -50888,7 +50921,7 @@ $ yarn config set reigstry https://registry.npmmirror.com/
 <li>环境变量 <code>SASS_BINARY_SITE</code></li>
 <li><code>.npmrc</code> 配置 <code>sass_binary_site</code></li>
 <li><code>package.json</code> 中的 <code>nodeSass.binarySite</code> 字段</li>
-<li>若以上都没有指定，则从 Github 中下载，比如：<code>https://github.com/sass/node-sass/releases/download/v8.0.0/darwin-x64-83_binding.node</code>。</li>
+<li>若以上都没有指定，则从 GitHub 中下载，比如：<code>https://github.com/sass/node-sass/releases/download/v8.0.0/darwin-x64-83_binding.node</code>。</li>
 </ol>
 <p>因此，仅指定国内镜像源还不够，还要指定 Sass Binary Site。</p>
 <h3>指定 Sass Binary Site</h3>
@@ -58210,10 +58243,10 @@ console.log('This is main.js!')
             <pubDate>Sat, 25 Feb 2023 11:24:31 GMT</pubDate>
             <description><![CDATA[<p>详细介绍从零到一搭建基于 webpack 的 react 项目系列文章。基于 Webpack 4、React 16、Redux、redux-saga、ESLint、Prettier、Ant Design 等。</p>
 <blockquote>
-<p>Github 仓库： <a href="https://gith]]></description>
+<p>GitHub 仓库： <a href="https://gith]]></description>
             <content:encoded><![CDATA[<p>详细介绍从零到一搭建基于 webpack 的 react 项目系列文章。基于 Webpack 4、React 16、Redux、redux-saga、ESLint、Prettier、Ant Design 等。</p>
 <blockquote>
-<p>Github 仓库： <a href="https://github.com/tofrankie/webpack4_demo.git">tofrankie/webpack4_demo</a>。 本系列文章目前暂未写完，加速 ing...</p>
+<p>GitHub 仓库： <a href="https://github.com/tofrankie/webpack4_demo.git">tofrankie/webpack4_demo</a>。 本系列文章目前暂未写完，加速 ing...</p>
 </blockquote>
 <blockquote>
 <p>该系列文章涉及的知识点，我会尽可能地详写，大部分内容比较基础，大佬请绕路。初衷尽可能让刚入坑的朋友看得懂。本人行文表述以及涉猎的知识面有限，有词不达意或偏颇之处，欢迎指正。</p>
@@ -58947,7 +58980,7 @@ export NVM_DIR=&quot;$HOME/.nvm&quot;
 <h2>其他</h2>
 <ul>
 <li><a href="https://github.com/tofrankie/blog/issues/44">推荐两款不错的 VS Code 的主题</a></li>
-<li><a href="https://github.com/tofrankie/blog/issues/327">使用 VS Code + Github 搭建个人博客</a></li>
+<li><a href="https://github.com/tofrankie/blog/issues/327">使用 VS Code + GitHub 搭建个人博客</a></li>
 <li><a href="https://github.com/tofrankie/blog/issues/43">常用 VS Code 扩展推荐</a></li>
 </ul>
 <h2>参考链接</h2>
@@ -59197,10 +59230,10 @@ export NVM_DIR=&quot;$HOME/.nvm&quot;
 <h2>其他</h2>
 <ul>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> - 可以实时 Reload 的本地开发服务器。</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=frankie.github-blogger">Github Blogger</a> - 基于 Github Issue 的博客工具。</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=frankie.github-blogger">GitHub Blogger</a> - 基于 GitHub Issue 的博客工具。</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a> - 用于运行代码片段。</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced">Markdown Preview Enhanced</a> - Markdown 语录增强扩展。</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=aminer.codegeex">CodeGeeX: AI Code AutoComplete, Chat, Auto Comment</a> - “免费版 Github Copilot”？如果没有付费使用 Github Copilot，它或许是个不错的选择。</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=aminer.codegeex">CodeGeeX: AI Code AutoComplete, Chat, Auto Comment</a> - “免费版 GitHub Copilot”？如果没有付费使用 GitHub Copilot，它或许是个不错的选择。</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser">open in browser</a> - 在浏览器打开。</li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=jeff-hykin.polacode-2019">Polacode-2022</a> 生成漂亮的代码截图。</li>
 </ul>
@@ -59208,7 +59241,7 @@ export NVM_DIR=&quot;$HOME/.nvm&quot;
 <p>有时要写个 HTML 示例，用 Live Server 启动轻量的文件服务器，提供热重载，是一个非常不错的选择。</p>
 </blockquote>
 <blockquote>
-<p>Markdown Preview Enhanced 主题美化：<a href="https://github.com/tofrankie/gfm-theme">gfm-theme</a></p>
+<p>Markdown Preview Enhanced 主题美化：<a href="https://github.com/tofrankie/markdown-preview-gfm">markdown-preview-gfm</a></p>
 </blockquote>
 <h2>参考链接</h2>
 <ul>
