@@ -1,5 +1,7 @@
 # 近期更新
 
+- [Codex App on Intel Mac](https://github.com/tofrankie/blog/issues/388)
+- [Homebrew 使用详解](https://github.com/tofrankie/blog/issues/9)
 - [GitHub GraphQL API 分页查询](https://github.com/tofrankie/blog/issues/323)
 - [细读 JS | 深入继承原理](https://github.com/tofrankie/blog/issues/213)
 - [GitHub Blogger + GitHub Action](https://github.com/tofrankie/blog/issues/349)
@@ -8,5 +10,3 @@
 - [用好 VS Code 快捷键](https://github.com/tofrankie/blog/issues/317)
 - [彻底弄懂 Git 的 origin、HEAD、FETCH_HEAD 相关内容](https://github.com/tofrankie/blog/issues/107)
 - [本地项目关联远程 Git 仓库](https://github.com/tofrankie/blog/issues/100)
-- [或许能帮你解开 node-sass 的所有疑问？](https://github.com/tofrankie/blog/issues/98)
-- [从零到一搭建 react 项目系列之（一）](https://github.com/tofrankie/blog/issues/54)
