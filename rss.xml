@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 19 Jul 2026 15:09:57 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 20 Jul 2026 20:49:48 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -692,12 +692,16 @@ $ cd extensions
 <li><a href="https://x.com/dimillian/status/2044828593876795697">https://x.com/dimillian/status/2044828593876795697</a></li>
 <li><a href="https://learn.chatgpt.com/docs/quickstart?setup=app#setup-app-install">https://learn.chatgpt.com/docs/quickstart?setup=app#setup-app-install</a> （选择 macOS Intel 版本）</li>
 </ul>
+<blockquote>
+<p>[!TIP]
+注意，Codex 官网首页的 macOS 版本下载仅提供了 Apple Silicon 版本。</p>
+</blockquote>
 <h2>背景</h2>
 <p>截止目前，Codex App 官方仅提供 Apple Silicon 版本（<a href="https://openai.com/zh-Hans-CN/codex/get-started/">前往</a>），它无法在 Intel Mac 上使用。</p>
 <blockquote>
 <p><a href="https://github.com/openai/codex/issues/10410">Codex Desktop App: macOS Intel (x86_64) support</a></p>
 </blockquote>
-<h2>解决方案</h2>
+<h2>过去的解决方案</h2>
 <p>当前可用：</p>
 <ul>
 <li><a href="https://github.com/sohail288/codex-app-intel-repackager">sohail288/codex-app-intel-repackager</a> 在 Release 下载 Intel 版本包</li>
@@ -718,12 +722,16 @@ $ cd extensions
 <li><a href="https://x.com/dimillian/status/2044828593876795697">https://x.com/dimillian/status/2044828593876795697</a></li>
 <li><a href="https://learn.chatgpt.com/docs/quickstart?setup=app#setup-app-install">https://learn.chatgpt.com/docs/quickstart?setup=app#setup-app-install</a> (Choose macOS Intel Version)</li>
 </ul>
+<blockquote>
+<p>[!TIP]
+Please note that the macOS download version available on the <a href="https://openai.com/codex/">Codex official website homepage</a> is compatible only with Apple Silicon.</p>
+</blockquote>
 <h2>Background</h2>
 <p>As of now, the official Codex App only provides an Apple Silicon version (<a href="https://openai.com/zh-Hans-CN/codex/get-started/">Go to</a>), which cannot be used on Intel Mac.</p>
 <blockquote>
 <p><a href="https://github.com/openai/codex/issues/10410">Codex Desktop App: macOS Intel (x86_64) support</a></p>
 </blockquote>
-<h2>Solution</h2>
+<h2>Past Solution</h2>
 <p>Currently available:</p>
 <ul>
 <li><a href="https://github.com/sohail288/codex-app-intel-repackager">sohail288/codex-app-intel-repackager</a> Download the Intel version package from Releases</li>
@@ -63210,10 +63218,10 @@ $ sudo wechattweak-cli uninstall # 卸载
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/9</guid>
             <pubDate>Sat, 25 Feb 2023 10:03:46 GMT</pubDate>
             <description><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/12/1733054107458.jpg" alt="配图源自 Freepik"></p>
-<h2>Homebrew 是什么？</h2>
-<p><a href="https:]]></description>
+<h2>简介</h2>
+<p><a href="https://brew.sh/"]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2024/12/1733054107458.jpg" alt="配图源自 Freepik"></p>
-<h2>Homebrew 是什么？</h2>
+<h2>简介</h2>
 <p><a href="https://brew.sh/">Homebrew</a> 是 macOS 和 Linux 上非常流行的开源包管理器，可以理解为一个命令行版本的应用商店。它是相对安全的，如果你知道自己正在下载什么。起码目前 Homebrew 上不存在恶意包（<a href="https://formulae.brew.sh/">All Formulae</a>）。</p>
 <blockquote>
 <p>Homebrew complements macOS (or your Linux system).</p>
@@ -63267,7 +63275,7 @@ $ sudo wechattweak-cli uninstall # 卸载
 </tbody>
 </table>
 <blockquote>
-<p>Related Link: <a href="https://docs.brew.sh/Manpage#terminology">Homebrew Terminology</a>, <a href="https://github.com/Homebrew/brew/issues/10798">Simplifying Homebrew terminology</a></p>
+<p><a href="https://docs.brew.sh/Manpage#terminology">Homebrew Terminology</a>, <a href="https://github.com/Homebrew/brew/issues/10798">Simplifying Homebrew terminology</a></p>
 </blockquote>
 <h3>组成</h3>
 <p>Homebrew 由以下几部分组成。</p>
@@ -63305,174 +63313,113 @@ $ sudo wechattweak-cli uninstall # 卸载
 </tr>
 </tbody>
 </table>
-<h2>Homebrew 安装</h2>
-<blockquote>
-<p>本文以 macOS 为例。</p>
-</blockquote>
-<p>复制以下命令，粘贴到「终端」应用回车执行，等待完成即可。</p>
-<pre><code class="language-shell">$ /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+<h2>安装 Homebrew</h2>
+<p>复制命令到终端执行，等待完成即可：</p>
+<pre><code class="language-bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
 </code></pre>
-<p>如果没有 🪜 下载很慢的话，可以使用国内的安装脚本。</p>
-<pre><code class="language-shell">$ /bin/bash -c &quot;$(curl -fsSL https://mirrors.ustc.edu.cn/misc/brew-install.sh)&quot;
+<p>如果没有 🪜 下载慢，可以使用中国科学技术大学镜像源的安装脚本：</p>
+<pre><code class="language-bash">/bin/bash -c &quot;$(curl -fsSL https://mirrors.ustc.edu.cn/misc/brew-install.sh)&quot;
 </code></pre>
-<p>如果此前没有安装过 Xcode Command Line Tools，上述过程会提示安装，按回车耐心等待安装完成。</p>
-<blockquote>
-<p>Related link: <a href="https://docs.brew.sh/Installation#macos-requirements">macOS Requirements</a>.</p>
-</blockquote>
-<pre><code class="language-shell">==&gt; The Xcode Command Line Tools will be installed.
+<p>配置环境变量：</p>
+<pre><code class="language-bash"># 兼容 Intel 和 M 系列的 Mac
+$ echo 'export PATH=&quot;/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH&quot;' &gt;&gt; ~/.zshrc
 
-Press RETURN/ENTER to continue or any other key to abort:
+# 如果不希望 Homebrew 收集匿名数据
+$ echo 'export HOMEBREW_NO_ANALYTICS=1' &gt;&gt; ~/.zshrc
+
+# 刷新环境变量 ✅
+$ source ~/.zshrc
 </code></pre>
-<p>也可先自行安装 Xcode Command Line Tools，再安装 Homebrew。</p>
-<pre><code class="language-shell">$ xcode-select --install
-</code></pre>
-<p>完成后可使用 <code>brew -v</code> 命令，若有输出版本号，表示已安装成功，可忽略以下环境变量配置步骤。</p>
-<pre><code class="language-shell">$ brew -v
+<blockquote>
+<p><a href="https://docs.brew.sh/Analytics">Anonymous Analytics</a></p>
+</blockquote>
+<p>完成后，使用 <code>brew -v</code> 验证下，若有输出版本号表示已安装成功。</p>
+<pre><code class="language-bash">$ brew -v
 Homebrew 4.1.22
 Homebrew/homebrew-core (git revision a58688396f3; last commit 2023-12-02)
 </code></pre>
-<p>如果出现如下问题，则需要配置环境变量。</p>
-<pre><code class="language-shell">$ brew -v
-brew：command not found
-</code></pre>
-<p>执行 <code>which $SHELL</code> 确认你的 macOS 的默认 Shell 是哪个？</p>
-<pre><code class="language-shell">$ which $SHELL
-/bin/zsh
-</code></pre>
-<p>通常是 <code>zsh</code> 或 <code>bash</code>，对应的配置文件为 <code>~/.zshrc</code> 或 <code>~/.bash_profile</code>。</p>
+<h3>安装 Xcode Command Line Tools</h3>
+<p>如果此前没有安装过 Xcode Command Line Tools（Homebrew 需要依赖它），上述过程会提示安装，按回车耐心等待安装完成。</p>
 <blockquote>
-<p>从 macOS Catalina 开始，Mac 将使用 <code>zsh</code> 作为默认登录 Shell 和交互式 Shell，<a href="https://support.apple.com/zh-cn/HT208050">详见</a>。</p>
+<p><a href="https://docs.brew.sh/Installation#macos-requirements">macOS Requirements</a></p>
 </blockquote>
-<blockquote>
-<p>下文以 <code>zsh</code> 为例，如果你使用其他 Shell，涉及到 <code>.zshrc</code> 请自行调整为你的配置文件名称。</p>
-</blockquote>
-<pre><code class="language-shell"># 添加环境变量至 .zshrc
-$ echo 'export PATH=&quot;/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH&quot;' &gt;&gt; ~/.zshrc
+<pre><code class="language-bash">==&gt; The Xcode Command Line Tools will be installed.
 
-# 刷新环境变量
-$ source ~/.zshrc
+Press RETURN/ENTER to continue or any other key to abort:
 </code></pre>
-<p>完了之后，再执行 <code>brew -v</code> 应该就能正常输出版本号了。</p>
-<h2>Homebrew 升级指南</h2>
+<p>也可以先安装 Xcode Command Line Tools，再安装 Homebrew。</p>
+<pre><code class="language-bash">$ xcode-select --install
+</code></pre>
+<h2>Homebrew 4.0 升级指南</h2>
 <blockquote>
-<p>如果首次安装，可忽略本节内容。</p>
+<p>[!TIP]
+如果你是首次安装 Homebrew，不是从 3.0 升级到 4.0+，可以跳过本章节。</p>
 </blockquote>
-<p>自 4.0 起，有一些变化：</p>
-<ul>
+<p>相比 3.0 有一个较大的变化，默认使用从 <a href="https://formulae.brew.sh/">Formulae.brew.sh</a> 下载的 JSON 文件进行包的安装，不再是本地 <code>homebrew/core</code> 和 <code>homebrew/cask</code> 仓库源。</p>
+<p>处理清单：</p>
+<ol>
 <li>
-<p>默认使用从 <a href="https://formulae.brew.sh/">Formulae.brew.sh</a> 下载的 JSON 文件进行包的安装，而不是本地 <code>homebrew/core</code> 和 <code>homebrew/cask</code> 源。可以考虑使用 <code>brew untap homebrew/core</code> 和 <code>brew untap homebrew/cask</code> 来节省一些空间（除非你正在开发包）。</p>
+<p>如果你不是 Homebrew 包开发者，可以分别执行命令 <code>brew untap homebrew/core</code> 和 <code>brew untap homebrew/cask</code> 来节省一些空间。</p>
 </li>
 <li>
-<p>可以考虑将 <code>HOMEBREW_NO_INSTALL_FROM_API</code> 移除（如果设置过）。</p>
-</li>
-<li>
-<p>可以考虑将 <code>HOMEBREW_API_DOMAIN</code> 设为指定镜像源（如果使用新的安装方式）。</p>
+<p>可以考虑将 HOMEBREW_NO_INSTALL_FROM_API 移除（如果设置过）。</p>
 </li>
 <li>
 <p>自动运行 <code>brew update</code> 的频率由 <code>5min</code> 改为 <code>24h</code>。可以重新考虑是否需要设置 <code>HOMEBREW_NO_AUTO_UPDATE</code>、<code>HOMEBREW_AUTO_UPDATE_SECS</code> 了（如果设置过）。</p>
 </li>
-</ul>
-<p>如果想安装了 4.0 及更新版本，又想沿用以前的安装方式，可以设置环境变量：</p>
-<pre><code class="language-shell">$ echo 'export HOMEBREW_NO_INSTALL_FROM_API=1' &gt;&gt; ~/.zshrc
+<li>
+<p>可以考虑将 <code>HOMEBREW_API_DOMAIN</code> 设为指定镜像源（参考下文切换镜像源）。</p>
+</li>
+<li>
+<p>移除过时环境变量（如果你是 Homebrew 的开发者，可以保留 <code>HOMEBREW_CORE_GIT_REMOTE</code> 和 <code>HOMEBREW_CASK_GIT_REMOTE</code>）</p>
+</li>
+</ol>
+<pre><code class="language-bash">export HOMEBREW_INSTALL_FROM_API=1
+export HOMEBREW_CORE_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/homebrew-core.git&quot;
+export HOMEBREW_CASK_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/homebrew-cask.git&quot;
 </code></pre>
-<p>如果你使用 3.3.0 ~ 3.6.0 之间的版本，想要使用全新的 JSON API 来安装包，可以设置环境变量：</p>
-<pre><code class="language-shell">$ echo 'export HOMEBREW_INSTALL_FROM_API=1' &gt;&gt; ~/.zshrc
-</code></pre>
-<blockquote>
-<p>自 4.0 起为默认行为，无需设置。</p>
-</blockquote>
-<p>Related Link:</p>
+<p>相关链接：</p>
 <ul>
 <li><a href="https://brew.sh/2023/02/16/homebrew-4.0.0/">Homebrew 4.0.0</a></li>
 <li><a href="https://brew.sh/2022/09/07/homebrew-3.6.0/">Homebrew 3.6.0</a></li>
 <li><a href="https://brew.sh/2021/10/25/homebrew-3.3.0/">Homebrew 3.3.0</a></li>
 </ul>
-<h2>Homebrew 源切换</h2>
-<p>安装后，如果使用 <code>brew install</code>、<code>brew upgrade</code>、<code>brew update</code> 较慢，可以考虑切换为国内的镜像源，比如：</p>
+<h2>切换镜像源</h2>
+<p>在国内，如果执行 <code>brew install</code>、<code>brew upgrade</code>、<code>brew update</code> 较慢，可以考虑使用国内的镜像源。</p>
 <ul>
 <li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">清华大学镜像源</a></li>
 <li><a href="http://mirrors.ustc.edu.cn/help/brew.git.html">中国科学技术大学镜像源</a></li>
 </ul>
-<blockquote>
-<p>以 USTC 镜像源为例。</p>
-</blockquote>
-<p>如果使用 4.x 最新的 JSON API 安装方式（推荐），添加以下环境变量配置：</p>
-<pre><code class="language-shell">$ echo '
+<p>以中国科学技术大学镜像源为例，执行以下命令将镜像源地址添加到 <code>~/.zshrc</code></p>
+<pre><code class="language-bash">$ echo '
 export HOMEBREW_BREW_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/brew.git&quot;
 export HOMEBREW_API_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles/api&quot;
 export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;
 ' &gt;&gt; ~/.zshrc
 </code></pre>
-<p><s>如果使用 4.0 之前版本，或者使用 4.x 但又想用此前的安装方式，添加以下环境变量配置：</s></p>
 <blockquote>
-<p>自 2026 年 6 月起，USTC 不再提供此镜像 <a href="https://mirrors.ustc.edu.cn/help/homebrew-core.git.html#_3">详情</a></p>
+<p>若要重置为官方镜像源，前往 <code>~/.zshrc</code> 将以上三个环境变量移除即可</p>
 </blockquote>
-<pre><code class="language-shell">$ echo '
-export HOMEBREW_NO_INSTALL_FROM_API=1
-export HOMEBREW_BREW_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/brew.git&quot;
-export HOMEBREW_API_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles/api&quot;
-export HOMEBREW_BOTTLE_DOMAIN=&quot;https://mirrors.ustc.edu.cn/homebrew-bottles/bottles&quot;
-export HOMEBREW_CORE_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/homebrew-core.git&quot;
-export HOMEBREW_CASK_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/homebrew-cask.git&quot;
-'&gt;&gt; ~/.zshrc
-</code></pre>
 <blockquote>
-<p>若要重置为官方镜像源，移除以上环境变量即可。</p>
+<p>自 2026 年 6 月起，由于 4.0 使用全新的 JSON API 安装方式，USTC 不再提供 Homebrew Core、Homebrew Cask 镜像 <a href="https://mirrors.ustc.edu.cn/help/homebrew-core.git.html#_3">详情</a></p>
 </blockquote>
-<p>另外，如不希望 Homebrew 收集匿名数据，可以通过设置环境变量关闭：</p>
-<pre><code class="language-shell">$ echo 'export HOMEBREW_NO_ANALYTICS=1' &gt;&gt; ~/.zshrc
-</code></pre>
-<blockquote>
-<p>Related Link: <a href="https://docs.brew.sh/Analytics">Anonymous Analytics</a>.</p>
-</blockquote>
-<!--
-
-### 重置镜像源
-
-先移除上述环境变量，再执行以下命令：
-
-```shell
-$ git -C "$(brew --repo)" remote set-url origin https://github.com/Homebrew/brew
-
-$ brew tap --custom-remote homebrew/core https://github.com/Homebrew/homebrew-core
-
-$ brew tap --custom-remote --force-auto-update homebrew/cask https://github.com/Homebrew/homebrew-cask
-
-$ brew tap --custom-remote --force-auto-update homebrew/cask-versions https://github.com/Homebrew/homebrew-cask-versions
-
-$ brew tap --custom-remote --force-auto-update homebrew/services https://github.com/Homebrew/homebrew-services
-```
-
-### 重置镜像源（旧版）
-
-> 以前使用过非环境变量的方式进行配置。
-
-```shell
-$ cd "$(brew --repo)"
-$ git remote set-url origin https://github.com/Homebrew/brew
-
-$ cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
-$ git remote set-url origin https://github.com/Homebrew/homebrew-core
-
-$ cd "$(brew --repo)/Library/Taps/homebrew/homebrew-cask"
-$ git remote set-url origin https://github.com/Homebrew/homebrew-cask
-```
-
--->
-<h2>Homebrew 自动更新</h2>
-<p>默认情况下，在执行 <code>brew install</code>、<code>brew upgrade</code>、<code>brew tap</code> 之前，每隔第一段时间会自动执行 <code>brew update</code> 以获取最新的 Homebrew 版本。</p>
-<p>在 4.0 起自动执行频率为 <code>24h</code>，如果开启了 <code>HOMEBREW_NO_INSTALL_FROM_API=1</code> 频率为 <code>5min</code>。可通过以下环境变量完全禁用、设置时间间隔。</p>
-<pre><code class="language-shell">$ echo '
+<h2>自动更新配置</h2>
+<p>默认情况下，在执行 <code>brew install</code>、<code>brew upgrade</code>、<code>brew tap</code> 之前，每隔第一段时间会自动执行 <code>brew update</code> 以获取最新的 Homebrew 版本。4.0 版本自动执行频率为 24h（3.0 版本为 <code>5min</code>）。</p>
+<p>可通过以下环境变量，设置完全禁用、设置时间间隔。</p>
+<p>如果需要自定义更新的时间间隔，可以如下设置，禁用自动更新，并显式声明更新时间（单位秒）</p>
+<pre><code class="language-bash">$ echo '
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_AUTO_UPDATE_SECS=86400
 ' &gt;&gt; ~/.zshrc
 </code></pre>
+<p>执行包安装/更新时，出现 <code>Downloading https://formulae.brew.sh/api/formula.jws.json</code> 提示，就是源于这个自动更新机制。这个 JSON 文件有 4M 多，如果在国内不慢才怪。</p>
+<h2>安装细节</h2>
 <blockquote>
-<p>这就是每次安装/更新包时，先出现 <code>Downloading https://formulae.brew.sh/api/formula.jws.json</code> 的原因。这个 JSON 文件有 4M 多，如果加上默认的镜像源，不慢才怪。</p>
+<p>[!TIP]
+专供开发者，普通用户可以忽略本章节内容。</p>
 </blockquote>
-<h2>Homebrew 相关路径</h2>
-<p>相关命令</p>
-<pre><code class="language-shell"># 显示 Homebrew 本地的 Git 仓库
+<p>相关命令：</p>
+<pre><code class="language-bash"># 显示 Homebrew 本地的 Git 仓库
 $ brew --repo
 
 # 显示 Homebrew 安装路径
@@ -63489,107 +63436,109 @@ $ brew --cache
 </code></pre>
 <p>Homebrew 默认安装路径如下：</p>
 <ul>
-<li>macOS ARM: <code>/opt/homebrew</code></li>
-<li>macOS Intel: <code>/usr/local</code></li>
+<li>Apple Silicon Mac：<code>/opt/homebrew</code></li>
+<li>Intel Mac：<code>/usr/local</code></li>
 </ul>
 <blockquote>
-<p>Related Link: <a href="https://github.com/Homebrew/brew/issues/9177">Discussion: longterm Homebrew prefix on Apple Silicon Macs</a></p>
+<p><a href="https://github.com/Homebrew/brew/issues/9177">Discussion: longterm Homebrew prefix on Apple Silicon Macs #9177</a></p>
 </blockquote>
 <p>以 <code>brew install git</code> 为例：</p>
 <ol>
 <li>
-<p>Homebrew 将 git 下载至 <code>/usr/local/Cellar/git/&lt;version&gt;/</code> 目录下，其二进制文件在 <code>/usr/local/Cellar/git/&lt;version&gt;/bin/git</code>。</p>
+<p>Homebrew 将 git 下载至 <code>/usr/local/Cellar/git/&lt;version&gt;/</code> 目录，其二进制文件位于 <code>/usr/local/Cellar/git/&lt;version&gt;/bin/git</code></p>
 </li>
 <li>
-<p>Homebrew 为 <code>/usr/local/Cellar/git/&lt;version&gt;/bin/git</code> 创建了一个软链文件至 <code>/usr/local/bin</code> 里。</p>
+<p>Homebrew 为 <code>/usr/local/Cellar/git/&lt;version&gt;/bin/git</code> 创建一个软链文件至 <code>/usr/local/bin</code></p>
 </li>
 </ol>
-<p>macOS ARM 的路径对应是：</p>
+<blockquote>
+<p>Apple Silicon Mac 的路径对应是：</p>
 <ul>
 <li><code>/opt/homebrew/Cellar/git/&lt;version&gt;/</code></li>
 <li><code>/opt/homebrew/Cellar/git/&lt;version&gt;/bin/git</code></li>
 <li><code>/opt/homebrew/bin</code></li>
 </ul>
-<p>这也是 macOS ARM 要将 <code>/opt/homebrew/bin</code> 添加到 <code>PATH</code> 环境变量的原因。</p>
-<p>当执行 <code>brew uninstall</code> 时，会将 <code>/usr/local/Cellar</code> 下对应包目录删除，对应的链接关系也会移除。
-当执行 <code>brew cleanup</code> 时，会将 <code>/usr/local/Cellar</code> 所有包里的旧版本，只保留最新版本。</p>
-<h2>Homebrew Cask 的区别</h2>
-<p>可以简单地将 Homebrew 的包分为命令行工具、GUI 应用两类。</p>
-<pre><code class="language-shell">$ brew install &lt;package-name&gt;    # 安装
+</blockquote>
+<p>当执行 <code>brew uninstall</code> 时，会将 <code>/usr/local/Cellar</code> 下对应包目录删除，对应的链接关系也会移除。</p>
+<p>当执行 <code>brew cleanup</code> 时，会将 <code>/usr/local/Cellar</code> 所有包里的旧版本，只保留最新版本。</p>
+<h2>安装包</h2>
+<p>在 Homebrew 里有两类包，一类是命令行工具、一类是 GUI 桌面应用。对应的 Homebrew 的术语分别是：Formula、Cask。</p>
+<ul>
+<li><strong>Formula</strong>：通常是命令行工具，如开发库、字体、插件等不含 GUI 界面的软件/工具</li>
+<li><strong>Cask</strong>：通常是含有 GUI 图形化界面的软件，比如 Chrome 浏览器等</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/Homebrew/homebrew-cask">Homebrew Cask</a></p>
+</blockquote>
+<p>使用 <code>brew search</code> 搜索包，可以看到搜索结果列出了 Formulae 和 Casks 两种分类：</p>
+<pre><code class="language-bash">$ brew search google
+
+==&gt; Formulae
+aws-google-auth                       google-java-format                    mcp-google-sheets
+google-authenticator-libpam           google-sparsehash                     goose
+google-benchmark                      googletest                            goodls
+google-go ✔                           googleworkspace-cli
+
+==&gt; Casks
+font-google-sans-code                 google-chrome@beta                    google-japanese-ime
+google-ads-editor                     google-chrome@canary                  google-japanese-ime@dev
+google-analytics-opt-out              google-chrome@dev                     google-trends
+google-assistant (deprecated)         google-drive                          google-web-designer
+google-chat (disabled)                google-earth-pro                      ungoogled-chromium
+google-chrome                         google-gemini
+</code></pre>
+<p>对于 Formula 包，安装/卸载/重装的方式如下：</p>
+<pre><code class="language-bash">$ brew install &lt;package-name&gt;    # 安装
 $ brew uninstall &lt;package-name&gt;  # 卸载
 $ brew reinstall &lt;package-name&gt;  # 重装
 </code></pre>
-<blockquote>
-<p>如安装的是 GUI 应用，加上 <code>--cask</code> 参数。比如 <code>brew install docker --cask</code>。</p>
-</blockquote>
-<blockquote>
+<p>如果是 GUI 应用，可加上 <code>--cask</code> 参数，如 <code>brew install google-chrome --cask</code>。</p>
 <p>如需强制卸载，加上 <code>--force</code> 参数。</p>
-</blockquote>
-<p>使用 <code>brew search</code> 命令可以看到「Formulae」和「Casks」两类：</p>
-<ul>
-<li><strong>Formulae</strong>：一般是那些命令行工具、开发库、字体、插件等不含 GUI 界面的软件。</li>
-<li><strong>Casks</strong>：是指那些含有 GUI 图形化界面的软件，比如 Chrome、FireFox 等。</li>
-</ul>
-<pre><code class="language-shell">$ brew search google
-
-==&gt; Formulae
-aws-google-auth                          google-sparsehash
-google-authenticator-libpam              google-sql-tool
-google-benchmark                         googler
-google-go                                googletest
-google-java-format
-
-==&gt; Casks
-google-ads-editor
-google-analytics-opt-out
-google-backup-and-sync
-...
-</code></pre>
-<blockquote>
-<p>Related Link: <a href="https://github.com/Homebrew/homebrew-cask">Homebrew Cask</a></p>
-</blockquote>
-<h2>Homebrew 常用命令</h2>
+<h2>常用命令清单</h2>
 <h3>检查</h3>
 <p>用于检查 Homebrew 当前配置是否合理，或者某些包存在的问题等。</p>
-<pre><code class="language-shell">$ brew doctor
+<pre><code class="language-bash">$ brew doctor
 </code></pre>
 <h3>搜索</h3>
 <p>支持模糊搜索。</p>
-<pre><code class="language-shell">$ brew search &lt;keyword&gt;
+<pre><code class="language-bash">$ brew search &lt;keyword&gt;         # 按关键词搜索包
 </code></pre>
 <h3>更新包</h3>
-<pre><code class="language-shell">$ brew upgrade                  # 更新所有已安装的包
+<pre><code class="language-bash">$ brew upgrade                  # 更新所有已安装的包
 $ brew upgrade &lt;package-name&gt;   # 更新指定包
 </code></pre>
 <h3>列出已安装的包</h3>
-<pre><code class="language-shell">$ brew list                     # 所有的软件，包括 Formulae  和 Cask
-$ brew list --formulae          # 所有已安装的 Formulae
+<pre><code class="language-bash">$ brew list                     # 所有已安装的包，包括 Formulae  和 Cask
+$ brew list --formula           # 所有已安装的 Formulae
 $ brew list --cask              # 所有已安装的 Casks
-$ brew list &lt;package-name&gt;      # 列举某个 Formulate 或 Cask 的详细路径
+$ brew list &lt;package-name&gt;      # 列举某个 Formula 或 Cask 的详细路径
 </code></pre>
 <h3>列出可更新的包</h3>
-<pre><code class="language-shell">$ brew outdated
+<pre><code class="language-bash">$ brew outdated                 # 列举过时包
 </code></pre>
 <h3>锁定某个不想更新的包</h3>
-<pre><code class="language-shell">$ brew pin &lt;package-name&gt;       # 锁定指定包
+<pre><code class="language-bash">$ brew pin &lt;package-name&gt;       # 锁定指定包
 $ brew unpin &lt;package-name&gt;     # 取消锁定指定包
 </code></pre>
 <h3>清理旧包</h3>
-<pre><code class="language-shell">$ brew cleanup                  # 清理所有旧版本的包
+<pre><code class="language-bash">$ brew cleanup                  # 清理所有旧版本的包，仅保留最新版本
 $ brew cleanup &lt;package-name&gt;   # 清理指定的旧版本包
 $ brew cleanup -n               # 查看可清理的旧版本包
 </code></pre>
 <h3>查看已安装包的依赖</h3>
-<pre><code class="language-shell">$ brew deps --installed --tree
+<pre><code class="language-bash">$ brew deps &lt;package-name&gt;      # 列举某个包的依赖，带上 --tree 参数则以树状形式输出
+$ brew deps --installed         # 列举所有已安装的包的依赖
 </code></pre>
 <h3>查看包的信息</h3>
-<pre><code class="language-shell">$ brew info &lt;package&gt;           # 显示某个包信息
+<pre><code class="language-bash">$ brew info &lt;package&gt;           # 显示某个包信息
 $ brew info                     # 显示安装的软件数量、文件数量以及占用空间
 </code></pre>
 <h2>参考链接</h2>
 <ul>
 <li><a href="https://brew.sh">Homebrew</a></li>
+<li><a href="https://docs.brew.sh/Manpage">Homebrew Man Page</a></li>
 <li><a href="https://formulae.brew.sh/">Homebrew Formulae</a></li>
+<li><a href="https://formulae.brew.sh/cask/">Homebrew Casks</a></li>
 <li><a href="http://mirrors.ustc.edu.cn/help/brew.git.html">USTC Homebrew</a></li>
 </ul>
 ]]></content:encoded>
