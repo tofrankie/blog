@@ -1094,7 +1094,7 @@ project/node_modules/.pnpm/color-name@1.1.4/node_modules/color-name
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1769177690224.jpg" alt="配图源自 Freepik"></p>
 <h2>Offical Agent Skills</h2>
 <p><a href="https://officialskills.sh/">officialskills.sh</a> 收录了各软件团队的官方 Skills。</p>
-<h2><a href="http://skills.sh">skills.sh</a></h2>
+<h2>skills.sh</h2>
 <p>在 <a href="https://skills.sh">skills.sh</a> 收集了 7000+ 的 Skill，支持一众 AI Editor：</p>
 <ul>
 <li>Claude Code</li>
@@ -31628,7 +31628,7 @@ function myIsNaN(v) {
   return Object.is(v, NaN)
 }
 </code></pre>
-<h2>四、==、=== 与 <a href="http://Object.is">Object.is</a>()</h2>
+<h2>四、==、=== 与 Object.is()</h2>
 <p>JavaScript 是一种弱类型语言，存在隐式类型转换。因此，<code>==</code> 的行为非常令人费解。</p>
 <pre><code class="language-js">[] == ![] // true
 2 == '2' // true
@@ -50712,14 +50712,14 @@ $ git config --global --list
 <p>清除 git 仓库信息：<code>rm -rf .git</code>。</p>
 </li>
 <li>
-<p>解决：The authenticity of host '<a href="http://github.co]]></description>
+<p>解决：The authenticity of host 'github.com (52.74.223.119]]></description>
             <content:encoded><![CDATA[<p>本文更新于 2020-04-20，本篇为个人笔记，记录用。</p>
 <ol>
 <li>
 <p>清除 git 仓库信息：<code>rm -rf .git</code>。</p>
 </li>
 <li>
-<p>解决：The authenticity of host '<a href="http://github.com">github.com</a> (52.74.223.119)' can't be established. <a href="https://blog.csdn.net/m0_37034294/article/details/80199512">参考</a></p>
+<p>解决：The authenticity of host 'github.com (52.74.223.119)' can't be established. <a href="https://blog.csdn.net/m0_37034294/article/details/80199512">参考</a></p>
 </li>
 <li>
 <p><a href="https://blog.csdn.net/m0_37034294/article/details/79986198">生成 ssh 的方法和配置</a></p>
@@ -53161,10 +53161,9 @@ $ yarn cache clean         # 清除缓存
             <link>https://github.com/tofrankie/blog/issues/85</link>
             <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/85</guid>
             <pubDate>Sat, 25 Feb 2023 12:15:58 GMT</pubDate>
-            <description><![CDATA[<p>在使用 npm 安装包时，遇到 npm Warn name@x.x.x No repository field.</p>
-<p>意思是你的 <code>package.json</code> 缺少 <code>repository</code> 仓库字段。可采用以下两种方式解决 WARNING。</p>
-<p>有]]></description>
-            <content:encoded><![CDATA[<p>在使用 npm 安装包时，遇到 npm Warn name@x.x.x No repository field.</p>
+            <description><![CDATA[<p>在使用 npm 安装包时，遇到 npm Warn <a href="mailto:name@x.x.x">name@x.x.x</a> No repository field.</p>
+<p>意思是你的 <code>package.json</code> 缺少 <code>repository</code> 仓库]]></description>
+            <content:encoded><![CDATA[<p>在使用 npm 安装包时，遇到 npm Warn <a href="mailto:name@x.x.x">name@x.x.x</a> No repository field.</p>
 <p>意思是你的 <code>package.json</code> 缺少 <code>repository</code> 仓库字段。可采用以下两种方式解决 WARNING。</p>
 <p>有两种解法：</p>
 <ol>

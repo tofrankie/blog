@@ -104,6 +104,8 @@ async function updateAllTrafficJson(trafficDir: string, allJsonPath: string) {
     }
   }
 
+  allTrafficData.list = allTrafficData.list.sort((a, b) => Number(b.year) - Number(a.year))
+
   const formattedAllTrafficData = JSON.stringify(allTrafficData, null, 2)
   await fs.writeFile(allJsonPath, formattedAllTrafficData)
 }
