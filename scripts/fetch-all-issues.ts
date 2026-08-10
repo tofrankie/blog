@@ -43,7 +43,10 @@ function generateMarkdown(issue: Issue) {
     link: issue.html_url || issue.url,
     created_at: dayjs(issue.created_at).format('YYYY-MM-DD HH:mm:ss'),
     updated_at: dayjs(issue.updated_at).format('YYYY-MM-DD HH:mm:ss'),
-    labels: issue.labels.map(label => (typeof label === 'string' ? label : label.name)),
+    labels: issue.labels
+      .map(label => (typeof label === 'string' ? label : label.name))
+      .filter((label): label is string => typeof label === 'string')
+      .sort(),
   })
 }
 
