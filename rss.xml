@@ -4,7 +4,7 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Mon, 20 Jul 2026 20:49:48 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 19 Sep 2026 12:50:30 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
@@ -1285,7 +1285,7 @@ This model provider doesn't serve your region.Visit https://docs.cursor.com/acco
 <p>如果你用过 Alfred，还没有用过 <a href]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/12/1765380946755.jpg" alt="配图源自 Freepik"></p>
 <h2>前言</h2>
-<p>如果你用过 Alfred，还没有用过 <a href="https://raycast.com/?via=73820f">Raycast</a>，不妨试试，其免费订阅也足够好用（<a href="https://www.raycast.com/raycast-vs-alfred?via=73820f">Raycast vs Alfred</a>）。</p>
+<p>如果你用过 Alfred，还没有用过 <a href="https://raycast.com/?via=tofrankie">Raycast</a>，不妨试试，其免费订阅也足够好用（<a href="https://www.raycast.com/raycast-vs-alfred?via=tofrankie">Raycast vs Alfred</a>）。</p>
 <p>免费订阅用户无法享用 Raycast 内置的数据同步功能，可借助 Raycast 的 Export/Import Settings &amp; Data + iCloud Drive 进行同步。</p>
 <h2>背景</h2>
 <p>我们公司使用 Atlassian 旗下的 Confluence、Jira 做知识库、项目管理。</p>
@@ -1294,7 +1294,7 @@ This model provider doesn't serve your region.Visit https://docs.cursor.com/acco
 <p>但这种搜索方式在公司内部的 wiki、jira 中行不通。另外，通过创建 Quicklink 的方式其实“不太适合”公司内的文档检索。试想，随着时间积累，要访问、收藏的链接只会越来越多，无论是浏览器书签或 Quicklink 只会越来越多。</p>
 <p>于是产生了开发一个 Raycast 扩展的想法，以支持 Confluence 和 Jira 的快速搜索以及部分简单操作。恰好公司私有部署版本（Data Center）也支持以 Personal Access Token 的方式进行身份认证，这是一种安全的认证方式以便于与外部程序集成。<a href="https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html">了解更多</a></p>
 <h2>开始之前</h2>
-<p>安装 Raycast 后，前往 Raycast Store 安装 <a href="https://raycast.com/tofrankie/atlassian-data-center?via=73820f"><strong>Atlassian Data Center (Self-Hosted)</strong></a> 扩展。</p>
+<p>安装 Raycast 后，前往 Raycast Store 安装 <a href="https://raycast.com/tofrankie/atlassian-data-center?via=tofrankie"><strong>Atlassian Data Center (Self-Hosted)</strong></a> 扩展。</p>
 <p>使用该扩展的命令时，会引导完成一些初始配置，准备好以下信息：</p>
 <ul>
 <li>Confluence Base URL：如 <a href="https://confluence.example.com">https://confluence.example.com</a></li>
@@ -1375,14 +1375,14 @@ This model provider doesn't serve your region.Visit https://docs.cursor.com/acco
 <img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767590966514.png" alt=""></p>
 <p>▼ Jira
 <img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2026/1/1767591000857.png" alt=""></p>
-<p><a href="https://www.raycast.com/tofrankie/atlassian-data-center?via=73820f">更多截图</a></p>
+<p><a href="https://www.raycast.com/tofrankie/atlassian-data-center?via=tofrankie">更多截图</a></p>
 <h2>其他</h2>
 <p>个人常用的一些 Raycast 扩展，但不一定适合你，按需食用：</p>
 <ul>
-<li><a href="https://www.raycast.com/tmk/lark?via=73820f">Lark Documents</a> - 搜索飞书文档</li>
-<li><a href="https://www.raycast.com/degouville/cursor-recent-projects?via=73820f">Cursor</a> - 常用 Search Recent Projects</li>
-<li><a href="https://www.raycast.com/tofrankie/wechat-devtool?via=73820f">WeChat DevTool</a> - 启动小程序</li>
-<li><a href="https://www.raycast.com/vivek/deepwiki?via=73820f">DeepWiki</a> - 了解一些库内部实现问答可能更快</li>
+<li><a href="https://www.raycast.com/tmk/lark?via=tofrankie">Lark Documents</a> - 搜索飞书文档</li>
+<li><a href="https://www.raycast.com/degouville/cursor-recent-projects?via=tofrankie">Cursor</a> - 常用 Search Recent Projects</li>
+<li><a href="https://www.raycast.com/tofrankie/wechat-devtool?via=tofrankie">WeChat DevTool</a> - 启动小程序</li>
+<li><a href="https://www.raycast.com/vivek/deepwiki?via=tofrankie">DeepWiki</a> - 了解一些库内部实现问答可能更快</li>
 </ul>
 ]]></content:encoded>
             <author>tofrankie</author>
@@ -3169,7 +3169,7 @@ point2 = { x: 1, y: 2 } // ✅
 <p>是的，我已经将 <a href="https://ww]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/7/1752379227556.jpg" alt="配图源自 Freepik"></p>
 <h2>前言</h2>
-<p>是的，我已经将 <a href="https://www.alfredapp.com/">Alfred</a> 换为 <a href="https://raycast.com/?via=73820f">Raycast</a> 了，后者的免费功能足够好用。</p>
+<p>是的，我已经将 <a href="https://www.alfredapp.com/">Alfred</a> 换为 <a href="https://raycast.com/?via=tofrankie">Raycast</a> 了，后者的免费功能足够好用。</p>
 <p>但也没有完全丢掉 Alfred，还在用它的剪贴板历史功能。</p>
 <p>此前看到一个帖子说：Alfred 用户一定要试试 Raycast。当时我不以为意。</p>
 <p>用了七、八年的 Alfred 几乎没怎么“变过”，有种不思进取的感觉。特别是近几年 AI 的发展，它好像还没反应过来一样。</p>
@@ -3182,9 +3182,9 @@ point2 = { x: 1, y: 2 } // ✅
 </ul>
 <p>这些在 Raycast 都有替代方案，甚至更好。除此之外，Raycast 的界面更现代一些，跟最新的 macOS 风格更加契合，并且可以完全通过键盘完成一系列操作。</p>
 <blockquote>
-<p><a href="https://www.raycast.com/raycast-vs-alfred?via=73820f">Raycast vs Alfred</a></p>
+<p><a href="https://www.raycast.com/raycast-vs-alfred?via=tofrankie">Raycast vs Alfred</a></p>
 </blockquote>
-<p>最重要的是，Raycast Extension 的开发体验比 Alfred 好太多了。官方提供了很多便捷好用的 API、统一的 UI 风格、有官方分发平台 <a href="https://www.raycast.com/store?via=73820f">Raycast Store</a>、<a href="https://github.com/raycast/extensions/pulse">活跃度</a>很高、目前扩展数量 <a href="https://github.com/raycast/extensions/blob/cffac925444c27172ccf9538a15bad35a97a0adf/.github/CODEOWNERS">2200+</a>。</p>
+<p>最重要的是，Raycast Extension 的开发体验比 Alfred 好太多了。官方提供了很多便捷好用的 API、统一的 UI 风格、有官方分发平台 <a href="https://www.raycast.com/store?via=tofrankie">Raycast Store</a>、<a href="https://github.com/raycast/extensions/pulse">活跃度</a>很高、目前扩展数量 <a href="https://github.com/raycast/extensions/blob/cffac925444c27172ccf9538a15bad35a97a0adf/.github/CODEOWNERS">2200+</a>。</p>
 <h2>开始之前</h2>
 <h3>技术栈</h3>
 <p>Node.js + TypeScript + React</p>
@@ -3578,7 +3578,7 @@ export default function Example() {
 <blockquote>
 <p><a href="https://developers.raycast.com/api-reference/user-interface/list#props">List Props</a></p>
 </blockquote>
-<p>以后者为例，可以将项目名称、项目路径、项目名称拼音（若有中文）添加到 keywords 字段，参考 <a href="https://github.com/tofrankie/raycast-wechat-devtool/blob/2be07dadbc747826def1a1c5373bb0040d4d004b/src/utils/pinyin.ts">pinyin.ts</a>。</p>
+<p>以后者为例，可以将项目名称、项目路径、项目名称拼音（若有中文）添加到 keywords 字段，参考 <a href="https://github.com/tofrankie/raycast-collection/blob/812004f75301a8cf1dd52dbca2c9446272193df2/extensions/wechat-devtool/src/utils/pinyin.ts">pinyin.ts</a>。</p>
 <h3>图片展示</h3>
 <p>若要展示一张图片，似乎只有 Detail + Markdown 的方式了。</p>
 <pre><code class="language-tsx">export default function ImageView({ url }: { url: string }) {
@@ -3712,7 +3712,7 @@ function joinHomebrewPath() {
 <p>Raycast 内置了截屏功能，在 Raycast Settings - Advanced - Window Capture 中设置快捷键（如 ⌥ + ⇧ + ⌘ + M）。</p>
 <p>在开发模式下（使用 <code>npm run dev</code>）启动扩展，按下快捷键便可调出截屏窗口，勾选「Save to Metadata」，截图时自动保存到项目的 <code>metadata</code> 目录（不行的话移进去），更多请看<a href="https://developers.raycast.com/basics/prepare-an-extension-for-store#screenshots">这里</a>。</p>
 <blockquote>
-<p>Raycast 提供了一些高分辨的<a href="https://www.raycast.com/wallpapers?via=73820f">高清壁纸</a></p>
+<p>Raycast 提供了一些高分辨的<a href="https://www.raycast.com/wallpapers?via=tofrankie">高清壁纸</a></p>
 </blockquote>
 <h2>参与贡献</h2>
 <p>如果想对已发布的扩展作出贡献：</p>
@@ -4447,7 +4447,7 @@ function joinHomebrewPath() {
 <p>推荐一个用于搜索 Jira issues 的 Ray]]></description>
             <content:encoded><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/tofrankie/blog@main/images/2025/4/1746003443752.jpg" alt="配图源自 Freepik"></p>
 <blockquote>
-<p>推荐一个用于搜索 Jira issues 的 Raycast 扩展：<a href="https://raycast.com/tofrankie/atlassian-data-center?via=73820f">Atlassian Data Center</a></p>
+<p>推荐一个用于搜索 Jira issues 的 Raycast 扩展：<a href="https://raycast.com/tofrankie/atlassian-data-center?via=tofrankie">Atlassian Data Center</a></p>
 </blockquote>
 <p>过滤器（筛选器）是 Jira 核心功能之一，利用它可以实现很多的需求。</p>
 <h2>开始之前</h2>
@@ -9282,7 +9282,7 @@ echo &quot;处理完成！&quot;
 <li>使用 <a href="https://github.com/tofrankie/blog">GitHub Repository</a> 进行文章存档，每次编辑都会被记录</li>
 <li>使用 <a href="https://github.com/tofrankie/blog/issues">GitHub Issues</a> 作为博文列表</li>
 <li>使用 <a href="https://github.com/tofrankie/blog/labels">GitHub Labels</a> 对博文进行标签、分类</li>
-<li>使用 <a href="https://www.raycast.com/core-features/quicklinks?via=73820f">Raycast Quicklinks</a> 快速搜索文章，比如按标题搜索 <code>https://github.com/tofrankie/blog/issues?q=in%3Atitle+{Query}+</code></li>
+<li>使用 <a href="https://www.raycast.com/core-features/quicklinks?via=tofrankie">Raycast Quicklinks</a> 快速搜索文章，比如按标题搜索 <code>https://github.com/tofrankie/blog/issues?q=in%3Atitle+{Query}+</code></li>
 </ul>
 <h2>GitHub Blogger</h2>
 <blockquote>
@@ -61775,7 +61775,7 @@ $ defaults write com.apple.Finder AppleShowAllFiles NO; killall Finder;
 </code></pre>
 <h3>第三方增强</h3>
 <ul>
-<li><a href="https://raycast.com/?via=73820f">Raycast</a>：一个比 Alfred 更好用的启动器 ⭐️⭐️⭐️⭐️⭐️</li>
+<li><a href="https://raycast.com/?via=tofrankie">Raycast</a>：一个比 Alfred 更好用的启动器 ⭐️⭐️⭐️⭐️⭐️</li>
 <li><s><a href="https://www.alfredapp.com/">Alfred</a>：或许是比内置 Spotlight 更好的选择，生态上也有很多便捷、好用的 Workflows</s>（现更推荐 Raycast）</li>
 <li><a href="https://www.trankynam.com/xtrafinder/">XtraFinder</a>：Finder 增强插件，可惜颜值没跟上最新的 Finder</li>
 <li><a href="https://totalfinder.binaryage.com/">TotalFinder</a>：Finder 增强插件，可实现类似 Chrome 的多标签</li>
