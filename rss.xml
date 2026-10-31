@@ -4,11 +4,50 @@
         <title>Frankie's Blog</title>
         <link>https://github.com/tofrankie/blog</link>
         <description>种一棵树，最好的时间是十年前。其次，是现在。</description>
-        <lastBuildDate>Sun, 20 Sep 2026 00:52:46 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 31 Oct 2026 05:53:58 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <copyright>All rights reserved 2025</copyright>
+        <item>
+            <title><![CDATA[Docker Basic]]></title>
+            <link>https://github.com/tofrankie/blog/issues/396</link>
+            <guid isPermaLink="false">https://github.com/tofrankie/blog/issues/396</guid>
+            <pubDate>Sat, 31 Oct 2026 05:53:58 GMT</pubDate>
+            <description><![CDATA[<h2>写在前面</h2>
+<p>Docker 的使用过程分为：</p>
+<ol>
+<li>镜像构建</li>
+<li>容器启动</li>
+</ol>
+<h3>镜像构建</h3>
+<p>创建一个镜像，它包含安装运行所需的环境、程序代码等。通常使用 Dockerfile 来完成。</p>
+<h3>容器启动</h3>
+<p]]></description>
+            <content:encoded><![CDATA[<h2>写在前面</h2>
+<p>Docker 的使用过程分为：</p>
+<ol>
+<li>镜像构建</li>
+<li>容器启动</li>
+</ol>
+<h3>镜像构建</h3>
+<p>创建一个镜像，它包含安装运行所需的环境、程序代码等。通常使用 Dockerfile 来完成。</p>
+<h3>容器启动</h3>
+<p>容器最终运行起来是通过拉取构建好的镜像，通过一系列运行指令（如端口映射、外部数据挂载、环境变量等）来启动服务的。</p>
+<p>针对单个容器，可以通过 <code>docker run</code> 命令来运行。如果涉及多个容器的运行（如服务编排），可以通过 docker-compose 来实现，它可以轻松地将多个容器作为 service 来运行，并提供了服务扩容（scale）的功能。</p>
+<h3>小结</h3>
+<ol>
+<li>Dockerfile 构建镜像</li>
+<li>docker run 启动容器</li>
+<li>docker-compose 启动服务</li>
+</ol>
+<h2>重新开始</h2>
+<p>如果不用 Docker，以搭建 WordPress 为例，先找一个 Server，假设为 Ubuntu，需要按文档一步一步敲命令、写配置。</p>
+<p>如果用 Docker，随便找一个 Server，不用关心是什么操作系统，只要支持 Docker，使用 <code>docker run ubuntu</code> 就会从官方源拉取最新的 Ubuntu 镜像（开了个 Ubuntu 虚拟机），然后一步一步安装，跟上面一样。</p>
+<p>未完待续...</p>
+]]></content:encoded>
+            <author>tofrankie</author>
+        </item>
         <item>
             <title><![CDATA[Codex App 捆绑了 pnpm 版本]]></title>
             <link>https://github.com/tofrankie/blog/issues/395</link>
